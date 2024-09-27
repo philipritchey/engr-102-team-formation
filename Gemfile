@@ -48,7 +48,6 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
   # Use sqlite3 as the database for Active Record
-  gem "sqlite3", ">= 1.4"
 end
 
 group :test do
@@ -56,7 +55,10 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   # Use sqlite3 as the database for Active Record
-  gem "sqlite3", ">= 1.4"
+end
+
+group :development, :test do
+  gem 'sqlite3'
 end
 
 
