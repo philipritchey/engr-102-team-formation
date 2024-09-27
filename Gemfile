@@ -29,6 +29,12 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
+# gems for the SSO
+gem 'rubycas-client', '~> 2.3.9'
+# CAS client library for Ruby
+gem 'omniauth-cas', '~> 2.0'       
+# Omniauth strategy for CAS
+
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
