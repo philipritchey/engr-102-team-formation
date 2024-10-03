@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
-  skip_before_action :require_login, only: [ :omniauth ]
+  skip_before_action :require_login, only: [:omniauth]
+
   # GET /logout
   def logout
     reset_session
@@ -9,18 +10,15 @@ class SessionsController < ApplicationController
   # GET /auth/google_oauth2/callback
   def omniauth
     auth = request.env["omniauth.auth"]
-    @user = User.find_or_create_by(uid: auth["uid"], provider: auth["provider"]) do |u|
-      u.email = auth["info"]["email"]
-      names = auth["info"]["name"].split
-      u.first_name = names[0]
-      u.last_name = names[1..].join(" ")
-    end
+    
+    @user = User.find_by(email: auth["info"]["email"])
 
-    if @user.valid?
+    if @user 
       session[:user_id] = @user.id
       redirect_to user_path(@user), notice: "You are logged in."
     else
-      redirect_to welcome_path, alert: "Login failed."
+      # If user does not exist, redirect to welcome page with an error message
+      redirect_to welcome_path, alert: "Login failed: User not found."
     end
   end
 end
