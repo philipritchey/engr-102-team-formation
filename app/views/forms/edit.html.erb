@@ -19,13 +19,15 @@
 <h2>Current Attributes</h2>
 <% if @form.form_attributes.any? %>
   <ul>
-    <% @form.form_attributes.each do |attribute| %>
+    <% @form.form_attributes.select(&:persisted?).each do |attribute| %>
       <li>
         <%= attribute.name %> (<%= attribute.field_type %>)
         <% if attribute.field_type == 'scale' %>
           (Min: <%= attribute.min_value %>, Max: <%= attribute.max_value %>)
         <% end %>
+        <%= button_to 'Destroy Attribute', form_attribute_path(@form, attribute), method: :delete, data: { confirm: 'Are you sure you want to remove this question?'}, class: 'btn btn-danger'%>
       </li>
+      <br>
     <% end %>
   </ul>
 <% else %>
