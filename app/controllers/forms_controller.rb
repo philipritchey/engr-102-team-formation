@@ -70,7 +70,7 @@ class FormsController < ApplicationController
 
         if header_row.nil? || header_row.all?(&:blank?)
           flash[:alert] = "The first row is empty. Please provide column names."
-          redirect_to root_path and return
+          redirect_to user_path(@current_user) and return
         end
 
         name_index = header_row.index("Name") || -1
@@ -79,35 +79,41 @@ class FormsController < ApplicationController
 
         unless name_index >= 0 && uin_index >= 0 && email_index >= 0
           flash[:alert] = "Missing required columns. Ensure 'Name', 'UIN', and 'Email ID' are present."
-          redirect_to root_path and return
+          redirect_to user_path(@current_user) and return
         end
 
+        users_to_create = []
         (2..spreadsheet.last_row).each do |index|
           row = spreadsheet.row(index)
 
           if row[name_index].blank?
             flash[:alert] = "Missing value in 'Name' column for row #{index}."
-            redirect_to root_path and return
+            redirect_to user_path(@current_user) and return
           end
 
           uin_value = row[uin_index]
           unless uin_value.is_a?(String) && uin_value.match?(/^\d{9}$/)
             flash[:alert] = "Invalid UIN in 'UIN' column for row #{index}. It must be a 9-digit number."
-            redirect_to root_path and return
+            redirect_to user_path(@current_user) and return
           end
 
           email_value = row[email_index]
           if email_value.blank?
             flash[:alert] = "Missing value in 'Email ID' column for row #{index}."
-            redirect_to root_path and return
+            redirect_to user_path(@current_user) and return
           end
 
           unless email_value =~ /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
             flash[:alert] = "Invalid email in 'Email ID' column for row #{index}."
-            redirect_to root_path and return
+            redirect_to user_path(@current_user) and return
           end
+          users_to_create << {
+            name: row[name_index],
+            uin: uin_value,
+            email: email_value
+          }
         end
-
+        User.insert_all(users_to_create)
         flash[:notice] = "All validations passed."
 
       rescue Roo::FileNotFound
@@ -119,7 +125,7 @@ class FormsController < ApplicationController
       flash[:alert] = "Please upload a file."
     end
 
-    redirect_to root_path
+    redirect_to user_path(@current_user)
   end
 
 
