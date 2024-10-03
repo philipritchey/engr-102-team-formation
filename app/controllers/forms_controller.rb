@@ -1,4 +1,5 @@
 class FormsController < ApplicationController
+  require "roo"
   # Set up the @form instance variable for show, edit, update, and destroy actions
   before_action :set_form, only: %i[ show edit update destroy ]
 
@@ -54,6 +55,82 @@ class FormsController < ApplicationController
       end
     end
   end
+
+  def upload
+  end
+
+  def validate_upload
+    if params[:file].present?
+      file = params[:file].path
+
+      begin
+        spreadsheet = Roo::Spreadsheet.open(file)
+        header_row = spreadsheet.row(1)
+        puts "First row content: #{header_row.inspect}"
+
+        if header_row.nil? || header_row.all?(&:blank?)
+          flash[:alert] = "The first row is empty. Please provide column names."
+          redirect_to user_path(@current_user) and return
+        end
+
+        name_index = header_row.index("Name") || -1
+        uin_index = header_row.index("UIN") || -1
+        email_index = header_row.index("Email ID") || -1
+
+        unless name_index >= 0 && uin_index >= 0 && email_index >= 0
+          flash[:alert] = "Missing required columns. Ensure 'Name', 'UIN', and 'Email ID' are present."
+          redirect_to user_path(@current_user) and return
+        end
+
+        users_to_create = []
+        (2..spreadsheet.last_row).each do |index|
+          row = spreadsheet.row(index)
+
+          if row[name_index].blank?
+            flash[:alert] = "Missing value in 'Name' column for row #{index}."
+            redirect_to user_path(@current_user) and return
+          end
+
+          uin_value = row[uin_index]
+          unless uin_value.is_a?(String) && uin_value.match?(/^\d{9}$/)
+            flash[:alert] = "Invalid UIN in 'UIN' column for row #{index}. It must be a 9-digit number."
+            redirect_to user_path(@current_user) and return
+          end
+
+          email_value = row[email_index]
+          if email_value.blank?
+            flash[:alert] = "Missing value in 'Email ID' column for row #{index}."
+            redirect_to user_path(@current_user) and return
+          end
+
+          unless email_value =~ /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+            flash[:alert] = "Invalid email in 'Email ID' column for row #{index}."
+            redirect_to user_path(@current_user) and return
+          end
+          users_to_create << {
+            name: row[name_index],
+            uin: uin_value,
+            email: email_value
+          }
+        end
+        User.insert_all(users_to_create)
+        flash[:notice] = "All validations passed."
+
+      rescue Roo::FileNotFound
+        flash[:alert] = "File not found. Please upload a valid Excel or CSV file."
+      rescue StandardError => e
+        flash[:alert] = "An error occurred: #{e.message}"
+      end
+    else
+      flash[:alert] = "Please upload a file."
+    end
+
+    redirect_to user_path(@current_user)
+  end
+
+
+
+
 
   # DELETE /forms/1
   def destroy
