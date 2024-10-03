@@ -2,6 +2,7 @@
 class AttributesController < ApplicationController
     # This before_action ensures @form is set before any action is executed
     before_action :set_form
+    before_action :set_attribute, only: [:destroy]
 
     # POST /forms/:form_id/attributes
     def create
@@ -17,6 +18,15 @@ class AttributesController < ApplicationController
         end
     end
 
+    # DELETE /forms/:form_id/attributes/:id
+    def destroy
+        if @attribute.destroy
+            redirect_to edit_form_path(@form), notice: "Attribute was successfully removed."
+        else
+            redirect_to edit_form_path(@form), alert: "Failed to remove attribute."
+        end
+    end
+
     private
 
     # This method finds the parent Form for the nested Attribute
@@ -27,6 +37,14 @@ class AttributesController < ApplicationController
         # If the form isn't found, redirect to the forms index with an alert
         flash[:alert] = "Form not found"
         redirect_to forms_path
+    end
+
+    # This method finds the specific attribute associated with the form
+    def set_attribute
+        @attribute = @form.form_attributes.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+        flash[:alert] = "Attribute not found"
+        redirect_to edit_form_path(@form)
     end
 
     # Strong parameters to prevent mass assignment vulnerabilities
