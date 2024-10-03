@@ -1,5 +1,201 @@
-<h2>Team Formation</h2>
-<p>
-  The time is now: <%= Time.now %>
-</p>
-<p><%= button_to "Login with Google", "/auth/google_oauth2", data: {turbo: "false"} %></p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Formation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400&display=swap');
+
+        :root {
+            --tamu-maroon: #500000;
+            --tamu-white: #FFFFFF;
+        }body {
+          font-family: 'Roboto', sans-serif;
+          background-color: var(--tamu-white);
+          margin: 0;
+          padding: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          overflow: hidden;
+      }
+
+      .container {
+          background-color: var(--tamu-white);
+          border-radius: 20px;
+          box-shadow: 0 20px 50px rgba(80, 0, 0, 0.2);
+          padding: 50px;
+          text-align: center;
+          position: relative;
+          max-width: 500px;
+          width: 100%;
+      }
+
+      h2 {
+          font-family: 'Playfair Display', serif;
+          color: var(--tamu-maroon);
+          font-size: 3rem;
+          margin-bottom: 20px;
+          position: relative;
+      }
+
+      .animated-title {
+          display: inline-block;
+          opacity: 0;
+          transform: translateY(-50px);
+          transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+
+      .animated-title.visible {
+          opacity: 1;
+          transform: translateY(0);
+      }
+
+      .time {
+          font-size: 1rem;
+          color: var(--tamu-maroon);
+          margin-bottom: 30px;
+      }
+
+      .button {
+          background-color: var(--tamu-maroon);
+          color: var(--tamu-white);
+          border: none;
+          padding: 15px 30px;
+          font-size: 1.1rem;
+          border-radius: 50px;
+          cursor: pointer;
+          transition: all 0.3s ease, transform 0.2s ease-in-out;
+      }
+
+      .button:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 20px rgba(80, 0, 0, 0.4);
+      }
+
+      .students {
+          position: relative;
+          height: 200px; 
+          margin-top: 30px; 
+      }
+
+      .student {
+          position: absolute; 
+          width: 40px; 
+          height: 80px; 
+          background-color: var(--tamu-maroon); 
+          border-radius: 10px; 
+      }
+
+      .head {
+        width: 30px; 
+        height: 30px; 
+        background-color: var(--tamu-white); 
+        border-radius: 50%; 
+        position:absolute; 
+        top:-15px; 
+        left:-5px; 
+        border:2px solid var(--tamu-maroon); 
+    }
+
+    .thought-bubble {
+        position:absolute; 
+        background-color:white; 
+        border-radius :10px; 
+        padding :5px ; 
+        font-size :12px; 
+        opacity :0; 
+        transition :opacity .3s ease ; 
+        pointer-events:none ; 
+        border :2px solid var(--tamu-maroon); 
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 id="animatedTitle">Welcome To Team Formation Aggies !</h2>
+        
+        <%= form_tag "/auth/google_oauth2", method: :post, data: { turbo: false } do %>
+           <%= button_tag "Login with Google", type: :submit, class: "button" %>
+        <% end %>
+
+       <div class="students"></div>
+    </div>
+
+    <%= javascript_tag do %>
+        document.addEventListener('DOMContentLoaded', () => {
+          const title = document.getElementById('animatedTitle');
+          const text = title.textContent.split('');
+          title.textContent = '';
+
+          text.forEach((char, index) => {
+              const span = document.createElement('span');
+              span.textContent = char === ' ' ? '\u00A0' : char; // Preserve spaces
+              span.classList.add('animated-title');
+              span.style.transitionDelay = `${index * 50}ms`;
+              title.appendChild(span);
+
+              // Trigger visibility after a short delay
+              setTimeout(() => {
+                  span.classList.add('visible');
+              }, index * 50);
+          });
+
+          const studentsContainer = document.querySelector('.students');
+          const studentCount = 5; 
+          const thoughts = ['Gig \'em!', 'Howdy!', 'Go Aggies!', '12th Man!', 'Whoop!'];
+
+          for (let i = 0; i < studentCount; i++) {
+              const student = document.createElement('div'); 
+              student.classList.add('student'); 
+              student.style.left = `${i * (100 / studentCount) + (100 / (studentCount * 2))}%`; 
+              student.style.top = `${Math.random() * (140)}px`; 
+
+              // Create head for the student
+              const head = document.createElement('div');
+              head.classList.add('head');
+              student.appendChild(head); // Append head to student
+
+              studentsContainer.appendChild(student); 
+
+              const thoughtBubble = document.createElement('div'); 
+              thoughtBubble.classList.add('thought-bubble'); 
+              thoughtBubble.textContent = thoughts[i]; 
+              thoughtBubble.style.left = `${i * (100 / studentCount) + (100 / (studentCount * 2))}%`;
+              thoughtBubble.style.top = `${parseInt(student.style.top) - 40}px`; 
+
+              studentsContainer.appendChild(thoughtBubble); 
+
+              student.addEventListener('mouseenter', () => { 
+                  thoughtBubble.style.opacity = '1'; 
+              });
+              student.addEventListener('mouseleave', () => { 
+                  thoughtBubble.style.opacity = '0'; 
+              });
+
+              student.addEventListener('click', () => { 
+                  student.style.transform = 'scale(1.1)'; 
+                  setTimeout(() => { 
+                      student.style.transform = 'scale(1)'; 
+                  }, 200); 
+              });
+          }
+
+          function animateStudents() { 
+              const students = document.querySelectorAll('.student'); 
+              students.forEach((student) => { 
+                  const newY = Math.random() * (140); 
+                  student.style.transition = 'top 2s ease-in-out'; 
+                  student.style.top = `${newY}px`; 
+              }); 
+
+              setTimeout(animateStudents, 3000); // Repeat every few seconds
+          }
+
+          animateStudents(); // Start the animation loop
+      });
+    <% end %>
+</body>
+</html>

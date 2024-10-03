@@ -31,11 +31,11 @@ gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "bootsnap", require: false
 # gems for the SSO
 # omniauth for google login
-gem 'omniauth', '~> 2.1.1'
-gem 'omniauth-google-oauth2', '~> 1.1.1'
-gem 'omniauth-oauth2', '~> 1.8.0'
-gem 'omniauth-rails_csrf_protection', '~> 1.0.1'
-gem 'jwt', '~> 2.7.1'
+gem "omniauth", "~> 2.1.1"
+gem "omniauth-google-oauth2", "~> 1.1.1"
+gem "omniauth-oauth2", "~> 1.8.0"
+gem "omniauth-rails_csrf_protection", "~> 1.0.1"
+gem "jwt", "~> 2.7.1"
 
 
 
@@ -69,11 +69,10 @@ group :test do
 end
 
 group :development, :test do
-  gem 'sqlite3'
+  gem "sqlite3"
 end
 
 
 group :production do
-  gem 'pg'
+  gem "pg"
 end
-
