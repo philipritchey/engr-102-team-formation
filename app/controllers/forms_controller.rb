@@ -5,7 +5,8 @@ class FormsController < ApplicationController
   # GET /forms
   def index
     # TODO: Implement form listing logic
-    # @forms = Form.all
+    @forms = Form.all
+    
   end
 
   # GET /forms/1
