@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   resources :forms do
     resources :attributes
   end
+  get "sessions/logout"
+  get "sessions/omniauth"
+  get "users/show"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -16,5 +19,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  root "forms#index"
+  root "welcome#index"
+  get "welcome/index", to: "welcome#index", as: "welcome"
+  get "/users/:id", to: "users#show", as: "user"
+  get "/logout", to: "sessions#logout", as: "logout"
+  get "/auth/google_oauth2/callback", to: "sessions#omniauth"
 end

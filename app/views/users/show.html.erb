@@ -1,0 +1,14 @@
+<h2>Howdy</h2>
+<div id="user-details">
+  <p>
+    <strong>Email:</strong>
+    <%= @current_user.email %>
+  </p>
+
+  <p>
+    <strong>Last name:</strong>
+    <%= @current_user.last_name %>
+  </p>
+  
+</div>
+<%= link_to "Logout", logout_path %>
