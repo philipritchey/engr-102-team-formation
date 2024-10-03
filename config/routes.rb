@@ -25,6 +25,4 @@ Rails.application.routes.draw do
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   get "/upload", to: "forms#upload"
   post "validate_upload", to: "forms#validate_upload"
-
-  
 end

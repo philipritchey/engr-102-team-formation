@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :require_login, only: [:omniauth]
+  skip_before_action :require_login, only: [ :omniauth ]
 
   # GET /logout
   def logout
@@ -10,10 +10,10 @@ class SessionsController < ApplicationController
   # GET /auth/google_oauth2/callback
   def omniauth
     auth = request.env["omniauth.auth"]
-    
+
     @user = User.find_by(email: auth["info"]["email"])
 
-    if @user 
+    if @user
       session[:user_id] = @user.id
       redirect_to user_path(@user), notice: "You are logged in."
     else
