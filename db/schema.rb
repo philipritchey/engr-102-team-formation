@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_03_223214) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_04_042535) do
   create_table "attributes", force: :cascade do |t|
     t.string "name"
     t.string "field_type"
@@ -28,6 +28,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_03_223214) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -38,4 +39,5 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_03_223214) do
   end
 
   add_foreign_key "attributes", "forms"
+  add_foreign_key "forms", "users"
 end

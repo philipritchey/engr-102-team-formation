@@ -38,8 +38,7 @@ gem "omniauth-rails_csrf_protection", "~> 1.0.1"
 gem "jwt", "~> 2.7.1"
 
 
-
-
+gem 'devise'
 gem "roo"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]

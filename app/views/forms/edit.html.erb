@@ -1,7 +1,7 @@
 <h1>Edit Form: <%= @form.name %></h1>
 
 <%# Form for editing the main form details %>
-<%= form_with(model: @form, local: true) do |form| %>
+<%= form_with(model: @form, local: true, data: { turbo: false }) do |form| %>
   <div>
     <%= form.label :name %>
     <%= form.text_field :name %>
@@ -12,7 +12,6 @@
     <%= form.text_area :description %>
   </div>
 
-  <%= form.submit "Update Form" %>
 <% end %>
 
 <%# Display current attributes of the form %>
@@ -58,6 +57,18 @@
 
   <%= f.submit "Save Attribute", id: "save_attribute" %>
 <% end %>
+
+<%# Add spacing between "Save Attribute" and action buttons %>
+<div style="margin-top: 30px;"></div>
+
+<%# Action buttons %>
+<div class="d-flex justify-content-end align-items-center">
+  <%= button_to "Back to Forms", user_path(current_user), method: :get, class: "btn btn-secondary me-2" %>
+  
+  <%= form_with(model: @form, local: true, class: "d-inline") do |form| %>
+    <%= form.submit "Save Form", class: "btn btn-primary" %>
+  <% end %>
+</div>
 
 <%# JavaScript to toggle visibility of scale fields %>
 <script>

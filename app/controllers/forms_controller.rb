@@ -1,6 +1,5 @@
 class FormsController < ApplicationController
   require "roo"
-  # Set up the @form instance variable for show, edit, update, and destroy actions
   before_action :set_form, only: %i[ show edit update destroy ]
 
   # GET /forms
@@ -11,6 +10,7 @@ class FormsController < ApplicationController
 
   # GET /forms/1
   def show
+    puts "Show action started"  # Debug line
     # @form is already set by before_action
   end
 
@@ -27,8 +27,7 @@ class FormsController < ApplicationController
 
   # POST /forms
   def create
-    # Create a new Form with the submitted parameters
-    @form = Form.new(form_params)
+    @form = current_user.forms.build(form_params)
 
     if @form.save
       # Redirect to edit page to add attributes after successful creation
@@ -41,14 +40,18 @@ class FormsController < ApplicationController
 
   # PATCH/PUT /forms/1
   def update
-    respond_to do |format|
-      if @form.update(form_params)
-        format.html { redirect_to @form, notice: "Form was successfully updated." }
-        format.json { render json: @form, status: :ok }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: { errors: @form.errors }, status: :unprocessable_entity }
-      end
+    puts "Update action started"  # Debug line
+    update_params = params[:form] || params
+    puts "Update params: #{update_params.inspect}"  # Debug line
+
+    if @form.update(update_params.permit(:name, :description))
+      puts "Form updated successfully"  # Debug line
+      flash[:notice] = "Form was successfully updated."
+      redirect_to @form
+    else
+      puts "Form update failed"  # Debug line
+      flash.now[:alert] = @form.errors.full_messages.to_sentence
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -133,20 +136,22 @@ class FormsController < ApplicationController
     @form.destroy!
 
     respond_to do |format|
-      # Redirect to index page after successful deletion
-      format.html { redirect_to forms_path, status: :see_other, notice: "Form was successfully destroyed." }
+      # Redirect to user's show page after successful deletion
+      format.html { redirect_to user_path(current_user), status: :see_other, notice: "Form was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
-    # Fetch the Form object based on the id parameter
     def set_form
-      @form = Form.find(params[:id])
+      @form = current_user.forms.find(params[:id])
     end
 
     # Define allowed parameters for form creation and update
     def form_params
       params.require(:form).permit(:name, :description)
+    rescue ActionController::ParameterMissing
+      # If :form key is missing, permit name and description directly from params
+      params.permit(:name, :description)
     end
 end

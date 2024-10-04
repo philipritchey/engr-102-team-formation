@@ -6,14 +6,19 @@ class AttributesController < ApplicationController
 
     # POST /forms/:form_id/attributes
     def create
-        # Build a new attribute associated with the current form
-        # form_attributes is the association name we defined in the Form model
+        @form = Form.find(params[:form_id])
         @attribute = @form.form_attributes.build(attribute_params)
+
+        puts "Form ID: #{@form.id}"
+        puts "Attribute params: #{attribute_params.inspect}"
+        puts "Attribute valid? #{@attribute.valid?}"
+        puts "Attribute errors: #{@attribute.errors.full_messages}" if @attribute.invalid?
 
         if @attribute.save
             # If save is successful, respond accordingly
             redirect_to edit_form_path(@form), notice: "Attribute was successfully added."
         else
+            puts "Failed to create attribute. Errors: #{@attribute.errors.full_messages}"
             redirect_to edit_form_path(@form), alert: "Failed to add attribute."
         end
     end
@@ -32,7 +37,7 @@ class AttributesController < ApplicationController
     # This method finds the parent Form for the nested Attribute
     # It's called by the before_action at the top of the controller
     def set_form
-        @form = Form.find(params[:form_id])
+        @form = current_user.forms.find(params[:form_id])
     rescue ActiveRecord::RecordNotFound
         # If the form isn't found, redirect to the forms index with an alert
         flash[:alert] = "Form not found"
