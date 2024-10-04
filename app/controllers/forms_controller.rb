@@ -5,7 +5,7 @@ class FormsController < ApplicationController
   require "roo"
 
   # Set @form instance variable for show, edit, update, and destroy actions
-  before_action :set_form, only: %i[ show edit update destroy ]
+  before_action :set_form, only: %i[ show edit update destroy update_deadline ]
 
   # GET /forms
   def index
@@ -56,7 +56,7 @@ class FormsController < ApplicationController
     # Allow params with or without 'form' key
     update_params = params[:form] || params
 
-    if @form.update(update_params.permit(:name, :description))
+    if @form.update(update_params.permit(:name, :description, :deadline))
       # If update succeeds, set success message and redirect to the form
       flash[:notice] = "Form was successfully updated."
       redirect_to @form
@@ -153,6 +153,16 @@ class FormsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  # Add a new method for updating deadline from index page
+  def update_deadline
+    if @form.update(deadline_params)
+      # Redirect to the index page with success notice
+      redirect_to forms_path, notice: "Deadline was successfully updated."
+    else
+      redirect_to forms_path, alert: "Failed to update the deadline."
+    end
+  end
 
   private
     # Sets @form instance variable based on the id parameter
@@ -164,10 +174,15 @@ class FormsController < ApplicationController
     # Define allowed parameters for form creation and update
     # This is a security measure to prevent mass assignment vulnerabilities
     def form_params
-      params.require(:form).permit(:name, :description)
+      params.require(:form).permit(:name, :description, :deadline)
     rescue ActionController::ParameterMissing
       # If :form key is missing, permit name and description directly from params
       # This allows for more flexible parameter handling
-      params.permit(:name, :description)
+      params.permit(:name, :description, :deadline)
     end
+
+    def deadline_params
+      params.require(:form).permit(:deadline)
+    end
+
 end
