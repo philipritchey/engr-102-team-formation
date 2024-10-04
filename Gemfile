@@ -1,7 +1,11 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
+<<<<<<< Updated upstream
 gem "rails", "~> 7.2.1"
+=======
+gem "rails", "~> 7.2.0"
+>>>>>>> Stashed changes
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
@@ -61,6 +65,28 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+<<<<<<< Updated upstream
+=======
+  gem "rubocop", "~> 1.66.1"
+  gem "rubocop-rspec", "~> 2.20"
+  # RSpec for Rails
+  gem "rspec-rails", "~> 6.0"
+
+  # Cucumber for acceptance testing
+  gem "cucumber-rails", require: false
+
+  # Database cleaner for testing
+  gem "database_cleaner"
+
+  # SimpleCov for code coverage
+  gem "simplecov", require: false
+
+  # Factory Bot for test data
+  gem "factory_bot_rails"
+
+  # Faker for generating fake data in tests
+  gem "faker"
+>>>>>>> Stashed changes
 end
 
 group :development do

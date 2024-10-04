@@ -1,4 +1,32 @@
 require 'rails_helper'
+<<<<<<< Updated upstream
+=======
+RSpec.describe SessionsController, type: :controller do
+  describe 'POST #omniauth' do
+    context 'when user does not exist' do
+      before do
+        OmniAuth.config.test_mode = true
+        OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
+          provider: 'google_oauth2',
+          uid: '123456',
+          info: {
+            email: 'nonexistent@example.com',
+            name: 'Nonexistent User'
+          }
+        })
+        request.env['omniauth.auth'] = OmniAuth.config.mock_auth[:google_oauth2]
+      end
+
+      it 'redirects to welcome page with an error message' do
+        post :omniauth, params: { provider: 'google_oauth2' }
+        expect(response).to redirect_to(welcome_path)
+        expect(flash[:alert]).to eq('Login failed: User not found.')
+      end
+    end
+  end
+end
+
+>>>>>>> Stashed changes
 
 RSpec.describe SessionsController, type: :controller do
   describe 'POST #omniauth' do

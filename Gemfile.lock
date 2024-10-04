@@ -249,9 +249,15 @@ GEM
     rack_session_access (0.2.0)
       builder (>= 2.0.0)
       rack (>= 1.0.0)
+<<<<<<< Updated upstream
     rackup (1.0.0)
       rack (< 3)
       webrick
+=======
+    rackup (2.1.0)
+      rack (>= 3)
+      webrick (~> 1.8)
+>>>>>>> Stashed changes
     rails (7.2.1)
       actioncable (= 7.2.1)
       actionmailbox (= 7.2.1)
@@ -266,6 +272,13 @@ GEM
       activesupport (= 7.2.1)
       bundler (>= 1.15.0)
       railties (= 7.2.1)
+<<<<<<< Updated upstream
+=======
+    rails-controller-testing (1.0.5)
+      actionpack (>= 5.0.1.rc1)
+      actionview (>= 5.0.1.rc1)
+      activesupport (>= 5.0.1.rc1)
+>>>>>>> Stashed changes
     rails-dom-testing (2.2.0)
       activesupport (>= 5.0.0)
       minitest
@@ -321,6 +334,10 @@ GEM
       unicode-display_width (>= 2.4.0, < 3.0)
     rubocop-ast (1.32.3)
       parser (>= 3.3.1.0)
+    rubocop-capybara (2.21.0)
+      rubocop (~> 1.41)
+    rubocop-factory_bot (2.26.1)
+      rubocop (~> 1.61)
     rubocop-minitest (0.36.0)
       rubocop (>= 1.61, < 2.0)
       rubocop-ast (>= 1.31.1, < 2.0)
@@ -337,12 +354,23 @@ GEM
       rubocop-minitest
       rubocop-performance
       rubocop-rails
+    rubocop-rspec (2.31.0)
+      rubocop (~> 1.40)
+      rubocop-capybara (~> 2.17)
+      rubocop-factory_bot (~> 2.22)
+      rubocop-rspec_rails (~> 2.28)
+    rubocop-rspec_rails (2.29.1)
+      rubocop (~> 1.61)
     ruby-progressbar (1.13.0)
     rubyzip (2.3.2)
     securerandom (0.3.1)
+<<<<<<< Updated upstream
     selenium-webdriver (4.25.0)
       base64 (~> 0.2)
       logger (~> 1.4)
+=======
+    selenium-webdriver (4.10.0)
+>>>>>>> Stashed changes
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
@@ -421,10 +449,19 @@ DEPENDENCIES
   pg
   puma (>= 5.0)
   rack_session_access
+<<<<<<< Updated upstream
   rails (~> 7.2.1)
   roo
   rspec-rails
+=======
+  rails (~> 7.2.0)
+  rails-controller-testing
+  roo (~> 2.10.0)
+  rspec-rails (~> 6.0)
+  rubocop (~> 1.66.1)
+>>>>>>> Stashed changes
   rubocop-rails-omakase
+  rubocop-rspec (~> 2.20)
   selenium-webdriver
   simplecov
   sprockets-rails

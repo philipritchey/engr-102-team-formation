@@ -1,31 +1,51 @@
 {
   "RSpec": {
     "coverage": {
+<<<<<<< Updated upstream
       "/mnt/c/Users/91790/Documents/SoftwareEngineering/Team Formation/team-formation/app/helpers/application_helper.rb": {
+=======
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/helpers/application_helper.rb": {
+>>>>>>> Stashed changes
         "lines": [
           1,
           null
         ]
       },
+<<<<<<< Updated upstream
       "/mnt/c/Users/91790/Documents/SoftwareEngineering/Team Formation/team-formation/app/helpers/attributes_helper.rb": {
+=======
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/helpers/attributes_helper.rb": {
+>>>>>>> Stashed changes
         "lines": [
           1,
           null
         ]
       },
+<<<<<<< Updated upstream
       "/mnt/c/Users/91790/Documents/SoftwareEngineering/Team Formation/team-formation/app/helpers/forms_helper.rb": {
+=======
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/helpers/forms_helper.rb": {
+>>>>>>> Stashed changes
         "lines": [
           1,
           null
         ]
       },
+<<<<<<< Updated upstream
       "/mnt/c/Users/91790/Documents/SoftwareEngineering/Team Formation/team-formation/app/helpers/welcome_helper.rb": {
+=======
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/helpers/welcome_helper.rb": {
+>>>>>>> Stashed changes
         "lines": [
           1,
           null
         ]
       },
+<<<<<<< Updated upstream
       "/mnt/c/Users/91790/Documents/SoftwareEngineering/Team Formation/team-formation/app/controllers/sessions_controller.rb": {
+=======
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/controllers/application_controller.rb": {
+>>>>>>> Stashed changes
         "lines": [
           1,
           1,
@@ -38,13 +58,31 @@
           null,
           null,
           1,
+<<<<<<< Updated upstream
+=======
+          null,
+          3,
+          null,
+          null,
+          null,
+          null,
+>>>>>>> Stashed changes
           1,
           null,
           1,
           null,
+<<<<<<< Updated upstream
           1,
           1,
           1,
+=======
+          47,
+          null,
+          null,
+          null,
+          1,
+          48,
+>>>>>>> Stashed changes
           null,
           null,
           0,
@@ -53,7 +91,11 @@
           null
         ]
       },
+<<<<<<< Updated upstream
       "/mnt/c/Users/91790/Documents/SoftwareEngineering/Team Formation/team-formation/app/controllers/application_controller.rb": {
+=======
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/controllers/attributes_controller.rb": {
+>>>>>>> Stashed changes
         "lines": [
           1,
           1,
@@ -82,7 +124,11 @@
           null
         ]
       },
+<<<<<<< Updated upstream
       "/mnt/c/Users/91790/Documents/SoftwareEngineering/Team Formation/team-formation/app/models/user.rb": {
+=======
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/controllers/forms_controller.rb": {
+>>>>>>> Stashed changes
         "lines": [
           1,
           1,
@@ -410,18 +456,77 @@
           null,
           null,
           null,
+<<<<<<< Updated upstream
+          0,
+=======
+          null
+        ]
+      },
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/controllers/sessions_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          2,
+          null,
+          2,
+          null,
+          2,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/controllers/users_controller.rb": {
+        "lines": [
+>>>>>>> Stashed changes
+          null,
+          null,
+          null,
+          null,
+          null,
           0,
           null,
           null,
-          null,
-          null,
-          null,
           0,
           null,
-          null,
+<<<<<<< Updated upstream
           0,
+=======
+          null
+        ]
+      },
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/controllers/welcome_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          2,
+          2,
           null,
-          0,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/models/attribute.rb": {
+        "lines": [
+>>>>>>> Stashed changes
           null,
           null,
           null,
@@ -524,13 +629,21 @@
           null
         ]
       },
+<<<<<<< Updated upstream
       "/mnt/c/Users/91790/Documents/SoftwareEngineering/Team Formation/team-formation/app/helpers/application_helper.rb": {
+=======
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/models/application_record.rb": {
+>>>>>>> Stashed changes
         "lines": [
           1,
           null
         ]
       },
+<<<<<<< Updated upstream
       "/mnt/c/Users/91790/Documents/SoftwareEngineering/Team Formation/team-formation/app/helpers/attributes_helper.rb": {
+=======
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/models/user.rb": {
+>>>>>>> Stashed changes
         "lines": [
           1,
           null
@@ -548,7 +661,11 @@
           null
         ]
       },
+<<<<<<< Updated upstream
       "/mnt/c/Users/91790/Documents/SoftwareEngineering/Team Formation/team-formation/app/controllers/welcome_controller.rb": {
+=======
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/models/form.rb": {
+>>>>>>> Stashed changes
         "lines": [
           1,
           1,
@@ -590,7 +707,11 @@
           null
         ]
       },
+<<<<<<< Updated upstream
       "/mnt/c/Users/91790/Documents/SoftwareEngineering/Team Formation/team-formation/app/channels/application_cable/channel.rb": {
+=======
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/channels/application_cable/channel.rb": {
+>>>>>>> Stashed changes
         "lines": [
           0,
           0,
@@ -600,7 +721,11 @@
         "branches": {
         }
       },
+<<<<<<< Updated upstream
       "/mnt/c/Users/91790/Documents/SoftwareEngineering/Team Formation/team-formation/app/channels/application_cable/connection.rb": {
+=======
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/channels/application_cable/connection.rb": {
+>>>>>>> Stashed changes
         "lines": [
           0,
           0,
@@ -610,6 +735,7 @@
         "branches": {
         }
       },
+<<<<<<< Updated upstream
       "/mnt/c/Users/91790/Documents/SoftwareEngineering/Team Formation/team-formation/app/controllers/attributes_controller.rb": {
         "lines": [
           null,
@@ -857,6 +983,9 @@
         }
       },
       "/mnt/c/Users/91790/Documents/SoftwareEngineering/Team Formation/team-formation/app/models/attribute.rb": {
+=======
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/jobs/application_job.rb": {
+>>>>>>> Stashed changes
         "lines": [
           null,
           0,
@@ -914,7 +1043,11 @@
         "branches": {
         }
       },
+<<<<<<< Updated upstream
       "/mnt/c/Users/91790/Documents/SoftwareEngineering/Team Formation/team-formation/app/models/form.rb": {
+=======
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/mailers/application_mailer.rb": {
+>>>>>>> Stashed changes
         "lines": [
           0,
           0,
@@ -925,6 +1058,10 @@
         }
       }
     },
+<<<<<<< Updated upstream
     "timestamp": 1728066091
+=======
+    "timestamp": 1728079057
+>>>>>>> Stashed changes
   }
 }
