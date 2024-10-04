@@ -67,6 +67,37 @@ class FormsController < ApplicationController
     end
   end
 
+  # GET /forms/#id/preview
+  def preview
+    @form = Form.find(params[:id])
+    render partial: "preview"
+  end
+
+  #GET /forms/#id/duplicate
+  #opens new /forms/#new_id/edit
+  def duplicate
+    original_form = Form.find(params[:id])
+    duplicated_form = original_form.dup
+
+    # Suggest a new name for the duplicated form
+    duplicated_form.name = "#{original_form.name} - Copy"
+
+    # Duplicate associated attributes
+    original_form.form_attributes.each do |attribute|
+      duplicated_attribute = attribute.dup
+      duplicated_attribute.assign_attributes(attribute.attributes.except("id", "created_at", "updated_at", "form_id"))
+      duplicated_form.form_attributes << duplicated_attribute
+    end
+
+    if duplicated_form.save
+      # Redirect to the edit page of the duplicated form in a new window
+      redirect_to edit_form_path(duplicated_form), notice: "Form was successfully duplicated."
+    else
+      redirect_to edit_form_path(original_form), alert: "Failed to duplicate the form."
+    end
+  end
+
+
   def upload
   end
 
