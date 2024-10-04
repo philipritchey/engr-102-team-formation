@@ -1,0 +1,92 @@
+<div id="previewModal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <span class="close-button" onclick="closePreviewModal()">&times;</span>
+    <div id="modal-body">
+      <h1>Preview Form: <%= @form.name %></h1>
+      <p><%= @form.description %></p>
+
+      <% if @form.form_attributes.any? %>
+        <ul>
+          <% @form.form_attributes.each do |attribute| %>
+            <% if attribute.present? %>
+              <li>
+                <strong><%= attribute.name %></strong>
+                
+                <% if attribute.field_type == 'text_input' %>
+                  <div style="margin-top: 10px;">
+                    <input type="text" placeholder="Enter text here..." disabled>
+                  </div>
+
+                <% elsif attribute.field_type == 'mcq' %>
+                  <div style="margin-top: 10px;">
+                    <select disabled>
+                      <option value="">Select an option</option>
+                      <%# TO_DO Change options to pull from form_data once implemented %>
+                    </select>
+                  </div>
+
+                <% elsif attribute.field_type == 'scale' %>
+                  <div style="margin-top: 10px;">
+                    <label><%= attribute.name %>: </label>
+                    <span><%= attribute.min_value %></span>
+                    <input type="range" min="<%= attribute.min_value %>" max="<%= attribute.max_value %>" disabled style="width: 80%;">
+                    <span><%= attribute.max_value %></span>
+                  </div>
+                <% end %>
+              </li>
+            <% else %>
+              <li>Attribute is not defined.</li>
+            <% end %>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>No attributes have been added to this form.</p>
+      <% end %>
+      <button type="button" class="close-button" onclick="closePreviewModal()">Close</button>
+    </div>
+  </div>
+</div>
+
+<style>
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-height: 80%;
+  overflow-y: auto;
+}
+
+.close-button {
+  color: #aaa;
+  float: right;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: black;
+  cursor: pointer;
+}
+</style>
+
+<script>
+function closePreviewModal() {
+  var modal = document.getElementById('previewModal');
+  modal.style.display = "none";
+}
+</script>
