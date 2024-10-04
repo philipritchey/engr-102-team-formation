@@ -10,7 +10,6 @@ class FormsController < ApplicationController
 
   # GET /forms/1
   def show
-    puts "Show action started"  # Debug line
     # @form is already set by before_action
   end
 
@@ -33,23 +32,20 @@ class FormsController < ApplicationController
       # Redirect to edit page to add attributes after successful creation
       redirect_to edit_form_path(@form), notice: "Form was successfully created. You can now add attributes."
     else
-      # Re-render the new form if save fails
+      # Explicitly set error message for failed save
+      flash.now[:alert] = @form.errors.full_messages.to_sentence
       render :new, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /forms/1
   def update
-    puts "Update action started"  # Debug line
     update_params = params[:form] || params
-    puts "Update params: #{update_params.inspect}"  # Debug line
 
     if @form.update(update_params.permit(:name, :description))
-      puts "Form updated successfully"  # Debug line
       flash[:notice] = "Form was successfully updated."
       redirect_to @form
     else
-      puts "Form update failed"  # Debug line
       flash.now[:alert] = @form.errors.full_messages.to_sentence
       render :edit, status: :unprocessable_entity
     end
@@ -65,7 +61,6 @@ class FormsController < ApplicationController
       begin
         spreadsheet = Roo::Spreadsheet.open(file)
         header_row = spreadsheet.row(1)
-        puts "First row content: #{header_row.inspect}"
 
         if header_row.nil? || header_row.all?(&:blank?)
           flash[:alert] = "The first row is empty. Please provide column names."

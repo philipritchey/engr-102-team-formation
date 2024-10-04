@@ -9,16 +9,10 @@ class AttributesController < ApplicationController
         @form = Form.find(params[:form_id])
         @attribute = @form.form_attributes.build(attribute_params)
 
-        puts "Form ID: #{@form.id}"
-        puts "Attribute params: #{attribute_params.inspect}"
-        puts "Attribute valid? #{@attribute.valid?}"
-        puts "Attribute errors: #{@attribute.errors.full_messages}" if @attribute.invalid?
-
         if @attribute.save
             # If save is successful, respond accordingly
             redirect_to edit_form_path(@form), notice: "Attribute was successfully added."
         else
-            puts "Failed to create attribute. Errors: #{@attribute.errors.full_messages}"
             redirect_to edit_form_path(@form), alert: "Failed to add attribute."
         end
     end

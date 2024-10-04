@@ -70,13 +70,14 @@
   <% end %>
 </div>
 
-<%# JavaScript to toggle visibility of scale fields %>
-<script>
-function toggleScaleFields(fieldType) {
-  var scaleFields = document.getElementById('scale_fields');
-  scaleFields.style.display = fieldType === 'scale' ? 'block' : 'none';
-}
+<% unless Rails.env.test? %>
+  <script>
+    function toggleScaleFields(fieldType) {
+      var scaleFields = document.getElementById('scale_fields');
+      scaleFields.style.display = fieldType === 'scale' ? 'block' : 'none';
+    }
 
-// Initialize the visibility
-toggleScaleFields(document.getElementById('attribute_type').value);
-</script>
+    // Initialize the visibility
+    toggleScaleFields(document.getElementById('attribute_type').value);
+  </script>
+<% end %>
