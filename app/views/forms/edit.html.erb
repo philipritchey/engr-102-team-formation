@@ -1,17 +1,51 @@
-<h1>Edit Form: <%= @form.name %></h1>
+<h1>Editing Form</h1>
+
+<%# Display success messages from flash, if any %>
+<% if flash[:notice] %>
+  <div class="alert alert-success"><%= flash[:notice] %></div>
+<% end %>
+
+<%# Display form errors at the top of the page %>
+<% if @form.errors.any? %>
+  <%# Container for the entire error message block %>
+  <div class="error-container">
+    <%# Icon container for visual emphasis %>
+    <div class="error-icon">
+      <%# Font Awesome exclamation circle icon %>
+      <i class="fas fa-exclamation-circle"></i>
+    </div>
+    <%# Container for error messages %>
+    <div class="error-message">
+      <%# Friendly heading for error messages %>
+      <h4>Oops! Please correct the following:</h4>
+      <%# Unordered list of error messages %>
+      <ul>
+        <%# Iterate through each error message %>
+        <% @form.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
 
 <%# Form for editing the main form details %>
 <%= form_with(model: @form, local: true, data: { turbo: false }) do |form| %>
   <div>
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: 'form-control' %>
   </div>
 
   <div>
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, class: 'form-control' %>
   </div>
 
+  <%# Action buttons %>
+  <div class="d-flex justify-content-between align-items-center">
+    <%= link_to "Back to Forms", user_path(current_user), class: "btn btn-secondary" %>
+    <%= form.submit "Save Form", class: "btn btn-primary" %>
+  </div>
 <% end %>
 
 <%# Display current attributes of the form %>
@@ -60,15 +94,6 @@
 
 <%# Add spacing between "Save Attribute" and action buttons %>
 <div style="margin-top: 30px;"></div>
-
-<%# Action buttons %>
-<div class="d-flex justify-content-end align-items-center">
-  <%= button_to "Back to Forms", user_path(current_user), method: :get, class: "btn btn-secondary me-2" %>
-  
-  <%= form_with(model: @form, local: true, class: "d-inline") do |form| %>
-    <%= form.submit "Save Form", class: "btn btn-primary" %>
-  <% end %>
-</div>
 
 <% unless Rails.env.test? %>
   <script>
