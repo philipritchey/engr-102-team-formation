@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       get "duplicate" # Route for duplicating a form
     end
   end
-  
+
   # Defines the root path route ("/")
   # root "posts#index"
   root "welcome#index"

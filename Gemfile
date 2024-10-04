@@ -1,7 +1,10 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.2.0"
+
+gem "rails", "~> 7.2.1"
+
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
@@ -50,6 +53,7 @@ group :development, :test do
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
+  gem "factory_bot_rails"
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
@@ -66,8 +70,6 @@ group :development, :test do
   # SimpleCov for code coverage
   gem "simplecov", require: false
 
-  # Factory Bot for test data
-  gem "factory_bot_rails"
 
   # Faker for generating fake data in tests
   gem "faker"
