@@ -1,3 +1,4 @@
 class User < ApplicationRecord
-    validates :email, presence: true
+  has_many :forms, dependent: :destroy
+  validates :email, presence: true
 end
