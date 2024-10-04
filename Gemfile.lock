@@ -451,6 +451,7 @@ PLATFORMS
   x86-linux-gnu
   x86-linux-musl
   x86_64-darwin
+  x86_64-linux
   x86_64-linux-gnu
   x86_64-linux-musl
 
@@ -476,14 +477,7 @@ DEPENDENCIES
   pg
   puma (>= 5.0)
   rack_session_access
-<<<<<<<<< Temporary merge branch 1
   rails (~> 7.2.1)
-  roo
-  rspec-rails
-  rubocop-rails-omakase
-  selenium-webdriver
-=========
-  rails (~> 7.2.0)
   rails-controller-testing
   roo (~> 2.10.0)
   rspec-rails (~> 6.0)
