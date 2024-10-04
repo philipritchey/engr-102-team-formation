@@ -38,25 +38,25 @@
 <h2>Add Attribute</h2>
 <%= form_with(model: [@form, @form.form_attributes.build], local: true) do |f| %>
   <div>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.label :name, "Attribute Name" %>
+    <%= f.text_field :name, id: "attribute_name" %>
   </div>
 
   <div>
-    <%= f.label :field_type %>
-    <%= f.select :field_type, options_for_select([['Text', 'text_input'], ['MCQ', 'mcq'], ['Scale', 'scale']]), {}, { onchange: 'toggleScaleFields(this.value)' } %>
+    <%= f.label :field_type, "Attribute Type" %>
+    <%= f.select :field_type, options_for_select([['Text', 'text_input'], ['MCQ', 'mcq'], ['Scale', 'scale']]), {}, { id: "attribute_type", onchange: 'toggleScaleFields(this.value)' } %>
   </div>
 
-  <%# Additional fields for scale type, hidden by default %>
-  <div id="scale_fields" style="display: none;">
-    <%= f.label :min_value %>
-    <%= f.number_field :min_value %>
+  <%# Additional fields for scale type %>
+  <div id="scale_fields" style="display: block;">
+    <%= f.label :min_value, "Minimum Value" %>
+    <%= f.number_field :min_value, id: "attribute_min_value" %>
 
-    <%= f.label :max_value %>
-    <%= f.number_field :max_value %>
+    <%= f.label :max_value, "Maximum Value" %>
+    <%= f.number_field :max_value, id: "attribute_max_value" %>
   </div>
 
-  <%= f.submit "Save Attribute" %>
+  <%= f.submit "Save Attribute", id: "save_attribute" %>
 <% end %>
 
 <%# JavaScript to toggle visibility of scale fields %>
@@ -65,4 +65,7 @@ function toggleScaleFields(fieldType) {
   var scaleFields = document.getElementById('scale_fields');
   scaleFields.style.display = fieldType === 'scale' ? 'block' : 'none';
 }
+
+// Initialize the visibility
+toggleScaleFields(document.getElementById('attribute_type').value);
 </script>

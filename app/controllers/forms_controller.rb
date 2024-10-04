@@ -6,7 +6,6 @@ class FormsController < ApplicationController
   def index
     # TODO: Implement form listing logic
     @forms = Form.all
-    
   end
 
   # GET /forms/1
@@ -22,8 +21,6 @@ class FormsController < ApplicationController
 
   # GET /forms/1/edit
   def edit
-    # @form is already set by before_action
-    # Build a new attribute for the nested form
     @attribute = @form.form_attributes.build
   end
 
@@ -45,13 +42,11 @@ class FormsController < ApplicationController
   def update
     respond_to do |format|
       if @form.update(form_params)
-        # Redirect to show page after successful update
         format.html { redirect_to @form, notice: "Form was successfully updated." }
-        format.json { render :show, status: :ok, location: @form }
+        format.json { render json: @form, status: :ok }
       else
-        # Re-render the edit form if update fails
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @form.errors, status: :unprocessable_entity }
+        format.json { render json: { errors: @form.errors }, status: :unprocessable_entity }
       end
     end
   end
