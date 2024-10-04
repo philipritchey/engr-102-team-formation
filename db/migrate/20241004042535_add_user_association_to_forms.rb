@@ -1,7 +1,7 @@
 class AddUserAssociationToForms < ActiveRecord::Migration[7.2]
   def up
-    # Add foreign key if it doesn't exist
     add_column :forms, :user_id, :integer
+    # Add foreign key if it doesn't exist
     unless foreign_key_exists?(:forms, :users)
       add_foreign_key :forms, :users
     end

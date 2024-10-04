@@ -1,9 +1,12 @@
+# This controller manages user-specific actions
+# Currently, it handles displaying a user's profile and associated forms
 class UsersController < ApplicationController
+  # GET /users/:id
+  # Displays the user's profile page, including their forms
   def show
-    @current_user = User.find(params[:id])
-    if @current_user
-      # If the user is found, render the user's page (show view)
-      render :show
-    end
+    # Retrieve all forms associated with the current user
+    # This makes @forms available in the view, allowing us to display the user's forms
+    @forms = current_user.forms
+    # The corresponding view (app/views/users/show.html.erb) will have access to @forms
   end
 end

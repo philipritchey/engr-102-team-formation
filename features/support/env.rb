@@ -4,18 +4,14 @@
 # instead of editing this one. Cucumber will automatically load all features/**/*.rb
 # files.
 
-# features/support/env.rb
-require 'omniauth'
-require 'rack_session_access/capybara'
-require 'factory_bot'
-World(FactoryBot::Syntax::Methods)
-OmniAuth.config.test_mode = true
-require 'simplecov'
-SimpleCov.start 'rails' # This will track Cucumber's test coverage too
 
 require 'cucumber/rails'
-
-
+require 'factory_bot_rails'
+require 'capybara/cucumber'
+require 'selenium-webdriver'
+require 'rack_session_access/capybara'
+require 'simplecov'
+SimpleCov.command_name 'Cucumber'
 
 # By default, any exception happening in your Rails application will bubble up
 # to Cucumber so that your scenario will fail. This is a different from how
@@ -61,3 +57,38 @@ end
 # The :transaction strategy is faster, but might give you threading problems.
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
+
+# Clean the database before each scenario
+Before do
+  DatabaseCleaner.strategy = :transaction
+end
+
+Before('@javascript') do
+  DatabaseCleaner.strategy = :truncation
+end
+
+Around do |scenario, block|
+  DatabaseCleaner.cleaning(&block)
+end
+
+# Include FactoryBot methods
+require 'factory_bot'
+World(FactoryBot::Syntax::Methods)
+
+Capybara.default_driver = :rack_test
+Capybara.javascript_driver = :selenium_chrome_headless
+
+Capybara.default_max_wait_time = 10
+
+Capybara.server = :puma, { Silent: false }
+
+# Add this to preserve the form across steps
+Before do
+  @preserved_form = nil
+end
+
+After do
+  if @preserved_form
+    Form.connection.execute("INSERT INTO forms (id, name, description, created_at, updated_at) VALUES (#{@preserved_form.id}, '#{@preserved_form.name}', '#{@preserved_form.description}', '#{@preserved_form.created_at}', '#{@preserved_form.updated_at}')")
+  end
+end

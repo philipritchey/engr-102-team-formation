@@ -6,6 +6,7 @@ gem "rails", "~> 7.2.1"
 =======
 gem "rails", "~> 7.2.0"
 >>>>>>> Stashed changes
+gem "rails", "~> 7.2.0"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
@@ -40,17 +41,10 @@ gem "omniauth-google-oauth2", "~> 1.1.1"
 gem "omniauth-oauth2", "~> 1.8.0"
 gem "omniauth-rails_csrf_protection", "~> 1.0.1"
 gem "jwt", "~> 2.7.1"
-gem "cucumber-rails", require: false
-gem "rspec-rails"
-gem "simplecov", require: false
-gem "csv"
-gem "database_cleaner-active_record"
-gem "rack_session_access"
 
 
-
-
-gem "roo"
+gem "devise"
+gem "roo", "~> 2.10.0"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -87,6 +81,24 @@ group :development, :test do
   # Faker for generating fake data in tests
   gem "faker"
 >>>>>>> Stashed changes
+
+  # RSpec for Rails
+  gem "rspec-rails", "~> 6.0"
+
+  # Cucumber for acceptance testing
+  gem "cucumber-rails", require: false
+
+  # Database cleaner for testing
+  gem "database_cleaner"
+
+  # SimpleCov for code coverage
+  gem "simplecov", require: false
+
+  # Factory Bot for test data
+  gem "factory_bot_rails"
+
+  # Faker for generating fake data in tests
+  gem "faker"
 end
 
 group :development do
@@ -96,11 +108,14 @@ group :development do
 end
 
 group :test do
-  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
+  gem "database_cleaner-active_record"
   gem "selenium-webdriver"
   gem "database_cleaner-active_record"
-  # Use sqlite3 as the database for Active Record
+  gem "webdrivers"
+  gem "rack_session_access"
+  gem "shoulda-matchers"
+  gem "rails-controller-testing"
 end
 
 group :development, :test do
@@ -111,3 +126,5 @@ end
 group :production do
   gem "pg"
 end
+
+gem "csv"
