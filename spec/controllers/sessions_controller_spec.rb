@@ -1,6 +1,4 @@
 require 'rails_helper'
-<<<<<<< Updated upstream
-=======
 RSpec.describe SessionsController, type: :controller do
   describe 'POST #omniauth' do
     context 'when user does not exist' do
@@ -26,7 +24,6 @@ RSpec.describe SessionsController, type: :controller do
   end
 end
 
->>>>>>> Stashed changes
 
 RSpec.describe SessionsController, type: :controller do
   describe 'POST #omniauth' do
