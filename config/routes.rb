@@ -3,6 +3,18 @@ Rails.application.routes.draw do
     resources :attributes
   end
 
+  resources :forms do
+    member do
+      get "preview"
+    end
+  end
+
+  resources :forms do
+    member do
+      get "duplicate" # Route for duplicating a form
+    end
+  end
+  
   # Defines the root path route ("/")
   # root "posts#index"
   root "welcome#index"
