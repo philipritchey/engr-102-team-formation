@@ -17,4 +17,6 @@
   </p>
   
 </div>
-<%= link_to "Logout", logout_path %>
+<% if @current_user %>
+  <%= link_to "Logout", logout_path %>
+<% end %>

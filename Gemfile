@@ -36,6 +36,12 @@ gem "omniauth-google-oauth2", "~> 1.1.1"
 gem "omniauth-oauth2", "~> 1.8.0"
 gem "omniauth-rails_csrf_protection", "~> 1.0.1"
 gem "jwt", "~> 2.7.1"
+gem "cucumber-rails", require: false
+gem "rspec-rails"
+gem "simplecov", require: false
+gem "csv"
+gem "database_cleaner-active_record"
+gem "rack_session_access"
 
 
 
@@ -51,6 +57,7 @@ group :development, :test do
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
+  gem "factory_bot_rails"
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
@@ -66,6 +73,7 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem "database_cleaner-active_record"
   # Use sqlite3 as the database for Active Record
 end
 
