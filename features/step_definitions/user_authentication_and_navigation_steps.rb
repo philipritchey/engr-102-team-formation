@@ -19,7 +19,7 @@ Given("I am not logged in") do
   Given("I am on the welcome page") do
     visit welcome_path
   end
-  When("I click {string}") do |button_text|
+  When("I clicks {string}") do |button_text|
     if button_text == "Login with Google"
       # Mock the OAuth response
       OmniAuth.config.test_mode = true

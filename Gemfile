@@ -1,7 +1,10 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.2.0"
+
+gem "rails", "~> 7.2.1"
+
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
@@ -36,11 +39,6 @@ gem "omniauth-google-oauth2", "~> 1.1.1"
 gem "omniauth-oauth2", "~> 1.8.0"
 gem "omniauth-rails_csrf_protection", "~> 1.0.1"
 gem "jwt", "~> 2.7.1"
-gem "cucumber-rails", require: false
-gem "simplecov", require: false
-gem "csv"
-gem "database_cleaner-active_record"
-gem "rack_session_access"
 
 
 gem "devise"
@@ -72,8 +70,6 @@ group :development, :test do
   # SimpleCov for code coverage
   gem "simplecov", require: false
 
-  # Factory Bot for test data
-  gem "factory_bot_rails"
 
   # Faker for generating fake data in tests
   gem "faker"
@@ -93,8 +89,6 @@ group :test do
   gem "rack_session_access"
   gem "shoulda-matchers"
   gem "rails-controller-testing"
-  gem "database_cleaner-active_record"
-  # Use sqlite3 as the database for Active Record
 end
 
 group :development, :test do
