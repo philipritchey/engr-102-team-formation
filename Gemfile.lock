@@ -368,6 +368,8 @@ GEM
       rubocop-minitest
       rubocop-performance
       rubocop-rails
+    rubocop-rspec (3.1.0)
+      rubocop (~> 1.61)
     ruby-progressbar (1.13.0)
     rubyzip (2.3.2)
     securerandom (0.3.1)
@@ -477,11 +479,13 @@ DEPENDENCIES
   pg
   puma (>= 5.0)
   rack_session_access
-  rails (~> 7.2.1)
+  rails (~> 7.2.0)
   rails-controller-testing
   roo (~> 2.10.0)
   rspec-rails (~> 6.0)
+  rubocop
   rubocop-rails-omakase
+  rubocop-rspec
   selenium-webdriver
   shoulda-matchers
   simplecov

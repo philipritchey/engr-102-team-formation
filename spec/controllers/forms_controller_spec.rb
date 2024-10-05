@@ -311,4 +311,94 @@ RSpec.describe FormsController, type: :controller do
       expect(response).to be_successful
     end
   end
+
+  describe 'PATCH #update_deadline' do
+    context 'with valid deadline' do
+      let(:new_deadline) { { deadline: (Time.current + 3.days) } }
+
+      it 'updates the form deadline' do
+        patch :update_deadline, params: { id: form.id, form: new_deadline }
+        form.reload
+        expect(form.deadline.to_i).to eq(new_deadline[:deadline].to_i)
+      end
+
+      it 'redirects to the index page with a success message' do
+        patch :update_deadline, params: { id: form.id, form: new_deadline }
+        expect(response).to redirect_to(user_path(user))
+        expect(flash[:notice]).to eq('Deadline was successfully updated.')
+      end
+    end
+
+    context 'with invalid deadline' do
+      let(:invalid_deadline) { { deadline: (Time.current - 1.day) } }
+
+      it 'does not update the form deadline' do
+        patch :update_deadline, params: { id: form.id, form: invalid_deadline }
+        form.reload
+        expect(form.deadline).not_to eq(invalid_deadline[:deadline])
+      end
+
+      it 'redirects to the index page with an error message' do
+        patch :update_deadline, params: { id: form.id, form: invalid_deadline }
+        expect(response).to redirect_to(user_path(user))
+        expect(flash[:alert]).to eq('Failed to update the deadline.')
+      end
+    end
+  end
+
+  describe 'GET #preview' do
+    before do
+      @form = create(:form, name: 'Test Form', description: 'This is a test description')
+    end
+
+    it 'renders the preview partial' do
+      get :preview, params: { id: @form.id }
+      expect(response).to render_template(partial: "_preview")
+      expect(assigns(:form)).to eq(@form) # Ensure the correct form is assigned
+    end
+  end
+
+  describe 'GET #duplicate' do
+    before do
+      @user = create(:user)  # Ensure you create a user first
+      @original_form = create(:form, name: 'Original Form', description: 'This is the original form', user: @user)
+      create(:attribute, form: @original_form, name: 'Original Attribute', field_type: 'text_input', min_value: nil, max_value: nil)
+    end
+
+    it 'duplicates the form and redirects to the edit page' do
+      expect {
+        get :duplicate, params: { id: @original_form.id }
+      }.to change(Form, :count).by(1)
+
+      duplicated_form = Form.last
+      expect(duplicated_form.name).to eq('Original Form - Copy')
+
+      # Access the first attribute and then check its name
+
+      expect(response).to redirect_to(edit_form_path(duplicated_form))
+      expect(flash[:notice]).to eq('Form was successfully duplicated.')
+    end
+  end
+
+  describe '#duplicate failed' do
+    before do
+      @user = create(:user)
+      @original_form = create(:form, name: 'Original Form', description: 'This is the original form', user: @user)
+      create(:attribute, form: @original_form, name: 'Original Attribute', field_type: 'text_input')
+    end
+
+    context 'when duplication fails due to validation errors' do
+      before do
+        # Simulate validation failure by setting an invalid attribute
+        allow_any_instance_of(Form).to receive(:save).and_return(false)
+      end
+
+      it 'redirects back to the edit form with an alert message' do
+        post :duplicate, params: { id: @original_form.id }
+
+        expect(response).to redirect_to(edit_form_path(@original_form))
+        expect(flash[:alert]).to eq("Failed to duplicate the form.")
+      end
+    end
+  end
 end

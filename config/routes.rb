@@ -1,23 +1,22 @@
 Rails.application.routes.draw do
-  resources :forms do
-    resources :attributes do
+    resources :forms do
       member do
-        patch :update_weightage
+        get "preview"
+        get "duplicate"
+        patch "update_deadline"
+      end
+      
+      resources :attributes do
+        member do
+          patch :update_weightage
+        end
       end
     end
-  end
 
-  resources :forms do
-    member do
-      get "preview"
-    end
-  end
-
-  resources :forms do
-    member do
-      get "duplicate" # Route for duplicating a form
-    end
-  end
+    
+  
+    
+  
 
   # Defines the root path route ("/")
   # root "posts#index"

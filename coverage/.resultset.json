@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/rajakarthikvobugari/Documents/softwareeng/team-formation/app/helpers/application_helper.rb": {
+      "/Users/ramyagotika/fall_2024/csce_606/team-formation/app/helpers/application_helper.rb": {
         "lines": [
           1,
           1,
@@ -15,13 +15,13 @@
           null
         ]
       },
-      "/Users/rajakarthikvobugari/Documents/softwareeng/team-formation/app/helpers/attributes_helper.rb": {
+      "/Users/ramyagotika/fall_2024/csce_606/team-formation/app/helpers/attributes_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/rajakarthikvobugari/Documents/softwareeng/team-formation/app/helpers/forms_helper.rb": {
+      "/Users/ramyagotika/fall_2024/csce_606/team-formation/app/helpers/forms_helper.rb": {
         "lines": [
           1,
           1,
@@ -88,13 +88,13 @@
           null
         ]
       },
-      "/Users/rajakarthikvobugari/Documents/softwareeng/team-formation/app/helpers/welcome_helper.rb": {
+      "/Users/ramyagotika/fall_2024/csce_606/team-formation/app/helpers/welcome_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/rajakarthikvobugari/Documents/softwareeng/team-formation/app/controllers/application_controller.rb": {
+      "/Users/ramyagotika/fall_2024/csce_606/team-formation/app/controllers/application_controller.rb": {
         "lines": [
           null,
           null,
@@ -116,12 +116,12 @@
           1,
           null,
           null,
-          64,
+          71,
           null,
           null,
           null,
           1,
-          65,
+          72,
           null,
           null,
           2,
@@ -130,7 +130,7 @@
           null
         ]
       },
-      "/Users/rajakarthikvobugari/Documents/softwareeng/team-formation/app/controllers/attributes_controller.rb": {
+      "/Users/ramyagotika/fall_2024/csce_606/team-formation/app/controllers/attributes_controller.rb": {
         "lines": [
           null,
           1,
@@ -221,7 +221,7 @@
           null
         ]
       },
-      "/Users/rajakarthikvobugari/Documents/softwareeng/team-formation/app/controllers/forms_controller.rb": {
+      "/Users/ramyagotika/fall_2024/csce_606/team-formation/app/controllers/forms_controller.rb": {
         "lines": [
           null,
           null,
@@ -295,31 +295,31 @@
           null,
           null,
           1,
-          0,
-          0,
+          1,
+          1,
           null,
           null,
           null,
           null,
           1,
-          0,
-          0,
+          2,
+          2,
           null,
           null,
-          0,
+          2,
           null,
           null,
-          0,
-          0,
-          0,
-          0,
+          2,
+          2,
+          2,
+          2,
           null,
           null,
-          0,
+          2,
           null,
-          0,
+          1,
           null,
-          0,
+          1,
           null,
           null,
           null,
@@ -345,13 +345,44 @@
           6,
           null,
           6,
-          6,
+          1,
+          1,
+          null,
+          null,
+          5,
+          5,
+          5,
+          null,
+          5,
+          1,
+          1,
+          null,
+          null,
+          4,
+          4,
+          1,
+          1,
+          null,
+          null,
+          3,
+          3,
+          1,
+          1,
+          null,
+          null,
+          2,
+          1,
+          1,
           null,
           1,
           null,
           null,
+          null,
+          null,
+          null,
           1,
           1,
+          null,
           null,
           0,
           null,
@@ -381,11 +412,21 @@
           null,
           null,
           null,
+          null,
+          1,
+          4,
+          null,
+          2,
+          null,
+          2,
+          null,
+          null,
+          null,
           1,
           null,
           null,
           1,
-          13,
+          17,
           null,
           null,
           null,
@@ -397,10 +438,14 @@
           null,
           4,
           null,
+          null,
+          1,
+          4,
+          null,
           null
         ]
       },
-      "/Users/rajakarthikvobugari/Documents/softwareeng/team-formation/app/controllers/sessions_controller.rb": {
+      "/Users/ramyagotika/fall_2024/csce_606/team-formation/app/controllers/sessions_controller.rb": {
         "lines": [
           1,
           1,
@@ -428,7 +473,7 @@
           null
         ]
       },
-      "/Users/rajakarthikvobugari/Documents/softwareeng/team-formation/app/controllers/users_controller.rb": {
+      "/Users/ramyagotika/fall_2024/csce_606/team-formation/app/controllers/users_controller.rb": {
         "lines": [
           null,
           null,
@@ -444,7 +489,7 @@
           null
         ]
       },
-      "/Users/rajakarthikvobugari/Documents/softwareeng/team-formation/app/controllers/welcome_controller.rb": {
+      "/Users/ramyagotika/fall_2024/csce_606/team-formation/app/controllers/welcome_controller.rb": {
         "lines": [
           1,
           1,
@@ -459,7 +504,7 @@
           null
         ]
       },
-      "/Users/rajakarthikvobugari/Documents/softwareeng/team-formation/app/models/attribute.rb": {
+      "/Users/ramyagotika/fall_2024/csce_606/team-formation/app/models/attribute.rb": {
         "lines": [
           null,
           1,
@@ -483,10 +528,10 @@
           null,
           null,
           null,
-          38,
+          41,
           null,
           null,
-          38,
+          41,
           null,
           1,
           null,
@@ -517,14 +562,14 @@
           null
         ]
       },
-      "/Users/rajakarthikvobugari/Documents/softwareeng/team-formation/app/models/application_record.rb": {
+      "/Users/ramyagotika/fall_2024/csce_606/team-formation/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/Users/rajakarthikvobugari/Documents/softwareeng/team-formation/app/models/user.rb": {
+      "/Users/ramyagotika/fall_2024/csce_606/team-formation/app/models/user.rb": {
         "lines": [
           1,
           1,
@@ -532,7 +577,7 @@
           null
         ]
       },
-      "/Users/rajakarthikvobugari/Documents/softwareeng/team-formation/app/models/form.rb": {
+      "/Users/ramyagotika/fall_2024/csce_606/team-formation/app/models/form.rb": {
         "lines": [
           null,
           null,
@@ -560,10 +605,20 @@
           null,
           null,
           1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          88,
+          2,
+          null,
+          null,
           null
         ]
       },
-      "/Users/rajakarthikvobugari/Documents/softwareeng/team-formation/app/channels/application_cable/channel.rb": {
+      "/Users/ramyagotika/fall_2024/csce_606/team-formation/app/channels/application_cable/channel.rb": {
         "lines": [
           0,
           0,
@@ -573,7 +628,7 @@
         "branches": {
         }
       },
-      "/Users/rajakarthikvobugari/Documents/softwareeng/team-formation/app/channels/application_cable/connection.rb": {
+      "/Users/ramyagotika/fall_2024/csce_606/team-formation/app/channels/application_cable/connection.rb": {
         "lines": [
           0,
           0,
@@ -583,7 +638,7 @@
         "branches": {
         }
       },
-      "/Users/rajakarthikvobugari/Documents/softwareeng/team-formation/app/jobs/application_job.rb": {
+      "/Users/ramyagotika/fall_2024/csce_606/team-formation/app/jobs/application_job.rb": {
         "lines": [
           0,
           null,
@@ -596,7 +651,7 @@
         "branches": {
         }
       },
-      "/Users/rajakarthikvobugari/Documents/softwareeng/team-formation/app/mailers/application_mailer.rb": {
+      "/Users/ramyagotika/fall_2024/csce_606/team-formation/app/mailers/application_mailer.rb": {
         "lines": [
           0,
           0,
@@ -607,6 +662,6 @@
         }
       }
     },
-    "timestamp": 1728097019
+    "timestamp": 1728096722
   }
 }
