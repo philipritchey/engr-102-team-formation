@@ -453,6 +453,7 @@ DEPENDENCIES
   rails-controller-testing
   roo (~> 2.10.0)
   rspec-rails (~> 6.0)
+  rubocop
   rubocop-rails-omakase
   selenium-webdriver
   shoulda-matchers

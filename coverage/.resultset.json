@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/udayreddy/team-formation/app/helpers/application_helper.rb": {
+      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/helpers/application_helper.rb": {
         "lines": [
           1,
           1,
@@ -15,25 +15,25 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/helpers/attributes_helper.rb": {
+      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/helpers/attributes_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/helpers/forms_helper.rb": {
+      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/helpers/forms_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/helpers/welcome_helper.rb": {
+      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/helpers/welcome_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/application_controller.rb": {
+      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/controllers/application_controller.rb": {
         "lines": [
           null,
           null,
@@ -55,12 +55,12 @@
           1,
           null,
           null,
-          46,
+          49,
           null,
           null,
           null,
           1,
-          47,
+          50,
           null,
           null,
           2,
@@ -69,7 +69,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/attributes_controller.rb": {
+      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/controllers/attributes_controller.rb": {
         "lines": [
           null,
           1,
@@ -139,7 +139,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/forms_controller.rb": {
+      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/controllers/forms_controller.rb": {
         "lines": [
           null,
           null,
@@ -207,6 +207,37 @@
           null,
           2,
           2,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          2,
+          2,
+          null,
+          null,
+          2,
+          null,
+          null,
+          2,
+          2,
+          2,
+          2,
+          null,
+          null,
+          2,
+          null,
+          1,
+          null,
+          1,
+          null,
           null,
           null,
           null,
@@ -316,7 +347,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/users_controller.rb": {
+      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/controllers/users_controller.rb": {
         "lines": [
           null,
           null,
@@ -332,7 +363,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/models/attribute.rb": {
+      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/models/attribute.rb": {
         "lines": [
           null,
           1,
@@ -354,10 +385,10 @@
           null,
           null,
           null,
-          27,
+          30,
           null,
           null,
-          27,
+          30,
           null,
           1,
           null,
@@ -388,14 +419,14 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/models/application_record.rb": {
+      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/models/user.rb": {
+      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/models/user.rb": {
         "lines": [
           1,
           1,
@@ -403,7 +434,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/models/form.rb": {
+      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/models/form.rb": {
         "lines": [
           null,
           null,
@@ -434,7 +465,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/channels/application_cable/channel.rb": {
+      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/channels/application_cable/channel.rb": {
         "lines": [
           0,
           0,
@@ -444,7 +475,7 @@
         "branches": {
         }
       },
-      "/Users/udayreddy/team-formation/app/channels/application_cable/connection.rb": {
+      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/channels/application_cable/connection.rb": {
         "lines": [
           0,
           0,
@@ -454,7 +485,7 @@
         "branches": {
         }
       },
-      "/Users/udayreddy/team-formation/app/controllers/sessions_controller.rb": {
+      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/controllers/sessions_controller.rb": {
         "lines": [
           0,
           0,
@@ -484,7 +515,7 @@
         "branches": {
         }
       },
-      "/Users/udayreddy/team-formation/app/controllers/welcome_controller.rb": {
+      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/controllers/welcome_controller.rb": {
         "lines": [
           0,
           0,
@@ -501,7 +532,7 @@
         "branches": {
         }
       },
-      "/Users/udayreddy/team-formation/app/jobs/application_job.rb": {
+      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/jobs/application_job.rb": {
         "lines": [
           0,
           null,
@@ -514,7 +545,7 @@
         "branches": {
         }
       },
-      "/Users/udayreddy/team-formation/app/mailers/application_mailer.rb": {
+      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/mailers/application_mailer.rb": {
         "lines": [
           0,
           0,
@@ -525,6 +556,6 @@
         }
       }
     },
-    "timestamp": 1728040471
+    "timestamp": 1728089757
   }
 }

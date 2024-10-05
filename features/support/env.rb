@@ -76,7 +76,7 @@ require 'factory_bot'
 World(FactoryBot::Syntax::Methods)
 
 Capybara.default_driver = :rack_test
-Capybara.javascript_driver = :selenium_chrome_headless
+Capybara.javascript_driver = :selenium_chrome
 
 Capybara.default_max_wait_time = 10
 
