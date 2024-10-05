@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :forms do
-    resources :attributes
+    resources :attributes do
+      member do
+        patch :update_weightage
+      end
+    end
   end
 
   resources :forms do

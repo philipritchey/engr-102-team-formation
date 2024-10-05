@@ -68,3 +68,35 @@ Then("the attribute {string} should have a scale from {int} to {int}") do |attri
   expect(attribute.min_value).to eq(min), "Minimum value for '#{attribute_name}' is incorrect"
   expect(attribute.max_value).to eq(max), "Maximum value for '#{attribute_name}' is incorrect"
 end
+
+# This step creates an attribute associated with the current form
+Given("I have created an attribute {string} with weightage {string}") do |attribute_name, weightage|
+  @attribute = @form.form_attributes.create!(
+    name: attribute_name,
+    field_type: 'scale',
+    min_value: 1,
+    max_value: 10,
+    weightage: weightage.to_f
+  )
+end
+
+# This step navigates to the edit page of the previously created attribute
+When("I visit the edit page for the attribute") do
+  visit edit_attribute_path(@attribute) # Make sure you have the correct path helper
+end
+
+# This step fills in the weightage field
+When("I enter {string} as the new weightage") do |weightage|
+  fill_in "Weightage", with: weightage
+end
+
+# This step updates the weightage
+When("I update the weightage") do
+  click_button "Update Weightage"
+end
+
+Then("I should see the weightage updated to {string}") do |weightage|
+  @attribute.reload
+  expect(@attribute.weightage).to eq(weightage.to_f)
+  expect(page).to have_content("Weightage was successfully updated")
+end

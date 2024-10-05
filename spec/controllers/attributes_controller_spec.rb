@@ -128,4 +128,57 @@ RSpec.describe AttributesController, type: :controller do
       end
     end
   end
+
+  describe "PATCH #update_weightage" do
+  let!(:attribute) { create(:attribute, form: form, weightage: 0.5) } # Existing attribute with a weightage
+
+  context "with valid params" do
+    it "updates the weightage" do
+      patch :update_weightage, params: { form_id: form.id, id: attribute.id, attribute: { weightage: 0.8 } }
+      attribute.reload
+      expect(attribute.weightage).to eq(0.8)
+    end
+
+    it "redirects to the form edit page" do
+      patch :update_weightage, params: { form_id: form.id, id: attribute.id, attribute: { weightage: 0.8 } }
+      expect(response).to redirect_to(edit_form_path(form))
+    end
+
+    it "sets a success notice" do
+      patch :update_weightage, params: { form_id: form.id, id: attribute.id, attribute: { weightage: 0.8 } }
+      expect(flash[:notice]).to eq("Weightage was successfully updated.")
+    end
+  end
+
+  context "with invalid params" do
+    it "does not update the weightage if out of range" do
+      patch :update_weightage, params: { form_id: form.id, id: attribute.id, attribute: { weightage: 1.5 } }
+      attribute.reload
+      expect(attribute.weightage).to eq(0.5) # Should not change
+    end
+
+    it "redirects to the form edit page" do
+      patch :update_weightage, params: { form_id: form.id, id: attribute.id, attribute: { weightage: 1.5 } }
+      expect(flash[:alert]).to eq("Failed to update weightage.")
+    end
+
+    it "sets an alert message for invalid weightage" do
+      patch :update_weightage, params: { form_id: form.id, id: attribute.id, attribute: { weightage: -0.1 } }
+      expect(flash[:alert]).to eq("Failed to update weightage.")
+    end
+  end
+
+  context "when attribute doesn't exist" do
+    it "redirects to the form edit page" do
+      patch :update_weightage, params: { form_id: form.id, id: 9999, attribute: { weightage: 0.8 } }
+      expect(response).to redirect_to(edit_form_path(form))
+    end
+
+    it "sets an alert message" do
+      patch :update_weightage, params: { form_id: form.id, id: 9999, attribute: { weightage: 0.8 } }
+      expect(flash[:alert]).to eq("Attribute not found")
+    end
+  end
+end
+
 end
