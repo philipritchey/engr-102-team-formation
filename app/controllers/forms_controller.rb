@@ -153,14 +153,14 @@ class FormsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   # Add a new method for updating deadline from index page
   def update_deadline
     if @form.update(deadline_params)
       # Redirect to the index page with success notice
-      redirect_to forms_path, notice: "Deadline was successfully updated."
+      redirect_to user_path(@form.user), notice: "Deadline was successfully updated."
     else
-      redirect_to forms_path, alert: "Failed to update the deadline."
+      redirect_to user_path(@form.user), alert: "Failed to update the deadline."
     end
   end
 
@@ -184,5 +184,4 @@ class FormsController < ApplicationController
     def deadline_params
       params.require(:form).permit(:deadline)
     end
-
 end

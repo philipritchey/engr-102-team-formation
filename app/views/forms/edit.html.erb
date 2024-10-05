@@ -42,15 +42,15 @@
   </div>
   
   <%# Deadline picker field %>
-  <div class="field">
-    <%= form.label :deadline, "Set Deadline" %>
-    <%= form.datetime_local_field :deadline %>
-     <%# Button to trigger JavaScript to display the selected deadline %>
+<div class="field">
+  <%= form.label :deadline, "Set Deadline", id: "set_deadline" %>
+  <%= form.datetime_local_field :deadline, id: "deadline_picker" %>
+  <%# Button to trigger JavaScript to display the selected deadline %>
   <button type="button" onclick="setDeadline()">Save</button>
 
   <%# Display the selected deadline here dynamically %>
   <p id="display_deadline"></p>
-  </div>
+</div>
 
   <%# Action buttons %>
   <div class="d-flex justify-content-between align-items-center">
@@ -131,7 +131,7 @@
       }
 
       document.getElementById('form_submit_button').addEventListener('click', function(event) {
-        var deadlinePicker = document.getElementById('form_deadline');
+        var deadlinePicker = document.getElementById('deadline_picker');
         var selectedDeadline = new Date(deadlinePicker.value);
         var now = new Date();
 
@@ -140,7 +140,6 @@
           event.preventDefault(); // Prevent form submission
         }
 });
-
 
 
   </script>

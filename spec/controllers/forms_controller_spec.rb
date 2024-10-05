@@ -224,4 +224,38 @@ RSpec.describe FormsController, type: :controller do
       expect(response).to be_successful
     end
   end
+
+  describe 'PATCH #update_deadline' do
+    context 'with valid deadline' do
+      let(:new_deadline) { { deadline: (Time.current + 3.days) } }
+
+      it 'updates the form deadline' do
+        patch :update_deadline, params: { id: form.id, form: new_deadline }
+        form.reload
+        expect(form.deadline.to_i).to eq(new_deadline[:deadline].to_i)
+      end
+
+      it 'redirects to the index page with a success message' do
+        patch :update_deadline, params: { id: form.id, form: new_deadline }
+        expect(response).to redirect_to(user_path(user))
+        expect(flash[:notice]).to eq('Deadline was successfully updated.')
+      end
+    end
+
+    context 'with invalid deadline' do
+      let(:invalid_deadline) { { deadline: (Time.current - 1.day) } }
+
+      it 'does not update the form deadline' do
+        patch :update_deadline, params: { id: form.id, form: invalid_deadline }
+        form.reload
+        expect(form.deadline).not_to eq(invalid_deadline[:deadline])
+      end
+
+      it 'redirects to the index page with an error message' do
+        patch :update_deadline, params: { id: form.id, form: invalid_deadline }
+        expect(response).to redirect_to(user_path(user))
+        expect(flash[:alert]).to eq('Failed to update the deadline.')
+      end
+    end
+  end
 end

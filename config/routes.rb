@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :forms do
     member do
-      patch 'update_deadline' # Custom route for updating deadline from index
+      patch "update_deadline" # Custom route for updating deadline from index
     end
     resources :attributes
   end
