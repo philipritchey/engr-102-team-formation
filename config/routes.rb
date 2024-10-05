@@ -1,10 +1,22 @@
 Rails.application.routes.draw do
   resources :forms do
     member do
+      get "preview"
+    end
+    member do
+      get "duplicate" # Route for duplicating a form
+    end
+    member do
       patch "update_deadline" # Custom route for updating deadline from index
     end
-    resources :attributes
   end
+  
+    resources :attributes do
+      member do
+        patch :update_weightage
+      end
+    end
+  
 
   # Defines the root path route ("/")
   # root "posts#index"
