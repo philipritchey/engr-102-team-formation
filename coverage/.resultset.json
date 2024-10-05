@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/helpers/application_helper.rb": {
+      "/Users/sahithiduppati/team-formation/app/helpers/application_helper.rb": {
         "lines": [
           1,
           1,
@@ -15,25 +15,25 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/helpers/attributes_helper.rb": {
+      "/Users/sahithiduppati/team-formation/app/helpers/attributes_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/helpers/forms_helper.rb": {
+      "/Users/sahithiduppati/team-formation/app/helpers/forms_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/helpers/welcome_helper.rb": {
+      "/Users/sahithiduppati/team-formation/app/helpers/welcome_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/controllers/application_controller.rb": {
+      "/Users/sahithiduppati/team-formation/app/controllers/application_controller.rb": {
         "lines": [
           null,
           null,
@@ -55,12 +55,12 @@
           1,
           null,
           null,
-          47,
+          54,
           null,
           null,
           null,
           1,
-          48,
+          55,
           null,
           null,
           2,
@@ -69,7 +69,7 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/controllers/attributes_controller.rb": {
+      "/Users/sahithiduppati/team-formation/app/controllers/attributes_controller.rb": {
         "lines": [
           null,
           1,
@@ -91,6 +91,16 @@
           null,
           null,
           3,
+          null,
+          null,
+          null,
+          1,
+          6,
+          3,
+          null,
+          3,
+          3,
+          null,
           null,
           null,
           null,
@@ -107,6 +117,17 @@
           null,
           null,
           1,
+          null,
+          null,
+          null,
+          1,
+          null,
+          22,
+          null,
+          null,
+          2,
+          2,
+          null,
           null,
           null,
           null,
@@ -115,30 +136,30 @@
           14,
           null,
           null,
-          2,
-          2,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          6,
-          null,
-          null,
-          2,
-          2,
+          4,
+          4,
           null,
           null,
           null,
           null,
           1,
           6,
+          null,
+          null,
+          1,
+          9,
+          9,
+          9,
+          9,
+          3,
+          null,
+          null,
+          null,
           null,
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/controllers/forms_controller.rb": {
+      "/Users/sahithiduppati/team-formation/app/controllers/forms_controller.rb": {
         "lines": [
           null,
           null,
@@ -206,6 +227,37 @@
           null,
           2,
           2,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
           null,
           null,
           null,
@@ -346,35 +398,7 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/controllers/sessions_controller.rb": {
-        "lines": [
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null,
-          null,
-          1,
-          2,
-          null,
-          2,
-          null,
-          2,
-          1,
-          1,
-          null,
-          null,
-          1,
-          null,
-          null,
-          null
-        ]
-      },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/controllers/users_controller.rb": {
+      "/Users/sahithiduppati/team-formation/app/controllers/users_controller.rb": {
         "lines": [
           null,
           null,
@@ -390,22 +414,7 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/controllers/welcome_controller.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          2,
-          2,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/models/attribute.rb": {
+      "/Users/sahithiduppati/team-formation/app/models/attribute.rb": {
         "lines": [
           null,
           1,
@@ -423,14 +432,16 @@
           null,
           1,
           null,
+          1,
           null,
           null,
           null,
           null,
-          27,
+          null,
+          38,
           null,
           null,
-          27,
+          38,
           null,
           1,
           null,
@@ -461,14 +472,14 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/models/application_record.rb": {
+      "/Users/sahithiduppati/team-formation/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/models/user.rb": {
+      "/Users/sahithiduppati/team-formation/app/models/user.rb": {
         "lines": [
           1,
           1,
@@ -476,7 +487,7 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/models/form.rb": {
+      "/Users/sahithiduppati/team-formation/app/models/form.rb": {
         "lines": [
           null,
           null,
@@ -507,7 +518,7 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/channels/application_cable/channel.rb": {
+      "/Users/sahithiduppati/team-formation/app/channels/application_cable/channel.rb": {
         "lines": [
           0,
           0,
@@ -517,7 +528,7 @@
         "branches": {
         }
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/channels/application_cable/connection.rb": {
+      "/Users/sahithiduppati/team-formation/app/channels/application_cable/connection.rb": {
         "lines": [
           0,
           0,
@@ -527,7 +538,54 @@
         "branches": {
         }
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/jobs/application_job.rb": {
+      "/Users/sahithiduppati/team-formation/app/controllers/sessions_controller.rb": {
+        "lines": [
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/sahithiduppati/team-formation/app/controllers/welcome_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/sahithiduppati/team-formation/app/jobs/application_job.rb": {
         "lines": [
           0,
           null,
@@ -540,7 +598,7 @@
         "branches": {
         }
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/mailers/application_mailer.rb": {
+      "/Users/sahithiduppati/team-formation/app/mailers/application_mailer.rb": {
         "lines": [
           0,
           0,
@@ -551,6 +609,6 @@
         }
       }
     },
-    "timestamp": 1728082502
+    "timestamp": 1728085833
   }
 }
