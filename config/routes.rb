@@ -5,7 +5,7 @@ Rails.application.routes.draw do
         get "duplicate"
         patch "update_deadline"
       end
-      
+      resources :form_responses, only: [ :new, :create ]
       resources :attributes do
         member do
           patch :update_weightage
@@ -13,10 +13,7 @@ Rails.application.routes.draw do
       end
     end
 
-    
-  
-    
-  
+
 
   # Defines the root path route ("/")
   # root "posts#index"

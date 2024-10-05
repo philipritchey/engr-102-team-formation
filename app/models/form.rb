@@ -14,6 +14,7 @@ class Form < ApplicationRecord
 
   # This allows attributes to be created, updated, or destroyed through the form
   # It's useful for nested forms in views where you want to manage attributes alongside the form
+  has_many :form_responses, dependent: :destroy
   accepts_nested_attributes_for :form_attributes, allow_destroy: true
 
   # Validations
