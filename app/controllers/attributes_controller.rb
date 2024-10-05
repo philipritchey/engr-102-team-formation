@@ -2,7 +2,6 @@
 class AttributesController < ApplicationController
     # This before_action ensures @form is set before any action is executed
     before_action :set_form
-    # This before_action sets @attribute only for the destroy action
     before_action :set_attribute, only: [ :destroy ]
 
     # POST /forms/:form_id/attributes

@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/helpers/application_helper.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/helpers/application_helper.rb": {
         "lines": [
           1,
           1,
@@ -15,25 +15,25 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/helpers/attributes_helper.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/helpers/attributes_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/helpers/forms_helper.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/helpers/forms_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/helpers/welcome_helper.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/helpers/welcome_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/controllers/application_controller.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/controllers/application_controller.rb": {
         "lines": [
           null,
           null,
@@ -46,36 +46,35 @@
           null,
           null,
           1,
+          null,
+          3,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          47,
+          null,
+          null,
+          null,
+          1,
+          48,
+          null,
           null,
           2,
           null,
           null,
-          null,
-          null,
-          1,
-          null,
-          null,
-          49,
-          null,
-          null,
-          null,
-          1,
-          50,
-          null,
-          null,
-          2,
-          null,
-          null,
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/controllers/attributes_controller.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/controllers/attributes_controller.rb": {
         "lines": [
           null,
           1,
           null,
           1,
-          null,
           1,
           null,
           null,
@@ -139,7 +138,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/controllers/forms_controller.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/controllers/forms_controller.rb": {
         "lines": [
           null,
           null,
@@ -212,31 +211,31 @@
           null,
           null,
           1,
-          1,
-          1,
+          0,
+          0,
           null,
           null,
           null,
           null,
           1,
-          2,
-          2,
+          0,
+          0,
           null,
           null,
-          2,
+          0,
           null,
           null,
-          2,
-          2,
-          2,
-          2,
+          0,
+          0,
+          0,
+          0,
           null,
           null,
-          2,
+          0,
           null,
-          1,
+          0,
           null,
-          1,
+          0,
           null,
           null,
           null,
@@ -347,7 +346,35 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/controllers/users_controller.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/controllers/sessions_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          2,
+          null,
+          2,
+          null,
+          2,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/controllers/users_controller.rb": {
         "lines": [
           null,
           null,
@@ -363,7 +390,22 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/models/attribute.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/controllers/welcome_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          2,
+          2,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/models/attribute.rb": {
         "lines": [
           null,
           1,
@@ -419,14 +461,14 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/models/application_record.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/models/user.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/models/user.rb": {
         "lines": [
           1,
           1,
@@ -434,7 +476,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/models/form.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/models/form.rb": {
         "lines": [
           null,
           null,
@@ -465,7 +507,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/channels/application_cable/channel.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/channels/application_cable/channel.rb": {
         "lines": [
           0,
           0,
@@ -475,7 +517,7 @@
         "branches": {
         }
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/channels/application_cable/connection.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/channels/application_cable/connection.rb": {
         "lines": [
           0,
           0,
@@ -485,54 +527,7 @@
         "branches": {
         }
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/controllers/sessions_controller.rb": {
-        "lines": [
-          0,
-          0,
-          null,
-          null,
-          0,
-          0,
-          0,
-          0,
-          null,
-          null,
-          0,
-          0,
-          null,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/controllers/welcome_controller.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          null,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/jobs/application_job.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/jobs/application_job.rb": {
         "lines": [
           0,
           null,
@@ -545,7 +540,7 @@
         "branches": {
         }
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/mailers/application_mailer.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF12/team-formation/app/mailers/application_mailer.rb": {
         "lines": [
           0,
           0,
@@ -556,6 +551,6 @@
         }
       }
     },
-    "timestamp": 1728089757
+    "timestamp": 1728082502
   }
 }
