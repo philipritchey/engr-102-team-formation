@@ -248,12 +248,12 @@ RSpec.describe FormsController, type: :controller do
       expect {
         get :duplicate, params: { id: @original_form.id }
       }.to change(Form, :count).by(1)
-    
+
       duplicated_form = Form.last
       expect(duplicated_form.name).to eq('Original Form - Copy')
-      
+
       # Access the first attribute and then check its name
-    
+
       expect(response).to redirect_to(edit_form_path(duplicated_form))
       expect(flash[:notice]).to eq('Form was successfully duplicated.')
     end

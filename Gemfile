@@ -99,3 +99,8 @@ group :production do
 end
 
 gem "csv"
+
+group :development, :test do
+  gem "rubocop"
+  gem "rubocop-rspec"
+end
