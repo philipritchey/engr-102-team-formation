@@ -24,13 +24,22 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_04_224030) do
     t.index ["form_id"], name: "index_attributes_on_form_id"
   end
 
+  create_table "form_responses", force: :cascade do |t|
+    t.integer "form_id", null: false
+    t.string "uin", null: false
+    t.json "responses", default: {}
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["form_id"], name: "index_form_responses_on_form_id"
+  end
+
   create_table "forms", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "deadline"
     t.integer "user_id", null: false
+    t.datetime "deadline"
   end
 
   create_table "users", force: :cascade do |t|
@@ -41,5 +50,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_04_224030) do
   end
 
   add_foreign_key "attributes", "forms"
+  add_foreign_key "form_responses", "forms"
   add_foreign_key "forms", "users"
 end
