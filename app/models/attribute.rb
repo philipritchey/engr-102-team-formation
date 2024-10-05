@@ -14,6 +14,8 @@ class Attribute < ApplicationRecord
   # scale: A numeric scale (e.g., 1-10)
   validates :field_type, presence: true, inclusion: { in: %w[text_input mcq scale] }
 
+  validates :weightage, numericality: { greater_than_or_equal_to: 0.0, less_than_or_equal_to: 1.0 }, allow_nil: true
+
   # Custom validations
   # These validations are only run when specific conditions are met
 
