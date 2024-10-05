@@ -25,9 +25,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_04_224030) do
   end
 
   create_table "form_responses", force: :cascade do |t|
-    t.integer "form_id", null: false
     t.string "uin", null: false
-    t.json "responses", default: {}
+    t.integer "form_id", null: false
+    t.text "responses", default: "{}", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["form_id"], name: "index_form_responses_on_form_id"
