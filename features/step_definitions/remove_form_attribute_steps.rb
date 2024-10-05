@@ -2,7 +2,7 @@
     @attribute = @form.form_attributes.create(name: attribute_name, field_type: "text_input")
     @form.reload
   end
-  
+
   When("I click on {string} for {string} field") do |action, attribute_name|
     within('ul') do
       attributes_list = all('li')
@@ -16,7 +16,7 @@
       end
     end
   end
-  
+
   Then('I should not see {string} in the current attributes') do |attribute_name|
     expect(page).not_to have_content(attribute_name)
   end

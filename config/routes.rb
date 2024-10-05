@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :forms do
     resources :attributes
-    resources :form_responses, only: [:new, :create]
+    resources :form_responses, only: [ :new, :create ]
   end
 
   # Defines the root path route ("/")
