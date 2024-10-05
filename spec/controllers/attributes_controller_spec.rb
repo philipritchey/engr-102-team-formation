@@ -180,5 +180,4 @@ RSpec.describe AttributesController, type: :controller do
     end
   end
 end
-
 end

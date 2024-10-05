@@ -73,8 +73,8 @@ class FormsController < ApplicationController
     render partial: "preview"
   end
 
-  #GET /forms/#id/duplicate
-  #opens new /forms/#new_id/edit
+  # GET /forms/#id/duplicate
+  # opens new /forms/#new_id/edit
   def duplicate
     original_form = Form.find(params[:id])
     duplicated_form = original_form.dup
