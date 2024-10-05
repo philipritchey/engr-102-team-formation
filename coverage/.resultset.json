@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/helpers/application_helper.rb": {
+      "/Users/rajakarthikvobugari/Documents/softwareeng/team-formation/app/helpers/application_helper.rb": {
         "lines": [
           1,
           1,
@@ -15,25 +15,25 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/helpers/attributes_helper.rb": {
+      "/Users/rajakarthikvobugari/Documents/softwareeng/team-formation/app/helpers/attributes_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/helpers/forms_helper.rb": {
+      "/Users/rajakarthikvobugari/Documents/softwareeng/team-formation/app/helpers/forms_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/helpers/welcome_helper.rb": {
+      "/Users/rajakarthikvobugari/Documents/softwareeng/team-formation/app/helpers/welcome_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/controllers/application_controller.rb": {
+      "/Users/rajakarthikvobugari/Documents/softwareeng/team-formation/app/controllers/application_controller.rb": {
         "lines": [
           null,
           null,
@@ -55,12 +55,12 @@
           1,
           null,
           null,
-          50,
+          56,
           null,
           null,
           null,
           1,
-          51,
+          57,
           null,
           null,
           2,
@@ -69,7 +69,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/controllers/attributes_controller.rb": {
+      "/Users/rajakarthikvobugari/Documents/softwareeng/team-formation/app/controllers/attributes_controller.rb": {
         "lines": [
           null,
           1,
@@ -91,6 +91,16 @@
           null,
           null,
           3,
+          null,
+          null,
+          null,
+          1,
+          6,
+          3,
+          null,
+          3,
+          3,
+          null,
           null,
           null,
           null,
@@ -107,6 +117,17 @@
           null,
           null,
           1,
+          null,
+          null,
+          null,
+          1,
+          null,
+          22,
+          null,
+          null,
+          2,
+          2,
+          null,
           null,
           null,
           null,
@@ -115,30 +136,30 @@
           14,
           null,
           null,
-          2,
-          2,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          6,
-          null,
-          null,
-          2,
-          2,
+          4,
+          4,
           null,
           null,
           null,
           null,
           1,
           6,
+          null,
+          null,
+          1,
+          9,
+          9,
+          9,
+          9,
+          3,
+          null,
+          null,
+          null,
           null,
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/controllers/forms_controller.rb": {
+      "/Users/rajakarthikvobugari/Documents/softwareeng/team-formation/app/controllers/forms_controller.rb": {
         "lines": [
           null,
           null,
@@ -211,36 +232,10 @@
           null,
           null,
           1,
-          1,
-          1,
+          0,
+          0,
           null,
           null,
-          null,
-          null,
-          1,
-          2,
-          2,
-          null,
-          null,
-          2,
-          null,
-          null,
-          2,
-          2,
-          2,
-          2,
-          null,
-          null,
-          2,
-          null,
-          1,
-          null,
-          1,
-          null,
-          null,
-          null,
-          null,
-          1,
           null,
           null,
           1,
@@ -249,29 +244,6 @@
           null,
           null,
           0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
           null,
           null,
           0,
@@ -281,34 +253,130 @@
           null,
           null,
           0,
-          0,
-          0,
-          0,
-          null,
-          null,
-          0,
-          0,
-          0,
           null,
           0,
           null,
+          1,
           null,
           null,
           null,
           null,
-          0,
-          0,
+          null,
+          1,
+          8,
+          7,
           null,
           null,
-          0,
+          7,
+          7,
           null,
-          0,
+          7,
+          1,
+          1,
           null,
           null,
-          0,
+          6,
+          6,
+          6,
+          null,
+          6,
+          1,
+          1,
           null,
           null,
-          0,
+          5,
+          5,
+          5,
+          null,
+          5,
+          1,
+          1,
+          null,
+          null,
+          4,
+          4,
+          1,
+          1,
+          null,
+          null,
+          3,
+          3,
+          1,
+          1,
+          null,
+          null,
+          2,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          8,
+          7,
+          null,
+          null,
+          7,
+          7,
+          null,
+          7,
+          1,
+          1,
+          null,
+          null,
+          6,
+          6,
+          6,
+          null,
+          6,
+          1,
+          1,
+          null,
+          null,
+          5,
+          5,
+          5,
+          null,
+          5,
+          1,
+          1,
+          null,
+          null,
+          4,
+          4,
+          1,
+          1,
+          null,
+          null,
+          3,
+          3,
+          1,
+          1,
+          null,
+          null,
+          2,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          2,
           null,
           null,
           null,
@@ -346,7 +414,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/controllers/sessions_controller.rb": {
+      "/Users/rajakarthikvobugari/Documents/softwareeng/team-formation/app/controllers/sessions_controller.rb": {
         "lines": [
           1,
           1,
@@ -374,7 +442,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/controllers/users_controller.rb": {
+      "/Users/rajakarthikvobugari/Documents/softwareeng/team-formation/app/controllers/users_controller.rb": {
         "lines": [
           null,
           null,
@@ -390,7 +458,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/controllers/welcome_controller.rb": {
+      "/Users/rajakarthikvobugari/Documents/softwareeng/team-formation/app/controllers/welcome_controller.rb": {
         "lines": [
           1,
           1,
@@ -405,7 +473,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/models/attribute.rb": {
+      "/Users/rajakarthikvobugari/Documents/softwareeng/team-formation/app/models/attribute.rb": {
         "lines": [
           null,
           1,
@@ -423,14 +491,16 @@
           null,
           1,
           null,
+          1,
           null,
           null,
           null,
           null,
-          30,
+          null,
+          38,
           null,
           null,
-          30,
+          38,
           null,
           1,
           null,
@@ -461,14 +531,14 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/models/application_record.rb": {
+      "/Users/rajakarthikvobugari/Documents/softwareeng/team-formation/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/models/user.rb": {
+      "/Users/rajakarthikvobugari/Documents/softwareeng/team-formation/app/models/user.rb": {
         "lines": [
           1,
           1,
@@ -476,7 +546,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/models/form.rb": {
+      "/Users/rajakarthikvobugari/Documents/softwareeng/team-formation/app/models/form.rb": {
         "lines": [
           null,
           null,
@@ -507,7 +577,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/channels/application_cable/channel.rb": {
+      "/Users/rajakarthikvobugari/Documents/softwareeng/team-formation/app/channels/application_cable/channel.rb": {
         "lines": [
           0,
           0,
@@ -517,7 +587,7 @@
         "branches": {
         }
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/channels/application_cable/connection.rb": {
+      "/Users/rajakarthikvobugari/Documents/softwareeng/team-formation/app/channels/application_cable/connection.rb": {
         "lines": [
           0,
           0,
@@ -527,7 +597,7 @@
         "branches": {
         }
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/jobs/application_job.rb": {
+      "/Users/rajakarthikvobugari/Documents/softwareeng/team-formation/app/jobs/application_job.rb": {
         "lines": [
           0,
           null,
@@ -540,7 +610,7 @@
         "branches": {
         }
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-6/app/mailers/application_mailer.rb": {
+      "/Users/rajakarthikvobugari/Documents/softwareeng/team-formation/app/mailers/application_mailer.rb": {
         "lines": [
           0,
           0,
@@ -551,6 +621,6 @@
         }
       }
     },
-    "timestamp": 1728091094
+    "timestamp": 1728089731
   }
 }

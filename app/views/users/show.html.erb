@@ -1,5 +1,7 @@
 <% content_for :title, "User Profile and Forms" %>
 
+<%= render 'shared/display_flash' %>
+
 <h2>Howdy, <%= @current_user.name %></h2>
 <div id="user-details">
   <p>

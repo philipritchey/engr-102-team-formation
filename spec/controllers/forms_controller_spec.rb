@@ -16,6 +16,93 @@ RSpec.describe FormsController, type: :controller do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
   end
 
+
+  describe "GET #upload" do
+    it "returns a success response" do
+      get :upload
+      expect(response).to be_successful
+    end
+  end
+
+  describe "POST #validate_upload" do
+    context "when no file is uploaded" do
+      it "sets a flash alert and redirects to the user page" do
+        post :validate_upload, params: { file: nil }
+        expect(flash[:alert]).to eq("Please upload a file.")
+        expect(response).to redirect_to(user_path(user))
+      end
+    end
+
+    context "when file is uploaded" do
+      let(:file) { fixture_file_upload('valid_file.csv', 'text/csv') }
+
+      it "successfully validates the file and creates users" do
+        expect {
+          post :validate_upload, params: { file: file }
+        }.to change(User, :count).by(1)
+
+        expect(flash[:notice]).to eq("All validations passed.")
+      end
+
+      context "when the first row is empty" do
+        let(:file) { fixture_file_upload('empty_header.csv', 'text/csv') }
+
+        it "sets a flash alert for empty first row and redirects" do
+          post :validate_upload, params: { file: file }
+          expect(flash[:alert]).to eq("The first row is empty. Please provide column names.")
+        end
+      end
+
+      context "when required columns are missing" do
+        let(:file) { fixture_file_upload('missing_columns.csv', 'text/csv') }
+
+        it "sets a flash alert for missing columns and redirects" do
+          post :validate_upload, params: { file: file }
+          expect(flash[:alert]).to eq("Missing required columns. Ensure 'Name', 'UIN', and 'Email ID' are present.")
+        end
+      end
+
+      context "when UIN is invalid" do
+        let(:file) { fixture_file_upload('invalid_uin.csv', 'text/csv') }
+
+        it "sets a flash alert for invalid UIN and redirects" do
+          post :validate_upload, params: { file: file }
+          expect(flash[:alert]).to eq("Invalid UIN in 'UIN' column for row 2. It must be a 9-digit number.")
+          expect(response).to redirect_to(user_path(user))
+        end
+      end
+
+      context "when email is missing" do
+        let(:file) { fixture_file_upload('missing_email.csv', 'text/csv') }
+
+        it "sets a flash alert for missing email and redirects" do
+          post :validate_upload, params: { file: file }
+          expect(flash[:alert]).to eq("Missing value in 'Email ID' column for row 2.")
+          expect(response).to redirect_to(user_path(user))
+        end
+      end
+
+      context "when email is invalid" do
+        let(:file) { fixture_file_upload('invalid_email.csv', 'text/csv') }
+
+        it "sets a flash alert for invalid email and redirects" do
+          post :validate_upload, params: { file: file }
+          expect(flash[:alert]).to eq("Invalid email in 'Email ID' column for row 2.")
+          expect(response).to redirect_to(user_path(user))
+        end
+      end
+
+      context "when a row has missing or invalid data" do
+        let(:file) { fixture_file_upload('missing_name.csv', 'text/csv') }
+
+        it "sets a flash alert for missing name and redirects" do
+          post :validate_upload, params: { file: file }
+          expect(flash[:alert]).to eq("Missing value in 'Name' column for row 2.")
+        end
+      end
+    end
+  end
+
   describe "GET #index" do
     it "returns a success response" do
       # Test if the index action returns a successful response

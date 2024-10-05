@@ -60,6 +60,17 @@
         <% if attribute.field_type == 'scale' %>
           (Min: <%= attribute.min_value %>, Max: <%= attribute.max_value %>)
         <% end %>
+        <%# Display current weightage %>
+        <div>
+          Current Weightage: <%= attribute.weightage.present? ? attribute.weightage : "Not set" %>
+        </div>
+        <%= form_with(model: attribute, url: update_weightage_form_attribute_path(@form, attribute), method: :patch, local: true) do |f| %>
+          <div>
+            <%= f.label :weightage, "Update Weightage (0.0 to 1.0)" %>
+            <%= f.number_field :weightage, step: 0.1, min: 0, max: 1, value: attribute.weightage %>
+            <%= f.submit "Update Weightage", class: "btn btn-primary" %>
+          </div>
+        <% end %>
         <%= button_to 'Destroy Attribute', form_attribute_path(@form, attribute), method: :delete, data: { confirm: 'Are you sure you want to remove this question?'}, class: 'btn btn-danger'%>
       </li>
       <br>
