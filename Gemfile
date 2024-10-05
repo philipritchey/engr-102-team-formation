@@ -1,10 +1,7 @@
 source "https://rubygems.org"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-
-gem "rails", "~> 7.2.1"
-
-
+gem "rails", "~> 7.2.0"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
@@ -57,6 +54,9 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  gem "rubocop", require: false
+  gem "rubocop-rspec", require: false
 
   # RSpec for Rails
   gem "rspec-rails", "~> 6.0"

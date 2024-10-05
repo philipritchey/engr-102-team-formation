@@ -29,6 +29,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_04_224030) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deadline"
     t.integer "user_id", null: false
   end
 
