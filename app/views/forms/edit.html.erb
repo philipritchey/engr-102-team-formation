@@ -40,11 +40,24 @@
     <%= form.label :description %>
     <%= form.text_area :description, class: 'form-control' %>
   </div>
+  
+  <%# Deadline picker field %>
+<div class="field">
+  <%= form.label :deadline, "Set Deadline", id: "set_deadline" %>
+  <%= form.datetime_local_field :deadline, id: "deadline_picker" %>
+  <%# Button to trigger JavaScript to display the selected deadline %>
+  <button type="button" onclick="setDeadline()">Save</button>
+
+  <%# Display the selected deadline here dynamically %>
+  <p id="display_deadline"></p>
+</div>
 
   <%# Action buttons %>
   <div class="d-flex justify-content-between align-items-center">
     <%= link_to "Back to Forms", user_path(current_user), class: "btn btn-secondary" %>
     <%= form.submit "Save Form", class: "btn btn-primary" %>
+    <%= button_tag 'Preview Form', type: 'button', class: 'button', onclick: "openPreviewModal()" %>
+    <%= button_tag 'Duplicate Form', type: 'button', class: 'button', onclick: "window.open('#{duplicate_form_path(@form)}', '_blank')" %>
   </div>
 <% end %>
 
@@ -57,6 +70,17 @@
         <%= attribute.name %> (<%= attribute.field_type %>)
         <% if attribute.field_type == 'scale' %>
           (Min: <%= attribute.min_value %>, Max: <%= attribute.max_value %>)
+        <% end %>
+        <%# Display current weightage %>
+        <div>
+          Current Weightage: <%= attribute.weightage.present? ? attribute.weightage : "Not set" %>
+        </div>
+        <%= form_with(model: attribute, url: update_weightage_form_attribute_path(@form, attribute), method: :patch, local: true) do |f| %>
+          <div>
+            <%= f.label :weightage, "Update Weightage (0.0 to 1.0)" %>
+            <%= f.number_field :weightage, step: 0.1, min: 0, max: 1, value: attribute.weightage %>
+            <%= f.submit "Update Weightage", class: "btn btn-primary" %>
+          </div>
         <% end %>
         <%= button_to 'Destroy Attribute', form_attribute_path(@form, attribute), method: :delete, data: { confirm: 'Are you sure you want to remove this question?'}, class: 'btn btn-danger'%>
       </li>
@@ -92,6 +116,11 @@
   <%= f.submit "Save Attribute", id: "save_attribute" %>
 <% end %>
 
+<%# Include the preview modal from another file %>
+<%= render 'preview' %>
+
+
+
 <%# Add spacing between "Save Attribute" and action buttons %>
 <div style="margin-top: 30px;"></div>
 
@@ -104,5 +133,35 @@
 
     // Initialize the visibility
     toggleScaleFields(document.getElementById('attribute_type').value);
+
+  function openPreviewModal() {
+    var modal = document.getElementById('previewModal');
+    modal.style.display = "block";  // Show the modal
+  }
+
+    function setDeadline() {
+      var deadlinePicker = document.getElementById("deadline_picker");
+      var selectedDeadline = deadlinePicker.value;
+
+      // Display the selected deadline immediately
+      if (selectedDeadline) {
+        document.getElementById("display_deadline").innerText = "Selected Deadline: " + new Date(selectedDeadline).toLocaleString();
+      } else {
+        document.getElementById("display_deadline").innerText = "Please select a deadline.";
+      }
+      }
+
+      document.getElementById('form_submit_button').addEventListener('click', function(event) {
+        var deadlinePicker = document.getElementById('deadline_picker');
+        var selectedDeadline = new Date(deadlinePicker.value);
+        var now = new Date();
+
+        if (selectedDeadline < now) {
+          alert("The deadline cannot be in the past.");
+          event.preventDefault(); // Prevent form submission
+        }
+});
+
+
   </script>
 <% end %>

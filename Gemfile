@@ -50,9 +50,13 @@ group :development, :test do
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
+  gem "factory_bot_rails"
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  gem "rubocop", require: false
+  gem "rubocop-rspec", require: false
 
   # RSpec for Rails
   gem "rspec-rails", "~> 6.0"
@@ -66,8 +70,6 @@ group :development, :test do
   # SimpleCov for code coverage
   gem "simplecov", require: false
 
-  # Factory Bot for test data
-  gem "factory_bot_rails"
 
   # Faker for generating fake data in tests
   gem "faker"
@@ -99,3 +101,8 @@ group :production do
 end
 
 gem "csv"
+
+group :development, :test do
+  gem "rubocop"
+  gem "rubocop-rspec"
+end

@@ -5,7 +5,7 @@ class FormsController < ApplicationController
   require "roo"
 
   # Set @form instance variable for show, edit, update, and destroy actions
-  before_action :set_form, only: %i[ show edit update destroy ]
+  before_action :set_form, only: %i[ show edit update destroy update_deadline ]
 
   # GET /forms
   def index
@@ -56,7 +56,7 @@ class FormsController < ApplicationController
     # Allow params with or without 'form' key
     update_params = params[:form] || params
 
-    if @form.update(update_params.permit(:name, :description))
+    if @form.update(update_params.permit(:name, :description, :deadline))
       # If update succeeds, set success message and redirect to the form
       flash[:notice] = "Form was successfully updated."
       redirect_to @form
@@ -66,6 +66,37 @@ class FormsController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
+
+  # GET /forms/#id/preview
+  def preview
+    @form = Form.find(params[:id])
+    render partial: "preview"
+  end
+
+  # GET /forms/#id/duplicate
+  # opens new /forms/#new_id/edit
+  def duplicate
+    original_form = Form.find(params[:id])
+    duplicated_form = original_form.dup
+
+    # Suggest a new name for the duplicated form
+    duplicated_form.name = "#{original_form.name} - Copy"
+
+    # Duplicate associated attributes
+    original_form.form_attributes.each do |attribute|
+      duplicated_attribute = attribute.dup
+      duplicated_attribute.assign_attributes(attribute.attributes.except("id", "created_at", "updated_at", "form_id"))
+      duplicated_form.form_attributes << duplicated_attribute
+    end
+
+    if duplicated_form.save
+      # Redirect to the edit page of the duplicated form in a new window
+      redirect_to edit_form_path(duplicated_form), notice: "Form was successfully duplicated."
+    else
+      redirect_to edit_form_path(original_form), alert: "Failed to duplicate the form."
+    end
+  end
+
 
   def upload
   end
@@ -80,7 +111,7 @@ class FormsController < ApplicationController
 
         if header_row.nil? || header_row.all?(&:blank?)
           flash[:alert] = "The first row is empty. Please provide column names."
-          redirect_to user_path(@current_user) and return
+          redirect_to user_path(current_user) and return
         end
 
         name_index = header_row.index("Name") || -1
@@ -89,7 +120,7 @@ class FormsController < ApplicationController
 
         unless name_index >= 0 && uin_index >= 0 && email_index >= 0
           flash[:alert] = "Missing required columns. Ensure 'Name', 'UIN', and 'Email ID' are present."
-          redirect_to user_path(@current_user) and return
+          redirect_to user_path(current_user) and return
         end
 
         users_to_create = []
@@ -98,24 +129,24 @@ class FormsController < ApplicationController
 
           if row[name_index].blank?
             flash[:alert] = "Missing value in 'Name' column for row #{index}."
-            redirect_to user_path(@current_user) and return
+            redirect_to user_path(current_user) and return
           end
 
           uin_value = row[uin_index]
           unless uin_value.is_a?(String) && uin_value.match?(/^\d{9}$/)
             flash[:alert] = "Invalid UIN in 'UIN' column for row #{index}. It must be a 9-digit number."
-            redirect_to user_path(@current_user) and return
+            redirect_to user_path(current_user) and return
           end
 
           email_value = row[email_index]
           if email_value.blank?
             flash[:alert] = "Missing value in 'Email ID' column for row #{index}."
-            redirect_to user_path(@current_user) and return
+            redirect_to user_path(current_user) and return
           end
 
           unless email_value =~ /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
             flash[:alert] = "Invalid email in 'Email ID' column for row #{index}."
-            redirect_to user_path(@current_user) and return
+            redirect_to user_path(current_user) and return
           end
           users_to_create << {
             name: row[name_index],
@@ -126,8 +157,6 @@ class FormsController < ApplicationController
         User.insert_all(users_to_create)
         flash[:notice] = "All validations passed."
 
-      rescue Roo::FileNotFound
-        flash[:alert] = "File not found. Please upload a valid Excel or CSV file."
       rescue StandardError => e
         flash[:alert] = "An error occurred: #{e.message}"
       end
@@ -135,7 +164,7 @@ class FormsController < ApplicationController
       flash[:alert] = "Please upload a file."
     end
 
-    redirect_to user_path(@current_user)
+    redirect_to user_path(current_user)
   end
 
 
@@ -154,6 +183,16 @@ class FormsController < ApplicationController
     end
   end
 
+  # Add a new method for updating deadline from index page
+  def update_deadline
+    if @form.update(deadline_params)
+      # Redirect to the index page with success notice
+      redirect_to user_path(@form.user), notice: "Deadline was successfully updated."
+    else
+      redirect_to user_path(@form.user), alert: "Failed to update the deadline."
+    end
+  end
+
   private
     # Sets @form instance variable based on the id parameter
     # Only finds forms belonging to the current user for security
@@ -164,10 +203,14 @@ class FormsController < ApplicationController
     # Define allowed parameters for form creation and update
     # This is a security measure to prevent mass assignment vulnerabilities
     def form_params
-      params.require(:form).permit(:name, :description)
+      params.require(:form).permit(:name, :description, :deadline)
     rescue ActionController::ParameterMissing
       # If :form key is missing, permit name and description directly from params
       # This allows for more flexible parameter handling
-      params.permit(:name, :description)
+      params.permit(:name, :description, :deadline)
+    end
+
+    def deadline_params
+      params.require(:form).permit(:deadline)
     end
 end

@@ -16,6 +16,93 @@ RSpec.describe FormsController, type: :controller do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
   end
 
+
+  describe "GET #upload" do
+    it "returns a success response" do
+      get :upload
+      expect(response).to be_successful
+    end
+  end
+
+  describe "POST #validate_upload" do
+    context "when no file is uploaded" do
+      it "sets a flash alert and redirects to the user page" do
+        post :validate_upload, params: { file: nil }
+        expect(flash[:alert]).to eq("Please upload a file.")
+        expect(response).to redirect_to(user_path(user))
+      end
+    end
+
+    context "when file is uploaded" do
+      let(:file) { fixture_file_upload('valid_file.csv', 'text/csv') }
+
+      it "successfully validates the file and creates users" do
+        expect {
+          post :validate_upload, params: { file: file }
+        }.to change(User, :count).by(1)
+
+        expect(flash[:notice]).to eq("All validations passed.")
+      end
+
+      context "when the first row is empty" do
+        let(:file) { fixture_file_upload('empty_header.csv', 'text/csv') }
+
+        it "sets a flash alert for empty first row and redirects" do
+          post :validate_upload, params: { file: file }
+          expect(flash[:alert]).to eq("The first row is empty. Please provide column names.")
+        end
+      end
+
+      context "when required columns are missing" do
+        let(:file) { fixture_file_upload('missing_columns.csv', 'text/csv') }
+
+        it "sets a flash alert for missing columns and redirects" do
+          post :validate_upload, params: { file: file }
+          expect(flash[:alert]).to eq("Missing required columns. Ensure 'Name', 'UIN', and 'Email ID' are present.")
+        end
+      end
+
+      context "when UIN is invalid" do
+        let(:file) { fixture_file_upload('invalid_uin.csv', 'text/csv') }
+
+        it "sets a flash alert for invalid UIN and redirects" do
+          post :validate_upload, params: { file: file }
+          expect(flash[:alert]).to eq("Invalid UIN in 'UIN' column for row 2. It must be a 9-digit number.")
+          expect(response).to redirect_to(user_path(user))
+        end
+      end
+
+      context "when email is missing" do
+        let(:file) { fixture_file_upload('missing_email.csv', 'text/csv') }
+
+        it "sets a flash alert for missing email and redirects" do
+          post :validate_upload, params: { file: file }
+          expect(flash[:alert]).to eq("Missing value in 'Email ID' column for row 2.")
+          expect(response).to redirect_to(user_path(user))
+        end
+      end
+
+      context "when email is invalid" do
+        let(:file) { fixture_file_upload('invalid_email.csv', 'text/csv') }
+
+        it "sets a flash alert for invalid email and redirects" do
+          post :validate_upload, params: { file: file }
+          expect(flash[:alert]).to eq("Invalid email in 'Email ID' column for row 2.")
+          expect(response).to redirect_to(user_path(user))
+        end
+      end
+
+      context "when a row has missing or invalid data" do
+        let(:file) { fixture_file_upload('missing_name.csv', 'text/csv') }
+
+        it "sets a flash alert for missing name and redirects" do
+          post :validate_upload, params: { file: file }
+          expect(flash[:alert]).to eq("Missing value in 'Name' column for row 2.")
+        end
+      end
+    end
+  end
+
   describe "GET #index" do
     it "returns a success response" do
       # Test if the index action returns a successful response
@@ -222,6 +309,96 @@ RSpec.describe FormsController, type: :controller do
       # Test if the upload action returns a successful response
       get :upload
       expect(response).to be_successful
+    end
+  end
+
+  describe 'PATCH #update_deadline' do
+    context 'with valid deadline' do
+      let(:new_deadline) { { deadline: (Time.current + 3.days) } }
+
+      it 'updates the form deadline' do
+        patch :update_deadline, params: { id: form.id, form: new_deadline }
+        form.reload
+        expect(form.deadline.to_i).to eq(new_deadline[:deadline].to_i)
+      end
+
+      it 'redirects to the index page with a success message' do
+        patch :update_deadline, params: { id: form.id, form: new_deadline }
+        expect(response).to redirect_to(user_path(user))
+        expect(flash[:notice]).to eq('Deadline was successfully updated.')
+      end
+    end
+
+    context 'with invalid deadline' do
+      let(:invalid_deadline) { { deadline: (Time.current - 1.day) } }
+
+      it 'does not update the form deadline' do
+        patch :update_deadline, params: { id: form.id, form: invalid_deadline }
+        form.reload
+        expect(form.deadline).not_to eq(invalid_deadline[:deadline])
+      end
+
+      it 'redirects to the index page with an error message' do
+        patch :update_deadline, params: { id: form.id, form: invalid_deadline }
+        expect(response).to redirect_to(user_path(user))
+        expect(flash[:alert]).to eq('Failed to update the deadline.')
+      end
+    end
+  end
+
+  describe 'GET #preview' do
+    before do
+      @form = create(:form, name: 'Test Form', description: 'This is a test description')
+    end
+
+    it 'renders the preview partial' do
+      get :preview, params: { id: @form.id }
+      expect(response).to render_template(partial: "_preview")
+      expect(assigns(:form)).to eq(@form) # Ensure the correct form is assigned
+    end
+  end
+
+  describe 'GET #duplicate' do
+    before do
+      @user = create(:user)  # Ensure you create a user first
+      @original_form = create(:form, name: 'Original Form', description: 'This is the original form', user: @user)
+      create(:attribute, form: @original_form, name: 'Original Attribute', field_type: 'text_input', min_value: nil, max_value: nil)
+    end
+
+    it 'duplicates the form and redirects to the edit page' do
+      expect {
+        get :duplicate, params: { id: @original_form.id }
+      }.to change(Form, :count).by(1)
+
+      duplicated_form = Form.last
+      expect(duplicated_form.name).to eq('Original Form - Copy')
+
+      # Access the first attribute and then check its name
+
+      expect(response).to redirect_to(edit_form_path(duplicated_form))
+      expect(flash[:notice]).to eq('Form was successfully duplicated.')
+    end
+  end
+
+  describe '#duplicate failed' do
+    before do
+      @user = create(:user)
+      @original_form = create(:form, name: 'Original Form', description: 'This is the original form', user: @user)
+      create(:attribute, form: @original_form, name: 'Original Attribute', field_type: 'text_input')
+    end
+
+    context 'when duplication fails due to validation errors' do
+      before do
+        # Simulate validation failure by setting an invalid attribute
+        allow_any_instance_of(Form).to receive(:save).and_return(false)
+      end
+
+      it 'redirects back to the edit form with an alert message' do
+        post :duplicate, params: { id: @original_form.id }
+
+        expect(response).to redirect_to(edit_form_path(@original_form))
+        expect(flash[:alert]).to eq("Failed to duplicate the form.")
+      end
     end
   end
 end

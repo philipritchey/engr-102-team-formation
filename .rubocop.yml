@@ -16,7 +16,7 @@ inherit_gem:
   rubocop-rails-omakase: rubocop.yml
 
 # You can override specific cops if needed, for example:
-# Style/Documentation:
-#   Enabled: false
+Style/Documentation:
+  Enabled: false
 
 # Add any project-specific overrides or configurations below

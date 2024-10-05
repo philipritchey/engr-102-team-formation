@@ -3,7 +3,7 @@ class AttributesController < ApplicationController
     # This before_action ensures @form is set before any action is executed
     before_action :set_form
     # This before_action sets @attribute only for the destroy action
-    before_action :set_attribute, only: [ :destroy ]
+    before_action :set_attribute, only: [ :destroy, :update_weightage ]
 
     # POST /forms/:form_id/attributes
     # Creates a new attribute for a specific form
@@ -19,6 +19,16 @@ class AttributesController < ApplicationController
         else
             # If save fails, redirect to the form's edit page with an error alert
             redirect_to edit_form_path(@form), alert: "Failed to add attribute."
+        end
+    end
+
+    def update_weightage
+        if weightage_params[:weightage].nil?
+            redirect_to edit_form_path(@form), alert: "Failed to update weightage."
+        else
+            if @attribute.update(weightage_params)
+              redirect_to edit_form_path(@form), notice: "Weightage was successfully updated."
+            end
         end
     end
 
@@ -62,5 +72,16 @@ class AttributesController < ApplicationController
     # This method defines which parameters are allowed when creating or updating an Attribute
     def attribute_params
         params.require(:attribute).permit(:name, :field_type, :min_value, :max_value, :options)
+    end
+
+    def weightage_params
+        params.require(:attribute).permit(:weightage).tap do |whitelisted|
+            if whitelisted[:weightage].present?
+              whitelisted[:weightage] = whitelisted[:weightage].to_f
+              if whitelisted[:weightage] < 0.0 || whitelisted[:weightage] > 1.0
+                whitelisted[:weightage] = nil
+              end
+            end
+          end
     end
 end

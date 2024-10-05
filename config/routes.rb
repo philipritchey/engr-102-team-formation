@@ -1,4 +1,22 @@
 Rails.application.routes.draw do
+    resources :forms do
+      member do
+        get "preview"
+        get "duplicate"
+        patch "update_deadline"
+      end
+
+      resources :attributes do
+        member do
+          patch :update_weightage
+        end
+      end
+    end
+
+
+
+
+
   resources :forms do
     resources :attributes
     resources :form_responses, only: [ :new, :create ]
