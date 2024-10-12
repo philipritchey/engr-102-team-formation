@@ -1,0 +1,28 @@
+<!-- app/views/form_responses/new.html.erb -->
+<h1>Submit Response for <%= @form.name %></h1>
+
+<%= form_with(model: [@form, @form_response], local: true) do |f| %>
+  <div>
+    <%= f.label :uin, "UIN" %>
+    <%= f.text_field :uin, required: true %>
+  </div>
+  <br>
+  <% @form.form_attributes.each do |attribute| %>
+    <div>
+      <%= label_tag "form_response_responses_#{attribute.id}", attribute.name %>
+      <% case attribute.field_type %>
+      <% when 'text_input' %>
+        <%= text_field_tag "form_response[responses][#{attribute.id}]", nil, required: true %>
+      <% when 'mcq' %>
+        <%= select_tag "form_response[responses][#{attribute.id}]", options_for_select(attribute.options.split(',')), prompt: 'Select an option', required: true %>
+      <% when 'scale' %>
+        <%= number_field_tag "form_response[responses][#{attribute.id}]", nil, min: attribute.min_value, max: attribute.max_value, required: true %>
+      <% else %>
+        <%= text_field_tag "form_response[responses][#{attribute.id}]", nil, required: true %>
+      <% end %>
+    </div>
+    <br>
+  <% end %>
+
+  <%= f.submit 'Submit Response' %>
+<% end %>

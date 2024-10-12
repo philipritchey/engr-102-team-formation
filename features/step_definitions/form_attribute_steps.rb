@@ -1,0 +1,102 @@
+# This step creates a form associated with the current user
+Given("I have created a form") do
+  @form = Form.create!(name: "Test Form", description: "Test Description", user: @user)
+end
+
+# This step navigates to the edit page of the previously created form
+When("I visit the edit page for the form") do
+  visit edit_form_path(@form)
+end
+
+# This step checks if there's an option to add a new attribute on the page
+Then("I should see an option to add a new attribute") do
+  expect(page).to have_content("Add Attribute")
+end
+
+# This step fills in the attribute name field
+When("I enter {string} as the attribute name") do |attribute_name|
+  fill_in "Attribute Name", with: attribute_name
+end
+
+# This step selects the attribute type from a dropdown
+When("I select {string} as the attribute type") do |attribute_type|
+  select attribute_type, from: "attribute_type"
+end
+
+# This step fills in the minimum value for a scale attribute
+# It also waits for the field to become visible (important for JavaScript-driven forms)
+When("I enter {string} as the minimum value") do |min_value|
+  expect(page).to have_field("Minimum Value", visible: true)
+  fill_in "Minimum Value", with: min_value
+end
+
+# This step fills in the maximum value for a scale attribute
+# It also waits for the field to become visible (important for JavaScript-driven forms)
+When("I enter {string} as the maximum value") do |max_value|
+  expect(page).to have_field("Maximum Value", visible: true)
+  fill_in "Maximum Value", with: max_value
+end
+
+# This step submits the new attribute form
+When("I submit the new attribute") do
+  click_button "Save Attribute"
+end
+
+# This step checks if the newly added attribute is listed on the form
+Then("I should see {string} listed as an attribute on the form") do |attribute_name|
+  expect(page).to have_content(attribute_name)
+end
+
+# This step checks for a success message after adding an attribute
+Then("I should see a success message") do
+  expect(page).to have_content("Attribute was successfully added to the form.")
+end
+
+# This step verifies that the attribute is saved in the database
+Then("the attribute {string} should be saved in the database") do |attribute_name|
+  @form.reload  # Ensure we have the latest data from the database
+  attribute = @form.form_attributes.find_by(name: attribute_name)
+  expect(attribute).to be_present, "Attribute '#{attribute_name}' was not found in the database"
+end
+
+# This step checks if a scale attribute has the correct min and max values in the database
+Then("the attribute {string} should have a scale from {int} to {int}") do |attribute_name, min, max|
+  @form.reload  # Ensure we have the latest data from the database
+  attribute = @form.form_attributes.find_by(name: attribute_name)
+  expect(attribute).to be_present, "Attribute '#{attribute_name}' was not found in the database"
+  expect(attribute.field_type).to eq('scale'), "Attribute '#{attribute_name}' is not a scale type"
+  expect(attribute.min_value).to eq(min), "Minimum value for '#{attribute_name}' is incorrect"
+  expect(attribute.max_value).to eq(max), "Maximum value for '#{attribute_name}' is incorrect"
+end
+
+# This step creates an attribute associated with the current form
+Given("I have created an attribute {string} with weightage {string}") do |attribute_name, weightage|
+  @attribute = @form.form_attributes.create!(
+    name: attribute_name,
+    field_type: 'scale',
+    min_value: 1,
+    max_value: 10,
+    weightage: weightage.to_f
+  )
+end
+
+# This step navigates to the edit page of the previously created attribute
+When("I visit the edit page for the attribute") do
+  visit edit_attribute_path(@attribute) # Make sure you have the correct path helper
+end
+
+# This step fills in the weightage field
+When("I enter {string} as the new weightage") do |weightage|
+  fill_in "Weightage", with: weightage
+end
+
+# This step updates the weightage
+When("I update the weightage") do
+  click_button "Update Weightage"
+end
+
+Then("I should see the weightage updated to {string}") do |weightage|
+  @attribute.reload
+  expect(@attribute.weightage).to eq(weightage.to_f)
+  expect(page).to have_content("Weightage was successfully updated")
+end
