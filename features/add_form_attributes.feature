@@ -27,9 +27,17 @@ Feature: Add Specific Attributes
     Then the attribute "Team Leadership" should be saved in the database
     And the attribute "Team Leadership" should have a scale from 1 to 10
 
-  Scenario: Update weightage for an attribute
-    Given I have created an attribute "Team Leadership" with weightage "0.5"
-    When I visit the edit page for the form
-    And I enter "0.8" as the new weightage
-    And I update the weightage
-    Then I should see the weightage updated to "0.8"
+ Scenario: Update weightage for an attribute
+  Given I have created an attribute "Team Leadership" with weightage "0.5"
+  When I visit the edit page for the form
+  And I enter "0.8" as the new weightage
+  And I update the weightage
+  Then I should see the weightage updated to "0.8"
+
+Scenario: Attempt to update weightage exceeding total of 1
+  Given I have created an attribute "Team Leadership" with weightage "0.5"
+  And I have created an attribute "Communication Skills" with weightage "0.4"
+  When I visit the edit page for the form
+  And I enter "0.7" as the new weightage for "Team Leadership"
+  And I update the weightage
+  Then I should see an error message about exceeding total weightage

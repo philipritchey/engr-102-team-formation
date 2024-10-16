@@ -26,8 +26,15 @@ class AttributesController < ApplicationController
         if weightage_params[:weightage].nil?
             redirect_to edit_form_path(@form), alert: "Failed to update weightage."
         else
-            if @attribute.update(weightage_params)
-              redirect_to edit_form_path(@form), notice: "Weightage was successfully updated."
+            new_weightage = weightage_params[:weightage].to_f
+            current_total = @form.form_attributes.where.not(id: @attribute.id).sum(:weightage)
+            new_total = (current_total + new_weightage).round(1)
+            if new_total <= 1
+              if @attribute.update(weightage_params)
+                redirect_to edit_form_path(@form), notice: "Weightage was successfully updated."
+              end
+            else
+              redirect_to edit_form_path(@form), notice: "Total weightage would be #{new_total}. Weightages should sum to 1."
             end
         end
     end
@@ -74,14 +81,23 @@ class AttributesController < ApplicationController
         params.require(:attribute).permit(:name, :field_type, :min_value, :max_value, :options)
     end
 
+    # def weightage_params
+    #     params.require(:attribute).permit(:weightage).tap do |whitelisted|
+    #         if whitelisted[:weightage].present?
+    #           whitelisted[:weightage] = whitelisted[:weightage].to_f.round(1)
+    #           if whitelisted[:weightage] < 0.0 || whitelisted[:weightage] > 1.0
+    #             whitelisted[:weightage] = nil
+    #           end
+    #         end
+    #       end
+    # end
+
     def weightage_params
-        params.require(:attribute).permit(:weightage).tap do |whitelisted|
-            if whitelisted[:weightage].present?
-              whitelisted[:weightage] = whitelisted[:weightage].to_f
-              if whitelisted[:weightage] < 0.0 || whitelisted[:weightage] > 1.0
-                whitelisted[:weightage] = nil
-              end
-            end
-          end
+        weightage = params.require(:attribute).permit(:weightage)[:weightage]
+        if weightage.present?
+          parsed_weightage = weightage.to_f.round(1)
+          parsed_weightage = nil unless parsed_weightage.between?(0.0, 1.0)
+        end
+        { weightage: parsed_weightage }
     end
 end
