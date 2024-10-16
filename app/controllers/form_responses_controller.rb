@@ -12,7 +12,7 @@ class FormResponsesController < ApplicationController
       @form_response = @form.form_responses.find_or_initialize_by(uin: form_response_params[:uin])
 
       if @form_response.update(form_response_params)
-        redirect_to @form, notice: "Response submitted successfully."
+        render :success
       else
         flash.now[:alert] = "There was an error submitting your response."
         render :new
