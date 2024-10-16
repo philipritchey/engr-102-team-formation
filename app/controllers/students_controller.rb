@@ -14,7 +14,7 @@ class StudentsController < ApplicationController
   def create
     @student = Student.new(student_params)
     if @student.save
-      redirect_to @student, notice: 'Student was successfully created.'
+      redirect_to @student, notice: "Student was successfully created."
     else
       render :new
     end
@@ -27,7 +27,7 @@ class StudentsController < ApplicationController
   def update
     @student = Student.find_by(uin: params[:uin])
     if @student.update(student_params)
-      redirect_to @student, notice: 'Student was successfully updated.'
+      redirect_to @student, notice: "Student was successfully updated."
     else
       render :edit
     end
@@ -39,4 +39,3 @@ class StudentsController < ApplicationController
     params.require(:student).permit(:uin, :name, :email, :section)
   end
 end
-

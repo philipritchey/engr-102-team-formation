@@ -1,7 +1,7 @@
 # app/controllers/form_responses_controller.rb
 class FormResponsesController < ApplicationController
-  before_action :set_form_and_student, only: [:new, :create]
-  before_action :set_form_response, only: [:show, :edit, :update, :destroy]
+  before_action :set_form_and_student, only: [ :new, :create ]
+  before_action :set_form_response, only: [ :show, :edit, :update, :destroy ]
 
   # GET /form_responses
   # GET /forms/:form_id/form_responses
