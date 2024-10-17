@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/phanijyothi11/teamformation/team-formation-4/app/helpers/application_helper.rb": {
+      "/Users/udayreddy/team-formation/app/helpers/application_helper.rb": {
         "lines": [
           1,
           1,
@@ -15,13 +15,13 @@
           null
         ]
       },
-      "/home/phanijyothi11/teamformation/team-formation-4/app/helpers/attributes_helper.rb": {
+      "/Users/udayreddy/team-formation/app/helpers/attributes_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/phanijyothi11/teamformation/team-formation-4/app/helpers/forms_helper.rb": {
+      "/Users/udayreddy/team-formation/app/helpers/forms_helper.rb": {
         "lines": [
           1,
           1,
@@ -88,13 +88,13 @@
           null
         ]
       },
-      "/home/phanijyothi11/teamformation/team-formation-4/app/helpers/welcome_helper.rb": {
+      "/Users/udayreddy/team-formation/app/helpers/welcome_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "/home/phanijyothi11/teamformation/team-formation-4/app/controllers/application_controller.rb": {
+      "/Users/udayreddy/team-formation/app/controllers/application_controller.rb": {
         "lines": [
           null,
           null,
@@ -116,12 +116,12 @@
           1,
           null,
           null,
-          76,
+          79,
           null,
           null,
           null,
           1,
-          77,
+          80,
           null,
           null,
           2,
@@ -130,7 +130,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/teamformation/team-formation-4/app/controllers/attributes_controller.rb": {
+      "/Users/udayreddy/team-formation/app/controllers/attributes_controller.rb": {
         "lines": [
           null,
           1,
@@ -221,19 +221,49 @@
           null
         ]
       },
-      "/home/phanijyothi11/teamformation/team-formation-4/app/controllers/form_responses_controller.rb": {
+      "/Users/udayreddy/team-formation/app/controllers/form_responses_controller.rb": {
         "lines": [
           null,
           1,
           1,
-          null,
-          null,
-          1,
           1,
           null,
           null,
           null,
+          null,
           1,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          null,
+          2,
           2,
           null,
           2,
@@ -244,22 +274,58 @@
           null,
           null,
           null,
-          1,
           null,
           1,
-          5,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          1,
           null,
           2,
           2,
           null,
           null,
           1,
+          null,
+          null,
+          null,
+          1,
+          6,
           4,
+          null,
+          3,
+          3,
+          null,
+          null,
+          null,
+          null,
+          1,
+          2,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          1,
+          2,
           null,
           null
         ]
       },
-      "/home/phanijyothi11/teamformation/team-formation-4/app/controllers/forms_controller.rb": {
+      "/Users/udayreddy/team-formation/app/controllers/forms_controller.rb": {
         "lines": [
           null,
           null,
@@ -452,7 +518,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/teamformation/team-formation-4/app/controllers/sessions_controller.rb": {
+      "/Users/udayreddy/team-formation/app/controllers/sessions_controller.rb": {
         "lines": [
           1,
           1,
@@ -480,7 +546,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/teamformation/team-formation-4/app/controllers/users_controller.rb": {
+      "/Users/udayreddy/team-formation/app/controllers/users_controller.rb": {
         "lines": [
           null,
           null,
@@ -496,7 +562,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/teamformation/team-formation-4/app/controllers/welcome_controller.rb": {
+      "/Users/udayreddy/team-formation/app/controllers/welcome_controller.rb": {
         "lines": [
           1,
           1,
@@ -511,7 +577,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/teamformation/team-formation-4/app/models/attribute.rb": {
+      "/Users/udayreddy/team-formation/app/models/attribute.rb": {
         "lines": [
           null,
           1,
@@ -569,14 +635,14 @@
           null
         ]
       },
-      "/home/phanijyothi11/teamformation/team-formation-4/app/models/application_record.rb": {
+      "/Users/udayreddy/team-formation/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/home/phanijyothi11/teamformation/team-formation-4/app/models/user.rb": {
+      "/Users/udayreddy/team-formation/app/models/user.rb": {
         "lines": [
           1,
           1,
@@ -584,7 +650,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/teamformation/team-formation-4/app/models/form.rb": {
+      "/Users/udayreddy/team-formation/app/models/form.rb": {
         "lines": [
           null,
           null,
@@ -604,6 +670,7 @@
           null,
           1,
           1,
+          1,
           null,
           null,
           null,
@@ -619,15 +686,31 @@
           1,
           null,
           1,
-          91,
+          94,
           2,
           null,
           null,
           null
         ]
       },
-      "/home/phanijyothi11/teamformation/team-formation-4/app/models/form_response.rb": {
+      "/Users/udayreddy/team-formation/app/models/student.rb": {
         "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/udayreddy/team-formation/app/models/form_response.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
           1,
           1,
           1,
@@ -636,7 +719,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/teamformation/team-formation-4/app/channels/application_cable/channel.rb": {
+      "/Users/udayreddy/team-formation/app/channels/application_cable/channel.rb": {
         "lines": [
           0,
           0,
@@ -646,7 +729,7 @@
         "branches": {
         }
       },
-      "/home/phanijyothi11/teamformation/team-formation-4/app/channels/application_cable/connection.rb": {
+      "/Users/udayreddy/team-formation/app/channels/application_cable/connection.rb": {
         "lines": [
           0,
           0,
@@ -656,7 +739,54 @@
         "branches": {
         }
       },
-      "/home/phanijyothi11/teamformation/team-formation-4/app/jobs/application_job.rb": {
+      "/Users/udayreddy/team-formation/app/controllers/students_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/udayreddy/team-formation/app/jobs/application_job.rb": {
         "lines": [
           0,
           null,
@@ -669,7 +799,7 @@
         "branches": {
         }
       },
-      "/home/phanijyothi11/teamformation/team-formation-4/app/mailers/application_mailer.rb": {
+      "/Users/udayreddy/team-formation/app/mailers/application_mailer.rb": {
         "lines": [
           0,
           0,
@@ -680,6 +810,6 @@
         }
       }
     },
-    "timestamp": 1728690013
+    "timestamp": 1729047116
   }
 }
