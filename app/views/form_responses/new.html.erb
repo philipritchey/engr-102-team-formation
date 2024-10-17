@@ -1,12 +1,7 @@
 <!-- app/views/form_responses/new.html.erb -->
 <h1>Submit Response for <%= @form.name %></h1>
 
-<%= form_with(model: [@form, @form_response], local: true) do |f| %>
-  <div>
-    <%= f.label :uin, "UIN" %>
-    <%= f.text_field :uin, required: true %>
-  </div>
-  <br>
+<%= form_with(model: [@form, @student, @form_response], local: true) do |f| %>
   <% @form.form_attributes.each do |attribute| %>
     <div>
       <%= label_tag "form_response_responses_#{attribute.id}", attribute.name %>
