@@ -42,12 +42,15 @@ class FormResponsesController < ApplicationController
     @form_response.student = @student
 
     if @form_response.valid? && @form_response.save
-      redirect_to @form, notice: "Response submitted successfully."
+      # redirect_to @form, notice: "Response submitted successfully."
+      render :success
     else
       flash.now[:alert] = "There was an error submitting your response."
       render :new
     end
   end
+
+
 
   # GET /form_responses/:id/edit
   def edit

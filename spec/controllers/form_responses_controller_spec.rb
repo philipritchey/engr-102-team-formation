@@ -39,8 +39,7 @@ RSpec.describe FormResponsesController, type: :controller do
         expect {
           post :create, params: { form_id: form.id, student_id: student.id, form_response: valid_attributes }
         }.to change(FormResponse, :count).by(1)
-        expect(response).to redirect_to(form)
-        expect(flash[:notice]).to eq("Response submitted successfully.")
+        expect(response).to render_template(:success)
       end
     end
 
