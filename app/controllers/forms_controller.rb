@@ -207,10 +207,10 @@ class FormsController < ApplicationController
       # The 'includes(:student)' eager loads the associated student data to avoid N+1 queries
       # The result is a hash where keys are section names and values are arrays of form responses
       sections = @form.form_responses.includes(:student).group_by { |response| response.student.section }
-      
+
       # Initialize an empty hash to store the team distribution for each section
       team_distribution = {}
-      
+
       # Iterate over each section and its responses
       sections.each do |section, responses|
         # Count the total number of students (responses) in this section
@@ -225,19 +225,19 @@ class FormsController < ApplicationController
         # Determine the final number of teams of 4 based on the remainder
         # We adjust this to allow for teams of 3 when necessary
         teams_of_4 = case remainder
-                     when 0 then base_teams     # If no remainder, all teams are of size 4
-                     when 1 then base_teams - 2 # If remainder 1, we need 3 teams of 3
-                     when 2 then base_teams - 1 # If remainder 2, we need 2 teams of 3
-                     when 3 then base_teams     # If remainder 3, we need 1 team of 3
-                     end
+        when 0 then base_teams     # If no remainder, all teams are of size 4
+        when 1 then base_teams - 2 # If remainder 1, we need 3 teams of 3
+        when 2 then base_teams - 1 # If remainder 2, we need 2 teams of 3
+        when 3 then base_teams     # If remainder 3, we need 1 team of 3
+        end
 
         # Determine the number of teams of 3 based on the remainder
         teams_of_3 = case remainder
-                     when 0 then 0 # No teams of 3 if perfectly divisible by 4
-                     when 1 then 3 # 3 teams of 3 if remainder is 1
-                     when 2 then 2 # 2 teams of 3 if remainder is 2
-                     when 3 then 1 # 1 team of 3 if remainder is 3
-                     end
+        when 0 then 0 # No teams of 3 if perfectly divisible by 4
+        when 1 then 3 # 3 teams of 3 if remainder is 1
+        when 2 then 2 # 2 teams of 3 if remainder is 2
+        when 3 then 1 # 1 team of 3 if remainder is 3
+        end
 
         # Store the calculated distribution for this section
         team_distribution[section] = {

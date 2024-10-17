@@ -401,11 +401,11 @@ RSpec.describe FormsController, type: :controller do
   describe "POST #publish" do
     it "updates the form to published state when it can be published" do
       allow_any_instance_of(Form).to receive(:can_publish?).and_return(true)
-      
+
       expect {
         post :publish, params: { id: form.id }
       }.to change { form.reload.published }.from(false).to(true)
-      
+
       expect(response).to redirect_to(form)
       expect(flash[:notice]).to eq("Form was successfully published.")
     end
@@ -414,11 +414,11 @@ RSpec.describe FormsController, type: :controller do
       allow_any_instance_of(Form).to receive(:can_publish?).and_return(false)
       allow_any_instance_of(Form).to receive(:has_attributes?).and_return(false)
       allow_any_instance_of(Form).to receive(:has_associated_students?).and_return(false)
-      
+
       expect {
         post :publish, params: { id: form.id }
       }.not_to change { form.reload.published }
-      
+
       expect(response).to redirect_to(form)
       expect(flash[:alert]).to eq("Form cannot be published. Reasons: no attributes, no associated students.")
     end
