@@ -1,7 +1,7 @@
 FactoryBot.define do
     factory :form_response do
-      association :form
-      uin { "123456789" }
-      responses { {} }
+      form
+      student
+      responses { { "question1" => "answer1", "question2" => "answer2" } }
     end
 end
