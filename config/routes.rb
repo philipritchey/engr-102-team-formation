@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       get "preview"
       get "duplicate"
       patch "update_deadline"
+      post "publish"
     end
     resources :attributes do
       member do
