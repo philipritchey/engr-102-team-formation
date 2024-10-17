@@ -80,23 +80,34 @@ Given("I have created an attribute {string} with weightage {string}") do |attrib
   )
 end
 
-# This step navigates to the edit page of the previously created attribute
-When("I visit the edit page for the attribute") do
-  visit edit_attribute_path(@attribute) # Make sure you have the correct path helper
+When("I enter {string} as the new weightage") do |weightage|
+  @attribute ||= @form.form_attributes.last
+  within("form[action='#{update_weightage_form_attribute_path(@form, @attribute)}']") do
+    fill_in "attribute[weightage]", with: weightage
+  end
 end
 
-# This step fills in the weightage field
-When("I enter {string} as the new weightage") do |weightage|
-  fill_in "Weightage", with: weightage
+When("I enter {string} as the new weightage for {string}") do |weightage, attribute_name|
+  @attribute = @form.form_attributes.find_by(name: attribute_name)
+  within("form[action='#{update_weightage_form_attribute_path(@form, @attribute)}']") do
+    fill_in "attribute[weightage]", with: weightage
+  end
 end
 
 # This step updates the weightage
 When("I update the weightage") do
-  click_button "Update Weightage"
+  within("form[action='#{update_weightage_form_attribute_path(@form, @attribute)}']") do
+    click_button "Update Weightage"
+  end
 end
 
 Then("I should see the weightage updated to {string}") do |weightage|
   @attribute.reload
   expect(@attribute.weightage).to eq(weightage.to_f)
-  expect(page).to have_content("Weightage was successfully updated")
+  expect(page).to have_content("Weightage was successfully updated.")
+end
+
+Then("I should see an error message about exceeding total weightage") do
+  expect(page).to have_content("Total weightage would be")
+  expect(page).to have_content("Weightages should sum to 1")
 end
