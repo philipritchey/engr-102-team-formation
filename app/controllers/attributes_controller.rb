@@ -13,6 +13,11 @@ class AttributesController < ApplicationController
         # Build a new attribute associated with the form, using permitted parameters
         @attribute = @form.form_attributes.build(attribute_params)
 
+        if params[:attribute][:field_type] == "mcq"
+            mcq_options = params[:mcq_options].reject(&:blank?) # Remove blank options
+            @attribute.options = mcq_options.join(",") unless mcq_options.empty?
+        end
+
         if @attribute.save
             # If save is successful, redirect to the form's edit page with a success notice
             redirect_to edit_form_path(@form), notice: "Attribute was successfully added."
