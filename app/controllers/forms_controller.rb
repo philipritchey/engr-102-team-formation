@@ -6,7 +6,7 @@ class FormsController < ApplicationController
   require "roo"
 
   # Set @form instance variable for show, edit, update, and destroy actions
-  before_action :set_form, only: %i[ show edit update destroy update_deadline ]
+  before_action :set_form, only: %i[ show edit update destroy update_deadline publish ]
 
   # GET /forms
   def index
@@ -166,7 +166,38 @@ class FormsController < ApplicationController
     end
   end
 
+  # POST /forms/1/publish
+  def publish
+    if @form.can_publish?
+      publish_form
+    else
+      handle_publish_error
+    end
+  end
+  
+  
   private
+    def publish_form
+      if @form.update(published: true)
+        redirect_to @form, notice: "Form was successfully published."
+      else
+        redirect_to @form, alert: "Failed to publish the form."
+      end
+    end
+  
+    def handle_publish_error
+      reasons = collect_error_reasons
+      flash[:alert] = "Form cannot be published. Reasons: #{reasons.join(', ')}."
+      redirect_to @form
+    end
+  
+    def collect_error_reasons
+      reasons = []
+      reasons << "no attributes" unless @form.has_attributes?
+      reasons << "no associated students" unless @form.has_associated_students?
+      reasons
+    end
+    
     # Sets @form instance variable based on the id parameter
     # Only finds forms belonging to the current user for security
     def set_form
@@ -185,5 +216,51 @@ class FormsController < ApplicationController
 
     def deadline_params
       params.require(:form).permit(:deadline)
+    end
+
+    def calculate_teams
+      # Fetch all form responses for this form and group them by the student's section
+      # The 'includes(:student)' eager loads the associated student data to avoid N+1 queries
+      # The result is a hash where keys are section names and values are arrays of form responses
+      sections = @form.form_responses.includes(:student).group_by { |response| response.student.section }
+
+      # Initialize an empty hash to store the team distribution for each section
+      team_distribution = {}
+
+      # Iterate over each section and its responses
+      sections.each do |section, responses|
+        # Count the total number of students (responses) in this section
+        total_students = responses.count
+
+        # Calculate the base number of teams of 4 we can form
+        base_teams = total_students / 4
+
+        # Calculate how many students are left over after forming teams of 4
+        remainder = total_students % 4
+
+        # Determine the final number of teams of 4 based on the remainder
+        # We adjust this to allow for teams of 3 when necessary
+        teams_of_4 = case remainder
+        when 0 then base_teams     # If no remainder, all teams are of size 4
+        when 1 then base_teams - 2 # If remainder 1, we need 3 teams of 3
+        when 2 then base_teams - 1 # If remainder 2, we need 2 teams of 3
+        when 3 then base_teams     # If remainder 3, we need 1 team of 3
+        end
+
+        teams_of_3 = remainder.zero? ? 0 : 4 - remainder
+
+        # Store the calculated distribution for this section
+        team_distribution[section] = {
+          total_students: total_students,  # Total number of students in this section
+          teams_of_4: teams_of_4,          # Number of teams with 4 members
+          teams_of_3: teams_of_3,          # Number of teams with 3 members
+          total_teams: teams_of_4 + teams_of_3,  # Total number of teams in this section
+          form_responses: responses        # Array of form response objects for this section
+        }
+      end
+
+      # Return the complete team distribution hash
+      # This hash contains the team distribution data for all sections
+      team_distribution
     end
 end
