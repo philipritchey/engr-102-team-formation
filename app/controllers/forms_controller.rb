@@ -169,19 +169,35 @@ class FormsController < ApplicationController
   # POST /forms/1/publish
   def publish
     if @form.can_publish?
+      publish_form
+    else
+      handle_publish_error
+    end
+  end
+  
+  
+  private
+    def publish_form
       if @form.update(published: true)
         redirect_to @form, notice: "Form was successfully published."
+      else
+        redirect_to @form, alert: "Failed to publish the form."
       end
-    else
-      reasons = []
-      reasons << "no attributes" unless @form.has_attributes?
-      reasons << "no associated students" unless @form.has_associated_students?
+    end
+  
+    def handle_publish_error
+      reasons = collect_error_reasons
       flash[:alert] = "Form cannot be published. Reasons: #{reasons.join(', ')}."
       redirect_to @form
     end
-  end
-
-  private
+  
+    def collect_error_reasons
+      reasons = []
+      reasons << "no attributes" unless @form.has_attributes?
+      reasons << "no associated students" unless @form.has_associated_students?
+      reasons
+    end
+    
     # Sets @form instance variable based on the id parameter
     # Only finds forms belonging to the current user for security
     def set_form
@@ -231,13 +247,7 @@ class FormsController < ApplicationController
         when 3 then base_teams     # If remainder 3, we need 1 team of 3
         end
 
-        # Determine the number of teams of 3 based on the remainder
-        teams_of_3 = case remainder
-        when 0 then 0 # No teams of 3 if perfectly divisible by 4
-        when 1 then 3 # 3 teams of 3 if remainder is 1
-        when 2 then 2 # 2 teams of 3 if remainder is 2
-        when 3 then 1 # 1 team of 3 if remainder is 3
-        end
+        teams_of_3 = remainder.zero? ? 0 : 4 - remainder
 
         # Store the calculated distribution for this section
         team_distribution[section] = {
