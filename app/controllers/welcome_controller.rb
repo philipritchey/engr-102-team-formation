@@ -3,7 +3,7 @@ class WelcomeController < ApplicationController
     def index
         if logged_in?
           if current_user
-            redirect_to user_path(current_user), notice: "Welcome back!"
+            redirect_to user_path(current_user), notice: "Welcome, back!"
           elsif current_student
             redirect_to student_path(current_student), notice: "Welcome back, Student!"
           end
