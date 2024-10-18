@@ -130,7 +130,7 @@ RSpec.describe AttributesController, type: :controller do
   end
 
   describe "PATCH #update_weightage" do
-  let!(:attribute) { create(:attribute, form: form, weightage: 0.5) } # Existing attribute with a weightage
+  let!(:attribute) { create(:attribute, form: form, weightage: 0.5) }
 
   context "with valid params" do
     it "updates the weightage" do
@@ -150,16 +150,37 @@ RSpec.describe AttributesController, type: :controller do
     end
   end
 
+  context "when total weightage would exceed 1" do
+    let!(:another_attribute) { create(:attribute, form: form, weightage: 0.4) }
+
+    it "does not update the weightage" do
+      expect {
+        patch :update_weightage, params: { form_id: form.id, id: attribute.id, attribute: { weightage: 0.7 } }
+      }.not_to change { attribute.reload.weightage }
+    end
+
+    it "redirects to the form edit page" do
+      patch :update_weightage, params: { form_id: form.id, id: attribute.id, attribute: { weightage: 0.7 } }
+      expect(response).to redirect_to(edit_form_path(form))
+    end
+
+    it "sets a notice about exceeding total weightage" do
+      patch :update_weightage, params: { form_id: form.id, id: attribute.id, attribute: { weightage: 0.7 } }
+      expect(flash[:notice]).to include("Total weightage would be")
+      expect(flash[:notice]).to include("Weightages should sum to 1")
+    end
+  end
+
   context "with invalid params" do
     it "does not update the weightage if out of range" do
-      patch :update_weightage, params: { form_id: form.id, id: attribute.id, attribute: { weightage: 1.5 } }
-      attribute.reload
-      expect(attribute.weightage).to eq(0.5) # Should not change
+      expect {
+        patch :update_weightage, params: { form_id: form.id, id: attribute.id, attribute: { weightage: 1.5 } }
+      }.not_to change { attribute.reload.weightage }
     end
 
     it "redirects to the form edit page" do
       patch :update_weightage, params: { form_id: form.id, id: attribute.id, attribute: { weightage: 1.5 } }
-      expect(flash[:alert]).to eq("Failed to update weightage.")
+      expect(response).to redirect_to(edit_form_path(form))
     end
 
     it "sets an alert message for invalid weightage" do
