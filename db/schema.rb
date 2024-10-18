@@ -42,7 +42,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_16_225834) do
     t.datetime "updated_at", null: false
     t.datetime "deadline"
     t.integer "user_id", null: false
-    t.datetime "deadline"
     t.boolean "published"
   end
 
