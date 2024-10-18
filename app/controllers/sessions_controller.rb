@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user), notice: "You are logged in."
     elsif @student
-      session[:student_id] = @student.id   
+      session[:student_id] = @student.id
       redirect_to student_path(@student), notice: "Logged in as Student"
     else
       redirect_to welcome_path, alert: "Login failed: User not found."

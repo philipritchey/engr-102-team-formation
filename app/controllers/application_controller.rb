@@ -3,7 +3,7 @@
 class ApplicationController < ActionController::Base
   # Include necessary modules and set up before actions
   before_action :require_login
-  helper_method :current_user,:current_student, :logged_in?
+  helper_method :current_user, :current_student, :logged_in?
 
   private
 
