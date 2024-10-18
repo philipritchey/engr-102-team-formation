@@ -2,7 +2,7 @@ require "jwt"
 Rails.application.config.middleware.use OmniAuth::Builder do
     begin
     # Retrieve the Google credentials from Rails credentials
-    # google_credentials = Rails.application.credentials.google
+    google_credentials = Rails.application.credentials.google
 
     # Configure the Google OAuth provider with the client_id and client_secret
     provider :google_oauth2, google_credentials[:client_id], google_credentials[:client_secret], {
