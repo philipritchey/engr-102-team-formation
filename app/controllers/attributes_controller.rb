@@ -12,8 +12,7 @@ class AttributesController < ApplicationController
         @attribute = @form.form_attributes.build(attribute_params)
 
         if params[:attribute][:field_type] == "mcq"
-            mcq_options = params[:mcq_options]
-            mcq_options = mcq_options.reject(&:blank?)
+            mcq_options = params[:mcq_options].reject(&:blank?)
             @attribute.options = mcq_options.join(",") unless mcq_options.empty?
         end
 
