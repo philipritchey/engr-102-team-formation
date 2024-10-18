@@ -1,107 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/Sprint2/team-formation/app/helpers/application_helper.rb": {
-        "lines": [
-          1,
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          null,
-          null
-        ]
-      },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/Sprint2/team-formation/app/helpers/attributes_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/Sprint2/team-formation/app/helpers/forms_helper.rb": {
-        "lines": [
-          1,
-          1,
-          6,
-          0,
-          0,
-          null,
-          null,
-          6,
-          6,
-          6,
-          6,
-          null,
-          6,
-          1,
-          1,
-          null,
-          null,
-          5,
-          null,
-          null,
-          1,
-          6,
-          null,
-          6,
-          null,
-          null,
-          5,
-          1,
-          1,
-          null,
-          null,
-          null,
-          4,
-          0,
-          0,
-          null,
-          null,
-          null,
-          4,
-          4,
-          1,
-          1,
-          null,
-          null,
-          null,
-          3,
-          3,
-          1,
-          1,
-          null,
-          null,
-          2,
-          1,
-          1,
-          null,
-          null,
-          null,
-          1,
-          null,
-          null,
-          null,
-          null,
-          1,
-          4,
-          null,
-          null,
-          1,
-          2,
-          null,
-          null
-        ]
-      },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/Sprint2/team-formation/app/helpers/welcome_helper.rb": {
-        "lines": [
-          1,
-          null
-        ]
-      },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/Sprint2/team-formation/app/controllers/application_controller.rb": {
+      "/Users/hithamv/Desktop/SEProject/team-formation/app/controllers/application_controller.rb": {
         "lines": [
           null,
           null,
@@ -142,7 +42,7 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/Sprint2/team-formation/app/controllers/attributes_controller.rb": {
+      "/Users/hithamv/Desktop/SEProject/team-formation/app/controllers/attributes_controller.rb": {
         "lines": [
           null,
           1,
@@ -279,7 +179,7 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/Sprint2/team-formation/app/controllers/form_responses_controller.rb": {
+      "/Users/hithamv/Desktop/SEProject/team-formation/app/controllers/form_responses_controller.rb": {
         "lines": [
           null,
           1,
@@ -386,7 +286,7 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/Sprint2/team-formation/app/controllers/forms_controller.rb": {
+      "/Users/hithamv/Desktop/SEProject/team-formation/app/controllers/forms_controller.rb": {
         "lines": [
           null,
           null,
@@ -675,7 +575,7 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/Sprint2/team-formation/app/controllers/sessions_controller.rb": {
+      "/Users/hithamv/Desktop/SEProject/team-formation/app/controllers/sessions_controller.rb": {
         "lines": [
           1,
           1,
@@ -706,7 +606,7 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/Sprint2/team-formation/app/controllers/students_controller.rb": {
+      "/Users/hithamv/Desktop/SEProject/team-formation/app/controllers/students_controller.rb": {
         "lines": [
           1,
           1,
@@ -757,7 +657,7 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/Sprint2/team-formation/app/controllers/users_controller.rb": {
+      "/Users/hithamv/Desktop/SEProject/team-formation/app/controllers/users_controller.rb": {
         "lines": [
           null,
           null,
@@ -773,7 +673,7 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/Sprint2/team-formation/app/controllers/welcome_controller.rb": {
+      "/Users/hithamv/Desktop/SEProject/team-formation/app/controllers/welcome_controller.rb": {
         "lines": [
           1,
           1,
@@ -792,7 +692,7 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/Sprint2/team-formation/app/models/attribute.rb": {
+      "/Users/hithamv/Desktop/SEProject/team-formation/app/models/attribute.rb": {
         "lines": [
           null,
           1,
@@ -850,14 +750,14 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/Sprint2/team-formation/app/models/application_record.rb": {
+      "/Users/hithamv/Desktop/SEProject/team-formation/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/Sprint2/team-formation/app/models/form.rb": {
+      "/Users/hithamv/Desktop/SEProject/team-formation/app/models/form.rb": {
         "lines": [
           null,
           null,
@@ -910,14 +810,14 @@
           1,
           null,
           1,
-          163,
+          165,
           3,
           null,
           null,
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/Sprint2/team-formation/app/models/user.rb": {
+      "/Users/hithamv/Desktop/SEProject/team-formation/app/models/user.rb": {
         "lines": [
           1,
           1,
@@ -925,7 +825,7 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/Sprint2/team-formation/app/models/student.rb": {
+      "/Users/hithamv/Desktop/SEProject/team-formation/app/models/student.rb": {
         "lines": [
           1,
           1,
@@ -937,7 +837,7 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/Sprint2/team-formation/app/models/form_response.rb": {
+      "/Users/hithamv/Desktop/SEProject/team-formation/app/models/form_response.rb": {
         "lines": [
           1,
           1,
@@ -950,51 +850,8 @@
           1,
           null
         ]
-      },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/Sprint2/team-formation/app/channels/application_cable/channel.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/Sprint2/team-formation/app/channels/application_cable/connection.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/Sprint2/team-formation/app/jobs/application_job.rb": {
-        "lines": [
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          0
-        ],
-        "branches": {
-        }
-      },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/Sprint2/team-formation/app/mailers/application_mailer.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {
-        }
       }
     },
-    "timestamp": 1729262800
+    "timestamp": 1729273269
   }
 }
