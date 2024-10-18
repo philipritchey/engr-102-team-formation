@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_04_224030) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_16_225834) do
   create_table "attributes", force: :cascade do |t|
     t.string "name"
     t.string "field_type"
@@ -25,12 +25,14 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_04_224030) do
   end
 
   create_table "form_responses", force: :cascade do |t|
-    t.string "uin", null: false
     t.integer "form_id", null: false
     t.text "responses", default: "{}", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "student_id", null: false
     t.index ["form_id"], name: "index_form_responses_on_form_id"
+    t.index ["student_id", "form_id"], name: "index_form_responses_on_student_id_and_form_id", unique: true
+    t.index ["student_id"], name: "index_form_responses_on_student_id"
   end
 
   create_table "forms", force: :cascade do |t|
@@ -40,6 +42,17 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_04_224030) do
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
     t.datetime "deadline"
+    t.boolean "published"
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.string "uin"
+    t.string "name"
+    t.string "email"
+    t.string "section"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["uin"], name: "index_students_on_uin"
   end
 
   create_table "users", force: :cascade do |t|
@@ -51,5 +64,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_04_224030) do
 
   add_foreign_key "attributes", "forms"
   add_foreign_key "form_responses", "forms"
+  add_foreign_key "form_responses", "students"
   add_foreign_key "forms", "users"
 end

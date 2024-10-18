@@ -10,18 +10,33 @@
   </head>
 
   <body>
-    <% if flash[:notice] %>
-      <div class="alert alert-success">
-        <%= flash[:notice] %>
-      </div>
-    <% end %>
+    <div id="flash-messages">
+      <% flash.each do |type, message| %>
+        <div class="alert <%= type == 'alert' ? 'alert-danger' : 'alert-success' %> fade show" role="alert">
+          <%= message %>
+        </div>
+      <% end %>
+    </div>
 
     <%= yield %>
 
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         console.log("DOM loaded");
-        console.log("Flash notice in JS:", "<%= flash[:notice] %>");
+        <% flash.each do |type, message| %>
+          console.log("Flash <%= type %> in JS:", "<%= j message %>");
+        <% end %>
+
+        // Function to remove flash messages
+        function removeFlashMessages() {
+          var flashMessages = document.getElementById('flash-messages');
+          if (flashMessages) {
+            flashMessages.innerHTML = '';
+          }
+        }
+
+        // Set timeout to remove flash messages after 2 seconds
+        setTimeout(removeFlashMessages, 2000);
       });
     </script>
   </body>

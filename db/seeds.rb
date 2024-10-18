@@ -7,3 +7,18 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+
+
+# Create a form response
+FormResponse.create!(
+  form: Form.find(30),
+  student: Student.find(1),
+  responses: {}.to_json
+)
+FormResponse.create!(
+  form: Form.find(30),
+  student: Student.find(2),
+  responses: {}.to_json
+)
+puts "New seed data created successfully!"

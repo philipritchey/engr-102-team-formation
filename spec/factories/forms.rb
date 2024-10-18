@@ -14,6 +14,8 @@ FactoryBot.define do
     # Set a default description for the form
     # This can be overridden in individual tests if needed
     description { "This is a test form" }
+    # Set the published attribute to false by default
+    published { false }
 
     # Note: You can add more attributes or traits here if needed
     # For example:

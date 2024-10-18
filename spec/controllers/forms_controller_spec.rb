@@ -5,17 +5,13 @@
 require 'rails_helper'
 
 RSpec.describe FormsController, type: :controller do
-  # Create a user and a form for testing
-  let!(:user) { create(:user) }
-  let(:form) { create(:form, user: user) }
+  let(:user) { create(:user) }
+  let(:form) { create(:form, user: user, published: false) }
 
   before do
-    # Simulate a logged-in user for all tests
     session[:user_id] = user.id
-    # Allow the controller to find the current user
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
   end
-
 
   describe "GET #upload" do
     it "returns a success response" do
@@ -398,6 +394,197 @@ RSpec.describe FormsController, type: :controller do
 
         expect(response).to redirect_to(edit_form_path(@original_form))
         expect(flash[:alert]).to eq("Failed to duplicate the form.")
+      end
+    end
+  end
+
+  describe "POST #publish" do
+    it "updates the form to published state when it can be published" do
+      allow_any_instance_of(Form).to receive(:can_publish?).and_return(true)
+
+      expect {
+        post :publish, params: { id: form.id }
+      }.to change { form.reload.published }.from(false).to(true)
+
+      expect(response).to redirect_to(form)
+      expect(flash[:notice]).to eq("Form was successfully published.")
+    end
+
+    it "does not publish the form and shows an error when it cannot be published" do
+      allow_any_instance_of(Form).to receive(:can_publish?).and_return(false)
+      allow_any_instance_of(Form).to receive(:has_attributes?).and_return(false)
+      allow_any_instance_of(Form).to receive(:has_associated_students?).and_return(false)
+
+      expect {
+        post :publish, params: { id: form.id }
+      }.not_to change { form.reload.published }
+
+      expect(response).to redirect_to(form)
+      expect(flash[:alert]).to eq("Form cannot be published. Reasons: no attributes, no associated students.")
+    end
+  end
+
+  describe '#calculate_teams' do
+    let(:form) { create(:form, user: user) }
+
+    def create_responses(section, count)
+      count.times do
+        student = create(:student, section: section)
+        create(:form_response, form: form, student: student)
+      end
+    end
+
+    # Helper method to set @form
+    def set_form
+      controller.instance_variable_set(:@form, form)
+    end
+
+    context 'when there are no responses' do
+      before { set_form }
+
+      it 'returns an empty hash' do
+        result = controller.send(:calculate_teams)
+        expect(result).to eq({})
+      end
+    end
+
+    context 'when there are responses in multiple sections' do
+      before do
+        create_responses('Section A', 16)
+        create_responses('Section B', 14)
+        create_responses('Section C', 11)
+        set_form
+      end
+
+      it 'calculates teams correctly for each section' do
+        result = controller.send(:calculate_teams)
+
+        expect(result.keys).to contain_exactly('Section A', 'Section B', 'Section C')
+
+        expect(result['Section A']).to include(
+          total_students: 16,
+          teams_of_4: 4,
+          teams_of_3: 0,
+          total_teams: 4
+        )
+
+        expect(result['Section B']).to include(
+          total_students: 14,
+          teams_of_4: 2,
+          teams_of_3: 2,
+          total_teams: 4
+        )
+
+        expect(result['Section C']).to include(
+          total_students: 11,
+          teams_of_4: 2,
+          teams_of_3: 1,
+          total_teams: 3
+        )
+      end
+
+      it 'includes form responses for each section' do
+        result = controller.send(:calculate_teams)
+
+        expect(result['Section A'][:form_responses].count).to eq(16)
+        expect(result['Section B'][:form_responses].count).to eq(14)
+        expect(result['Section C'][:form_responses].count).to eq(11)
+      end
+    end
+
+    context 'when there are exactly 4 students in a section' do
+      before do
+        create_responses('Section A', 4)
+        set_form
+      end
+
+      it 'creates one team of 4' do
+        result = controller.send(:calculate_teams)
+
+        expect(result['Section A']).to include(
+          total_students: 4,
+          teams_of_4: 1,
+          teams_of_3: 0,
+          total_teams: 1
+        )
+      end
+    end
+
+    context 'when there are 7 students in a section' do
+      before do
+        create_responses('Section A', 7)
+        set_form
+      end
+
+      it 'creates one team of 4 and one team of 3' do
+        result = controller.send(:calculate_teams)
+
+        expect(result['Section A']).to include(
+          total_students: 7,
+          teams_of_4: 1,
+          teams_of_3: 1,
+          total_teams: 2
+        )
+      end
+    end
+
+    context 'when there is a large number of students' do
+      before do
+        create_responses('Section A', 101)
+        set_form
+      end
+
+      it 'correctly calculates teams for a large group' do
+        result = controller.send(:calculate_teams)
+
+        expect(result['Section A']).to include(
+          total_students: 101,
+          teams_of_4: 23,
+          teams_of_3: 3,
+          total_teams: 26
+        )
+      end
+    end
+  end
+
+  describe 'POST #close' do
+    let(:published_form) { create(:form, user: user, published: true) }
+
+    context 'when the form is successfully closed' do
+      it 'updates the form to unpublished' do
+        post :close, params: { id: published_form.id }
+        expect(published_form.reload.published).to be false
+      end
+
+      it 'redirects to the form page' do
+        post :close, params: { id: published_form.id }
+        expect(response).to redirect_to(published_form)
+      end
+
+      it 'sets a success notice' do
+        post :close, params: { id: published_form.id }
+        expect(flash[:notice]).to eq('Form was successfully closed.')
+      end
+    end
+
+    context 'when the form fails to close' do
+      before do
+        allow_any_instance_of(Form).to receive(:update).and_return(false)
+      end
+
+      it 'does not update the form' do
+        post :close, params: { id: published_form.id }
+        expect(published_form.reload.published).to be true
+      end
+
+      it 'redirects to the form page' do
+        post :close, params: { id: published_form.id }
+        expect(response).to redirect_to(published_form)
+      end
+
+      it 'sets an alert message' do
+        post :close, params: { id: published_form.id }
+        expect(flash[:alert]).to eq('Failed to close the form.')
       end
     end
   end

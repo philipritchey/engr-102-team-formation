@@ -23,13 +23,12 @@ class AttributesController < ApplicationController
     end
 
     def update_weightage
-        if weightage_params[:weightage].nil?
-            redirect_to edit_form_path(@form), alert: "Failed to update weightage."
-        else
-            if @attribute.update(weightage_params)
-              redirect_to edit_form_path(@form), notice: "Weightage was successfully updated."
-            end
-        end
+        return redirect_with_error unless weightage_params[:weightage].present?
+
+        new_weightage = calculate_new_weightage
+        return redirect_with_total_exceeded_message(new_weightage) if exceeds_total_limit?(new_weightage)
+
+        update_and_redirect
     end
 
     # DELETE /forms/:form_id/attributes/:id
@@ -74,14 +73,60 @@ class AttributesController < ApplicationController
         params.require(:attribute).permit(:name, :field_type, :min_value, :max_value, :options)
     end
 
+    # def weightage_params
+    #     params.require(:attribute).permit(:weightage).tap do |whitelisted|
+    #         if whitelisted[:weightage].present?
+    #           whitelisted[:weightage] = whitelisted[:weightage].to_f.round(1)
+    #           if whitelisted[:weightage] < 0.0 || whitelisted[:weightage] > 1.0
+    #             whitelisted[:weightage] = nil
+    #           end
+    #         end
+    #       end
+    # end
+
     def weightage_params
-        params.require(:attribute).permit(:weightage).tap do |whitelisted|
-            if whitelisted[:weightage].present?
-              whitelisted[:weightage] = whitelisted[:weightage].to_f
-              if whitelisted[:weightage] < 0.0 || whitelisted[:weightage] > 1.0
-                whitelisted[:weightage] = nil
-              end
-            end
-          end
+        parsed_weightage = parse_weightage(raw_weightage)
+        { weightage: parsed_weightage }
+    end
+
+    def redirect_with_error
+        redirect_to edit_form_path(@form), alert: "Failed to update weightage."
+    end
+
+    def calculate_new_weightage
+        current_total = @form.form_attributes.where.not(id: @attribute.id).sum(:weightage)
+        new_weightage = weightage_params[:weightage].to_f
+        (current_total + new_weightage).round(1)
+    end
+
+    def exceeds_total_limit?(total)
+        total > 1
+    end
+
+    def redirect_with_total_exceeded_message(total)
+        redirect_to edit_form_path(@form),
+          notice: "Total weightage would be #{total}. Weightages should sum to 1."
+    end
+
+    def update_and_redirect
+        if @attribute.update(weightage_params)
+          redirect_to edit_form_path(@form), notice: "Weightage was successfully updated."
+        end
+    end
+
+
+    def raw_weightage
+        params.require(:attribute).permit(:weightage)[:weightage]
+    end
+
+    def parse_weightage(weightage)
+        return nil unless weightage.present?
+
+        parsed_value = weightage.to_f.round(1)
+        parsed_value if valid_weightage?(parsed_value)
+    end
+
+    def valid_weightage?(value)
+        value.between?(0.0, 1.0)
     end
 end
