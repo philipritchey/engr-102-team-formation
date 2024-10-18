@@ -13,7 +13,7 @@
       <img src="./assets/0.13.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2024-10-18T02:05:03-05:00">2024-10-18T02:05:03-05:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2024-10-18T02:42:26-05:00">2024-10-18T02:42:26-05:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -22,14 +22,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="yellow">
-  87.04%
+  87.21%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         4.2
+         4.16
        </span>
     </span> hits/line
     )
@@ -42,11 +42,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>378</b> relevant lines,
-    <span class="green"><b>329</b> lines covered</span> and
+    <b>383</b> relevant lines,
+    <span class="green"><b>334</b> lines covered</span> and
     <span class="red"><b>49</b> lines missed. </span>
     (<span class="yellow">
-  87.04%
+  87.21%
 </span>
 )
   </div>
@@ -126,12 +126,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#bcb216569c5ce8d5b326075d3706e254207cefa6" class="src_link" title="app/controllers/forms_controller.rb">app/controllers/forms_controller.rb</a></td>
-            <td class="green strong cell--number t-file__coverage">98.21 %</td>
-            <td class="cell--number">275</td>
-            <td class="cell--number">112</td>
-            <td class="cell--number">110</td>
+            <td class="green strong cell--number t-file__coverage">98.29 %</td>
+            <td class="cell--number">285</td>
+            <td class="cell--number">117</td>
+            <td class="cell--number">115</td>
             <td class="cell--number">2</td>
-            <td class="cell--number">4.88</td>
+            <td class="cell--number">4.73</td>
             
           </tr>
         
@@ -323,14 +323,14 @@
     <span class="group_name">Controllers</span>
     (<span class="covered_percent">
       <span class="green">
-  90.11%
+  90.3%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         4.34
+         4.29
        </span>
     </span> hits/line
     )
@@ -343,11 +343,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>263</b> relevant lines,
-    <span class="green"><b>237</b> lines covered</span> and
+    <b>268</b> relevant lines,
+    <span class="green"><b>242</b> lines covered</span> and
     <span class="red"><b>26</b> lines missed. </span>
     (<span class="green">
-  90.11%
+  90.3%
 </span>
 )
   </div>
@@ -405,12 +405,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#bcb216569c5ce8d5b326075d3706e254207cefa6" class="src_link" title="app/controllers/forms_controller.rb">app/controllers/forms_controller.rb</a></td>
-            <td class="green strong cell--number t-file__coverage">98.21 %</td>
-            <td class="cell--number">275</td>
-            <td class="cell--number">112</td>
-            <td class="cell--number">110</td>
+            <td class="green strong cell--number t-file__coverage">98.29 %</td>
+            <td class="cell--number">285</td>
+            <td class="cell--number">117</td>
+            <td class="cell--number">115</td>
             <td class="cell--number">2</td>
-            <td class="cell--number">4.88</td>
+            <td class="cell--number">4.73</td>
             
           </tr>
         
@@ -4072,7 +4072,7 @@
     <h3>app/controllers/forms_controller.rb</h3>
     <h4>
       <span class="green">
-  98.21%
+  98.29%
 </span>
 
       lines covered
@@ -4081,8 +4081,8 @@
     
 
     <div class="t-line-summary">
-      <b>112</b> relevant lines.
-      <span class="green"><b>110</b> lines covered</span> and
+      <b>117</b> relevant lines.
+      <span class="green"><b>115</b> lines covered</span> and
       <span class="red"><b>2</b> lines missed.</span>
     </div>
 
@@ -5494,7 +5494,117 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="130">
+          <li class="covered" data-hits="2" data-linenumber="130">
+            
+              <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        student_ids = users_to_create.map { |student| Student.find_by(uin: student[:uin])&amp;.id }.compact</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="131">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        existing_student_ids = FormResponse.where(form_id: params[:id]).pluck(:student_id)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="132">
+            
+              <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        form_responses_to_create = student_ids.reject { |id| existing_student_ids.include?(id) }.map do |student_id|</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="133">
+            
+
+            
+
+            <code class="ruby">          {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="134">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">            student_id: student_id,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="135">
+            
+
+            
+
+            <code class="ruby">            form_id: params[:id],</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="136">
+            
+
+            
+
+            <code class="ruby">            responses: {}.to_json</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="137">
+            
+
+            
+
+            <code class="ruby">          }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="138">
+            
+
+            
+
+            <code class="ruby">        end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="139">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        FormResponse.insert_all(form_responses_to_create) if form_responses_to_create.any?</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="140">
             
               <span class="hits">1</span>
             
@@ -5506,7 +5616,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="131">
+          <li class="never" data-hits="" data-linenumber="141">
             
 
             
@@ -5516,7 +5626,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="132">
+          <li class="missed" data-hits="0" data-linenumber="142">
             
 
             
@@ -5526,7 +5636,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="133">
+          <li class="never" data-hits="" data-linenumber="143">
             
 
             
@@ -5536,7 +5646,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="134">
+          <li class="never" data-hits="" data-linenumber="144">
             
 
             
@@ -5546,7 +5656,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="135">
+          <li class="covered" data-hits="1" data-linenumber="145">
             
               <span class="hits">1</span>
             
@@ -5558,114 +5668,12 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="136">
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="137">
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="138">
-            
-              <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">    redirect_to edit_form_path(params[:id])</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="139">
-            
-
-            
-
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="140">
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="141">
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="142">
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="143">
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="144">
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="145">
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
           <li class="never" data-hits="" data-linenumber="146">
             
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -5680,12 +5688,14 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="148">
+          <li class="covered" data-hits="2" data-linenumber="148">
+            
+              <span class="hits">2</span>
             
 
             
 
-            <code class="ruby">  # DELETE /forms/1</code>
+            <code class="ruby">    redirect_to edit_form_path(params[:id])</code>
           </li>
         </div>
       
@@ -5695,31 +5705,27 @@
 
             
 
-            <code class="ruby">  # Deletes a specific form</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="150">
-            
-              <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="150">
             
 
             
 
-            <code class="ruby">  def destroy</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="151">
-            
-              <span class="hits">2</span>
+          <li class="never" data-hits="" data-linenumber="151">
             
 
             
 
-            <code class="ruby">    @form.destroy!</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -5734,7 +5740,111 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="153">
+          <li class="never" data-hits="" data-linenumber="153">
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="154">
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="155">
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="156">
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="157">
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="158">
+            
+
+            
+
+            <code class="ruby">  # DELETE /forms/1</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="159">
+            
+
+            
+
+            <code class="ruby">  # Deletes a specific form</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="160">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def destroy</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="161">
+            
+              <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">    @form.destroy!</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="162">
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="163">
             
               <span class="hits">2</span>
             
@@ -5746,7 +5856,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="154">
+          <li class="never" data-hits="" data-linenumber="164">
             
 
             
@@ -5756,7 +5866,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="155">
+          <li class="covered" data-hits="4" data-linenumber="165">
             
               <span class="hits">4</span>
             
@@ -5768,114 +5878,6 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="156">
-            
-              <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">      format.json { head :no_content }</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="157">
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="158">
-            
-
-            
-
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="159">
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="160">
-            
-
-            
-
-            <code class="ruby">  # Add a new method for updating deadline from index page</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="161">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  def update_deadline</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="4" data-linenumber="162">
-            
-              <span class="hits">4</span>
-            
-
-            
-
-            <code class="ruby">    if @form.update(deadline_params)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="163">
-            
-
-            
-
-            <code class="ruby">      # Redirect to the index page with success notice</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="164">
-            
-              <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">      redirect_to user_path(@form.user), notice: &quot;Deadline was successfully updated.&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="165">
-            
-
-            
-
-            <code class="ruby">    else</code>
-          </li>
-        </div>
-      
-        <div>
           <li class="covered" data-hits="2" data-linenumber="166">
             
               <span class="hits">2</span>
@@ -5883,7 +5885,7 @@
 
             
 
-            <code class="ruby">      redirect_to user_path(@form.user), alert: &quot;Failed to update the deadline.&quot;</code>
+            <code class="ruby">      format.json { head :no_content }</code>
           </li>
         </div>
       
@@ -5923,7 +5925,7 @@
 
             
 
-            <code class="ruby">  # POST /forms/1/publish</code>
+            <code class="ruby">  # Add a new method for updating deadline from index page</code>
           </li>
         </div>
       
@@ -5935,12 +5937,120 @@
 
             
 
+            <code class="ruby">  def update_deadline</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="172">
+            
+              <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">    if @form.update(deadline_params)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="173">
+            
+
+            
+
+            <code class="ruby">      # Redirect to the index page with success notice</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="174">
+            
+              <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">      redirect_to user_path(@form.user), notice: &quot;Deadline was successfully updated.&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="175">
+            
+
+            
+
+            <code class="ruby">    else</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="176">
+            
+              <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">      redirect_to user_path(@form.user), alert: &quot;Failed to update the deadline.&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="177">
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="178">
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="179">
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="180">
+            
+
+            
+
+            <code class="ruby">  # POST /forms/1/publish</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="181">
+            
+              <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">  def publish</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="172">
+          <li class="covered" data-hits="2" data-linenumber="182">
             
               <span class="hits">2</span>
             
@@ -5952,7 +6062,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="173">
+          <li class="covered" data-hits="1" data-linenumber="183">
             
               <span class="hits">1</span>
             
@@ -5964,7 +6074,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="174">
+          <li class="never" data-hits="" data-linenumber="184">
             
 
             
@@ -5974,7 +6084,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="175">
+          <li class="covered" data-hits="1" data-linenumber="185">
             
               <span class="hits">1</span>
             
@@ -5986,120 +6096,12 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="176">
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="177">
-            
-
-            
-
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="178">
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="179">
-            
-
-            
-
-            <code class="ruby">  # POST /forms/1/close</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="180">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  def close</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="6" data-linenumber="181">
-            
-              <span class="hits">6</span>
-            
-
-            
-
-            <code class="ruby">    if @form.update(published: false)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="3" data-linenumber="182">
-            
-              <span class="hits">3</span>
-            
-
-            
-
-            <code class="ruby">      redirect_to @form, notice: &quot;Form was successfully closed.&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="183">
-            
-
-            
-
-            <code class="ruby">    else</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="3" data-linenumber="184">
-            
-              <span class="hits">3</span>
-            
-
-            
-
-            <code class="ruby">      redirect_to @form, alert: &quot;Failed to close the form.&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="185">
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
           <li class="never" data-hits="" data-linenumber="186">
             
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -6109,31 +6111,27 @@
 
             
 
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="188">
+            
+
+            
+
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="188">
-            
-              <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="189">
             
 
             
 
-            <code class="ruby">  private</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="189">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    def publish_form</code>
+            <code class="ruby">  # POST /forms/1/close</code>
           </li>
         </div>
       
@@ -6145,49 +6143,53 @@
 
             
 
-            <code class="ruby">      if @form.update(published: true)</code>
+            <code class="ruby">  def close</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="191">
+          <li class="covered" data-hits="6" data-linenumber="191">
             
-              <span class="hits">1</span>
-            
-
+              <span class="hits">6</span>
             
 
-            <code class="ruby">        redirect_to @form, notice: &quot;Form was successfully published.&quot;</code>
+            
+
+            <code class="ruby">    if @form.update(published: false)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="192">
+          <li class="covered" data-hits="3" data-linenumber="192">
+            
+              <span class="hits">3</span>
             
 
             
 
-            <code class="ruby">      else</code>
+            <code class="ruby">      redirect_to @form, notice: &quot;Form was successfully closed.&quot;</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="193">
+          <li class="never" data-hits="" data-linenumber="193">
             
 
             
 
-            <code class="ruby">        redirect_to @form, alert: &quot;Failed to publish the form.&quot;</code>
+            <code class="ruby">    else</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="194">
+          <li class="covered" data-hits="3" data-linenumber="194">
+            
+              <span class="hits">3</span>
             
 
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby">      redirect_to @form, alert: &quot;Failed to close the form.&quot;</code>
           </li>
         </div>
       
@@ -6207,19 +6209,17 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="197">
-            
-              <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="197">
             
 
             
 
-            <code class="ruby">    def handle_publish_error</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -6231,7 +6231,7 @@
 
             
 
-            <code class="ruby">      reasons = collect_error_reasons</code>
+            <code class="ruby">  private</code>
           </li>
         </div>
       
@@ -6243,7 +6243,7 @@
 
             
 
-            <code class="ruby">      flash[:alert] = &quot;Form cannot be published. Reasons: #{reasons.join(&#39;, &#39;)}.&quot;</code>
+            <code class="ruby">    def publish_form</code>
           </li>
         </div>
       
@@ -6255,17 +6255,19 @@
 
             
 
-            <code class="ruby">      redirect_to @form</code>
+            <code class="ruby">      if @form.update(published: true)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="201">
+          <li class="covered" data-hits="1" data-linenumber="201">
+            
+              <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">        redirect_to @form, notice: &quot;Form was successfully published.&quot;</code>
           </li>
         </div>
       
@@ -6275,55 +6277,47 @@
 
             
 
+            <code class="ruby">      else</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="203">
+            
+
+            
+
+            <code class="ruby">        redirect_to @form, alert: &quot;Failed to publish the form.&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="204">
+            
+
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="205">
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="206">
+            
+
+            
+
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="203">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    def collect_error_reasons</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="204">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      reasons = []</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="205">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      reasons &lt;&lt; &quot;no attributes&quot; unless @form.has_attributes?</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="206">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      reasons &lt;&lt; &quot;no associated students&quot; unless @form.has_associated_students?</code>
           </li>
         </div>
       
@@ -6335,37 +6329,43 @@
 
             
 
-            <code class="ruby">      reasons</code>
+            <code class="ruby">    def handle_publish_error</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="208">
+          <li class="covered" data-hits="1" data-linenumber="208">
+            
+              <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">      reasons = collect_error_reasons</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="209">
+          <li class="covered" data-hits="1" data-linenumber="209">
+            
+              <span class="hits">1</span>
             
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">      flash[:alert] = &quot;Form cannot be published. Reasons: #{reasons.join(&#39;, &#39;)}.&quot;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="210">
+          <li class="covered" data-hits="1" data-linenumber="210">
+            
+              <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    # Sets @form instance variable based on the id parameter</code>
+            <code class="ruby">      redirect_to @form</code>
           </li>
         </div>
       
@@ -6375,12 +6375,122 @@
 
             
 
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="212">
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="213">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def collect_error_reasons</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="214">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      reasons = []</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="215">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      reasons &lt;&lt; &quot;no attributes&quot; unless @form.has_attributes?</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="216">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      reasons &lt;&lt; &quot;no associated students&quot; unless @form.has_associated_students?</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="217">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      reasons</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="218">
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="219">
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="220">
+            
+
+            
+
+            <code class="ruby">    # Sets @form instance variable based on the id parameter</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="221">
+            
+
+            
+
             <code class="ruby">    # Only finds forms belonging to the current user for security</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="212">
+          <li class="covered" data-hits="1" data-linenumber="222">
             
               <span class="hits">1</span>
             
@@ -6392,7 +6502,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="25" data-linenumber="213">
+          <li class="covered" data-hits="25" data-linenumber="223">
             
               <span class="hits">25</span>
             
@@ -6400,112 +6510,6 @@
             
 
             <code class="ruby">      @form = current_user.forms.find(params[:id])</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="214">
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="215">
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="216">
-            
-
-            
-
-            <code class="ruby">    # Define allowed parameters for form creation and update</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="217">
-            
-
-            
-
-            <code class="ruby">    # This is a security measure to prevent mass assignment vulnerabilities</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="218">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    def form_params</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="8" data-linenumber="219">
-            
-              <span class="hits">8</span>
-            
-
-            
-
-            <code class="ruby">      params.require(:form).permit(:name, :description, :deadline)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="220">
-            
-
-            
-
-            <code class="ruby">    rescue ActionController::ParameterMissing</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="221">
-            
-
-            
-
-            <code class="ruby">      # If :form key is missing, permit name and description directly from params</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="222">
-            
-
-            
-
-            <code class="ruby">      # This allows for more flexible parameter handling</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="4" data-linenumber="223">
-            
-              <span class="hits">4</span>
-            
-
-            
-
-            <code class="ruby">      params.permit(:name, :description, :deadline)</code>
           </li>
         </div>
       
@@ -6530,58 +6534,56 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="226">
+          <li class="never" data-hits="" data-linenumber="226">
+            
+
+            
+
+            <code class="ruby">    # Define allowed parameters for form creation and update</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="227">
+            
+
+            
+
+            <code class="ruby">    # This is a security measure to prevent mass assignment vulnerabilities</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="228">
             
               <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    def deadline_params</code>
+            <code class="ruby">    def form_params</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="227">
+          <li class="covered" data-hits="8" data-linenumber="229">
             
-              <span class="hits">4</span>
-            
-
+              <span class="hits">8</span>
             
 
-            <code class="ruby">      params.require(:form).permit(:deadline)</code>
+            
+
+            <code class="ruby">      params.require(:form).permit(:name, :description, :deadline)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="228">
+          <li class="never" data-hits="" data-linenumber="230">
             
 
             
 
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="229">
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="230">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    def calculate_teams</code>
+            <code class="ruby">    rescue ActionController::ParameterMissing</code>
           </li>
         </div>
       
@@ -6591,7 +6593,7 @@
 
             
 
-            <code class="ruby">      # Fetch all form responses for this form and group them by the student&#39;s section</code>
+            <code class="ruby">      # If :form key is missing, permit name and description directly from params</code>
           </li>
         </div>
       
@@ -6601,29 +6603,29 @@
 
             
 
-            <code class="ruby">      # The &#39;includes(:student)&#39; eager loads the associated student data to avoid N+1 queries</code>
+            <code class="ruby">      # This allows for more flexible parameter handling</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="233">
+          <li class="covered" data-hits="4" data-linenumber="233">
+            
+              <span class="hits">4</span>
             
 
             
 
-            <code class="ruby">      # The result is a hash where keys are section names and values are arrays of form responses</code>
+            <code class="ruby">      params.permit(:name, :description, :deadline)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="200" data-linenumber="234">
-            
-              <span class="hits">200</span>
+          <li class="never" data-hits="" data-linenumber="234">
             
 
             
 
-            <code class="ruby">      sections = @form.form_responses.includes(:student).group_by { |response| response.student.section }</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -6638,7 +6640,115 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="236">
+          <li class="covered" data-hits="1" data-linenumber="236">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def deadline_params</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="237">
+            
+              <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">      params.require(:form).permit(:deadline)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="238">
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="239">
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="240">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def calculate_teams</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="241">
+            
+
+            
+
+            <code class="ruby">      # Fetch all form responses for this form and group them by the student&#39;s section</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="242">
+            
+
+            
+
+            <code class="ruby">      # The &#39;includes(:student)&#39; eager loads the associated student data to avoid N+1 queries</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="243">
+            
+
+            
+
+            <code class="ruby">      # The result is a hash where keys are section names and values are arrays of form responses</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="200" data-linenumber="244">
+            
+              <span class="hits">200</span>
+            
+
+            
+
+            <code class="ruby">      sections = @form.form_responses.includes(:student).group_by { |response| response.student.section }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="245">
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="246">
             
 
             
@@ -6648,7 +6758,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="6" data-linenumber="237">
+          <li class="covered" data-hits="6" data-linenumber="247">
             
               <span class="hits">6</span>
             
@@ -6660,7 +6770,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="238">
+          <li class="never" data-hits="" data-linenumber="248">
             
 
             
@@ -6670,7 +6780,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="239">
+          <li class="never" data-hits="" data-linenumber="249">
             
 
             
@@ -6680,7 +6790,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="6" data-linenumber="240">
+          <li class="covered" data-hits="6" data-linenumber="250">
             
               <span class="hits">6</span>
             
@@ -6692,118 +6802,12 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="241">
-            
-
-            
-
-            <code class="ruby">        # Count the total number of students (responses) in this section</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="9" data-linenumber="242">
-            
-              <span class="hits">9</span>
-            
-
-            
-
-            <code class="ruby">        total_students = responses.count</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="243">
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="244">
-            
-
-            
-
-            <code class="ruby">        # Calculate the base number of teams of 4 we can form</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="9" data-linenumber="245">
-            
-              <span class="hits">9</span>
-            
-
-            
-
-            <code class="ruby">        base_teams = total_students / 4</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="246">
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="247">
-            
-
-            
-
-            <code class="ruby">        # Calculate how many students are left over after forming teams of 4</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="9" data-linenumber="248">
-            
-              <span class="hits">9</span>
-            
-
-            
-
-            <code class="ruby">        remainder = total_students % 4</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="249">
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="250">
-            
-
-            
-
-            <code class="ruby">        # Determine the final number of teams of 4 based on the remainder</code>
-          </li>
-        </div>
-      
-        <div>
           <li class="never" data-hits="" data-linenumber="251">
             
 
             
 
-            <code class="ruby">        # We adjust this to allow for teams of 3 when necessary</code>
+            <code class="ruby">        # Count the total number of students (responses) in this section</code>
           </li>
         </div>
       
@@ -6815,55 +6819,49 @@
 
             
 
-            <code class="ruby">        teams_of_4 = case remainder</code>
+            <code class="ruby">        total_students = responses.count</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="3" data-linenumber="253">
-            
-              <span class="hits">3</span>
+          <li class="never" data-hits="" data-linenumber="253">
             
 
             
 
-            <code class="ruby">        when 0 then base_teams     # If no remainder, all teams are of size 4</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="254">
-            
-              <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="254">
             
 
             
 
-            <code class="ruby">        when 1 then base_teams - 2 # If remainder 1, we need 3 teams of 3</code>
+            <code class="ruby">        # Calculate the base number of teams of 4 we can form</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="255">
+          <li class="covered" data-hits="9" data-linenumber="255">
             
-              <span class="hits">2</span>
-            
-
+              <span class="hits">9</span>
             
 
-            <code class="ruby">        when 2 then base_teams - 1 # If remainder 2, we need 2 teams of 3</code>
+            
+
+            <code class="ruby">        base_teams = total_students / 4</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="3" data-linenumber="256">
-            
-              <span class="hits">3</span>
+          <li class="never" data-hits="" data-linenumber="256">
             
 
             
 
-            <code class="ruby">        when 3 then base_teams     # If remainder 3, we need 1 team of 3</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -6873,29 +6871,29 @@
 
             
 
-            <code class="ruby">        end</code>
+            <code class="ruby">        # Calculate how many students are left over after forming teams of 4</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="258">
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="9" data-linenumber="259">
+          <li class="covered" data-hits="9" data-linenumber="258">
             
               <span class="hits">9</span>
             
 
             
 
-            <code class="ruby">        teams_of_3 = remainder.zero? ? 0 : 4 - remainder</code>
+            <code class="ruby">        remainder = total_students % 4</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="259">
+            
+
+            
+
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -6905,7 +6903,7 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">        # Determine the final number of teams of 4 based on the remainder</code>
           </li>
         </div>
       
@@ -6915,7 +6913,7 @@
 
             
 
-            <code class="ruby">        # Store the calculated distribution for this section</code>
+            <code class="ruby">        # We adjust this to allow for teams of 3 when necessary</code>
           </li>
         </div>
       
@@ -6927,47 +6925,55 @@
 
             
 
-            <code class="ruby">        team_distribution[section] = {</code>
+            <code class="ruby">        teams_of_4 = case remainder</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="263">
+          <li class="covered" data-hits="3" data-linenumber="263">
+            
+              <span class="hits">3</span>
             
 
             
 
-            <code class="ruby">          total_students: total_students,  # Total number of students in this section</code>
+            <code class="ruby">        when 0 then base_teams     # If no remainder, all teams are of size 4</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="264">
+          <li class="covered" data-hits="1" data-linenumber="264">
+            
+              <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">          teams_of_4: teams_of_4,          # Number of teams with 4 members</code>
+            <code class="ruby">        when 1 then base_teams - 2 # If remainder 1, we need 3 teams of 3</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="265">
+          <li class="covered" data-hits="2" data-linenumber="265">
+            
+              <span class="hits">2</span>
             
 
             
 
-            <code class="ruby">          teams_of_3: teams_of_3,          # Number of teams with 3 members</code>
+            <code class="ruby">        when 2 then base_teams - 1 # If remainder 2, we need 2 teams of 3</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="266">
+          <li class="covered" data-hits="3" data-linenumber="266">
+            
+              <span class="hits">3</span>
             
 
             
 
-            <code class="ruby">          total_teams: teams_of_4 + teams_of_3,  # Total number of teams in this section</code>
+            <code class="ruby">        when 3 then base_teams     # If remainder 3, we need 1 team of 3</code>
           </li>
         </div>
       
@@ -6977,7 +6983,7 @@
 
             
 
-            <code class="ruby">          form_responses: responses        # Array of form response objects for this section</code>
+            <code class="ruby">        end</code>
           </li>
         </div>
       
@@ -6987,17 +6993,19 @@
 
             
 
-            <code class="ruby">        }</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="269">
+          <li class="covered" data-hits="9" data-linenumber="269">
+            
+              <span class="hits">9</span>
             
 
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby">        teams_of_3 = remainder.zero? ? 0 : 4 - remainder</code>
           </li>
         </div>
       
@@ -7017,12 +7025,114 @@
 
             
 
+            <code class="ruby">        # Store the calculated distribution for this section</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="9" data-linenumber="272">
+            
+              <span class="hits">9</span>
+            
+
+            
+
+            <code class="ruby">        team_distribution[section] = {</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="273">
+            
+
+            
+
+            <code class="ruby">          total_students: total_students,  # Total number of students in this section</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="274">
+            
+
+            
+
+            <code class="ruby">          teams_of_4: teams_of_4,          # Number of teams with 4 members</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="275">
+            
+
+            
+
+            <code class="ruby">          teams_of_3: teams_of_3,          # Number of teams with 3 members</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="276">
+            
+
+            
+
+            <code class="ruby">          total_teams: teams_of_4 + teams_of_3,  # Total number of teams in this section</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="277">
+            
+
+            
+
+            <code class="ruby">          form_responses: responses        # Array of form response objects for this section</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="278">
+            
+
+            
+
+            <code class="ruby">        }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="279">
+            
+
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="280">
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="281">
+            
+
+            
+
             <code class="ruby">      # Return the complete team distribution hash</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="272">
+          <li class="never" data-hits="" data-linenumber="282">
             
 
             
@@ -7032,7 +7142,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="6" data-linenumber="273">
+          <li class="covered" data-hits="6" data-linenumber="283">
             
               <span class="hits">6</span>
             
@@ -7044,7 +7154,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="274">
+          <li class="never" data-hits="" data-linenumber="284">
             
 
             
@@ -7054,7 +7164,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="275">
+          <li class="never" data-hits="" data-linenumber="285">
             
 
             
