@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/hithamv/Desktop/SEProject/team-formation/app/controllers/application_controller.rb": {
+      "/home/phanijyothi11/teamformation/team-formation-6/app/controllers/application_controller.rb": {
         "lines": [
           null,
           null,
@@ -42,7 +42,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation/app/controllers/attributes_controller.rb": {
+      "/home/phanijyothi11/teamformation/team-formation-6/app/controllers/attributes_controller.rb": {
         "lines": [
           null,
           1,
@@ -179,7 +179,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation/app/controllers/form_responses_controller.rb": {
+      "/home/phanijyothi11/teamformation/team-formation-6/app/controllers/form_responses_controller.rb": {
         "lines": [
           null,
           1,
@@ -237,11 +237,14 @@
           null,
           null,
           1,
-          null,
+          0,
+          0,
+          0,
           null,
           null,
           null,
           1,
+          0,
           null,
           0,
           0,
@@ -286,7 +289,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation/app/controllers/forms_controller.rb": {
+      "/home/phanijyothi11/teamformation/team-formation-6/app/controllers/forms_controller.rb": {
         "lines": [
           null,
           null,
@@ -575,7 +578,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation/app/controllers/sessions_controller.rb": {
+      "/home/phanijyothi11/teamformation/team-formation-6/app/controllers/sessions_controller.rb": {
         "lines": [
           1,
           1,
@@ -606,7 +609,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation/app/controllers/students_controller.rb": {
+      "/home/phanijyothi11/teamformation/team-formation-6/app/controllers/students_controller.rb": {
         "lines": [
           1,
           1,
@@ -657,7 +660,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation/app/controllers/users_controller.rb": {
+      "/home/phanijyothi11/teamformation/team-formation-6/app/controllers/users_controller.rb": {
         "lines": [
           null,
           null,
@@ -673,7 +676,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation/app/controllers/welcome_controller.rb": {
+      "/home/phanijyothi11/teamformation/team-formation-6/app/controllers/welcome_controller.rb": {
         "lines": [
           1,
           1,
@@ -692,7 +695,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation/app/models/attribute.rb": {
+      "/home/phanijyothi11/teamformation/team-formation-6/app/models/attribute.rb": {
         "lines": [
           null,
           1,
@@ -750,14 +753,14 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation/app/models/application_record.rb": {
+      "/home/phanijyothi11/teamformation/team-formation-6/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation/app/models/form.rb": {
+      "/home/phanijyothi11/teamformation/team-formation-6/app/models/form.rb": {
         "lines": [
           null,
           null,
@@ -817,7 +820,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation/app/models/user.rb": {
+      "/home/phanijyothi11/teamformation/team-formation-6/app/models/user.rb": {
         "lines": [
           1,
           1,
@@ -825,7 +828,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation/app/models/student.rb": {
+      "/home/phanijyothi11/teamformation/team-formation-6/app/models/student.rb": {
         "lines": [
           1,
           1,
@@ -837,7 +840,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation/app/models/form_response.rb": {
+      "/home/phanijyothi11/teamformation/team-formation-6/app/models/form_response.rb": {
         "lines": [
           1,
           1,
@@ -852,6 +855,6 @@
         ]
       }
     },
-    "timestamp": 1729273269
+    "timestamp": 1729295305
   }
 }
