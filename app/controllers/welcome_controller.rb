@@ -1,6 +1,7 @@
 class WelcomeController < ApplicationController
     skip_before_action :require_login, only: [ :index ]
     def index
+      render layout: false
         if logged_in?
           if current_user
             redirect_to user_path(current_user), notice: "Welcome, back!"
