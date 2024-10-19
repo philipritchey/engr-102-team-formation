@@ -161,21 +161,19 @@
       var container = document.getElementById('mcq_options_container');
       var optionCount = container.getElementsByClassName('mcq_option').length + 1;
 
-      // Create a new div for the additional option
       var newOptionDiv = document.createElement('div');
       newOptionDiv.classList.add('mcq_option');
 
-      // Create a new input field for the option
       var newOptionInput = document.createElement('input');
       newOptionInput.type = 'text';
-      newOptionInput.name = 'mcq_option_' + optionCount;
+      newOptionInput.name = 'mcq_options[]'; // Change here to match the expected name
       newOptionInput.placeholder = 'Option ' + optionCount;
       newOptionInput.classList.add('form-control');
 
-      // Append the new input to the container
       newOptionDiv.appendChild(newOptionInput);
       container.appendChild(newOptionDiv);
     });
+
     // Initialize the visibility
     toggleFields(document.getElementById('attribute_type').value);
 
