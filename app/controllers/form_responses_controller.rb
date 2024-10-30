@@ -88,15 +88,12 @@ class FormResponsesController < ApplicationController
         render :edit
       end
     else
-      if @form_response.update(form_response_params)
-        session.delete(:draft_form_response)
-        render :success
-      else
-        flash.now[:alert] = "There was an error updating your response."
-        render :edit
-      end
+      handle_final_update
     end
   end
+
+
+
 
 
 
@@ -109,6 +106,15 @@ class FormResponsesController < ApplicationController
 
   private
 
+  def handle_final_update
+    if @form_response.update(form_response_params)
+      session.delete(:draft_form_response)
+      render :success
+    else
+      flash.now[:alert] = "There was an error updating your response."
+      render :edit
+    end
+  end
   # Used for new and create actions
   # Sets @form and @student based on the form_id and student_id in the URL
   def set_form_and_student
