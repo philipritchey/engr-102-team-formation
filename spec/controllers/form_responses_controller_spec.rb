@@ -229,3 +229,137 @@ RSpec.describe FormResponsesController, type: :controller do
     end
   end
 end
+# spec/controllers/form_responses_controller_spec.rb
+
+RSpec.describe FormResponsesController, type: :controller do
+  let(:user) { create(:user) }
+  let(:form) { create(:form, user: user) }
+  let(:student) { create(:student) }
+  let(:valid_attributes) { { responses: { question1: "answer1" } } }
+
+  before do
+    # Simulate a logged-in user for all tests
+    request.env['rack.session'][:user_id] = user.id
+    # Allow the controller to find the current user
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+  end
+  describe "PATCH #update" do
+    let!(:form_response) { create(:form_response, form: form, student: student) }
+    let(:valid_attributes) { { responses: { question1: "updated answer" } } }
+    let(:invalid_attributes) { { responses: nil } }
+
+    context "when saving as draft" do
+      it "saves valid draft to session and redirects" do
+        patch :update, params: { 
+          id: form_response.id, 
+          form_response: valid_attributes, 
+          commit: "Save as Draft" 
+        }
+        
+        expect(session[:draft_form_response]).to include(valid_attributes.stringify_keys)
+        expect(response).to redirect_to(edit_form_response_path(form_response))
+        expect(flash[:notice]).to eq("Draft saved temporarily. It will be discarded once the session ends.")
+      end
+
+      it "handles invalid draft" do
+        allow_any_instance_of(FormResponse).to receive(:valid?).and_return(false)
+        
+        patch :update, params: { 
+          id: form_response.id, 
+          form_response: invalid_attributes, 
+          commit: "Save as Draft" 
+        }
+        
+        expect(session[:draft_form_response]).to be_nil
+        expect(response).to render_template(:edit)
+        expect(flash[:alert]).to eq("There was an error saving your draft. Please check your input.")
+      end
+    end
+
+    context "when submitting final response" do
+      it "updates the form_response and renders success template" do
+        patch :update, params: { id: form_response.id, form_response: valid_attributes }
+        
+        expect(form_response.reload.responses).to eq(valid_attributes[:responses].stringify_keys)
+        expect(response).to render_template(:success)
+        expect(session[:draft_form_response]).to be_nil
+      end
+
+      it "handles update failure" do
+        allow_any_instance_of(FormResponse).to receive(:update).and_return(false)
+        
+        patch :update, params: { id: form_response.id, form_response: invalid_attributes }
+        
+        expect(response).to render_template(:edit)
+        expect(flash[:alert]).to eq("There was an error updating your response.")
+      end
+    end
+  end 
+  
+
+  describe "POST #create" do
+    context "when saving as draft" do
+      let(:valid_attributes) { { responses: { question1: "answer1" } } }
+
+    it "saves the draft to session and redirects" do
+      post :create, params: {
+        form_id: form.id,
+        student_id: student.id,
+        form_response: valid_attributes,
+        commit: "Save as Draft"
+      }
+
+      expect(session[:draft_form_response]).to eq(valid_attributes.deep_stringify_keys)
+      expect(response).to redirect_to(new_form_student_form_response_path(form, student))
+      expect(flash[:notice]).to eq("Draft saved temporarily. It will be discarded once the session ends.")
+    end
+  end
+
+    context "when submitting the form" do
+      it "creates a new FormResponse and renders success template" do
+        expect {
+          post :create, params: {
+            form_id: form.id,
+            student_id: student.id,
+            form_response: valid_attributes
+          }
+        }.to change(FormResponse, :count).by(1)
+
+        expect(response).to render_template(:success)
+        expect(session[:draft_form_response]).to be_nil
+      end
+
+      it "renders new template with error if save fails" do
+        allow_any_instance_of(FormResponse).to receive(:save).and_return(false)
+
+        post :create, params: {
+          form_id: form.id,
+          student_id: student.id,
+          form_response: valid_attributes
+        }
+
+        expect(response).to render_template(:new)
+        expect(flash[:alert]).to eq("There was an error submitting your response.")
+      end
+    end
+
+    context "with existing draft in session" do
+      let(:draft_attributes) { { responses: { question1: "draft answer" } } }
+
+      before do
+        session[:draft_form_response] = draft_attributes
+      end
+
+      it "uses draft from session when creating new form response" do
+        post :create, params: {
+          form_id: form.id,
+          student_id: student.id,
+          form_response: valid_attributes
+        }
+
+        expect(FormResponse.last.responses).to eq(valid_attributes[:responses].stringify_keys)
+        expect(session[:draft_form_response]).to be_nil
+      end
+    end
+  end
+end
