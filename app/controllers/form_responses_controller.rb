@@ -78,25 +78,27 @@ class FormResponsesController < ApplicationController
 
   def update
     @form_response = FormResponse.find(params[:id])
+    
     if params[:commit] == "Save as Draft"
-      if @form_response.assign_attributes(form_response_params) && @form_response.valid?
+      if @form_response.valid?
         session[:draft_form_response] = form_response_params.to_h
         redirect_to edit_form_response_path(@form_response), notice: "Draft saved temporarily. It will be discarded once the session ends."
       else
+        session[:draft_form_response] = nil
         flash.now[:alert] = "There was an error saving your draft. Please check your input."
-        render :edit # Changed this line
+        render :edit
       end
     else
       if @form_response.update(form_response_params)
         session.delete(:draft_form_response)
         render :success
       else
+        flash.now[:alert] = "There was an error updating your response."
         render :edit
       end
     end
   end
-
-  
+   
   
 
   # DELETE /form_responses/:id

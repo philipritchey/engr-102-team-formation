@@ -30,6 +30,30 @@ RSpec.describe FormResponsesController, type: :controller do
       end
     end
   end
+  describe "GET #new" do
+    context "without a draft in session" do
+      it "assigns a new form response" do
+        get :new, params: { form_id: form.id, student_id: student.id }
+        expect(assigns(:form_response)).to be_a_new(FormResponse)
+        expect(assigns(:form_response).student).to eq(student)
+      end
+    end
+
+    context "with a draft in session" do
+      let(:draft_attributes) { { responses: { "question_1" => "Draft answer" } } }
+
+      before do
+        session[:draft_form_response] = draft_attributes
+      end
+
+      it "assigns a new form response with draft attributes" do
+        get :new, params: { form_id: form.id, student_id: student.id }
+        expect(assigns(:form_response)).to be_a_new(FormResponse)
+        expect(assigns(:form_response).student).to eq(student)
+        expect(assigns(:form_response).responses).to eq(draft_attributes[:responses])
+      end
+    end
+  end
 
   describe "POST #create" do
     context "when the form exists with valid parameters" do
