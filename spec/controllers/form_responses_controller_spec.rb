@@ -110,4 +110,98 @@ RSpec.describe FormResponsesController, type: :controller do
       expect(response).to have_http_status(:success)
     end
   end
+  describe "GET #index" do
+    context "when accessing all form responses" do
+      it "assigns all form responses to @form_responses" do
+        form_response = create(:form_response)
+        get :index
+        expect(assigns(:form_responses)).to eq([form_response])
+      end
+    end
+
+    context "when accessing form responses for a specific form" do
+      it "assigns the form's responses to @form_responses" do
+        form_response = create(:form_response, form: form)
+        get :index, params: { form_id: form.id }
+        expect(assigns(:form_responses)).to eq([form_response])
+      end
+    end
+
+    context "when accessing form responses for a specific student" do
+      it "assigns the student's responses to @form_responses" do
+        form_response = create(:form_response, student: student)
+        get :index, params: { student_id: student.id }
+        expect(assigns(:form_responses)).to eq([form_response])
+      end
+    end
+  end
+
+  describe "GET #edit" do
+    let(:form_response) { create(:form_response, form: form, student: student) }
+
+    it "assigns the requested form_response to @form_response" do
+      get :edit, params: { id: form_response.id }
+      expect(assigns(:form_response)).to eq(form_response)
+    end
+
+    it "assigns the associated form to @form" do
+      get :edit, params: { id: form_response.id }
+      expect(assigns(:form)).to eq(form)
+    end
+
+    it "assigns the associated student to @student" do
+      get :edit, params: { id: form_response.id }
+      expect(assigns(:student)).to eq(student)
+    end
+
+    context "when there's a draft in the session" do
+      it "assigns the draft attributes to @form_response" do
+        draft_attributes = { responses: { question1: "draft answer" } }
+        session[:draft_form_response] = draft_attributes
+        get :edit, params: { id: form_response.id }
+        expect(assigns(:form_response).responses).to eq({"question1" => "draft answer"})
+      end
+    end
+  end
+
+  describe "PATCH #update" do
+  let!(:form_response) { create(:form_response, form: form, student: student) }
+  let(:valid_attributes) { { responses: { question1: "updated answer" } } }
+
+  context "when submitting final response" do
+    it "clears the draft from session on successful submission" do
+      session[:draft_form_response] = { responses: { question1: "old draft" } }
+      patch :update, params: { id: form_response.id, form_response: valid_attributes }
+      expect(session[:draft_form_response]).to be_nil
+    end
+
+    it "renders edit with alert if draft is invalid" do
+      allow_any_instance_of(FormResponse).to receive(:valid?).and_return(false)
+      patch :update, params: { id: form_response.id, form_response: { responses: nil }, commit: "Save as Draft" }
+      expect(response).to render_template(:edit)
+      expect(flash[:alert]).to include("There was an error saving your draft")
+    end
+    end    
+
+    context "when submitting final response" do
+      it "updates the form_response and renders success template" do
+        patch :update, params: { id: form_response.id, form_response: valid_attributes }
+        expect(form_response.reload.responses).to eq(valid_attributes[:responses].stringify_keys)
+        expect(response).to render_template(:success)
+      end
+
+      it "clears the draft from session on successful submission" do
+        session[:draft_form_response] = { responses: { question1: "old draft" } }
+        patch :update, params: { id: form_response.id, form_response: valid_attributes }
+        expect(session[:draft_form_response]).to be_nil
+      end
+      
+
+      it "renders edit template if update fails" do
+        allow_any_instance_of(FormResponse).to receive(:update).and_return(false)
+        patch :update, params: { id: form_response.id, form_response: valid_attributes }
+        expect(response).to render_template(:edit)
+      end
+    end
+  end
 end

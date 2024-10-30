@@ -42,22 +42,15 @@ class FormResponsesController < ApplicationController
 
   # POST /forms/:form_id/students/:student_id/form_responses
   def create
-    # @form and @student are set by set_form_and_student before_action
     @form_response = @form.form_responses.new(form_response_params)
     @form_response.student = @student
-
-    if params[:commit] == "Save as Draft" && @form_response.valid?
-      # Store the draft in session only if valid
-      session[:draft_form_response] = form_response_params
+  
+    if params[:commit] == "Save as Draft"
+      session[:draft_form_response] = form_response_params.to_h
       redirect_to new_form_student_form_response_path(@form, @student), notice: "Draft saved temporarily. It will be discarded once the session ends."
-    elsif params[:commit] == "Save as Draft"
-      # If not valid, re-render the new form with errors
-      flash.now[:alert] = "There was an error saving your draft. Please check your input."
-      render :new
     else
-      # Final submission, save to database
       if @form_response.save
-        session.delete(:draft_form_response) # Clear draft on submission
+        session.delete(:draft_form_response)
         render :success
       else
         flash.now[:alert] = "There was an error submitting your response."
@@ -65,6 +58,7 @@ class FormResponsesController < ApplicationController
       end
     end
   end
+  
 
 
 
@@ -80,25 +74,21 @@ class FormResponsesController < ApplicationController
   end
 
   # PATCH/PUT /form_responses/:id
+  # In app/controllers/form_responses_controller.rb
+
   def update
-    @form_response = FormResponse.find(params[:id]) # Find the form response by ID
-    if params[:commit] == "Save as Draft" && @form_response.valid?
-      if @form_response.valid?
-        session[:draft_form_response] = form_response_params
+    @form_response = FormResponse.find(params[:id])
+    if params[:commit] == "Save as Draft"
+      if @form_response.assign_attributes(form_response_params) && @form_response.valid?
+        session[:draft_form_response] = form_response_params.to_h
         redirect_to edit_form_response_path(@form_response), notice: "Draft saved temporarily. It will be discarded once the session ends."
       else
-        session[:draft_form_response] = nil # Explicitly clear the draft in session
         flash.now[:alert] = "There was an error saving your draft. Please check your input."
-        render :edit
+        render :edit # Changed this line
       end
-    elsif params[:commit] == "Save as Draft"
-      # If not valid, re-render the edit form with errors
-      flash.now[:alert] = "There was an error saving your draft. Please check your input."
-      render :edit
     else
-      # Final submission, save to database
       if @form_response.update(form_response_params)
-        session.delete(:draft_form_response) # Clear draft on submission
+        session.delete(:draft_form_response)
         render :success
       else
         render :edit
@@ -106,6 +96,8 @@ class FormResponsesController < ApplicationController
     end
   end
 
+  
+  
 
   # DELETE /form_responses/:id
   def destroy
