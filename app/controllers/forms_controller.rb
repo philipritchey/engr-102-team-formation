@@ -137,13 +137,6 @@ class FormsController < ApplicationController
     redirect_to user_path(current_user)
   end
 
-
-
-
-
-
-
-
   # DELETE /forms/1
   # Deletes a specific form
   def destroy
