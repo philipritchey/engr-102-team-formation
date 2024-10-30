@@ -139,7 +139,7 @@ RSpec.describe FormResponsesController, type: :controller do
       it "assigns all form responses to @form_responses" do
         form_response = create(:form_response)
         get :index
-        expect(assigns(:form_responses)).to eq([form_response])
+        expect(assigns(:form_responses)).to eq([ form_response ])
       end
     end
 
@@ -147,7 +147,7 @@ RSpec.describe FormResponsesController, type: :controller do
       it "assigns the form's responses to @form_responses" do
         form_response = create(:form_response, form: form)
         get :index, params: { form_id: form.id }
-        expect(assigns(:form_responses)).to eq([form_response])
+        expect(assigns(:form_responses)).to eq([ form_response ])
       end
     end
 
@@ -155,7 +155,7 @@ RSpec.describe FormResponsesController, type: :controller do
       it "assigns the student's responses to @form_responses" do
         form_response = create(:form_response, student: student)
         get :index, params: { student_id: student.id }
-        expect(assigns(:form_responses)).to eq([form_response])
+        expect(assigns(:form_responses)).to eq([ form_response ])
       end
     end
   end
@@ -183,7 +183,7 @@ RSpec.describe FormResponsesController, type: :controller do
         draft_attributes = { responses: { question1: "draft answer" } }
         session[:draft_form_response] = draft_attributes
         get :edit, params: { id: form_response.id }
-        expect(assigns(:form_response).responses).to eq({"question1" => "draft answer"})
+        expect(assigns(:form_response).responses).to eq({ "question1" => "draft answer" })
       end
     end
   end
@@ -205,7 +205,7 @@ RSpec.describe FormResponsesController, type: :controller do
       expect(response).to render_template(:edit)
       expect(flash[:alert]).to include("There was an error saving your draft")
     end
-    end    
+    end
 
     context "when submitting final response" do
       it "updates the form_response and renders success template" do
@@ -219,7 +219,7 @@ RSpec.describe FormResponsesController, type: :controller do
         patch :update, params: { id: form_response.id, form_response: valid_attributes }
         expect(session[:draft_form_response]).to be_nil
       end
-      
+
 
       it "renders edit template if update fails" do
         allow_any_instance_of(FormResponse).to receive(:update).and_return(false)
@@ -250,12 +250,12 @@ RSpec.describe FormResponsesController, type: :controller do
 
     context "when saving as draft" do
       it "saves valid draft to session and redirects" do
-        patch :update, params: { 
-          id: form_response.id, 
-          form_response: valid_attributes, 
-          commit: "Save as Draft" 
+        patch :update, params: {
+          id: form_response.id,
+          form_response: valid_attributes,
+          commit: "Save as Draft"
         }
-        
+
         expect(session[:draft_form_response]).to include(valid_attributes.stringify_keys)
         expect(response).to redirect_to(edit_form_response_path(form_response))
         expect(flash[:notice]).to eq("Draft saved temporarily. It will be discarded once the session ends.")
@@ -263,13 +263,13 @@ RSpec.describe FormResponsesController, type: :controller do
 
       it "handles invalid draft" do
         allow_any_instance_of(FormResponse).to receive(:valid?).and_return(false)
-        
-        patch :update, params: { 
-          id: form_response.id, 
-          form_response: invalid_attributes, 
-          commit: "Save as Draft" 
+
+        patch :update, params: {
+          id: form_response.id,
+          form_response: invalid_attributes,
+          commit: "Save as Draft"
         }
-        
+
         expect(session[:draft_form_response]).to be_nil
         expect(response).to render_template(:edit)
         expect(flash[:alert]).to eq("There was an error saving your draft. Please check your input.")
@@ -279,7 +279,7 @@ RSpec.describe FormResponsesController, type: :controller do
     context "when submitting final response" do
       it "updates the form_response and renders success template" do
         patch :update, params: { id: form_response.id, form_response: valid_attributes }
-        
+
         expect(form_response.reload.responses).to eq(valid_attributes[:responses].stringify_keys)
         expect(response).to render_template(:success)
         expect(session[:draft_form_response]).to be_nil
@@ -287,15 +287,15 @@ RSpec.describe FormResponsesController, type: :controller do
 
       it "handles update failure" do
         allow_any_instance_of(FormResponse).to receive(:update).and_return(false)
-        
+
         patch :update, params: { id: form_response.id, form_response: invalid_attributes }
-        
+
         expect(response).to render_template(:edit)
         expect(flash[:alert]).to eq("There was an error updating your response.")
       end
     end
-  end 
-  
+  end
+
 
   describe "POST #create" do
     context "when saving as draft" do

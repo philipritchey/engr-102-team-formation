@@ -37,14 +37,13 @@ class FormResponsesController < ApplicationController
     if session[:draft_form_response]
       @form_response.assign_attributes(session[:draft_form_response])
     end
-
   end
 
   # POST /forms/:form_id/students/:student_id/form_responses
   def create
     @form_response = @form.form_responses.new(form_response_params)
     @form_response.student = @student
-  
+
     if params[:commit] == "Save as Draft"
       session[:draft_form_response] = form_response_params.to_h
       redirect_to new_form_student_form_response_path(@form, @student), notice: "Draft saved temporarily. It will be discarded once the session ends."
@@ -58,7 +57,7 @@ class FormResponsesController < ApplicationController
       end
     end
   end
-  
+
 
 
 
@@ -70,7 +69,7 @@ class FormResponsesController < ApplicationController
     @student = @form_response.student
     if session[:draft_form_response]
       @form_response.assign_attributes(session[:draft_form_response])
-    end           
+    end
   end
 
   # PATCH/PUT /form_responses/:id
@@ -78,7 +77,7 @@ class FormResponsesController < ApplicationController
 
   def update
     @form_response = FormResponse.find(params[:id])
-    
+
     if params[:commit] == "Save as Draft"
       if @form_response.valid?
         session[:draft_form_response] = form_response_params.to_h
@@ -98,8 +97,8 @@ class FormResponsesController < ApplicationController
       end
     end
   end
-   
-  
+
+
 
   # DELETE /form_responses/:id
   def destroy
