@@ -405,12 +405,12 @@ class FormsController < ApplicationController
         remaining_females = j - i + 1
     
         if remaining_females == 3
-          assign_three_females_to_team(teams[team_index], female_students, i, tracker)
+          assign_three_females(teams[team_index], female_students, i, tracker)
           i += 3
           team_index += 1
           break
         elsif remaining_females >= 2
-          assign_two_females_to_team(teams[team_index], female_students, i, j, tracker)
+          assign_two_females(teams[team_index], female_students, i, j, tracker)
           i += 1
           j -= 1
           team_index += 1
@@ -419,24 +419,30 @@ class FormsController < ApplicationController
     end
     
     # Helper Methods
-    
-    def assign_three_females_to_team(team, female_students, start_index, tracker)
+    def assign_three_females(team, female_students, start_index, tracker)
       3.times do |n|
-        student_data = female_students[start_index + n]
-        team[team.index(0)] = student_data[:student].id
-        tracker[student_data[:response].id][:assigned] = true
+        assign_student_to_team(team, female_students[start_index + n], tracker)
       end
     end
     
-    def assign_two_females_to_team(team, female_students, i, j, tracker)
-      # Assign the high scorer
-      team[team.index(0)] = female_students[i][:student].id
-      tracker[female_students[i][:response].id][:assigned] = true
+    def assign_two_females(team, female_students, i, j, tracker)
+      assign_high_scorer(team, female_students[i], tracker)
+      assign_low_scorer(team, female_students[j], tracker)
+    end
     
-      # Assign the low scorer
-      team[team.index(0)] = female_students[j][:student].id
-      tracker[female_students[j][:response].id][:assigned] = true
-    end    
+    def assign_high_scorer(team, student_data, tracker)
+      assign_student_to_team(team, student_data, tracker)
+    end
+    
+    def assign_low_scorer(team, student_data, tracker)
+      assign_student_to_team(team, student_data, tracker)
+    end
+    
+    def assign_student_to_team(team, student_data, tracker)
+      team[team.index(0)] = student_data[:student].id
+      tracker[student_data[:response].id][:assigned] = true
+    end
+     
   
     def assign_other_students(teams, other_students, tracker)
       teams.each do |team|
