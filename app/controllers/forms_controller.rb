@@ -148,13 +148,6 @@ class FormsController < ApplicationController
     redirect_to edit_form_path(params[:id])
   end
 
-
-
-
-
-
-
-
   # DELETE /forms/1
   # Deletes a specific form
   def destroy
