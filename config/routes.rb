@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   end
 
   # Standalone form_responses resource for CRUD operations
-  resources :form_responses, only: [ :show, :new, :create, :edit, :update, :destroy ]
+  resources :form_responses, only: [ :index, :show, :new, :create, :edit, :update, :destroy ]
   # This sets up the following routes:
   # GET    /form_responses/:id          - show a specific form response
   # GET    /form_responses/new          - display form for creating a new form response
