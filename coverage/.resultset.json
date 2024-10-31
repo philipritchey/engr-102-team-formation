@@ -766,6 +766,16 @@
           null,
           1,
           null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          1,
+          null,
           2,
           1,
           1,
@@ -1098,7 +1108,7 @@
         ]
       }
     },
-    "timestamp": 1730358332
+    "timestamp": 1730358474
   },
   "Cucumber": {
     "coverage": {

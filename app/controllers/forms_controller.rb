@@ -404,18 +404,18 @@ class FormsController < ApplicationController
       teams.each_with_index do |team, team_index|
         break if i > j # Stop if all females are assigned
     
-        assign_students_to_team(team, female_students, i, j, tracker)
+        assign_students_to_team(team, female_students, (i..j), tracker)
         i, j = update_indices(i, j, female_students.size)
       end
     end
     
-    def assign_students_to_team(team, female_students, i, j, tracker)
-      remaining_females = j - i + 1
+    def assign_students_to_team(team, female_students, range, tracker)
+      remaining_females = range.end - range.begin + 1
     
       if remaining_females == 3
-        assign_three_females(team, female_students[i..j], tracker)
+        assign_three_females(team, female_students[range], tracker)
       elsif remaining_females >= 2
-        assign_two_females(team, female_students[i], female_students[j], tracker)
+        assign_two_females(team, female_students[range.begin], female_students[range.end], tracker)
       end
     end
     
@@ -434,6 +434,16 @@ class FormsController < ApplicationController
       team[team.index(0)] = student_data[:student].id
       tracker[student_data[:response].id][:assigned] = true
     end
+    
+    def update_indices(i, j, total_students)
+      # Update indices based on how many students were assigned
+      if j - i + 1 == 3
+        return i + 3, j # Move both indices for 3 females
+      elsif j - i + 1 >= 2
+        return i + 1, j - 1 # Move for 2 females
+      end
+      return i, j # No change if fewer than 2
+    end    
     
     def update_indices(i, j, total_students)
       # Update indices based on how many students were assigned
