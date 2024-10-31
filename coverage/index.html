@@ -13,7 +13,7 @@
       <img src="./assets/0.13.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2024-10-30T20:35:55-05:00">2024-10-30T20:35:55-05:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2024-10-30T20:57:09-05:00">2024-10-30T20:57:09-05:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -22,14 +22,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="green">
-  94.97%
+  95.17%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         5.19
+         5.24
        </span>
     </span> hits/line
     )
@@ -42,11 +42,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>457</b> relevant lines,
-    <span class="green"><b>434</b> lines covered</span> and
+    <b>476</b> relevant lines,
+    <span class="green"><b>453</b> lines covered</span> and
     <span class="red"><b>23</b> lines missed. </span>
     (<span class="green">
-  94.97%
+  95.17%
 </span>
 )
   </div>
@@ -104,12 +104,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#ddcc3ebd840948957592be5e34ab851ad5af0c1f" class="src_link" title="app/controllers/forms_controller.rb">app/controllers/forms_controller.rb</a></td>
-            <td class="green strong cell--number t-file__coverage">96.28 %</td>
-            <td class="cell--number">444</td>
-            <td class="cell--number">215</td>
-            <td class="cell--number">207</td>
+            <td class="green strong cell--number t-file__coverage">96.58 %</td>
+            <td class="cell--number">484</td>
+            <td class="cell--number">234</td>
+            <td class="cell--number">226</td>
             <td class="cell--number">8</td>
-            <td class="cell--number">5.26</td>
+            <td class="cell--number">5.36</td>
             
           </tr>
         
@@ -235,14 +235,14 @@
     <span class="group_name">Controllers</span>
     (<span class="covered_percent">
       <span class="green">
-  94.29%
+  94.55%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         4.95
+         5.01
        </span>
     </span> hits/line
     )
@@ -255,11 +255,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>403</b> relevant lines,
-    <span class="green"><b>380</b> lines covered</span> and
+    <b>422</b> relevant lines,
+    <span class="green"><b>399</b> lines covered</span> and
     <span class="red"><b>23</b> lines missed. </span>
     (<span class="green">
-  94.29%
+  94.55%
 </span>
 )
   </div>
@@ -317,12 +317,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#ddcc3ebd840948957592be5e34ab851ad5af0c1f" class="src_link" title="app/controllers/forms_controller.rb">app/controllers/forms_controller.rb</a></td>
-            <td class="green strong cell--number t-file__coverage">96.28 %</td>
-            <td class="cell--number">444</td>
-            <td class="cell--number">215</td>
-            <td class="cell--number">207</td>
+            <td class="green strong cell--number t-file__coverage">96.58 %</td>
+            <td class="cell--number">484</td>
+            <td class="cell--number">234</td>
+            <td class="cell--number">226</td>
             <td class="cell--number">8</td>
-            <td class="cell--number">5.26</td>
+            <td class="cell--number">5.36</td>
             
           </tr>
         
@@ -4282,7 +4282,7 @@
     <h3>app/controllers/forms_controller.rb</h3>
     <h4>
       <span class="green">
-  96.28%
+  96.58%
 </span>
 
       lines covered
@@ -4291,8 +4291,8 @@
     
 
     <div class="t-line-summary">
-      <b>215</b> relevant lines.
-      <span class="green"><b>207</b> lines covered</span> and
+      <b>234</b> relevant lines.
+      <span class="green"><b>226</b> lines covered</span> and
       <span class="red"><b>8</b> lines missed.</span>
     </div>
 
@@ -7795,7 +7795,7 @@
 
             
 
-            <code class="ruby">      students_by_gender = { female: [], other: [], male: [], prefer_not_to_say: [] }</code>
+            <code class="ruby">      students_by_gender = initialize_gender_groups</code>
           </li>
         </div>
       
@@ -7841,7 +7841,7 @@
 
             
 
-            <code class="ruby">        student_data = build_student_data(response, gender_attribute)</code>
+            <code class="ruby">        assign_student_to_category(students_by_gender, response, gender_attribute)</code>
           </li>
         </div>
       
@@ -7851,41 +7851,41 @@
 
             
 
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="328">
+            
+
+            
+
             <code class="ruby">    </code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="25" data-linenumber="328">
+          <li class="covered" data-hits="2" data-linenumber="329">
             
-              <span class="hits">25</span>
-            
-
+              <span class="hits">2</span>
             
 
-            <code class="ruby">        case response.responses[gender_attribute.id.to_s].downcase</code>
+            
+
+            <code class="ruby">      sort_gender_groups(students_by_gender)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="329">
+          <li class="covered" data-hits="2" data-linenumber="330">
+            
+              <span class="hits">2</span>
             
 
             
 
-            <code class="ruby">        when &quot;female&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="11" data-linenumber="330">
-            
-              <span class="hits">11</span>
-            
-
-            
-
-            <code class="ruby">          students_by_gender[:female] &lt;&lt; student_data</code>
+            <code class="ruby">      students_by_gender</code>
           </li>
         </div>
       
@@ -7895,88 +7895,12 @@
 
             
 
-            <code class="ruby">        when &quot;other&quot;</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="332">
-            
-              <span class="hits">4</span>
-            
-
-            
-
-            <code class="ruby">          students_by_gender[:other] &lt;&lt; student_data</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="333">
-            
-
-            
-
-            <code class="ruby">        when &quot;male&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="7" data-linenumber="334">
-            
-              <span class="hits">7</span>
-            
-
-            
-
-            <code class="ruby">          students_by_gender[:male] &lt;&lt; student_data</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="335">
-            
-
-            
-
-            <code class="ruby">        when &quot;prefer not to say&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="3" data-linenumber="336">
-            
-              <span class="hits">3</span>
-            
-
-            
-
-            <code class="ruby">          students_by_gender[:prefer_not_to_say] &lt;&lt; student_data</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="337">
-            
-
-            
-
-            <code class="ruby">        end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="338">
-            
-
-            
-
-            <code class="ruby">      end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="339">
+          <li class="never" data-hits="" data-linenumber="332">
             
 
             
@@ -7986,26 +7910,102 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="13" data-linenumber="340">
-            
-              <span class="hits">13</span>
+          <li class="never" data-hits="" data-linenumber="333">
             
 
             
 
-            <code class="ruby">      students_by_gender[:female].sort_by! { |s| -s[:score] }</code>
+            <code class="ruby">    # Helper Methods</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="6" data-linenumber="341">
-            
-              <span class="hits">6</span>
+          <li class="never" data-hits="" data-linenumber="334">
             
 
             
 
-            <code class="ruby">      students_by_gender[:other].sort_by! { |s| -s[:score] }</code>
+            <code class="ruby">    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="335">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def initialize_gender_groups</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="336">
+            
+              <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">      { female: [], other: [], male: [], prefer_not_to_say: [] }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="337">
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="338">
+            
+
+            
+
+            <code class="ruby">    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="339">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def assign_student_to_category(students_by_gender, response, gender_attribute)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="25" data-linenumber="340">
+            
+              <span class="hits">25</span>
+            
+
+            
+
+            <code class="ruby">      gender_category = determine_gender_category(response, gender_attribute)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="25" data-linenumber="341">
+            
+              <span class="hits">25</span>
+            
+
+            
+
+            <code class="ruby">      return if gender_category.nil?</code>
           </li>
         </div>
       
@@ -8020,24 +8020,26 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="343">
+          <li class="covered" data-hits="25" data-linenumber="343">
             
-              <span class="hits">2</span>
-            
-
+              <span class="hits">25</span>
             
 
-            <code class="ruby">      students_by_gender</code>
+            
+
+            <code class="ruby">      student_data = build_student_data(response, gender_attribute)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="344">
+          <li class="covered" data-hits="25" data-linenumber="344">
+            
+              <span class="hits">25</span>
             
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">      students_by_gender[gender_category] &lt;&lt; student_data</code>
           </li>
         </div>
       
@@ -8047,31 +8049,29 @@
 
             
 
-            <code class="ruby">  </code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="346">
+          <li class="never" data-hits="" data-linenumber="346">
+            
+
+            
+
+            <code class="ruby">    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="347">
             
               <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    def valid_gender_response?(response, gender_attribute)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="25" data-linenumber="347">
-            
-              <span class="hits">25</span>
-            
-
-            
-
-            <code class="ruby">      gender_value = response.responses[gender_attribute.id.to_s]</code>
+            <code class="ruby">    def determine_gender_category(response, gender_attribute)</code>
           </li>
         </div>
       
@@ -8083,63 +8083,65 @@
 
             
 
-            <code class="ruby">      !gender_value.nil? &amp;&amp; !gender_value.strip.empty?</code>
+            <code class="ruby">      case response.responses[gender_attribute.id.to_s]&amp;.downcase</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="349">
+          <li class="covered" data-hits="11" data-linenumber="349">
+            
+              <span class="hits">11</span>
             
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">      when &quot;female&quot; then :female</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="350">
+          <li class="covered" data-hits="4" data-linenumber="350">
+            
+              <span class="hits">4</span>
             
 
             
 
-            <code class="ruby">    </code>
+            <code class="ruby">      when &quot;other&quot; then :other</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="351">
+          <li class="covered" data-hits="7" data-linenumber="351">
             
-              <span class="hits">1</span>
-            
-
+              <span class="hits">7</span>
             
 
-            <code class="ruby">    def build_student_data(response, gender_attribute)</code>
+            
+
+            <code class="ruby">      when &quot;male&quot; then :male</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="25" data-linenumber="352">
+          <li class="covered" data-hits="3" data-linenumber="352">
             
-              <span class="hits">25</span>
-            
-
+              <span class="hits">3</span>
             
 
-            <code class="ruby">      student = response.student</code>
+            
+
+            <code class="ruby">      when &quot;prefer not to say&quot; then :prefer_not_to_say</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="25" data-linenumber="353">
-            
-              <span class="hits">25</span>
+          <li class="never" data-hits="" data-linenumber="353">
             
 
             
 
-            <code class="ruby">      { student: student, response: response, score: calculate_weighted_average(response) }</code>
+            <code class="ruby">      end</code>
           </li>
         </div>
       
@@ -8159,7 +8161,7 @@
 
             
 
-            <code class="ruby">  </code>
+            <code class="ruby">    </code>
           </li>
         </div>
       
@@ -8171,31 +8173,31 @@
 
             
 
-            <code class="ruby">    def assign_students_to_teams(teams, categorized_students, tracker)</code>
+            <code class="ruby">    def sort_gender_groups(students_by_gender)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="357">
+          <li class="covered" data-hits="13" data-linenumber="357">
             
-              <span class="hits">2</span>
-            
-
+              <span class="hits">13</span>
             
 
-            <code class="ruby">      female_students = categorized_students[:female]</code>
+            
+
+            <code class="ruby">      students_by_gender[:female].sort_by! { |s| -s[:score] }</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="358">
+          <li class="covered" data-hits="6" data-linenumber="358">
             
-              <span class="hits">2</span>
-            
-
+              <span class="hits">6</span>
             
 
-            <code class="ruby">      other_students = categorized_students[:other]</code>
+            
+
+            <code class="ruby">      students_by_gender[:other].sort_by! { |s| -s[:score] }</code>
           </li>
         </div>
       
@@ -8205,46 +8207,12 @@
 
             
 
-            <code class="ruby">    </code>
+            <code class="ruby">    end    </code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="360">
-            
-              <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">      assign_female_students(teams, female_students, tracker)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="361">
-            
-              <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">      assign_other_students(teams, other_students, tracker)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="362">
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="363">
+          <li class="never" data-hits="" data-linenumber="360">
             
 
             
@@ -8254,26 +8222,58 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="364">
+          <li class="covered" data-hits="1" data-linenumber="361">
             
               <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    def assign_female_students(teams, female_students, tracker)</code>
+            <code class="ruby">    def valid_gender_response?(response, gender_attribute)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="365">
+          <li class="covered" data-hits="25" data-linenumber="362">
             
-              <span class="hits">2</span>
+              <span class="hits">25</span>
+            
+
+            
+
+            <code class="ruby">      gender_value = response.responses[gender_attribute.id.to_s]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="25" data-linenumber="363">
+            
+              <span class="hits">25</span>
             
 
             
 
-            <code class="ruby">      if female_students.size.even?</code>
+            <code class="ruby">      !gender_value.nil? &amp;&amp; !gender_value.strip.empty?</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="364">
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="365">
+            
+
+            
+
+            <code class="ruby">    </code>
           </li>
         </div>
       
@@ -8285,12 +8285,182 @@
 
             
 
+            <code class="ruby">    def build_student_data(response, gender_attribute)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="25" data-linenumber="367">
+            
+              <span class="hits">25</span>
+            
+
+            
+
+            <code class="ruby">      student = response.student</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="25" data-linenumber="368">
+            
+              <span class="hits">25</span>
+            
+
+            
+
+            <code class="ruby">      { student: student, response: response, score: calculate_weighted_average(response) }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="369">
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="370">
+            
+
+            
+
+            <code class="ruby">  </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="371">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def assign_students_to_teams(teams, categorized_students, tracker)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="372">
+            
+              <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">      female_students = categorized_students[:female]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="373">
+            
+              <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">      other_students = categorized_students[:other]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="374">
+            
+
+            
+
+            <code class="ruby">    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="375">
+            
+              <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">      assign_female_students(teams, female_students, tracker)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="376">
+            
+              <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">      assign_other_students(teams, other_students, tracker)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="377">
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="378">
+            
+
+            
+
+            <code class="ruby">  </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="379">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def assign_female_students(teams, female_students, tracker)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="380">
+            
+              <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">      if female_students.size.even?</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="381">
+            
+              <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">        assign_even_female_students(teams, female_students, tracker)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="367">
+          <li class="never" data-hits="" data-linenumber="382">
             
 
             
@@ -8300,7 +8470,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="368">
+          <li class="covered" data-hits="1" data-linenumber="383">
             
               <span class="hits">1</span>
             
@@ -8312,182 +8482,12 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="369">
-            
-
-            
-
-            <code class="ruby">      end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="370">
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="371">
-            
-
-            
-
-            <code class="ruby">    </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="372">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    def assign_even_female_students(teams, female_students, tracker)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="373">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      i, j, team_index = 0, female_students.size - 1, 0</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="374">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      while i &lt;= j &amp;&amp; team_index &lt; teams.size</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="3" data-linenumber="375">
-            
-              <span class="hits">3</span>
-            
-
-            
-
-            <code class="ruby">        teams[team_index][teams[team_index].index(0)] = female_students[i][:student].id</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="3" data-linenumber="376">
-            
-              <span class="hits">3</span>
-            
-
-            
-
-            <code class="ruby">        tracker[female_students[i][:response].id][:assigned] = true</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="3" data-linenumber="377">
-            
-              <span class="hits">3</span>
-            
-
-            
-
-            <code class="ruby">        i += 1</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="378">
-            
-
-            
-
-            <code class="ruby">    </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="3" data-linenumber="379">
-            
-              <span class="hits">3</span>
-            
-
-            
-
-            <code class="ruby">        teams[team_index][teams[team_index].index(0)] = female_students[j][:student].id</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="3" data-linenumber="380">
-            
-              <span class="hits">3</span>
-            
-
-            
-
-            <code class="ruby">        tracker[female_students[j][:response].id][:assigned] = true</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="3" data-linenumber="381">
-            
-              <span class="hits">3</span>
-            
-
-            
-
-            <code class="ruby">        j -= 1</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="3" data-linenumber="382">
-            
-              <span class="hits">3</span>
-            
-
-            
-
-            <code class="ruby">        team_index += 1</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="383">
-            
-
-            
-
-            <code class="ruby">      end</code>
-          </li>
-        </div>
-      
-        <div>
           <li class="never" data-hits="" data-linenumber="384">
             
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">      end</code>
           </li>
         </div>
       
@@ -8497,19 +8497,17 @@
 
             
 
-            <code class="ruby">  </code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="386">
-            
-              <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="386">
             
 
             
 
-            <code class="ruby">    def assign_odd_female_students(teams, female_students, tracker)</code>
+            <code class="ruby">    </code>
           </li>
         </div>
       
@@ -8521,7 +8519,7 @@
 
             
 
-            <code class="ruby">      i, j, team_index = 0, female_students.size - 1, 0</code>
+            <code class="ruby">    def assign_even_female_students(teams, female_students, tracker)</code>
           </li>
         </div>
       
@@ -8533,43 +8531,43 @@
 
             
 
-            <code class="ruby">      while i &lt;= j &amp;&amp; team_index &lt; teams.size</code>
+            <code class="ruby">      i, j, team_index = 0, female_students.size - 1, 0</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="389">
-            
-              <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">        remaining_females = j - i + 1</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="390">
-            
-              <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">        if remaining_females == 3</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="391">
+          <li class="covered" data-hits="1" data-linenumber="389">
             
               <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">          3.times do</code>
+            <code class="ruby">      while i &lt;= j &amp;&amp; team_index &lt; teams.size</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="3" data-linenumber="390">
+            
+              <span class="hits">3</span>
+            
+
+            
+
+            <code class="ruby">        teams[team_index][teams[team_index].index(0)] = female_students[i][:student].id</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="3" data-linenumber="391">
+            
+              <span class="hits">3</span>
+            
+
+            
+
+            <code class="ruby">        tracker[female_students[i][:response].id][:assigned] = true</code>
           </li>
         </div>
       
@@ -8581,19 +8579,17 @@
 
             
 
-            <code class="ruby">            teams[team_index][teams[team_index].index(0)] = female_students[i][:student].id</code>
+            <code class="ruby">        i += 1</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="3" data-linenumber="393">
-            
-              <span class="hits">3</span>
+          <li class="never" data-hits="" data-linenumber="393">
             
 
             
 
-            <code class="ruby">            tracker[female_students[i][:response].id][:assigned] = true</code>
+            <code class="ruby">    </code>
           </li>
         </div>
       
@@ -8605,77 +8601,73 @@
 
             
 
-            <code class="ruby">            i += 1</code>
+            <code class="ruby">        teams[team_index][teams[team_index].index(0)] = female_students[j][:student].id</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="395">
+          <li class="covered" data-hits="3" data-linenumber="395">
+            
+              <span class="hits">3</span>
             
 
             
 
-            <code class="ruby">          end</code>
+            <code class="ruby">        tracker[female_students[j][:response].id][:assigned] = true</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="396">
+          <li class="covered" data-hits="3" data-linenumber="396">
             
-              <span class="hits">1</span>
-            
-
+              <span class="hits">3</span>
             
 
-            <code class="ruby">          team_index += 1</code>
+            
+
+            <code class="ruby">        j -= 1</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="397">
+          <li class="covered" data-hits="3" data-linenumber="397">
             
-              <span class="hits">1</span>
-            
-
+              <span class="hits">3</span>
             
 
-            <code class="ruby">          break</code>
+            
+
+            <code class="ruby">        team_index += 1</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="398">
-            
-              <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="398">
             
 
             
 
-            <code class="ruby">        elsif remaining_females &gt;= 2</code>
+            <code class="ruby">      end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="399">
-            
-              <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="399">
             
 
             
 
-            <code class="ruby">          teams[team_index][teams[team_index].index(0)] = female_students[i][:student].id</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="400">
-            
-              <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="400">
             
 
             
 
-            <code class="ruby">          tracker[female_students[i][:response].id][:assigned] = true</code>
+            <code class="ruby">  </code>
           </li>
         </div>
       
@@ -8687,29 +8679,29 @@
 
             
 
-            <code class="ruby">          i += 1</code>
+            <code class="ruby">    def assign_odd_female_students(teams, female_students, tracker)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="402">
-            
-
-            
-
-            <code class="ruby">    </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="403">
+          <li class="covered" data-hits="1" data-linenumber="402">
             
               <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">          teams[team_index][teams[team_index].index(0)] = female_students[j][:student].id</code>
+            <code class="ruby">      i, j, team_index = 0, female_students.size - 1, 0</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="403">
+            
+
+            
+
+            <code class="ruby">    </code>
           </li>
         </div>
       
@@ -8721,24 +8713,70 @@
 
             
 
-            <code class="ruby">          tracker[female_students[j][:response].id][:assigned] = true</code>
+            <code class="ruby">      while i &lt;= j &amp;&amp; team_index &lt; teams.size</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="405">
+          <li class="covered" data-hits="2" data-linenumber="405">
+            
+              <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        remaining_females = j - i + 1</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="406">
+            
+
+            
+
+            <code class="ruby">    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="407">
+            
+              <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        if remaining_females == 3</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="408">
             
               <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">          j -= 1</code>
+            <code class="ruby">          assign_three_females_to_team(teams[team_index], female_students, i, tracker)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="406">
+          <li class="covered" data-hits="1" data-linenumber="409">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">          i += 3</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="410">
             
               <span class="hits">1</span>
             
@@ -8750,46 +8788,6 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="407">
-            
-
-            
-
-            <code class="ruby">        end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="408">
-            
-
-            
-
-            <code class="ruby">      end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="409">
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="410">
-            
-
-            
-
-            <code class="ruby">  </code>
-          </li>
-        </div>
-      
-        <div>
           <li class="covered" data-hits="1" data-linenumber="411">
             
               <span class="hits">1</span>
@@ -8797,79 +8795,77 @@
 
             
 
-            <code class="ruby">    def assign_other_students(teams, other_students, tracker)</code>
+            <code class="ruby">          break</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="412">
+          <li class="covered" data-hits="1" data-linenumber="412">
             
-              <span class="hits">2</span>
-            
-
+              <span class="hits">1</span>
             
 
-            <code class="ruby">      teams.each do |team|</code>
+            
+
+            <code class="ruby">        elsif remaining_females &gt;= 2</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="6" data-linenumber="413">
+          <li class="covered" data-hits="1" data-linenumber="413">
             
-              <span class="hits">6</span>
-            
-
+              <span class="hits">1</span>
             
 
-            <code class="ruby">        break if other_students.empty?</code>
+            
+
+            <code class="ruby">          assign_two_females_to_team(teams[team_index], female_students, i, j, tracker)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="20" data-linenumber="414">
+          <li class="covered" data-hits="1" data-linenumber="414">
             
-              <span class="hits">20</span>
-            
-
+              <span class="hits">1</span>
             
 
-            <code class="ruby">        if team.count { |member| member != 0 } &gt;= 2 &amp;&amp; team.include?(0)</code>
+            
+
+            <code class="ruby">          i += 1</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="415">
+          <li class="covered" data-hits="1" data-linenumber="415">
             
-              <span class="hits">4</span>
-            
-
+              <span class="hits">1</span>
             
 
-            <code class="ruby">          team[team.index(0)] = other_students.first[:student].id</code>
+            
+
+            <code class="ruby">          j -= 1</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="416">
+          <li class="covered" data-hits="1" data-linenumber="416">
             
-              <span class="hits">4</span>
-            
-
+              <span class="hits">1</span>
             
 
-            <code class="ruby">          tracker[other_students.first[:response].id][:assigned] = true</code>
+            
+
+            <code class="ruby">          team_index += 1</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="417">
-            
-              <span class="hits">4</span>
+          <li class="never" data-hits="" data-linenumber="417">
             
 
             
 
-            <code class="ruby">          other_students.shift</code>
+            <code class="ruby">        end</code>
           </li>
         </div>
       
@@ -8879,7 +8875,7 @@
 
             
 
-            <code class="ruby">        end</code>
+            <code class="ruby">      end</code>
           </li>
         </div>
       
@@ -8889,7 +8885,7 @@
 
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -8899,7 +8895,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">    </code>
           </li>
         </div>
       
@@ -8909,7 +8905,7 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">    # Helper Methods</code>
           </li>
         </div>
       
@@ -8919,7 +8915,7 @@
 
             
 
-            <code class="ruby">      # Helper method to calculate the weighted average score for a student</code>
+            <code class="ruby">    </code>
           </li>
         </div>
       
@@ -8931,12 +8927,454 @@
 
             
 
+            <code class="ruby">    def assign_three_females_to_team(team, female_students, start_index, tracker)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="424">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      3.times do |n|</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="3" data-linenumber="425">
+            
+              <span class="hits">3</span>
+            
+
+            
+
+            <code class="ruby">        student_data = female_students[start_index + n]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="3" data-linenumber="426">
+            
+              <span class="hits">3</span>
+            
+
+            
+
+            <code class="ruby">        team[team.index(0)] = student_data[:student].id</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="3" data-linenumber="427">
+            
+              <span class="hits">3</span>
+            
+
+            
+
+            <code class="ruby">        tracker[student_data[:response].id][:assigned] = true</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="428">
+            
+
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="429">
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="430">
+            
+
+            
+
+            <code class="ruby">    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="431">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def assign_two_females_to_team(team, female_students, i, j, tracker)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="432">
+            
+
+            
+
+            <code class="ruby">      # Assign the high scorer</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="433">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      team[team.index(0)] = female_students[i][:student].id</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="434">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      tracker[female_students[i][:response].id][:assigned] = true</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="435">
+            
+
+            
+
+            <code class="ruby">    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="436">
+            
+
+            
+
+            <code class="ruby">      # Assign the low scorer</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="437">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      team[team.index(0)] = female_students[j][:student].id</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="438">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      tracker[female_students[j][:response].id][:assigned] = true</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="439">
+            
+
+            
+
+            <code class="ruby">    end    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="440">
+            
+
+            
+
+            <code class="ruby">  </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="441">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def assign_other_students(teams, other_students, tracker)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="442">
+            
+              <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">      teams.each do |team|</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="6" data-linenumber="443">
+            
+              <span class="hits">6</span>
+            
+
+            
+
+            <code class="ruby">        break if other_students.empty?</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="444">
+            
+              <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">        if valid_for_other_student_assignment?(team)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="445">
+            
+              <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">          assign_other_student_to_team(team, other_students, tracker)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="446">
+            
+
+            
+
+            <code class="ruby">        end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="447">
+            
+
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="448">
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="449">
+            
+
+            
+
+            <code class="ruby">    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="450">
+            
+
+            
+
+            <code class="ruby">    # Helper Methods</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="451">
+            
+
+            
+
+            <code class="ruby">    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="452">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def valid_for_other_student_assignment?(team)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="20" data-linenumber="453">
+            
+              <span class="hits">20</span>
+            
+
+            
+
+            <code class="ruby">      team.count { |member| member != 0 } &gt;= 2 &amp;&amp; team.include?(0)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="454">
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="455">
+            
+
+            
+
+            <code class="ruby">    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="456">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def assign_other_student_to_team(team, other_students, tracker)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="457">
+            
+              <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">      student = other_students.shift</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="458">
+            
+              <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">      team[team.index(0)] = student[:student].id</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="459">
+            
+              <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">      tracker[student[:response].id][:assigned] = true</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="460">
+            
+
+            
+
+            <code class="ruby">    end    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="461">
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="462">
+            
+
+            
+
+            <code class="ruby">      # Helper method to calculate the weighted average score for a student</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="463">
+            
+              <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">    def calculate_weighted_average(response)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="25" data-linenumber="424">
+          <li class="covered" data-hits="25" data-linenumber="464">
             
               <span class="hits">25</span>
             
@@ -8948,7 +9386,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="50" data-linenumber="425">
+          <li class="covered" data-hits="50" data-linenumber="465">
             
               <span class="hits">50</span>
             
@@ -8960,7 +9398,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="426">
+          <li class="never" data-hits="" data-linenumber="466">
             
 
             
@@ -8970,7 +9408,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="25" data-linenumber="427">
+          <li class="covered" data-hits="25" data-linenumber="467">
             
               <span class="hits">25</span>
             
@@ -8982,7 +9420,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="25" data-linenumber="428">
+          <li class="covered" data-hits="25" data-linenumber="468">
             
               <span class="hits">25</span>
             
@@ -8994,7 +9432,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="429">
+          <li class="never" data-hits="" data-linenumber="469">
             
 
             
@@ -9004,7 +9442,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="25" data-linenumber="430">
+          <li class="covered" data-hits="25" data-linenumber="470">
             
               <span class="hits">25</span>
             
@@ -9016,7 +9454,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="431">
+          <li class="missed" data-hits="0" data-linenumber="471">
             
 
             
@@ -9026,7 +9464,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="432">
+          <li class="missed" data-hits="0" data-linenumber="472">
             
 
             
@@ -9036,7 +9474,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="433">
+          <li class="never" data-hits="" data-linenumber="473">
             
 
             
@@ -9046,7 +9484,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="434">
+          <li class="missed" data-hits="0" data-linenumber="474">
             
 
             
@@ -9056,7 +9494,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="435">
+          <li class="missed" data-hits="0" data-linenumber="475">
             
 
             
@@ -9066,7 +9504,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="436">
+          <li class="missed" data-hits="0" data-linenumber="476">
             
 
             
@@ -9076,7 +9514,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="437">
+          <li class="missed" data-hits="0" data-linenumber="477">
             
 
             
@@ -9086,7 +9524,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="438">
+          <li class="never" data-hits="" data-linenumber="478">
             
 
             
@@ -9096,7 +9534,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="439">
+          <li class="never" data-hits="" data-linenumber="479">
             
 
             
@@ -9106,7 +9544,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="440">
+          <li class="never" data-hits="" data-linenumber="480">
             
 
             
@@ -9116,7 +9554,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="25" data-linenumber="441">
+          <li class="covered" data-hits="25" data-linenumber="481">
             
               <span class="hits">25</span>
             
@@ -9128,7 +9566,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="442">
+          <li class="never" data-hits="" data-linenumber="482">
             
 
             
@@ -9138,7 +9576,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="443">
+          <li class="never" data-hits="" data-linenumber="483">
             
 
             
@@ -9148,7 +9586,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="444">
+          <li class="never" data-hits="" data-linenumber="484">
             
 
             

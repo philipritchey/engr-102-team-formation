@@ -319,29 +319,44 @@ class FormsController < ApplicationController
     end
   
     def categorize_students(responses, gender_attribute)
-      students_by_gender = { female: [], other: [], male: [], prefer_not_to_say: [] }
+      students_by_gender = initialize_gender_groups
     
       responses.each do |response|
         next unless valid_gender_response?(response, gender_attribute)
-        student_data = build_student_data(response, gender_attribute)
-    
-        case response.responses[gender_attribute.id.to_s].downcase
-        when "female"
-          students_by_gender[:female] << student_data
-        when "other"
-          students_by_gender[:other] << student_data
-        when "male"
-          students_by_gender[:male] << student_data
-        when "prefer not to say"
-          students_by_gender[:prefer_not_to_say] << student_data
-        end
+        assign_student_to_category(students_by_gender, response, gender_attribute)
       end
     
-      students_by_gender[:female].sort_by! { |s| -s[:score] }
-      students_by_gender[:other].sort_by! { |s| -s[:score] }
-    
+      sort_gender_groups(students_by_gender)
       students_by_gender
     end
+    
+    # Helper Methods
+    
+    def initialize_gender_groups
+      { female: [], other: [], male: [], prefer_not_to_say: [] }
+    end
+    
+    def assign_student_to_category(students_by_gender, response, gender_attribute)
+      gender_category = determine_gender_category(response, gender_attribute)
+      return if gender_category.nil?
+    
+      student_data = build_student_data(response, gender_attribute)
+      students_by_gender[gender_category] << student_data
+    end
+    
+    def determine_gender_category(response, gender_attribute)
+      case response.responses[gender_attribute.id.to_s]&.downcase
+      when "female" then :female
+      when "other" then :other
+      when "male" then :male
+      when "prefer not to say" then :prefer_not_to_say
+      end
+    end
+    
+    def sort_gender_groups(students_by_gender)
+      students_by_gender[:female].sort_by! { |s| -s[:score] }
+      students_by_gender[:other].sort_by! { |s| -s[:score] }
+    end    
   
     def valid_gender_response?(response, gender_attribute)
       gender_value = response.responses[gender_attribute.id.to_s]
@@ -385,39 +400,64 @@ class FormsController < ApplicationController
   
     def assign_odd_female_students(teams, female_students, tracker)
       i, j, team_index = 0, female_students.size - 1, 0
+    
       while i <= j && team_index < teams.size
         remaining_females = j - i + 1
+    
         if remaining_females == 3
-          3.times do
-            teams[team_index][teams[team_index].index(0)] = female_students[i][:student].id
-            tracker[female_students[i][:response].id][:assigned] = true
-            i += 1
-          end
+          assign_three_females_to_team(teams[team_index], female_students, i, tracker)
+          i += 3
           team_index += 1
           break
         elsif remaining_females >= 2
-          teams[team_index][teams[team_index].index(0)] = female_students[i][:student].id
-          tracker[female_students[i][:response].id][:assigned] = true
+          assign_two_females_to_team(teams[team_index], female_students, i, j, tracker)
           i += 1
-    
-          teams[team_index][teams[team_index].index(0)] = female_students[j][:student].id
-          tracker[female_students[j][:response].id][:assigned] = true
           j -= 1
           team_index += 1
         end
       end
     end
+    
+    # Helper Methods
+    
+    def assign_three_females_to_team(team, female_students, start_index, tracker)
+      3.times do |n|
+        student_data = female_students[start_index + n]
+        team[team.index(0)] = student_data[:student].id
+        tracker[student_data[:response].id][:assigned] = true
+      end
+    end
+    
+    def assign_two_females_to_team(team, female_students, i, j, tracker)
+      # Assign the high scorer
+      team[team.index(0)] = female_students[i][:student].id
+      tracker[female_students[i][:response].id][:assigned] = true
+    
+      # Assign the low scorer
+      team[team.index(0)] = female_students[j][:student].id
+      tracker[female_students[j][:response].id][:assigned] = true
+    end    
   
     def assign_other_students(teams, other_students, tracker)
       teams.each do |team|
         break if other_students.empty?
-        if team.count { |member| member != 0 } >= 2 && team.include?(0)
-          team[team.index(0)] = other_students.first[:student].id
-          tracker[other_students.first[:response].id][:assigned] = true
-          other_students.shift
+        if valid_for_other_student_assignment?(team)
+          assign_other_student_to_team(team, other_students, tracker)
         end
       end
     end
+    
+    # Helper Methods
+    
+    def valid_for_other_student_assignment?(team)
+      team.count { |member| member != 0 } >= 2 && team.include?(0)
+    end
+    
+    def assign_other_student_to_team(team, other_students, tracker)
+      student = other_students.shift
+      team[team.index(0)] = student[:student].id
+      tracker[student[:response].id][:assigned] = true
+    end    
 
       # Helper method to calculate the weighted average score for a student
     def calculate_weighted_average(response)
