@@ -399,56 +399,39 @@ class FormsController < ApplicationController
     end
   
     def assign_odd_female_students(teams, female_students, tracker)
-      i, j, team_index = 0, female_students.size - 1, 0
+      i, j = 0, female_students.size - 1
     
-      while i <= j && team_index < teams.size
+      teams.each_with_index do |team, team_index|
+        break if i > j # Stop if all females are assigned
+    
         remaining_females = j - i + 1
     
-        if assign_three_if_possible(remaining_females, teams, team_index, female_students, i, tracker)
+        if remaining_females == 3
+          assign_three_females(team, female_students[i..j], tracker)
           i += 3
-          team_index += 1
-          break
-        elsif assign_two_if_possible(remaining_females, teams, team_index, female_students, i, j, tracker)
+        elsif remaining_females >= 2
+          assign_two_females(team, female_students[i], female_students[j], tracker)
           i += 1
           j -= 1
-          team_index += 1
         end
       end
     end
     
-    # Helper Methods for Assignment
-    
-    def assign_three_if_possible(remaining_females, teams, team_index, female_students, start_index, tracker)
-      return false unless remaining_females == 3
-    
-      assign_three_females_to_team(teams[team_index], female_students, start_index, tracker)
-      true
-    end
-    
-    def assign_two_if_possible(remaining_females, teams, team_index, female_students, i, j, tracker)
-      return false unless remaining_females >= 2
-    
-      assign_two_females_to_team(teams[team_index], female_students, i, j, tracker)
-      true
-    end
-    
-    # Existing Helper Methods for Assignments
-    
-    def assign_three_females_to_team(team, female_students, start_index, tracker)
-      3.times do |n|
-        assign_student(team, female_students[start_index + n], tracker)
+    def assign_three_females(team, female_students, tracker)
+      female_students.first(3).each do |student_data|
+        assign_student_to_team(team, student_data, tracker)
       end
     end
     
-    def assign_two_females_to_team(team, female_students, i, j, tracker)
-      assign_student(team, female_students[i], tracker)
-      assign_student(team, female_students[j], tracker)
+    def assign_two_females(team, high_scorer, low_scorer, tracker)
+      assign_student_to_team(team, high_scorer, tracker)
+      assign_student_to_team(team, low_scorer, tracker)
     end
     
-    def assign_student(team, student_data, tracker)
+    def assign_student_to_team(team, student_data, tracker)
       team[team.index(0)] = student_data[:student].id
       tracker[student_data[:response].id][:assigned] = true
-    end         
+    end             
     
     def assign_other_students(teams, other_students, tracker)
       teams.each do |team|
