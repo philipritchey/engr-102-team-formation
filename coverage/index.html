@@ -13,7 +13,7 @@
       <img src="./assets/0.13.1/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2024-10-30T21:03:35-05:00">2024-10-30T21:03:35-05:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2024-10-31T00:56:38-05:00">2024-10-31T00:56:38-05:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -22,14 +22,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="green">
-  95.2%
+  95.24%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         5.22
+         5.19
        </span>
     </span> hits/line
     )
@@ -42,11 +42,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>479</b> relevant lines,
-    <span class="green"><b>456</b> lines covered</span> and
+    <b>483</b> relevant lines,
+    <span class="green"><b>460</b> lines covered</span> and
     <span class="red"><b>23</b> lines missed. </span>
     (<span class="green">
-  95.2%
+  95.24%
 </span>
 )
   </div>
@@ -104,12 +104,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#ddcc3ebd840948957592be5e34ab851ad5af0c1f" class="src_link" title="app/controllers/forms_controller.rb">app/controllers/forms_controller.rb</a></td>
-            <td class="green strong cell--number t-file__coverage">96.62 %</td>
-            <td class="cell--number">490</td>
-            <td class="cell--number">237</td>
-            <td class="cell--number">229</td>
+            <td class="green strong cell--number t-file__coverage">96.68 %</td>
+            <td class="cell--number">498</td>
+            <td class="cell--number">241</td>
+            <td class="cell--number">233</td>
             <td class="cell--number">8</td>
-            <td class="cell--number">5.32</td>
+            <td class="cell--number">5.25</td>
             
           </tr>
         
@@ -235,14 +235,14 @@
     <span class="group_name">Controllers</span>
     (<span class="covered_percent">
       <span class="green">
-  94.59%
+  94.64%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         5.0
+         4.96
        </span>
     </span> hits/line
     )
@@ -255,11 +255,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>425</b> relevant lines,
-    <span class="green"><b>402</b> lines covered</span> and
+    <b>429</b> relevant lines,
+    <span class="green"><b>406</b> lines covered</span> and
     <span class="red"><b>23</b> lines missed. </span>
     (<span class="green">
-  94.59%
+  94.64%
 </span>
 )
   </div>
@@ -317,12 +317,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#ddcc3ebd840948957592be5e34ab851ad5af0c1f" class="src_link" title="app/controllers/forms_controller.rb">app/controllers/forms_controller.rb</a></td>
-            <td class="green strong cell--number t-file__coverage">96.62 %</td>
-            <td class="cell--number">490</td>
-            <td class="cell--number">237</td>
-            <td class="cell--number">229</td>
+            <td class="green strong cell--number t-file__coverage">96.68 %</td>
+            <td class="cell--number">498</td>
+            <td class="cell--number">241</td>
+            <td class="cell--number">233</td>
             <td class="cell--number">8</td>
-            <td class="cell--number">5.32</td>
+            <td class="cell--number">5.25</td>
             
           </tr>
         
@@ -4282,7 +4282,7 @@
     <h3>app/controllers/forms_controller.rb</h3>
     <h4>
       <span class="green">
-  96.62%
+  96.68%
 </span>
 
       lines covered
@@ -4291,8 +4291,8 @@
     
 
     <div class="t-line-summary">
-      <b>237</b> relevant lines.
-      <span class="green"><b>229</b> lines covered</span> and
+      <b>241</b> relevant lines.
+      <span class="green"><b>233</b> lines covered</span> and
       <span class="red"><b>8</b> lines missed.</span>
     </div>
 
@@ -8701,7 +8701,7 @@
 
             
 
-            <code class="ruby">    </code>
+            <code class="ruby">      </code>
           </li>
         </div>
       
@@ -8735,7 +8735,7 @@
 
             
 
-            <code class="ruby">    </code>
+            <code class="ruby">        </code>
           </li>
         </div>
       
@@ -8747,7 +8747,7 @@
 
             
 
-            <code class="ruby">        if remaining_females == 3</code>
+            <code class="ruby">        if three_females_left?(remaining_females)</code>
           </li>
         </div>
       
@@ -8759,7 +8759,7 @@
 
             
 
-            <code class="ruby">          assign_three_females(teams[team_index], female_students, i, tracker)</code>
+            <code class="ruby">          assign_three_females_to_team(teams[team_index], female_students, i, tracker)</code>
           </li>
         </div>
       
@@ -8807,7 +8807,7 @@
 
             
 
-            <code class="ruby">        elsif remaining_females &gt;= 2</code>
+            <code class="ruby">        elsif two_or_more_females?(remaining_females)</code>
           </li>
         </div>
       
@@ -8819,7 +8819,7 @@
 
             
 
-            <code class="ruby">          assign_two_females(teams[team_index], female_students, i, j, tracker)</code>
+            <code class="ruby">          assign_two_females_to_team(teams[team_index], female_students, { high: i, low: j }, tracker)</code>
           </li>
         </div>
       
@@ -8895,68 +8895,36 @@
 
             
 
-            <code class="ruby">    </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="421">
-            
-
-            
-
-            <code class="ruby">    # Helper Methods</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="422">
+          <li class="covered" data-hits="1" data-linenumber="421">
             
               <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    def assign_three_females(team, female_students, start_index, tracker)</code>
+            <code class="ruby">    def three_females_left?(remaining_females)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="423">
+          <li class="covered" data-hits="2" data-linenumber="422">
             
-              <span class="hits">1</span>
-            
-
+              <span class="hits">2</span>
             
 
-            <code class="ruby">      3.times do |n|</code>
+            
+
+            <code class="ruby">      remaining_females == 3</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="3" data-linenumber="424">
-            
-              <span class="hits">3</span>
-            
-
-            
-
-            <code class="ruby">        assign_student_to_team(team, female_students[start_index + n], tracker)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="425">
-            
-
-            
-
-            <code class="ruby">      end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="426">
+          <li class="never" data-hits="" data-linenumber="423">
             
 
             
@@ -8966,7 +8934,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="427">
+          <li class="never" data-hits="" data-linenumber="424">
             
 
             
@@ -8976,26 +8944,56 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="428">
+          <li class="covered" data-hits="1" data-linenumber="425">
             
               <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    def assign_two_females(team, female_students, i, j, tracker)</code>
+            <code class="ruby">    def two_or_more_females?(remaining_females)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="429">
+          <li class="covered" data-hits="1" data-linenumber="426">
             
               <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">      assign_high_scorer(team, female_students[i], tracker)</code>
+            <code class="ruby">      remaining_females &gt;= 2</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="427">
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="428">
+            
+
+            
+
+            <code class="ruby">    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="429">
+            
+
+            
+
+            <code class="ruby">    # Helper Methods</code>
           </li>
         </div>
       
@@ -9007,51 +9005,51 @@
 
             
 
-            <code class="ruby">      assign_low_scorer(team, female_students[j], tracker)</code>
+            <code class="ruby">    def assign_three_females_to_team(team, female_students, start_index, tracker)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="431">
+          <li class="covered" data-hits="1" data-linenumber="431">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      3.times do |n|</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="3" data-linenumber="432">
+            
+              <span class="hits">3</span>
+            
+
+            
+
+            <code class="ruby">        assign_student_to_team(team, female_students[start_index + n], tracker)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="433">
+            
+
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="434">
             
 
             
 
             <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="432">
-            
-
-            
-
-            <code class="ruby">    </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="433">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    def assign_high_scorer(team, student_data, tracker)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="434">
-            
-              <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      assign_student_to_team(team, student_data, tracker)</code>
           </li>
         </div>
       
@@ -9061,17 +9059,19 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">    </code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="436">
+          <li class="covered" data-hits="1" data-linenumber="436">
+            
+              <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    </code>
+            <code class="ruby">    def assign_two_females_to_team(team, female_students, indices, tracker)</code>
           </li>
         </div>
       
@@ -9083,7 +9083,7 @@
 
             
 
-            <code class="ruby">    def assign_low_scorer(team, student_data, tracker)</code>
+            <code class="ruby">      assign_high_scorer(team, female_students[indices[:high]], tracker)</code>
           </li>
         </div>
       
@@ -9095,7 +9095,7 @@
 
             
 
-            <code class="ruby">      assign_student_to_team(team, student_data, tracker)</code>
+            <code class="ruby">      assign_low_scorer(team, female_students[indices[:low]], tracker)</code>
           </li>
         </div>
       
@@ -9120,38 +9120,36 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="441">
+          <li class="never" data-hits="" data-linenumber="441">
+            
+
+            
+
+            <code class="ruby">    # Remaining methods for assigning students remain the same</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="442">
             
               <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    def assign_student_to_team(team, student_data, tracker)</code>
+            <code class="ruby">    def assign_high_scorer(team, student_data, tracker)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="5" data-linenumber="442">
+          <li class="covered" data-hits="1" data-linenumber="443">
             
-              <span class="hits">5</span>
-            
-
-            
-
-            <code class="ruby">      team[team.index(0)] = student_data[:student].id</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="5" data-linenumber="443">
-            
-              <span class="hits">5</span>
+              <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">      tracker[student_data[:response].id][:assigned] = true</code>
+            <code class="ruby">      assign_student_to_team(team, student_data, tracker)</code>
           </li>
         </div>
       
@@ -9171,17 +9169,19 @@
 
             
 
-            <code class="ruby">     </code>
+            <code class="ruby">    </code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="446">
+          <li class="covered" data-hits="1" data-linenumber="446">
+            
+              <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  </code>
+            <code class="ruby">    def assign_low_scorer(team, student_data, tracker)</code>
           </li>
         </div>
       
@@ -9193,12 +9193,100 @@
 
             
 
+            <code class="ruby">      assign_student_to_team(team, student_data, tracker)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="448">
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="449">
+            
+
+            
+
+            <code class="ruby">    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="450">
+            
+              <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def assign_student_to_team(team, student_data, tracker)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="5" data-linenumber="451">
+            
+              <span class="hits">5</span>
+            
+
+            
+
+            <code class="ruby">      team[team.index(0)] = student_data[:student].id</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="5" data-linenumber="452">
+            
+              <span class="hits">5</span>
+            
+
+            
+
+            <code class="ruby">      tracker[student_data[:response].id][:assigned] = true</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="453">
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="454">
+            
+
+            
+
+            <code class="ruby">    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="455">
+            
+              <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">    def assign_other_students(teams, other_students, tracker)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="448">
+          <li class="covered" data-hits="2" data-linenumber="456">
             
               <span class="hits">2</span>
             
@@ -9210,7 +9298,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="6" data-linenumber="449">
+          <li class="covered" data-hits="6" data-linenumber="457">
             
               <span class="hits">6</span>
             
@@ -9222,7 +9310,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="450">
+          <li class="covered" data-hits="4" data-linenumber="458">
             
               <span class="hits">4</span>
             
@@ -9234,7 +9322,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="451">
+          <li class="covered" data-hits="4" data-linenumber="459">
             
               <span class="hits">4</span>
             
@@ -9246,7 +9334,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="452">
+          <li class="never" data-hits="" data-linenumber="460">
             
 
             
@@ -9256,7 +9344,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="453">
+          <li class="never" data-hits="" data-linenumber="461">
             
 
             
@@ -9266,7 +9354,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="454">
+          <li class="never" data-hits="" data-linenumber="462">
             
 
             
@@ -9276,7 +9364,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="455">
+          <li class="never" data-hits="" data-linenumber="463">
             
 
             
@@ -9286,7 +9374,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="456">
+          <li class="never" data-hits="" data-linenumber="464">
             
 
             
@@ -9296,7 +9384,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="457">
+          <li class="never" data-hits="" data-linenumber="465">
             
 
             
@@ -9306,7 +9394,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="458">
+          <li class="covered" data-hits="1" data-linenumber="466">
             
               <span class="hits">1</span>
             
@@ -9318,7 +9406,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="20" data-linenumber="459">
+          <li class="covered" data-hits="20" data-linenumber="467">
             
               <span class="hits">20</span>
             
@@ -9330,7 +9418,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="460">
+          <li class="never" data-hits="" data-linenumber="468">
             
 
             
@@ -9340,7 +9428,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="461">
+          <li class="never" data-hits="" data-linenumber="469">
             
 
             
@@ -9350,7 +9438,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="462">
+          <li class="covered" data-hits="1" data-linenumber="470">
             
               <span class="hits">1</span>
             
@@ -9362,7 +9450,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="463">
+          <li class="covered" data-hits="4" data-linenumber="471">
             
               <span class="hits">4</span>
             
@@ -9374,7 +9462,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="464">
+          <li class="covered" data-hits="4" data-linenumber="472">
             
               <span class="hits">4</span>
             
@@ -9386,7 +9474,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="465">
+          <li class="covered" data-hits="4" data-linenumber="473">
             
               <span class="hits">4</span>
             
@@ -9398,7 +9486,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="466">
+          <li class="never" data-hits="" data-linenumber="474">
             
 
             
@@ -9408,7 +9496,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="467">
+          <li class="never" data-hits="" data-linenumber="475">
             
 
             
@@ -9418,7 +9506,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="468">
+          <li class="never" data-hits="" data-linenumber="476">
             
 
             
@@ -9428,7 +9516,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="469">
+          <li class="covered" data-hits="1" data-linenumber="477">
             
               <span class="hits">1</span>
             
@@ -9440,7 +9528,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="25" data-linenumber="470">
+          <li class="covered" data-hits="25" data-linenumber="478">
             
               <span class="hits">25</span>
             
@@ -9452,7 +9540,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="50" data-linenumber="471">
+          <li class="covered" data-hits="50" data-linenumber="479">
             
               <span class="hits">50</span>
             
@@ -9464,7 +9552,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="472">
+          <li class="never" data-hits="" data-linenumber="480">
             
 
             
@@ -9474,7 +9562,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="25" data-linenumber="473">
+          <li class="covered" data-hits="25" data-linenumber="481">
             
               <span class="hits">25</span>
             
@@ -9486,7 +9574,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="25" data-linenumber="474">
+          <li class="covered" data-hits="25" data-linenumber="482">
             
               <span class="hits">25</span>
             
@@ -9498,7 +9586,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="475">
+          <li class="never" data-hits="" data-linenumber="483">
             
 
             
@@ -9508,7 +9596,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="25" data-linenumber="476">
+          <li class="covered" data-hits="25" data-linenumber="484">
             
               <span class="hits">25</span>
             
@@ -9520,7 +9608,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="477">
+          <li class="missed" data-hits="0" data-linenumber="485">
             
 
             
@@ -9530,7 +9618,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="478">
+          <li class="missed" data-hits="0" data-linenumber="486">
             
 
             
@@ -9540,7 +9628,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="479">
+          <li class="never" data-hits="" data-linenumber="487">
             
 
             
@@ -9550,7 +9638,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="480">
+          <li class="missed" data-hits="0" data-linenumber="488">
             
 
             
@@ -9560,7 +9648,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="481">
+          <li class="missed" data-hits="0" data-linenumber="489">
             
 
             
@@ -9570,7 +9658,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="482">
+          <li class="missed" data-hits="0" data-linenumber="490">
             
 
             
@@ -9580,7 +9668,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="483">
+          <li class="missed" data-hits="0" data-linenumber="491">
             
 
             
@@ -9590,7 +9678,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="484">
+          <li class="never" data-hits="" data-linenumber="492">
             
 
             
@@ -9600,7 +9688,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="485">
+          <li class="never" data-hits="" data-linenumber="493">
             
 
             
@@ -9610,7 +9698,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="486">
+          <li class="never" data-hits="" data-linenumber="494">
             
 
             
@@ -9620,7 +9708,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="25" data-linenumber="487">
+          <li class="covered" data-hits="25" data-linenumber="495">
             
               <span class="hits">25</span>
             
@@ -9632,7 +9720,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="488">
+          <li class="never" data-hits="" data-linenumber="496">
             
 
             
@@ -9642,7 +9730,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="489">
+          <li class="never" data-hits="" data-linenumber="497">
             
 
             
@@ -9652,7 +9740,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="490">
+          <li class="never" data-hits="" data-linenumber="498">
             
 
             

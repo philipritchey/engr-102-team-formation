@@ -400,36 +400,45 @@ class FormsController < ApplicationController
   
     def assign_odd_female_students(teams, female_students, tracker)
       i, j, team_index = 0, female_students.size - 1, 0
-    
+      
       while i <= j && team_index < teams.size
         remaining_females = j - i + 1
-    
-        if remaining_females == 3
-          assign_three_females(teams[team_index], female_students, i, tracker)
+        
+        if three_females_left?(remaining_females)
+          assign_three_females_to_team(teams[team_index], female_students, i, tracker)
           i += 3
           team_index += 1
           break
-        elsif remaining_females >= 2
-          assign_two_females(teams[team_index], female_students, i, j, tracker)
+        elsif two_or_more_females?(remaining_females)
+          assign_two_females_to_team(teams[team_index], female_students, { high: i, low: j }, tracker)
           i += 1
           j -= 1
           team_index += 1
         end
       end
     end
+
+    def three_females_left?(remaining_females)
+      remaining_females == 3
+    end
+    
+    def two_or_more_females?(remaining_females)
+      remaining_females >= 2
+    end
     
     # Helper Methods
-    def assign_three_females(team, female_students, start_index, tracker)
+    def assign_three_females_to_team(team, female_students, start_index, tracker)
       3.times do |n|
         assign_student_to_team(team, female_students[start_index + n], tracker)
       end
     end
     
-    def assign_two_females(team, female_students, i, j, tracker)
-      assign_high_scorer(team, female_students[i], tracker)
-      assign_low_scorer(team, female_students[j], tracker)
+    def assign_two_females_to_team(team, female_students, indices, tracker)
+      assign_high_scorer(team, female_students[indices[:high]], tracker)
+      assign_low_scorer(team, female_students[indices[:low]], tracker)
     end
     
+    # Remaining methods for assigning students remain the same
     def assign_high_scorer(team, student_data, tracker)
       assign_student_to_team(team, student_data, tracker)
     end
@@ -442,8 +451,7 @@ class FormsController < ApplicationController
       team[team.index(0)] = student_data[:student].id
       tracker[student_data[:response].id][:assigned] = true
     end
-     
-  
+    
     def assign_other_students(teams, other_students, tracker)
       teams.each do |team|
         break if other_students.empty?
