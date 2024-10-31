@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-48/team-formation/app/controllers/application_controller.rb": {
+      "/Users/udayreddy/team-formation/app/controllers/application_controller.rb": {
         "lines": [
           null,
           null,
@@ -42,7 +42,7 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-48/team-formation/app/controllers/attributes_controller.rb": {
+      "/Users/udayreddy/team-formation/app/controllers/attributes_controller.rb": {
         "lines": [
           null,
           1,
@@ -179,7 +179,7 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-48/team-formation/app/controllers/form_responses_controller.rb": {
+      "/Users/udayreddy/team-formation/app/controllers/form_responses_controller.rb": {
         "lines": [
           null,
           1,
@@ -325,7 +325,7 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-48/team-formation/app/controllers/forms_controller.rb": {
+      "/Users/udayreddy/team-formation/app/controllers/forms_controller.rb": {
         "lines": [
           null,
           null,
@@ -475,13 +475,6 @@
           null,
           null,
           2,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
           null,
           null,
           null,
@@ -614,7 +607,7 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-48/team-formation/app/controllers/sessions_controller.rb": {
+      "/Users/udayreddy/team-formation/app/controllers/sessions_controller.rb": {
         "lines": [
           1,
           1,
@@ -645,7 +638,7 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-48/team-formation/app/controllers/students_controller.rb": {
+      "/Users/udayreddy/team-formation/app/controllers/students_controller.rb": {
         "lines": [
           1,
           1,
@@ -696,7 +689,7 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-48/team-formation/app/controllers/users_controller.rb": {
+      "/Users/udayreddy/team-formation/app/controllers/users_controller.rb": {
         "lines": [
           null,
           null,
@@ -712,7 +705,7 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-48/team-formation/app/controllers/welcome_controller.rb": {
+      "/Users/udayreddy/team-formation/app/controllers/welcome_controller.rb": {
         "lines": [
           1,
           1,
@@ -732,7 +725,7 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-48/team-formation/app/models/attribute.rb": {
+      "/Users/udayreddy/team-formation/app/models/attribute.rb": {
         "lines": [
           null,
           1,
@@ -790,14 +783,14 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-48/team-formation/app/models/application_record.rb": {
+      "/Users/udayreddy/team-formation/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-48/team-formation/app/models/form.rb": {
+      "/Users/udayreddy/team-formation/app/models/form.rb": {
         "lines": [
           null,
           null,
@@ -857,7 +850,7 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-48/team-formation/app/models/user.rb": {
+      "/Users/udayreddy/team-formation/app/models/user.rb": {
         "lines": [
           1,
           1,
@@ -865,7 +858,7 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-48/team-formation/app/models/student.rb": {
+      "/Users/udayreddy/team-formation/app/models/student.rb": {
         "lines": [
           1,
           1,
@@ -877,7 +870,7 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-48/team-formation/app/models/form_response.rb": {
+      "/Users/udayreddy/team-formation/app/models/form_response.rb": {
         "lines": [
           1,
           1,
@@ -892,11 +885,11 @@
         ]
       }
     },
-    "timestamp": 1730311435
+    "timestamp": 1730345727
   },
   "Cucumber": {
     "coverage": {
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-48/team-formation/app/models/user.rb": {
+      "/Users/udayreddy/team-formation/app/models/user.rb": {
         "lines": [
           1,
           1,
@@ -904,14 +897,14 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-48/team-formation/app/models/application_record.rb": {
+      "/Users/udayreddy/team-formation/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-48/team-formation/app/models/form.rb": {
+      "/Users/udayreddy/team-formation/app/models/form.rb": {
         "lines": [
           null,
           null,
@@ -964,14 +957,14 @@
           1,
           null,
           1,
-          33,
+          37,
           1,
           null,
           null,
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-48/team-formation/app/controllers/users_controller.rb": {
+      "/Users/udayreddy/team-formation/app/controllers/users_controller.rb": {
         "lines": [
           null,
           null,
@@ -981,13 +974,13 @@
           1,
           null,
           null,
-          15,
+          19,
           null,
           null,
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-48/team-formation/app/controllers/application_controller.rb": {
+      "/Users/udayreddy/team-formation/app/controllers/application_controller.rb": {
         "lines": [
           null,
           null,
@@ -1001,7 +994,7 @@
           null,
           1,
           null,
-          184,
+          198,
           null,
           null,
           1,
@@ -1014,12 +1007,12 @@
           1,
           null,
           null,
-          92,
+          98,
           null,
           null,
           null,
           1,
-          81,
+          87,
           null,
           null,
           2,
@@ -1028,7 +1021,7 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-48/team-formation/app/controllers/forms_controller.rb": {
+      "/Users/udayreddy/team-formation/app/controllers/forms_controller.rb": {
         "lines": [
           null,
           null,
@@ -1182,13 +1175,6 @@
           null,
           null,
           null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
           1,
           0,
           null,
@@ -1252,7 +1238,7 @@
           null,
           null,
           1,
-          29,
+          31,
           null,
           null,
           null,
@@ -1317,7 +1303,7 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-48/team-formation/app/models/attribute.rb": {
+      "/Users/udayreddy/team-formation/app/models/attribute.rb": {
         "lines": [
           null,
           1,
@@ -1342,8 +1328,10 @@
           null,
           null,
           15,
+          15,
           null,
           null,
+          15,
           15,
           null,
           1,
@@ -1375,7 +1363,7 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-48/team-formation/app/controllers/attributes_controller.rb": {
+      "/Users/udayreddy/team-formation/app/controllers/attributes_controller.rb": {
         "lines": [
           null,
           1,
@@ -1512,7 +1500,7 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-48/team-formation/app/models/student.rb": {
+      "/Users/udayreddy/team-formation/app/models/student.rb": {
         "lines": [
           1,
           1,
@@ -1524,7 +1512,7 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-48/team-formation/app/models/form_response.rb": {
+      "/Users/udayreddy/team-formation/app/models/form_response.rb": {
         "lines": [
           1,
           1,
@@ -1538,7 +1526,7 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-48/team-formation/app/controllers/students_controller.rb": {
+      "/Users/udayreddy/team-formation/app/controllers/students_controller.rb": {
         "lines": [
           1,
           1,
@@ -1589,7 +1577,7 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-48/team-formation/app/controllers/sessions_controller.rb": {
+      "/Users/udayreddy/team-formation/app/controllers/sessions_controller.rb": {
         "lines": [
           1,
           1,
@@ -1620,7 +1608,7 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-48/team-formation/app/controllers/welcome_controller.rb": {
+      "/Users/udayreddy/team-formation/app/controllers/welcome_controller.rb": {
         "lines": [
           1,
           1,
@@ -1640,7 +1628,7 @@
           null
         ]
       },
-      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-48/team-formation/app/controllers/form_responses_controller.rb": {
+      "/Users/udayreddy/team-formation/app/controllers/form_responses_controller.rb": {
         "lines": [
           null,
           1,
@@ -1678,29 +1666,20 @@
           1,
           null,
           0,
-          0,
-          0,
-          null,
           null,
           null,
           null,
           1,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          0,
           null,
           0,
           0,
           null,
+          0,
           null,
+          0,
           null,
+          0,
+          0,
           null,
           null,
           null,
@@ -1711,11 +1690,6 @@
           0,
           0,
           0,
-          0,
-          0,
-          null,
-          null,
-          null,
           null,
           null,
           null,
@@ -1724,20 +1698,8 @@
           null,
           0,
           0,
-          0,
-          0,
           null,
           0,
-          0,
-          0,
-          null,
-          null,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
           null,
           null,
           null,
@@ -1749,15 +1711,6 @@
           null,
           null,
           1,
-          null,
-          1,
-          0,
-          0,
-          0,
-          null,
-          0,
-          0,
-          null,
           null,
           null,
           null,
@@ -1787,6 +1740,6 @@
         ]
       }
     },
-    "timestamp": 1730311156
+    "timestamp": 1730346400
   }
 }
