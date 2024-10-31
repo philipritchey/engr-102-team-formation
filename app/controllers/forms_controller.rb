@@ -405,19 +405,17 @@ class FormsController < ApplicationController
         remaining_females = j - i + 1
         
         if three_females_left?(remaining_females)
-          assign_three_females_to_team(teams[team_index], female_students, i, tracker)
-          i += 3
-          team_index += 1
+          assign_three_females_and_advance(teams[team_index], female_students, i, tracker)
+          i, team_index = advance_for_three_females(i, team_index)
           break
         elsif two_or_more_females?(remaining_females)
-          assign_two_females_to_team(teams[team_index], female_students, { high: i, low: j }, tracker)
-          i += 1
-          j -= 1
-          team_index += 1
+          assign_two_females_and_advance(teams[team_index], female_students, { high: i, low: j }, tracker)
+          i, j, team_index = advance_for_two_females(i, j, team_index)
         end
       end
     end
-
+    
+    # New helper methods for conditions and advancement
     def three_females_left?(remaining_females)
       remaining_females == 3
     end
@@ -426,19 +424,27 @@ class FormsController < ApplicationController
       remaining_females >= 2
     end
     
-    # Helper Methods
-    def assign_three_females_to_team(team, female_students, start_index, tracker)
+    # New helper methods for assignment and advancing counters
+    def assign_three_females_and_advance(team, female_students, start_index, tracker)
       3.times do |n|
         assign_student_to_team(team, female_students[start_index + n], tracker)
       end
     end
     
-    def assign_two_females_to_team(team, female_students, indices, tracker)
+    def assign_two_females_and_advance(team, female_students, indices, tracker)
       assign_high_scorer(team, female_students[indices[:high]], tracker)
       assign_low_scorer(team, female_students[indices[:low]], tracker)
     end
     
-    # Remaining methods for assigning students remain the same
+    def advance_for_three_females(i, team_index)
+      [i + 3, team_index + 1]
+    end
+    
+    def advance_for_two_females(i, j, team_index)
+      [i + 1, j - 1, team_index + 1]
+    end
+    
+    # Remaining helper methods for student assignment
     def assign_high_scorer(team, student_data, tracker)
       assign_student_to_team(team, student_data, tracker)
     end
@@ -450,7 +456,7 @@ class FormsController < ApplicationController
     def assign_student_to_team(team, student_data, tracker)
       team[team.index(0)] = student_data[:student].id
       tracker[student_data[:response].id][:assigned] = true
-    end
+    end    
     
     def assign_other_students(teams, other_students, tracker)
       teams.each do |team|
