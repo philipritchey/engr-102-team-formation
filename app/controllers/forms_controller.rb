@@ -282,4 +282,163 @@ class FormsController < ApplicationController
       # This hash contains the team distribution data for all sections
       team_distribution
     end
+
+    def populate_teams_based_on_gender(team_distribution)
+      team_distribution.each do |section, details|
+        teams = initialize_teams(details)
+        response_assignment_tracker = initialize_tracker(details[:form_responses])
+        gender_attribute = fetch_gender_attribute(details[:form_responses].first)
+        
+        categorized_students = categorize_students(details[:form_responses], gender_attribute)
+        assign_students_to_teams(teams, categorized_students, response_assignment_tracker)
+        
+        details[:teams] = teams
+        details[:response_assignment_tracker] = response_assignment_tracker
+      end
+      team_distribution
+    end
+  
+  # Helper Methods
+  
+    def initialize_teams(details)
+      teams = []
+      details[:teams_of_4].times { teams << Array.new(4, 0) }
+      details[:teams_of_3].times { teams << Array.new(3, 0) }
+      teams
+    end
+  
+    def initialize_tracker(responses)
+      responses.each_with_object({}) do |response, tracker|
+        tracker[response.id] = { assigned: false, response: response }
+      end
+    end
+    
+    def fetch_gender_attribute(response)
+      form = Form.find(response.form_id)
+      form.form_attributes.find { |attr| attr.name.downcase == "gender" }
+    end
+  
+    def categorize_students(responses, gender_attribute)
+      students_by_gender = { female: [], other: [], male: [], prefer_not_to_say: [] }
+    
+      responses.each do |response|
+        next unless valid_gender_response?(response, gender_attribute)
+        student_data = build_student_data(response, gender_attribute)
+    
+        case response.responses[gender_attribute.id.to_s].downcase
+        when "female"
+          students_by_gender[:female] << student_data
+        when "other"
+          students_by_gender[:other] << student_data
+        when "male"
+          students_by_gender[:male] << student_data
+        when "prefer not to say"
+          students_by_gender[:prefer_not_to_say] << student_data
+        end
+      end
+    
+      students_by_gender[:female].sort_by! { |s| -s[:score] }
+      students_by_gender[:other].sort_by! { |s| -s[:score] }
+    
+      students_by_gender
+    end
+  
+    def valid_gender_response?(response, gender_attribute)
+      gender_value = response.responses[gender_attribute.id.to_s]
+      !gender_value.nil? && !gender_value.strip.empty?
+    end
+    
+    def build_student_data(response, gender_attribute)
+      student = response.student
+      { student: student, response: response, score: calculate_weighted_average(response) }
+    end
+  
+    def assign_students_to_teams(teams, categorized_students, tracker)
+      female_students = categorized_students[:female]
+      other_students = categorized_students[:other]
+    
+      assign_female_students(teams, female_students, tracker)
+      assign_other_students(teams, other_students, tracker)
+    end
+  
+    def assign_female_students(teams, female_students, tracker)
+      if female_students.size.even?
+        assign_even_female_students(teams, female_students, tracker)
+      else
+        assign_odd_female_students(teams, female_students, tracker)
+      end
+    end
+    
+    def assign_even_female_students(teams, female_students, tracker)
+      i, j, team_index = 0, female_students.size - 1, 0
+      while i <= j && team_index < teams.size
+        teams[team_index][teams[team_index].index(0)] = female_students[i][:student].id
+        tracker[female_students[i][:response].id][:assigned] = true
+        i += 1
+    
+        teams[team_index][teams[team_index].index(0)] = female_students[j][:student].id
+        tracker[female_students[j][:response].id][:assigned] = true
+        j -= 1
+        team_index += 1
+      end
+    end
+  
+    def assign_odd_female_students(teams, female_students, tracker)
+      i, j, team_index = 0, female_students.size - 1, 0
+      while i <= j && team_index < teams.size
+        remaining_females = j - i + 1
+        if remaining_females == 3
+          3.times do
+            teams[team_index][teams[team_index].index(0)] = female_students[i][:student].id
+            tracker[female_students[i][:response].id][:assigned] = true
+            i += 1
+          end
+          team_index += 1
+          break
+        elsif remaining_females >= 2
+          teams[team_index][teams[team_index].index(0)] = female_students[i][:student].id
+          tracker[female_students[i][:response].id][:assigned] = true
+          i += 1
+    
+          teams[team_index][teams[team_index].index(0)] = female_students[j][:student].id
+          tracker[female_students[j][:response].id][:assigned] = true
+          j -= 1
+          team_index += 1
+        end
+      end
+    end
+  
+    def assign_other_students(teams, other_students, tracker)
+      teams.each do |team|
+        break if other_students.empty?
+        if team.count { |member| member != 0 } >= 2 && team.include?(0)
+          team[team.index(0)] = other_students.first[:student].id
+          tracker[other_students.first[:response].id][:assigned] = true
+          other_students.shift
+        end
+      end
+    end
+
+      # Helper method to calculate the weighted average score for a student
+    def calculate_weighted_average(response)
+      excluded_attrs = ['gender', 'ethnicity']
+      attributes = response.form.form_attributes.reject { |attr| excluded_attrs.include?(attr.name.downcase) }
+    
+      total_score = 0.0
+      total_weight = 0.0
+    
+      attributes.each do |attribute|
+        weightage = attribute.weightage
+        student_response = response.responses[attribute.id.to_s]  # Convert id to string
+        
+        if student_response.present?
+          score = student_response.to_f
+          total_score += score * weightage
+          total_weight += weightage
+        end
+      end
+      # Return the weighted average score
+      total_weight > 0 ? (total_score / total_weight) : 0
+    end
+
 end
