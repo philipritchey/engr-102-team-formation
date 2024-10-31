@@ -443,17 +443,7 @@ class FormsController < ApplicationController
         return i + 1, j - 1 # Move for 2 females
       end
       return i, j # No change if fewer than 2
-    end    
-    
-    def update_indices(i, j, total_students)
-      # Update indices based on how many students were assigned
-      if j - i + 1 == 3
-        return i + 3, j # Move both indices for 3 females
-      elsif j - i + 1 >= 2
-        return i + 1, j - 1 # Move for 2 females
-      end
-      return i, j # No change if fewer than 2
-    end                 
+    end              
     
     def assign_other_students(teams, other_students, tracker)
       teams.each do |team|
