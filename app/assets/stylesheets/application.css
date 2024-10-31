@@ -122,7 +122,7 @@ h1, h2, h3 {
 
 .form-table {
   width: 100%;
-  max-width: 800px;
+  max-width: 1100px;
   border-collapse: collapse;
   margin-top: 20px;
 }
@@ -144,8 +144,9 @@ h1, h2, h3 {
 }
 
 .action-btn {
-  margin-right: 5px;
-  border-radius: 5px;
+  margin: 2px;
+  padding: 6px 10px;
+  white-space: nowrap;
 }
 
 .btn {
@@ -190,7 +191,8 @@ h1, h2, h3 {
 }
 
 .deadlinepicker {
-  margin-top: 10px;
+  margin-top: 5px;
+  margin-left: 10px;
 }
 
 .no-forms-message {
@@ -202,9 +204,10 @@ h1, h2, h3 {
 
 .actions-cell {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
+  gap: 8px;
+  flex-wrap: nowrap;
+  min-width: 300px;
+  justify-content: flex-start;
 }
 
 .logout-btn {
@@ -229,4 +232,29 @@ h1, h2, h3 {
 
 .logout-btn:active {
   transform: scale(0.95);
+}
+
+/* Form status styling */
+.published-form {
+  background-color: rgba(240, 255, 240, 0.5) !important;
+}
+
+.draft-form {
+  background-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.badge {
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.actions-cell {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  margin: 2px;
 }
