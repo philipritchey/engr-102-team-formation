@@ -4,7 +4,7 @@ Given("I log in as a professor") do
   end
 
   Given("I have already published a form") do
-    @form = Form.create!(name: "My Form", description: "This is my form", user_id: @user.id)
+    @form = Form.create!(name: "My Form", description: "This is my form", user_id: @user.id, published: true)
     @attribute = @form.form_attributes.create!(
     name: "question1",
     field_type: 'text_input',
@@ -36,3 +36,66 @@ Given("I log in as a professor") do
     expect(page).to have_content(@student.id.to_s) # Ensure the student ID is displayed
     expect(page).to have_content("Ans1") # Check that the response is displayed
   end
+  
+  Given("I have created a form that is not published") do
+    @form = FactoryBot.create(:form, 
+      user: @user, 
+      published: false,
+      name: "Test Form #{Time.current.to_i}",
+      description: "This is a test form"
+    )
+    @form.form_attributes.create!(
+      name: "Question 1",
+      field_type: 'text_input',
+      weightage: 1
+    )
+    step "students with IDs 1 and 2 have access to the form"
+    step "the deadline is set"
+  end
+  
+  Given("I have created a form that is published") do
+    @form = FactoryBot.create(:form, 
+      user: @user, 
+      published: true,
+      name: "Test Form #{Time.current.to_i}",
+      description: "This is a test form"
+    )
+    @form.form_attributes.create!(
+      name: "Question 1",
+      field_type: 'text_input',
+      weightage: 1
+    )
+    step "students with IDs 1 and 2 have access to the form"
+    step "the deadline is set"
+  end
+  
+  When("I visit my user profile page") do
+    visit user_path(@user)
+  end
+  
+  Then("I should not see {string} for that form") do |button_text|
+    within('tr', text: @form.name) do
+      expect(page).not_to have_content(button_text)
+    end
+  end
+  
+  Then("I should see {string} and {string} buttons for that form") do |button1, button2|
+    within('tr', text: @form.name) do
+      expect(page).to have_content(button1)
+      expect(page).to have_content(button2)
+    end
+  end
+  
+  Then("I should not see {string} or {string} buttons for that form") do |button1, button2|
+    within('tr', text: @form.name) do
+      expect(page).not_to have_content(button1)
+      expect(page).not_to have_content(button2)
+    end
+  end
+  
+  Then("I should see {string} for that form") do |button_text|
+    within('tr', text: @form.name) do
+      expect(page).to have_content(button_text)
+    end
+  end
+  

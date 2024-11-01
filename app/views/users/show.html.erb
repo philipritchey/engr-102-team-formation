@@ -14,6 +14,7 @@
           <th>Name</th>
           <th>Description</th>
           <th>Deadline</th>
+          <th>Status</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -22,21 +23,40 @@
           <tr>
             <td><%= form.name %></td>
             <td><%= form.description %></td>
-            <td><%= form.deadline.present? ? form.deadline.strftime("%B %d, %Y %H:%M") : "No deadline set" %></td>
+            <td>
+              <% if form.deadline %>
+                <span class="deadline">
+                  <%= format_deadline(form.deadline).html_safe %>
+                </span>
+              <% else %>
+                No deadline set
+              <% end %>
+            </td>
+            <td>
+              <% if form.published? %>
+                <span class="badge bg-success">Published</span>
+              <% else %>
+                <span class="badge bg-secondary">Draft</span>
+              <% end %>
+            </td>
             <td class="actions-cell">
               <%= link_to "View", form_path(form), class: "btn btn-info action-btn" %>
-              <%= link_to "Edit", edit_form_path(form), class: "btn btn-warning action-btn" %>
-              <%= link_to "Delete", form_path(form), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger action-btn" %>
-              <%= link_to "View Responses", form_form_responses_path(form), class: "btn btn-sm btn-info" %>
-              <button type="button" class="btn btn-info action-btn" onclick="toggleDeadlinePicker(<%= form.id %>)">Update Deadline</button>
-              <div id="deadline-picker-<%= form.id %>" class="deadlinepicker" style="display:block;">
-                <%= form_with model: form, url: update_deadline_form_path(form), method: :patch, local: true do |f| %>
-                  <div class="form-group">
-                    <%= f.datetime_local_field :deadline, class: "form-control", id: "updated_deadline_#{form.id}" %>
-                  </div>
-                  <%= f.submit "Save", class: "save-btn" %>
-                <% end %>
-              </div>
+              
+              <% if form.published? %>
+                <%= link_to "View Responses", form_form_responses_path(form), class: "btn btn-sm btn-info" %>
+              <% else %>
+                <%= link_to "Edit", edit_form_path(form), class: "btn btn-warning action-btn" %>
+                <%= link_to "Delete", form_path(form), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger action-btn" %>
+                <button type="button" class="btn btn-info action-btn" onclick="toggleDeadlinePicker(<%= form.id %>)">Update Deadline</button>
+                <div id="deadline-picker-<%= form.id %>" class="deadlinepicker" style="display:block;">
+                  <%= form_with model: form, url: update_deadline_form_path(form), method: :patch, local: true do |f| %>
+                    <div class="form-group">
+                      <%= f.datetime_local_field :deadline, class: "form-control", id: "updated_deadline_#{form.id}" %>
+                    </div>
+                    <%= f.submit "Save", class: "save-btn" %>
+                  <% end %>
+                </div>
+              <% end %>
             </td>
           </tr>
         <% end %>
@@ -47,10 +67,11 @@
   <% end %>
 
   <%= link_to "Logout", logout_path, class: "btn btn-secondary mt-3 logout-btn mt-3" %>
-</div>
+
   <script>
-  function toggleDeadlinePicker(formId) {
-    var picker = document.getElementById("deadline-picker-" + formId);
-    picker.style.display = picker.style.display === "none" ? "block" : "none";
-  }
+    function toggleDeadlinePicker(formId) {
+      var picker = document.getElementById("deadline-picker-" + formId);
+      picker.style.display = picker.style.display === "none" ? "block" : "none";
+    }
   </script>
+</div>
