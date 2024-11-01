@@ -11,6 +11,7 @@ class FormsController < ApplicationController
 
   # Set @form instance variable for show, edit, update, and destroy actions
   before_action :set_form, only: %i[ show edit update destroy update_deadline publish close generate_teams view_teams]
+  before_action :set_form, only: %i[ show edit update destroy update_deadline publish close generate_teams view_teams]
 
   # GET /forms
   def index
