@@ -107,4 +107,4 @@ group :development, :test do
   gem "rubocop-rspec"
 end
 
-gem 'rufus-scheduler'
+gem "rufus-scheduler"
