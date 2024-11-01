@@ -6,6 +6,7 @@ class FormsController < ApplicationController
   include FormPublishing
   include FormDeadlineManagement
   include FormUploading
+  include PopulateTeamsBasedOnGender
   require "roo"
 
   # Set @form instance variable for show, edit, update, and destroy actions
@@ -164,5 +165,27 @@ class FormsController < ApplicationController
       # Return the complete team distribution hash
       # This hash contains the team distribution data for all sections
       team_distribution
+    end
+
+    # Helper method to calculate the weighted average score for a student
+    def calculate_weighted_average(response)
+      excluded_attrs = [ "gender", "ethnicity" ]
+      attributes = response.form.form_attributes.reject { |attr| excluded_attrs.include?(attr.name.downcase) }
+
+      total_score = 0.0
+      total_weight = 0.0
+
+      attributes.each do |attribute|
+        weightage = attribute.weightage
+        student_response = response.responses[attribute.id.to_s]  # Convert id to string
+
+        if student_response.present?
+          score = student_response.to_f
+          total_score += score * weightage
+          total_weight += weightage
+        end
+      end
+      # Return the weighted average score
+      total_weight > 0 ? (total_score / total_weight) : 0
     end
 end

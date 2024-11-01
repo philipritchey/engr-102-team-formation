@@ -585,4 +585,104 @@ RSpec.describe FormsController, type: :controller do
       end
     end
   end
+
+  describe '#populate_teams_based_on_gender' do
+    let(:user) { create(:user) }
+    let!(:form) { create(:form, name: "Team Formation Form", description: "Form for collecting team preferences", user: user) }
+    let!(:gender_attr) { form.form_attributes.create!(name: "Gender", field_type: "mcq", options: "male,female,other,prefer not to say") }
+    let!(:sections) { [ "A", "B" ] }
+
+    # Helper method to set @form
+    def set_form
+      controller.instance_variable_set(:@form, form)
+    end
+
+    # Helper method to create students and responses for the test
+    def create_responses(section, gender_distribution)
+      gender_distribution.each do |gender, count|
+        count.times do
+          student = create(:student, section: section)
+          create(:form_response, form: form, student: student, responses: { gender_attr.id.to_s => gender })
+        end
+      end
+    end
+
+    before do
+      set_form
+      # Creating gender-distributed students in each section
+      create_responses("A", { "female" => 6, "male" => 4, "other" => 2, "prefer not to say" => 2 })
+      create_responses("B", { "female" => 5, "male" => 3, "other" => 2, "prefer not to say" => 1 })
+    end
+
+    it 'distributes students into teams based on gender correctly' do
+      # Initial team distribution setup
+      team_distribution = {
+        "A" => {
+          total_students: 14,
+          teams_of_4: 2,
+          teams_of_3: 2,
+          total_teams: 4,
+          form_responses: form.form_responses.joins(:student).where(students: { section: "A" })
+        },
+        "B" => {
+          total_students: 15,
+          teams_of_4: 2,
+          teams_of_3: 1,
+          total_teams: 3,
+          form_responses: form.form_responses.joins(:student).where(students: { section: "B" })
+        }
+      }
+
+      updated_distribution = controller.send(:populate_teams_based_on_gender, team_distribution)
+
+      # Verify that updated_distribution has the same attributes as team_distribution for each section
+      team_distribution.each do |section, details|
+        expect(updated_distribution[section][:total_students]).to eq(details[:total_students])
+        expect(updated_distribution[section][:teams_of_4]).to eq(details[:teams_of_4])
+        expect(updated_distribution[section][:total_teams]).to eq(details[:total_teams])
+        expect(updated_distribution[section][:form_responses]).to match_array(details[:form_responses])
+      end
+
+      def student_gender(student_id)
+        return "unassigned" if student_id.zero?
+
+        form_response = form.form_responses.find_by(student_id: student_id)
+        form_response.responses[gender_attr.id.to_s] if form_response
+      end
+
+      # Validate team distribution for section B
+      section_b = updated_distribution["B"]
+      expected_b_team_genders = [
+        { female: 2, male: 0, other: 1, prefer_not_to_say: 0 },
+        { female: 3, male: 0, other: 1, prefer_not_to_say: 0 },
+        { female: 0, male: 0, other: 0, prefer_not_to_say: 0 }
+      ]
+
+      section_b[:teams].each_with_index do |team, index|
+        genders = team.map { |student_id| student_gender(student_id) }
+        expect(genders.count('female')).to eq(expected_b_team_genders[index][:female])
+        expect(genders.count('male')).to eq(expected_b_team_genders[index][:male])
+        expect(genders.count('other')).to eq(expected_b_team_genders[index][:other])
+        expect(genders.count('prefer not to say')).to eq(expected_b_team_genders[index][:prefer_not_to_say])
+      end
+
+      # Validate team distribution for section A
+      section_a = updated_distribution["A"]
+      expected_a_team_genders = [
+        { female: 2, male: 0, other: 1, prefer_not_to_say: 0 },
+        { female: 2, male: 0, other: 1, prefer_not_to_say: 0 },
+        { female: 2, male: 0, other: 0, prefer_not_to_say: 0 },
+        { female: 0, male: 0, other: 0, prefer_not_to_say: 0 }
+      ]
+
+      section_a[:teams].each_with_index do |team, index|
+        expect(team.size).to be_between(3, 4)
+        genders = team.map { |student_id| student_gender(student_id) }
+        expect(genders.count('female')).to eq(expected_a_team_genders[index][:female])
+        expect(genders.count('male')).to eq(expected_a_team_genders[index][:male])
+        expect(genders.count('other')).to eq(expected_a_team_genders[index][:other])
+        expect(genders.count('prefer not to say')).to eq(expected_a_team_genders[index][:prefer_not_to_say])
+      end
+    end
+  end
 end
