@@ -7,6 +7,7 @@ class FormsController < ApplicationController
   include FormDeadlineManagement
   include FormUploading
   include PopulateTeamsBasedOnGender
+  include GenerateTeams
   require "roo"
 
   # Set @form instance variable for show, edit, update, and destroy actions
@@ -104,47 +105,10 @@ class FormsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  # GET /forms/1/view_teams
-  def view_teams
-    @teams = @form.teams
-  end
-
-  # POST /forms/1/generate_teams
-  def generate_teams
-    ActiveRecord::Base.transaction do
-      begin
-        # Clear existing teams
-        @form.teams.destroy_all
-
-        # Get initial team distribution
-        team_distribution = calculate_teams
-
-        # Apply the team formation algorithm pipeline
-        # Note that team_distribution is a hash with sections as keys
-        team_distribution = populate_teams_based_on_gender(team_distribution)
-        team_distribution = optimize_teams_based_on_ethnicity(team_distribution)
-        team_distribution = distribute_remaining_students(team_distribution)
-        final_team_distribution = optimize_team_by_swaps(team_distribution)
-
-        # Create teams in the database
-        final_team_distribution.each do |section, details|
-          details[:teams].each_with_index do |team_members, index|
-            # Create team with properly formatted member data
-            @form.teams.create!(
-              name: "Team #{index + 1}",
-              section: section,
-              members: format_team_members(team_members)
-            )
-          end
-        end
-
-        redirect_to view_teams_form_path(@form), notice: "Teams have been successfully generated!"
-      rescue StandardError => e
-        Rails.logger.error("Team generation error: #{e.message}\n#{e.backtrace.join("\n")}")
-        raise e
-      end
-    end
-  end
+  # # GET /forms/1/view_teams
+  # def view_teams
+  #   @teams = @form.teams
+  # end
 
   private
     # Sets @form instance variable based on the id parameter
@@ -208,14 +172,14 @@ class FormsController < ApplicationController
       # This hash contains the team distribution data for all sections
       team_distribution
     end
-    def populate_teams_based_on_gender(team_distribution)
-      # Dummy function: Just return the input for now
-      team_distribution.each do |section, details|
-        details[:teams] = Array.new(details[:total_teams]) { [] }
-        details[:remaining_students] = details[:form_responses].map(&:student)
-      end
-      team_distribution
-    end
+    # def populate_teams_based_on_gender(team_distribution)
+    #   # Dummy function: Just return the input for now
+    #   team_distribution.each do |section, details|
+    #     details[:teams] = Array.new(details[:total_teams]) { [] }
+    #     details[:remaining_students] = details[:form_responses].map(&:student)
+    #   end
+    #   team_distribution
+    # end
 
     def optimize_teams_based_on_ethnicity(team_distribution)
       # Dummy function: Just return the input for now
@@ -224,15 +188,6 @@ class FormsController < ApplicationController
 
     def distribute_remaining_students(team_distribution)
       # Dummy function: Distribute remaining students randomly
-      team_distribution.each do |section, details|
-        remaining_students = details[:remaining_students].shuffle
-        details[:teams].each do |team|
-          while team.size < 4 && remaining_students.any?
-            team << remaining_students.pop
-          end
-        end
-        details[:remaining_students] = remaining_students
-      end
       team_distribution
     end
 
@@ -240,8 +195,11 @@ class FormsController < ApplicationController
       # Dummy function: Just return the input for now
       team_distribution
     end
-    def format_team_members(team_members)
-      team_members.map do |student|
+    def format_team_members(team_members_ids)
+      return [] if team_members_ids.blank?
+
+      students = Student.where(id: team_members_ids)
+      formatted_members = students.map do |student|
         {
           id: student.id,
           name: student.name,
@@ -249,6 +207,8 @@ class FormsController < ApplicationController
           email: student.email
         }
       end
+
+      formatted_members.presence || []
     end
 
     # Helper method to calculate the weighted average score for a student
