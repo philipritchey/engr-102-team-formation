@@ -1,5 +1,15 @@
 <%= render @form %>
 
+<%# Add deadline display %>
+<div class="form-deadline">
+  <strong>Deadline:</strong>
+  <% if @form.deadline %>
+    <%= format_deadline(@form.deadline).html_safe %>
+  <% else %>
+    No deadline set
+  <% end %>
+</div>
+
 <% @form.form_attributes.each do |attribute| %>
   <div class="form-group">
     <!-- Display the attribute label -->
@@ -27,8 +37,6 @@
   </div>
   <br>
 <% end %>
-
-
 
 <div class="mt-3">
   <div class="d-flex justify-content-start">
