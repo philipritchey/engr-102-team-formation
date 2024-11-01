@@ -685,4 +685,62 @@ RSpec.describe FormsController, type: :controller do
       end
     end
   end
+  describe "POST #generate_teams" do
+  let(:form) { create(:form, user: user) }
+
+  before do
+    # Create some students and form responses
+    5.times do |i|
+      student = create(:student, section: "Section A")
+      create(:form_response, form: form, student: student)
+    end
+    4.times do |i|
+      student = create(:student, section: "Section B")
+      create(:form_response, form: form, student: student)
+    end
+  end
+
+  it "generates teams and redirects to view_teams path" do
+    post :generate_teams, params: { id: form.id }
+    expect(response).to redirect_to(view_teams_form_path(form))
+    expect(flash[:notice]).to eq("Teams have been successfully generated!")
+  end
+
+  it "creates teams in the database" do
+    expect {
+      post :generate_teams, params: { id: form.id }
+    }.to change(Team, :count).by(3) # 2 teams for Section A, 1 team for Section B
+  end
+
+  it "assigns students to teams" do
+    post :generate_teams, params: { id: form.id }
+    form.reload
+    expect(form.teams.flat_map(&:members).count).to eq(9) # Total number of students
+  end
+
+  it "clears existing teams before generating new ones" do
+    create(:team, form: form) # Create an existing team
+    expect {
+      post :generate_teams, params: { id: form.id }
+    }.to change(Team, :count).by(2) # Expect a net increase of 2 teams
+    expect(form.teams.count).to eq(3) # Expect 3 teams total after generation
+  end
+
+  it "handles errors during team generation" do
+    allow(controller).to receive(:calculate_teams).and_raise(StandardError.new("Test error"))
+    expect {
+      post :generate_teams, params: { id: form.id }
+    }.to raise_error(StandardError, "Test error")
+  end
+
+  context "when there are no students" do
+    before { FormResponse.destroy_all }
+
+    it "doesn't create any teams" do
+      expect {
+        post :generate_teams, params: { id: form.id }
+      }.not_to change(Team, :count)
+    end
+  end
+end
 end
