@@ -105,10 +105,10 @@ class FormsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  # # GET /forms/1/view_teams
-  # def view_teams
-  #   @teams = @form.teams
-  # end
+  # GET /forms/1/view_teams
+  def view_teams
+    @teams = @form.teams
+  end
 
   private
     # Sets @form instance variable based on the id parameter
