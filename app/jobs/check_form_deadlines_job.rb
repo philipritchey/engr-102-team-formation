@@ -3,7 +3,7 @@ class CheckFormDeadlinesJob < ApplicationJob
 
   def perform
     Form.where(published: true)
-        .where('deadline < ?', Time.current)
+        .where("deadline < ?", Time.current)
         .update_all(published: false)
   end
 end
