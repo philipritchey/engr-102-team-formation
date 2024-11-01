@@ -590,7 +590,7 @@ RSpec.describe FormsController, type: :controller do
     let(:user) { create(:user) }
     let!(:form) { create(:form, name: "Team Formation Form", description: "Form for collecting team preferences", user: user) }
     let!(:gender_attr) { form.form_attributes.create!(name: "Gender", field_type: "mcq", options: "male,female,other,prefer not to say") }
-    let!(:sections) { ["A", "B"] }
+    let!(:sections) { [ "A", "B" ] }
 
     # Helper method to set @form
     def set_form
@@ -634,7 +634,7 @@ RSpec.describe FormsController, type: :controller do
       }
 
       updated_distribution = controller.send(:populate_teams_based_on_gender, team_distribution)
-  
+
       # Verify that updated_distribution has the same attributes as team_distribution for each section
       team_distribution.each do |section, details|
         expect(updated_distribution[section][:total_students]).to eq(details[:total_students])
@@ -645,7 +645,7 @@ RSpec.describe FormsController, type: :controller do
 
       def student_gender(student_id)
         return "unassigned" if student_id.zero?
-        
+
         form_response = form.form_responses.find_by(student_id: student_id)
         form_response.responses[gender_attr.id.to_s] if form_response
       end
@@ -665,7 +665,7 @@ RSpec.describe FormsController, type: :controller do
         expect(genders.count('other')).to eq(expected_b_team_genders[index][:other])
         expect(genders.count('prefer not to say')).to eq(expected_b_team_genders[index][:prefer_not_to_say])
       end
-      
+
       # Validate team distribution for section A
       section_a = updated_distribution["A"]
       expected_a_team_genders = [
