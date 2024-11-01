@@ -337,8 +337,6 @@ class FormsController < ApplicationController
       end
     end
     
-    # Helper Methods
-    
     def valid_for_other_student_assignment?(team)
       team.count { |member| member != 0 } >= 2 && team.include?(0)
     end
