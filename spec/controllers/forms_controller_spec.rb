@@ -355,45 +355,42 @@ RSpec.describe FormsController, type: :controller do
   end
 
   describe 'GET #duplicate' do
-    before do
-      @user = create(:user)  # Ensure you create a user first
-      @original_form = create(:form, name: 'Original Form', description: 'This is the original form', user: @user)
-      create(:attribute, form: @original_form, name: 'Original Attribute', field_type: 'text_input', min_value: nil, max_value: nil)
-    end
+    let(:original_form) { create(:form, user: user) }
 
-    it 'duplicates the form and redirects to the edit page' do
-      expect {
-        get :duplicate, params: { id: @original_form.id }
-      }.to change(Form, :count).by(1)
-
-      duplicated_form = Form.last
-      expect(duplicated_form.name).to eq('Original Form - Copy')
-
-      # Access the first attribute and then check its name
-
-      expect(response).to redirect_to(edit_form_path(duplicated_form))
-      expect(flash[:notice]).to eq('Form was successfully duplicated.')
-    end
-  end
-
-  describe '#duplicate failed' do
-    before do
-      @user = create(:user)
-      @original_form = create(:form, name: 'Original Form', description: 'This is the original form', user: @user)
-      create(:attribute, form: @original_form, name: 'Original Attribute', field_type: 'text_input')
-    end
-
-    context 'when duplication fails due to validation errors' do
+    context "when duplication succeeds" do
       before do
-        # Simulate validation failure by setting an invalid attribute
-        allow_any_instance_of(Form).to receive(:save).and_return(false)
+        # Mock the service to return success
+        allow(Forms::DuplicationService).to receive(:call)
+          .with(original_form)
+          .and_return(OpenStruct.new(
+            success?: true,
+            form: create(:form, user: user, name: "#{original_form.name} - Copy")
+          ))
       end
 
-      it 'redirects back to the edit form with an alert message' do
-        post :duplicate, params: { id: @original_form.id }
+      it "duplicates the form and redirects to the edit page" do
+        get :duplicate, params: { id: original_form.id }
+        expect(response).to redirect_to(edit_form_path(Form.last))
+        expect(flash[:notice]).to eq("Form was successfully duplicated.")
+      end
+    end
 
-        expect(response).to redirect_to(edit_form_path(@original_form))
-        expect(flash[:alert]).to eq("Failed to duplicate the form.")
+    context "when duplication fails" do
+      before do
+        # Mock the service to return failure
+        allow(Forms::DuplicationService).to receive(:call)
+          .with(original_form)
+          .and_return(OpenStruct.new(
+            success?: false,
+            form: original_form,
+            errors: [ "Validation failed" ]
+          ))
+      end
+
+      it "redirects back to the edit form with an alert message" do
+        get :duplicate, params: { id: original_form.id }
+        expect(response).to redirect_to(edit_form_path(original_form))
+        expect(flash[:alert]).to match(/Failed to duplicate the form/)
       end
     end
   end

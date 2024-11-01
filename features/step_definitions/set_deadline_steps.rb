@@ -30,8 +30,8 @@ end
 Given("I have created a form with a set deadline") do
   future_time = Time.current + 1.day
   @form = Form.create!(
-    name: "Test Form with Deadline", 
-    description: "Form Description", 
+    name: "Test Form with Deadline",
+    description: "Form Description",
     deadline: future_time,
     user: @user
   )

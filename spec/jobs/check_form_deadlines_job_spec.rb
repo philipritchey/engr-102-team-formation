@@ -7,11 +7,11 @@ RSpec.describe CheckFormDeadlinesJob, type: :job do
     it 'unpublishes forms past their deadline' do
       freeze_time do
         # Create forms with very short deadlines
-        expired_form = create(:form, user: user, published: true, 
+        expired_form = create(:form, user: user, published: true,
                             deadline: 2.seconds.from_now)
-        active_form = create(:form, user: user, published: true, 
+        active_form = create(:form, user: user, published: true,
                            deadline: 1.minute.from_now)
-        unpublished_form = create(:form, user: user, published: false, 
+        unpublished_form = create(:form, user: user, published: false,
                                 deadline: 2.seconds.from_now)
 
         # Travel forward in time past the deadline
