@@ -8,6 +8,7 @@ class FormsController < ApplicationController
   include FormUploading
   include PopulateTeamsBasedOnGender
   include GenerateTeams
+  include ExportTeams
   require "roo"
 
   # Set @form instance variable for show, edit, update, and destroy actions
@@ -109,7 +110,6 @@ class FormsController < ApplicationController
   def view_teams
     @teams = @form.teams
   end
-
   private
     # Sets @form instance variable based on the id parameter
     # Only finds forms belonging to the current user for security
