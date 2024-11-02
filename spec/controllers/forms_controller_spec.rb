@@ -685,4 +685,67 @@ RSpec.describe FormsController, type: :controller do
       end
     end
   end
+  describe 'POST #generate_teams' do
+    let(:user) { create(:user) }
+    let(:form) { create(:form, user: user) }
+    let(:students) { create_list(:student, 8) }  # Create 8 students without specifying IDs
+    let(:team_distribution) do
+      {
+        'Section A' => {
+          teams: [
+            students[0..3].map(&:id),  # First team of 4
+            students[4..7].map(&:id)   # Second team of 4
+          ]
+        }
+      }
+    end
+
+    before do
+      allow(controller).to receive(:calculate_teams).and_return(team_distribution)
+      allow(controller).to receive(:populate_teams_based_on_gender).and_return(team_distribution)
+      allow(controller).to receive(:optimize_teams_based_on_ethnicity).and_return(team_distribution)
+      allow(controller).to receive(:distribute_remaining_students).and_return(team_distribution)
+      allow(controller).to receive(:optimize_team_by_swaps).and_return(team_distribution)
+
+      # Create form responses for each student
+      students.each do |student|
+        create(:form_response, form: form, student: student)
+      end
+    end
+
+    it 'generates teams successfully' do
+      expect {
+        post :generate_teams, params: { id: form.id }
+      }.to change(Team, :count).by(2)
+
+      expect(response).to redirect_to(view_teams_form_path(form))
+      expect(flash[:notice]).to eq("Teams have been successfully generated!")
+    end
+
+    it 'calls populate_teams_based_on_gender' do
+      expect(controller).to receive(:populate_teams_based_on_gender).and_return(team_distribution)
+      post :generate_teams, params: { id: form.id }
+    end
+
+    it 'creates teams with correct attributes' do
+      post :generate_teams, params: { id: form.id }
+
+      created_teams = form.teams.reload
+      expect(created_teams.count).to eq(2)
+      expect(created_teams.first.name).to eq("Team 1")
+      expect(created_teams.first.section).to eq("Section A")
+      expect(created_teams.first.members).to be_an(Array)
+      expect(created_teams.first.members.count).to eq(4)
+    end
+
+    it 'handles errors during team generation' do
+      allow(controller).to receive(:calculate_teams).and_raise(StandardError, "Test error")
+
+      expect {
+        post :generate_teams, params: { id: form.id }
+      }.to raise_error(StandardError, "Test error")
+
+      expect(Team.count).to eq(0)
+    end
+  end
 end

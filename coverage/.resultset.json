@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/controllers/application_controller.rb": {
+      "/Users/sahithiduppati/team-formation/app/controllers/application_controller.rb": {
         "lines": [
           null,
           null,
@@ -28,12 +28,12 @@
           1,
           null,
           null,
-          124,
+          128,
           null,
           null,
           null,
           1,
-          125,
+          129,
           null,
           null,
           2,
@@ -42,7 +42,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/controllers/attributes_controller.rb": {
+      "/Users/sahithiduppati/team-formation/app/controllers/attributes_controller.rb": {
         "lines": [
           null,
           1,
@@ -196,7 +196,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/controllers/concerns/form_publishing.rb": {
+      "/Users/sahithiduppati/team-formation/app/controllers/concerns/form_publishing.rb": {
         "lines": [
           1,
           1,
@@ -242,7 +242,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/controllers/form_responses_controller.rb": {
+      "/Users/sahithiduppati/team-formation/app/controllers/form_responses_controller.rb": {
         "lines": [
           null,
           1,
@@ -388,7 +388,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/controllers/forms_controller.rb": {
+      "/Users/sahithiduppati/team-formation/app/controllers/forms_controller.rb": {
         "lines": [
           null,
           null,
@@ -400,8 +400,10 @@
           1,
           1,
           1,
+          1,
           null,
           null,
+          1,
           1,
           null,
           null,
@@ -496,11 +498,15 @@
           null,
           null,
           null,
+          null,
+          null,
+          null,
+          null,
           1,
           null,
           null,
           1,
-          25,
+          29,
           null,
           null,
           null,
@@ -560,6 +566,44 @@
           null,
           null,
           null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          0,
+          null,
+          null,
+          1,
+          null,
+          0,
+          null,
+          null,
+          1,
+          null,
+          0,
+          null,
+          1,
+          6,
+          null,
+          6,
+          6,
+          null,
+          24,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          6,
+          null,
+          null,
+          null,
           1,
           25,
           50,
@@ -583,7 +627,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/controllers/concerns/form_deadline_management.rb": {
+      "/Users/sahithiduppati/team-formation/app/controllers/concerns/form_deadline_management.rb": {
         "lines": [
           1,
           1,
@@ -604,7 +648,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/controllers/concerns/form_uploading.rb": {
+      "/Users/sahithiduppati/team-formation/app/controllers/concerns/form_uploading.rb": {
         "lines": [
           1,
           1,
@@ -680,7 +724,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/controllers/concerns/populate_teams_based_on_gender.rb": {
+      "/Users/sahithiduppati/team-formation/app/controllers/concerns/populate_teams_based_on_gender.rb": {
         "lines": [
           1,
           1,
@@ -865,7 +909,59 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/controllers/sessions_controller.rb": {
+      "/Users/sahithiduppati/team-formation/app/controllers/concerns/generate_teams.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          4,
+          null,
+          4,
+          4,
+          3,
+          3,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1,
+          4,
+          3,
+          3,
+          3,
+          3,
+          null,
+          null,
+          1,
+          3,
+          3,
+          null,
+          null,
+          null,
+          1,
+          3,
+          6,
+          6,
+          null,
+          6,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/sahithiduppati/team-formation/app/controllers/sessions_controller.rb": {
         "lines": [
           1,
           1,
@@ -896,7 +992,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/controllers/students_controller.rb": {
+      "/Users/sahithiduppati/team-formation/app/controllers/students_controller.rb": {
         "lines": [
           1,
           1,
@@ -947,7 +1043,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/controllers/users_controller.rb": {
+      "/Users/sahithiduppati/team-formation/app/controllers/users_controller.rb": {
         "lines": [
           null,
           null,
@@ -963,7 +1059,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/controllers/welcome_controller.rb": {
+      "/Users/sahithiduppati/team-formation/app/controllers/welcome_controller.rb": {
         "lines": [
           1,
           1,
@@ -983,7 +1079,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/jobs/check_form_deadlines_job.rb": {
+      "/Users/sahithiduppati/team-formation/app/jobs/check_form_deadlines_job.rb": {
         "lines": [
           1,
           1,
@@ -996,7 +1092,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/models/attribute.rb": {
+      "/Users/sahithiduppati/team-formation/app/models/attribute.rb": {
         "lines": [
           null,
           1,
@@ -1054,14 +1150,14 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/models/application_record.rb": {
+      "/Users/sahithiduppati/team-formation/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/models/form.rb": {
+      "/Users/sahithiduppati/team-formation/app/models/form.rb": {
         "lines": [
           null,
           null,
@@ -1081,6 +1177,9 @@
           null,
           1,
           1,
+          1,
+          null,
+          null,
           1,
           null,
           null,
@@ -1114,14 +1213,14 @@
           1,
           null,
           1,
-          213,
+          217,
           3,
           null,
           null,
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/services/forms/duplication_service.rb": {
+      "/Users/sahithiduppati/team-formation/app/services/forms/duplication_service.rb": {
         "lines": [
           1,
           1,
@@ -1164,7 +1263,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/services/forms/base_service.rb": {
+      "/Users/sahithiduppati/team-formation/app/services/forms/base_service.rb": {
         "lines": [
           1,
           null,
@@ -1187,7 +1286,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/models/user.rb": {
+      "/Users/sahithiduppati/team-formation/app/models/user.rb": {
         "lines": [
           1,
           1,
@@ -1195,7 +1294,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/models/student.rb": {
+      "/Users/sahithiduppati/team-formation/app/models/student.rb": {
         "lines": [
           1,
           1,
@@ -1207,7 +1306,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/models/form_response.rb": {
+      "/Users/sahithiduppati/team-formation/app/models/form_response.rb": {
         "lines": [
           1,
           1,
@@ -1218,15 +1317,54 @@
           1,
           null,
           1,
+          null
+        ]
+      },
+      "/Users/sahithiduppati/team-formation/app/models/team.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
           null
         ]
       }
     },
-    "timestamp": 1730482778
+    "timestamp": 1730503854
   },
   "Cucumber": {
     "coverage": {
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/models/user.rb": {
+      "/Users/sahithiduppati/team-formation/app/models/user.rb": {
         "lines": [
           1,
           1,
@@ -1234,14 +1372,14 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/models/application_record.rb": {
+      "/Users/sahithiduppati/team-formation/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/models/form.rb": {
+      "/Users/sahithiduppati/team-formation/app/models/form.rb": {
         "lines": [
           null,
           null,
@@ -1261,6 +1399,9 @@
           null,
           1,
           1,
+          1,
+          null,
+          null,
           1,
           null,
           null,
@@ -1301,7 +1442,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/controllers/users_controller.rb": {
+      "/Users/sahithiduppati/team-formation/app/controllers/users_controller.rb": {
         "lines": [
           null,
           null,
@@ -1317,7 +1458,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/controllers/application_controller.rb": {
+      "/Users/sahithiduppati/team-formation/app/controllers/application_controller.rb": {
         "lines": [
           null,
           null,
@@ -1358,7 +1499,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/controllers/forms_controller.rb": {
+      "/Users/sahithiduppati/team-formation/app/controllers/forms_controller.rb": {
         "lines": [
           null,
           null,
@@ -1370,8 +1511,10 @@
           1,
           1,
           1,
+          1,
           null,
           null,
+          1,
           1,
           null,
           null,
@@ -1463,6 +1606,10 @@
           null,
           0,
           0,
+          null,
+          null,
+          null,
+          null,
           null,
           null,
           null,
@@ -1530,6 +1677,44 @@
           null,
           null,
           null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          0,
+          null,
+          null,
+          1,
+          null,
+          0,
+          null,
+          null,
+          1,
+          null,
+          0,
+          null,
+          1,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0,
+          null,
+          null,
+          null,
           1,
           0,
           0,
@@ -1553,7 +1738,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/controllers/concerns/form_publishing.rb": {
+      "/Users/sahithiduppati/team-formation/app/controllers/concerns/form_publishing.rb": {
         "lines": [
           1,
           1,
@@ -1599,7 +1784,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/controllers/concerns/form_deadline_management.rb": {
+      "/Users/sahithiduppati/team-formation/app/controllers/concerns/form_deadline_management.rb": {
         "lines": [
           1,
           1,
@@ -1620,7 +1805,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/controllers/concerns/form_uploading.rb": {
+      "/Users/sahithiduppati/team-formation/app/controllers/concerns/form_uploading.rb": {
         "lines": [
           1,
           1,
@@ -1696,7 +1881,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/controllers/concerns/populate_teams_based_on_gender.rb": {
+      "/Users/sahithiduppati/team-formation/app/controllers/concerns/populate_teams_based_on_gender.rb": {
         "lines": [
           1,
           1,
@@ -1881,7 +2066,59 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/models/attribute.rb": {
+      "/Users/sahithiduppati/team-formation/app/controllers/concerns/generate_teams.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null
+        ]
+      },
+      "/Users/sahithiduppati/team-formation/app/models/attribute.rb": {
         "lines": [
           null,
           1,
@@ -1939,7 +2176,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/controllers/attributes_controller.rb": {
+      "/Users/sahithiduppati/team-formation/app/controllers/attributes_controller.rb": {
         "lines": [
           null,
           1,
@@ -2093,7 +2330,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/models/form_response.rb": {
+      "/Users/sahithiduppati/team-formation/app/models/form_response.rb": {
         "lines": [
           1,
           1,
@@ -2107,7 +2344,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/models/student.rb": {
+      "/Users/sahithiduppati/team-formation/app/models/student.rb": {
         "lines": [
           1,
           1,
@@ -2119,7 +2356,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/controllers/students_controller.rb": {
+      "/Users/sahithiduppati/team-formation/app/controllers/students_controller.rb": {
         "lines": [
           1,
           1,
@@ -2170,7 +2407,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/controllers/sessions_controller.rb": {
+      "/Users/sahithiduppati/team-formation/app/controllers/sessions_controller.rb": {
         "lines": [
           1,
           1,
@@ -2201,7 +2438,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/controllers/welcome_controller.rb": {
+      "/Users/sahithiduppati/team-formation/app/controllers/welcome_controller.rb": {
         "lines": [
           1,
           1,
@@ -2221,7 +2458,7 @@
           null
         ]
       },
-      "/Users/hithamv/Desktop/SEProject/team-formation-13/app/controllers/form_responses_controller.rb": {
+      "/Users/sahithiduppati/team-formation/app/controllers/form_responses_controller.rb": {
         "lines": [
           null,
           1,
@@ -2368,6 +2605,6 @@
         ]
       }
     },
-    "timestamp": 1730482785
+    "timestamp": 1730503357
   }
 }

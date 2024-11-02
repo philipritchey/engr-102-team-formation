@@ -1,0 +1,36 @@
+<div class="container mx-auto px-4 py-8">
+  <h1 class="text-2xl font-bold mb-6">Teams for <%= @form.name %></h1>
+  
+  <% @teams.group_by(&:section).each do |section, section_teams| %>
+    <div class="mb-8">
+      <h2 class="text-xl font-semibold mb-4">Section: <%= section %></h2>
+      
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse">
+          <thead>
+            <tr>
+              <th class="px-4 py-2 border-b bg-gray-200">Name</th>
+              <th class="px-4 py-2 border-b bg-gray-200">UIN</th>
+              <th class="px-4 py-2 border-b bg-gray-200">Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% section_teams.each do |team| %>
+              <% team.members.each do |member| %>
+                <tr>
+                  <td class="px-4 py-2 border-b"><%= member["name"] %></td>
+                  <td class="px-4 py-2 border-b"><%= member["uin"] %></td>
+                  <td class="px-4 py-2 border-b"><%= member["email"] %></td>
+                </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="mt-6">
+    <%= link_to "Back to Form", form_path(@form), class: "text-blue-600 hover:text-blue-800" %>
+  </div>
+</div>
