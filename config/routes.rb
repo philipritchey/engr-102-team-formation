@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       post "validate_upload", to: "forms#validate_upload"
       post :generate_teams
       get :view_teams
+      get :export_teams
     end
     resources :attributes do
       member do
