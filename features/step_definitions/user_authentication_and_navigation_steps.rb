@@ -10,7 +10,12 @@ Given("I am not logged in") do
     Capybara.current_session.set_rack_session(user_id: @user.id)
     visit user_path(@user)
   end
-
+  Given("I am logged in as a student") do
+    @student = FactoryBot.create(:student)
+    Capybara.current_session.set_rack_session(student_id: @student.id)
+    visit student_path(@student)
+  end
+  
 
 
   When("I visit the welcome page") do

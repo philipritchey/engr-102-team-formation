@@ -36,3 +36,9 @@ Feature: User Authentication and Navigation
     When I clicks "Logout"
     Then I should be redirected to the welcome page
     And I should see "You are logged out."
+  Scenario: Logged in student visits welcome page
+    Given I am logged in as a student
+    When I visit the welcome page
+    Then I should be redirected to my student page
+    And I should see "Welcome back, Student!"
+
