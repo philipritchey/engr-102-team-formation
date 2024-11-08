@@ -52,3 +52,4 @@ Feature: User Authentication and Navigation
     When I click "Login with Google"
     And I authorize the application on Google as a user
     Then I should be redirected to my user page
+    And I should see a Logout button

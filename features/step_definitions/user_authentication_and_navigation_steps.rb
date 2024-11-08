@@ -68,6 +68,10 @@ And("I authorize the application on Google") do
   # expect(page).to have_current_path(user_path(@user))
 end
 
+Then("I should see a Logout button") do
+  expect(page).to have_link('Logout') # Check if there's a link with "Logout"
+end
+
 
 
 
