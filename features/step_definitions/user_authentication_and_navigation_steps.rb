@@ -143,3 +143,24 @@ Then("I should see the avatar briefly enlarge") do
   # For now, we'll just check if the click event is registered
   expect(page).to have_css('.student:active')
 end
+Given("I authorize the application on Google as a student") do
+  # Set OmniAuth mock auth hash
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
+    provider: 'google_oauth2',
+    uid: '123456',
+    info: {
+      email: 'student@example.com',  # Ensure this matches the email in your factory
+      name: 'Test Student'
+    }
+  })
+
+  # Create student using FactoryBot
+  @student = FactoryBot.create(:student, email: 'student@example.com')
+
+  # Simulate the Google OAuth callback
+  visit '/auth/google_oauth2/callback'
+
+  # Verify that the student is properly logged in
+  expect(@student).to be_valid
+end

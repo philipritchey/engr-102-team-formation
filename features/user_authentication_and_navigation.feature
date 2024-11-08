@@ -41,3 +41,9 @@ Feature: User Authentication and Navigation
     When I visit the welcome page
     Then I should be redirected to my student page
     And I should see "Welcome back, Student!"
+  Scenario: Student logs in successfully with Google
+    Given I am on the welcome page
+    When I click "Login with Google"
+    And I authorize the application on Google as a student
+    Then I should be redirected to my student page
+    And I should see "Logged in as Student"
