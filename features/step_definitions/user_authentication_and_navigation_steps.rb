@@ -164,3 +164,24 @@ Given("I authorize the application on Google as a student") do
   # Verify that the student is properly logged in
   expect(@student).to be_valid
 end
+Given("I authorize the application on Google as a user") do
+  # Set OmniAuth mock auth hash for user
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
+    provider: 'google_oauth2',
+    uid: '123456',
+    info: {
+      email: 'user@example.com',  # Ensure this matches the email in your factory
+      name: 'Test User'
+    }
+  })
+
+  # Create user using FactoryBot
+  @user = FactoryBot.create(:user, email: 'user@example.com')
+
+  # Simulate the Google OAuth callback
+  visit '/auth/google_oauth2/callback'
+
+  # Verify that the user is properly logged in
+  expect(@user).to be_valid
+end

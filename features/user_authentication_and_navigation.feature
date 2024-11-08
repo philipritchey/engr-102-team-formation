@@ -47,3 +47,8 @@ Feature: User Authentication and Navigation
     And I authorize the application on Google as a student
     Then I should be redirected to my student page
     And I should see "Logged in as Student"
+  Scenario: User logs in successfully with Google
+    Given I am on the welcome page
+    When I click "Login with Google"
+    And I authorize the application on Google as a user
+    Then I should be redirected to my user page
