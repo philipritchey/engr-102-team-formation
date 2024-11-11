@@ -34,16 +34,31 @@ module TeamEthnicityBalance
   private
 
   # Identifies and handles students who are the only ones of their ethnicity in a team
-  # Attempts to find another student of the same ethnicity to pair them with
   # @param section_data [Hash] Contains all section information including teams and students
   # @param ethnicity [String] The ethnicity being processed
   def handle_isolated_students(section_data, ethnicity)
-    section_data[:teams].each do |team|
-      next unless should_handle_isolated_student?(team, ethnicity)
-
-      student_id = find_matching_student_for_isolated(section_data, team, ethnicity)
-      assign_student_to_team(section_data, student_id, team) if student_id
+    find_teams_with_isolated_students(section_data, ethnicity).each do |team|
+      process_isolated_student(section_data, team, ethnicity)
     end
+  end
+
+  # Finds teams that have isolated students of the given ethnicity
+  # @param section_data [Hash] Section information
+  # @param ethnicity [String] The ethnicity to check
+  # @return [Array<Hash>] Array of teams with isolated students
+  def find_teams_with_isolated_students(section_data, ethnicity)
+    section_data[:teams].select do |team|
+      should_handle_isolated_student?(team, ethnicity)
+    end
+  end
+
+  # Processes a single isolated student case
+  # @param section_data [Hash] Section information
+  # @param team [Hash] The team with the isolated student
+  # @param ethnicity [String] The ethnicity being processed
+  def process_isolated_student(section_data, team, ethnicity)
+    student_id = find_matching_student_for_isolated(section_data, team, ethnicity)
+    assign_student_to_team(section_data, student_id, team) if student_id
   end
 
   # Determines if a team has exactly one student of the given ethnicity and has space for more
