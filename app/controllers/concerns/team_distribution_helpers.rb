@@ -67,30 +67,34 @@ module TeamDistributionHelpers
     end
   end
 
+  # Finds a matching student pair based on skill level compatibility
+  # @param section_data [Hash] Section information
+  # @param student1 [Hash] The first student's information
+  # @param potential_pairs [Array] Array of potential partner student IDs
+  # @return [Integer, nil] ID of the matching student or nil if no match found
   def find_matching_pair(section_data, student1, potential_pairs)
-    student1_level = student1[:level]
-
-    case student1_level
+    preferred_levels = case student1[:level]
     when "low"
-      # Try to find high, then medium
-      high_skill = potential_pairs.find { |id| get_student_level(section_data, id) == "high" }
-      return high_skill if high_skill
-
-      medium_skill = potential_pairs.find { |id| get_student_level(section_data, id) == "medium" }
-      return medium_skill if medium_skill
+      [ "high", "medium" ]
     when "high"
-      # Try to find low, then medium
-      low_skill = potential_pairs.find { |id| get_student_level(section_data, id) == "low" }
-      return low_skill if low_skill
-
-      medium_skill = potential_pairs.find { |id| get_student_level(section_data, id) == "medium" }
-      return medium_skill if medium_skill
+      [ "low", "medium" ]
     else # medium
-      # Try to find another medium
-      medium_skill = potential_pairs.find { |id| get_student_level(section_data, id) == "medium" }
-      return medium_skill if medium_skill
+      [ "medium", "low", "high" ] # Added fallback levels for medium skill students
     end
 
+    find_student_by_levels(section_data, potential_pairs, preferred_levels)
+  end
+
+  # Helper method to find a student by preferred skill levels
+  # @param section_data [Hash] Section information
+  # @param potential_pairs [Array] Array of potential student IDs
+  # @param preferred_levels [Array] Ordered array of preferred skill levels
+  # @return [Integer, nil] ID of the first matching student or nil
+  private def find_student_by_levels(section_data, potential_pairs, preferred_levels)
+    preferred_levels.each do |level|
+      match = potential_pairs.find { |id| get_student_level(section_data, id) == level }
+      return match if match
+    end
     nil
   end
 
