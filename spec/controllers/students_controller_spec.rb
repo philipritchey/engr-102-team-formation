@@ -10,7 +10,7 @@ RSpec.describe StudentsController, type: :controller do
   describe "GET #index" do
     it "assigns all students to @students and renders the index template" do
       get :index
-      expect(assigns(:students)).to eq([student])
+      expect(assigns(:students)).to eq([ student ])
       expect(response).to render_template(:index)
     end
   end

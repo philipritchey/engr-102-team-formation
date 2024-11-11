@@ -40,8 +40,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_30_015930) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "deadline"
     t.integer "user_id", null: false
+    t.datetime "deadline"
     t.boolean "published"
   end
 
@@ -52,7 +52,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_30_015930) do
     t.string "section"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["uin"], name: "index_students_on_uin", unique: true
+    t.index ["uin"], name: "index_students_on_uin"
   end
 
   create_table "teams", force: :cascade do |t|

@@ -6,6 +6,10 @@ class FormsController < ApplicationController
   include FormPublishing
   include FormDeadlineManagement
   include FormUploading
+  include TeamCalculation
+  include TeamGenderBalance
+  include TeamEthnicityBalance
+  include TeamSkillBalance
   include PopulateTeamsBasedOnGender
   include GenerateTeams
   include ExportTeams
@@ -126,60 +130,6 @@ class FormsController < ApplicationController
       # This allows for more flexible parameter handling
       params.permit(:name, :description, :deadline)
     end
-
-    def calculate_teams
-      # Fetch all form responses for this form and group them by the student's section
-      # The 'includes(:student)' eager loads the associated student data to avoid N+1 queries
-      # The result is a hash where keys are section names and values are arrays of form responses
-      sections = @form.form_responses.includes(:student).group_by { |response| response.student.section }
-
-      # Initialize an empty hash to store the team distribution for each section
-      team_distribution = {}
-
-      # Iterate over each section and its responses
-      sections.each do |section, responses|
-        # Count the total number of students (responses) in this section
-        total_students = responses.count
-
-        # Calculate the base number of teams of 4 we can form
-        base_teams = total_students / 4
-
-        # Calculate how many students are left over after forming teams of 4
-        remainder = total_students % 4
-
-        # Determine the final number of teams of 4 based on the remainder
-        # We adjust this to allow for teams of 3 when necessary
-        teams_of_4 = case remainder
-        when 0 then base_teams     # If no remainder, all teams are of size 4
-        when 1 then base_teams - 2 # If remainder 1, we need 3 teams of 3
-        when 2 then base_teams - 1 # If remainder 2, we need 2 teams of 3
-        when 3 then base_teams     # If remainder 3, we need 1 team of 3
-        end
-
-        teams_of_3 = remainder.zero? ? 0 : 4 - remainder
-
-        # Store the calculated distribution for this section
-        team_distribution[section] = {
-          total_students: total_students,  # Total number of students in this section
-          teams_of_4: teams_of_4,          # Number of teams with 4 members
-          teams_of_3: teams_of_3,          # Number of teams with 3 members
-          total_teams: teams_of_4 + teams_of_3,  # Total number of teams in this section
-          form_responses: responses        # Array of form response objects for this section
-        }
-      end
-
-      # Return the complete team distribution hash
-      # This hash contains the team distribution data for all sections
-      team_distribution
-    end
-    # def populate_teams_based_on_gender(team_distribution)
-    #   # Dummy function: Just return the input for now
-    #   team_distribution.each do |section, details|
-    #     details[:teams] = Array.new(details[:total_teams]) { [] }
-    #     details[:remaining_students] = details[:form_responses].map(&:student)
-    #   end
-    #   team_distribution
-    # end
 
     def optimize_teams_based_on_ethnicity(team_distribution)
       # Dummy function: Just return the input for now
