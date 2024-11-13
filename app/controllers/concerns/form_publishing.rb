@@ -34,10 +34,13 @@ module FormPublishing
   end
 
   def collect_error_reasons
-    reasons = []
-    reasons << "no gender attribute" unless @form.has_gender_attribute?
-    reasons << "no ethnicity attribute" unless @form.has_ethnicity_attribute?
-    reasons << "no associated students" unless @form.has_associated_students?
-    reasons
+    error_conditions = {
+      "no gender attribute" => !@form.has_gender_attribute?,
+      "no ethnicity attribute" => !@form.has_ethnicity_attribute?,
+      "no associated students" => !@form.has_associated_students?
+    }
+
+    # Collect all the reasons where the condition is true
+    error_conditions.select { |_, condition| condition }.keys
   end
 end
