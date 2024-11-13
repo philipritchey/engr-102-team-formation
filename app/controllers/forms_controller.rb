@@ -12,6 +12,7 @@ class FormsController < ApplicationController
   include TeamSkillBalance
   include PopulateTeamsBasedOnGender
   include GenerateTeams
+  include FormDeadlineManagement
   include ExportTeams
   require "roo"
 
@@ -64,20 +65,46 @@ class FormsController < ApplicationController
 
   # PATCH/PUT /forms/1
   # Updates an existing form
+  # In FormsController
+
   def update
+    # Allow params with or without 'form' key
     update_params = params[:form] || params
-  
-    if update_params.key?(:deadline) && @form.update(update_params.permit(:deadline))
-      flash.now[:notice] = "Deadline saved successfully."
-      render :edit
-    elsif @form.update(update_params.permit(:name, :description))
+
+    if @form.update(update_params.permit(:name, :description, :deadline))
+      # If update succeeds, set success message and redirect to the form
       flash[:notice] = "Form was successfully updated."
       redirect_to @form
     else
+      # If update fails, rebuild the attribute and re-render the edit form
       @attribute = @form.form_attributes.build
       render :edit, status: :unprocessable_entity
     end
   end
+  def update_deadline
+    new_deadline = params[:deadline]
+    
+    if new_deadline.present?
+      begin
+        parsed_deadline = DateTime.parse(new_deadline)
+        
+        if parsed_deadline < DateTime.now
+          render json: { error: "The deadline cannot be in the past." }, status: :unprocessable_entity
+        elsif @form.update(deadline: parsed_deadline)
+          render json: { message: "Deadline updated successfully.", new_deadline: @form.deadline }, status: :ok
+        else
+          render json: { error: "Failed to update deadline." }, status: :unprocessable_entity
+        end
+      rescue ArgumentError
+        render json: { error: "Invalid date format." }, status: :unprocessable_entity
+      end
+    else
+      render json: { error: "No deadline provided." }, status: :unprocessable_entity
+    end
+  end
+  
+
+  
   
 
   # GET /forms/#id/preview

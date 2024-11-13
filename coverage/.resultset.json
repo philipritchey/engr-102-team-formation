@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/udayreddy/team-formation/app/controllers/application_controller.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/application_controller.rb": {
         "lines": [
           null,
           null,
@@ -42,7 +42,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/attributes_controller.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/attributes_controller.rb": {
         "lines": [
           null,
           1,
@@ -196,7 +196,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/form_publishing.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/concerns/form_publishing.rb": {
         "lines": [
           1,
           1,
@@ -242,7 +242,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/team_calculation.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/concerns/team_calculation.rb": {
         "lines": [
           1,
           1,
@@ -398,9 +398,9 @@
           null,
           1,
           null,
-          823,
-          210,
-          261,
+          828,
+          219,
+          247,
           null,
           null,
           null,
@@ -444,7 +444,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/team_distribution_helpers.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/concerns/team_distribution_helpers.rb": {
         "lines": [
           1,
           1,
@@ -497,7 +497,7 @@
           null,
           114,
           450,
-          7250,
+          7251,
           179,
           179,
           null,
@@ -509,25 +509,25 @@
           23,
           7,
           16,
-          8,
-          null,
-          8,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          60,
-          null,
           9,
           null,
-          19,
+          7,
           null,
-          32,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          60,
+          null,
+          10,
+          null,
+          16,
+          null,
+          34,
           null,
           null,
           60,
@@ -540,20 +540,20 @@
           null,
           1,
           60,
-          211,
-          78,
+          195,
+          76,
           null,
           null,
           null,
           null,
           1,
-          5765,
-          133,
+          5165,
+          119,
           null,
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/team_ethnicity_balance.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/concerns/team_ethnicity_balance.rb": {
         "lines": [
           1,
           1,
@@ -675,7 +675,7 @@
           null,
           1,
           60,
-          2576,
+          2583,
           null,
           60,
           60,
@@ -706,7 +706,7 @@
           13,
           13,
           null,
-          575,
+          570,
           13,
           null,
           13,
@@ -765,7 +765,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/form_responses_controller.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/form_responses_controller.rb": {
         "lines": [
           null,
           1,
@@ -911,7 +911,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/forms_controller.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/forms_controller.rb": {
         "lines": [
           null,
           null,
@@ -980,17 +980,18 @@
           null,
           null,
           1,
-          null,
           6,
           null,
           6,
-          null,
+          0,
+          0,
+          6,
           4,
           4,
           null,
+          2,
+          2,
           null,
-          2,
-          2,
           null,
           null,
           null,
@@ -1100,7 +1101,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/form_deadline_management.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/concerns/form_deadline_management.rb": {
         "lines": [
           1,
           1,
@@ -1121,7 +1122,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/form_uploading.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/concerns/form_uploading.rb": {
         "lines": [
           1,
           1,
@@ -1147,8 +1148,8 @@
           7,
           7,
           null,
-          1,
-          1,
+          0,
+          0,
           null,
           null,
           null,
@@ -1173,31 +1174,31 @@
           null,
           null,
           1,
-          0,
-          0,
+          1,
+          1,
           null,
           null,
           1,
           1,
-          0,
-          0,
+          2,
+          1,
           null,
-          0,
-          0,
-          null,
-          null,
-          0,
+          1,
+          1,
           null,
           null,
+          1,
           null,
           null,
           null,
-          0,
+          null,
+          null,
+          1,
           null,
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/team_gender_balance.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/concerns/team_gender_balance.rb": {
         "lines": [
           1,
           1,
@@ -1227,7 +1228,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/team_skill_balance.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/concerns/team_skill_balance.rb": {
         "lines": [
           1,
           1,
@@ -1257,7 +1258,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/populate_teams_based_on_gender.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/concerns/populate_teams_based_on_gender.rb": {
         "lines": [
           1,
           1,
@@ -1442,7 +1443,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/generate_teams.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/concerns/generate_teams.rb": {
         "lines": [
           1,
           1,
@@ -1494,7 +1495,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/export_teams.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/concerns/export_teams.rb": {
         "lines": [
           1,
           1,
@@ -1536,7 +1537,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/sessions_controller.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/sessions_controller.rb": {
         "lines": [
           1,
           1,
@@ -1567,7 +1568,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/students_controller.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/students_controller.rb": {
         "lines": [
           1,
           1,
@@ -1618,7 +1619,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/users_controller.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/users_controller.rb": {
         "lines": [
           null,
           null,
@@ -1634,7 +1635,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/welcome_controller.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/welcome_controller.rb": {
         "lines": [
           1,
           1,
@@ -1654,7 +1655,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/jobs/check_form_deadlines_job.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/jobs/check_form_deadlines_job.rb": {
         "lines": [
           1,
           1,
@@ -1667,7 +1668,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/models/attribute.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/models/attribute.rb": {
         "lines": [
           null,
           1,
@@ -1725,14 +1726,14 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/models/application_record.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/models/form.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/models/form.rb": {
         "lines": [
           null,
           null,
@@ -1795,7 +1796,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/services/forms/duplication_service.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/services/forms/duplication_service.rb": {
         "lines": [
           1,
           1,
@@ -1838,7 +1839,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/services/forms/base_service.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/services/forms/base_service.rb": {
         "lines": [
           1,
           null,
@@ -1861,7 +1862,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/models/user.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/models/user.rb": {
         "lines": [
           1,
           1,
@@ -1869,19 +1870,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/models/student.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null,
-          1,
-          1,
-          1,
-          null
-        ]
-      },
-      "/Users/udayreddy/team-formation/app/models/form_response.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/models/student.rb": {
         "lines": [
           1,
           1,
@@ -1890,12 +1879,24 @@
           1,
           1,
           1,
+          null
+        ]
+      },
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/models/form_response.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
           null,
           1,
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/models/team.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/models/team.rb": {
         "lines": [
           1,
           1,
@@ -1935,11 +1936,11 @@
         ]
       }
     },
-    "timestamp": 1731348282
+    "timestamp": 1731535560
   },
   "Cucumber": {
     "coverage": {
-      "/Users/udayreddy/team-formation/app/models/user.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/models/user.rb": {
         "lines": [
           1,
           1,
@@ -1947,14 +1948,14 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/models/application_record.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/models/form.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/models/form.rb": {
         "lines": [
           null,
           null,
@@ -2017,7 +2018,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/users_controller.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/users_controller.rb": {
         "lines": [
           null,
           null,
@@ -2033,7 +2034,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/application_controller.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/application_controller.rb": {
         "lines": [
           null,
           null,
@@ -2047,7 +2048,7 @@
           null,
           1,
           null,
-          282,
+          279,
           null,
           null,
           1,
@@ -2060,12 +2061,12 @@
           1,
           null,
           null,
-          130,
+          128,
           null,
           null,
           null,
           1,
-          119,
+          117,
           null,
           null,
           2,
@@ -2074,11 +2075,12 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/forms_controller.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/forms_controller.rb": {
         "lines": [
           null,
           null,
           null,
+          1,
           1,
           1,
           1,
@@ -2142,15 +2144,14 @@
           null,
           null,
           null,
-          1,
           null,
+          null,
+          1,
           5,
           null,
           5,
-          null,
           1,
           1,
-          null,
           null,
           4,
           4,
@@ -2158,10 +2159,6 @@
           null,
           null,
           null,
-          1,
-          1,
-          1,
-          null,
           null,
           null,
           null,
@@ -2169,6 +2166,13 @@
           0,
           0,
           null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
           0,
           0,
           null,
@@ -2196,7 +2200,7 @@
           null,
           null,
           1,
-          58,
+          57,
           null,
           null,
           null,
@@ -2263,7 +2267,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/form_publishing.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/concerns/form_publishing.rb": {
         "lines": [
           1,
           1,
@@ -2309,7 +2313,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/form_deadline_management.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/concerns/form_deadline_management.rb": {
         "lines": [
           1,
           1,
@@ -2330,7 +2334,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/form_uploading.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/concerns/form_uploading.rb": {
         "lines": [
           1,
           1,
@@ -2356,8 +2360,8 @@
           7,
           7,
           null,
-          1,
-          1,
+          0,
+          0,
           null,
           null,
           null,
@@ -2382,31 +2386,31 @@
           null,
           null,
           1,
-          0,
-          0,
+          1,
+          1,
           null,
           null,
           1,
           1,
-          0,
-          0,
+          2,
+          1,
           null,
-          0,
-          0,
-          null,
-          null,
-          0,
+          1,
+          1,
           null,
           null,
+          1,
           null,
           null,
           null,
-          0,
+          null,
+          null,
+          1,
           null,
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/team_calculation.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/concerns/team_calculation.rb": {
         "lines": [
           1,
           1,
@@ -2608,7 +2612,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/team_distribution_helpers.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/concerns/team_distribution_helpers.rb": {
         "lines": [
           1,
           1,
@@ -2717,7 +2721,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/team_gender_balance.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/concerns/team_gender_balance.rb": {
         "lines": [
           1,
           1,
@@ -2747,7 +2751,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/team_ethnicity_balance.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/concerns/team_ethnicity_balance.rb": {
         "lines": [
           1,
           1,
@@ -2787,14 +2791,29 @@
           null,
           null,
           null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
           null,
           1,
           0,
           0,
           null,
-          0,
-          0,
           null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
           null,
           null,
           null,
@@ -2944,7 +2963,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/team_skill_balance.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/concerns/team_skill_balance.rb": {
         "lines": [
           1,
           1,
@@ -2974,7 +2993,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/populate_teams_based_on_gender.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/concerns/populate_teams_based_on_gender.rb": {
         "lines": [
           1,
           1,
@@ -3159,7 +3178,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/generate_teams.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/concerns/generate_teams.rb": {
         "lines": [
           1,
           1,
@@ -3211,7 +3230,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/export_teams.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/concerns/export_teams.rb": {
         "lines": [
           1,
           1,
@@ -3253,7 +3272,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/models/attribute.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/models/attribute.rb": {
         "lines": [
           null,
           1,
@@ -3311,7 +3330,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/attributes_controller.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/attributes_controller.rb": {
         "lines": [
           null,
           1,
@@ -3465,7 +3484,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/models/form_response.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/models/form_response.rb": {
         "lines": [
           1,
           1,
@@ -3479,7 +3498,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/models/student.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/models/student.rb": {
         "lines": [
           1,
           1,
@@ -3491,7 +3510,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/students_controller.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/students_controller.rb": {
         "lines": [
           1,
           1,
@@ -3542,7 +3561,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/sessions_controller.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/sessions_controller.rb": {
         "lines": [
           1,
           1,
@@ -3573,7 +3592,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/welcome_controller.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/welcome_controller.rb": {
         "lines": [
           1,
           1,
@@ -3593,7 +3612,31 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/form_responses_controller.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/jobs/check_form_deadlines_job.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/jobs/application_job.rb": {
+        "lines": [
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/controllers/form_responses_controller.rb": {
         "lines": [
           null,
           1,
@@ -3740,6 +3783,6 @@
         ]
       }
     },
-    "timestamp": 1731347954
+    "timestamp": 1731536964
   }
 }
