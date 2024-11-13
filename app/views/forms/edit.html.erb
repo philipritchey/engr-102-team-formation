@@ -185,7 +185,7 @@
 function setDeadline() {
   var deadlinePicker = document.getElementById("deadline_picker");
   var selectedDeadline = deadlinePicker.value;
-  var formId = <%= @form.id %>; // Assuming you have access to the form ID
+  var formId = <%= @form.id %>;
 
   if (selectedDeadline) {
     fetch(`/forms/${formId}/update_deadline`, {
@@ -201,11 +201,19 @@ function setDeadline() {
       if (data.error) {
         alert(data.error);
       } else {
-        document.getElementById("display_deadline").innerText = "Selected Deadline: " + new Date(data.new_deadline).toLocaleString('en-US', {
+        // Format the date string manually to avoid timezone conversions
+        var date = new Date(selectedDeadline);
+        var formattedDate = date.toLocaleString('en-US', {
           year: 'numeric', month: 'long', day: 'numeric',
-          hour: '2-digit', minute: '2-digit', hour12: true,
-          timeZoneName: 'short'
+          hour: '2-digit', minute: '2-digit', hour12: true
         }).replace(',', ' at');
+        
+        document.getElementById("display_deadline").innerText = "Selected Deadline: " + formattedDate;
+        
+        // Clear the message after 5 seconds
+        setTimeout(() => {
+          document.getElementById("display_deadline").innerText = "";
+        }, 5000);
       }
     })
     .catch(error => {
@@ -214,8 +222,14 @@ function setDeadline() {
     });
   } else {
     document.getElementById("display_deadline").innerText = "Please select a deadline.";
+    
+    // Clear this message after 5 seconds as well
+    setTimeout(() => {
+      document.getElementById("display_deadline").innerText = "";
+    }, 5000);
   }
 }
+
 
 
 

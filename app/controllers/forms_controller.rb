@@ -85,23 +85,23 @@ class FormsController < ApplicationController
     new_deadline = params[:deadline]
     
     if new_deadline.present?
-      begin
-        parsed_deadline = DateTime.parse(new_deadline)
-        
-        if parsed_deadline < DateTime.now
-          render json: { error: "The deadline cannot be in the past." }, status: :unprocessable_entity
-        elsif @form.update(deadline: parsed_deadline)
-          render json: { message: "Deadline updated successfully.", new_deadline: @form.deadline }, status: :ok
-        else
-          render json: { error: "Failed to update deadline." }, status: :unprocessable_entity
-        end
-      rescue ArgumentError
-        render json: { error: "Invalid date format." }, status: :unprocessable_entity
+      # Parse the date string as it is, without timezone conversion
+      parsed_deadline = Time.zone.parse(new_deadline)
+      print(parsed_deadline)
+      
+      if parsed_deadline < DateTime.now
+        render json: { error: "The deadline cannot be in the past." }, status: :unprocessable_entity
+      elsif @form.update(deadline: parsed_deadline)
+        # Return the deadline exactly as it was saved
+        render json: { message: "Deadline updated successfully.", new_deadline: @form.deadline.strftime("%Y-%m-%dT%H:%M") }, status: :ok
+      else
+        render json: { error: "Failed to update deadline." }, status: :unprocessable_entity
       end
     else
       render json: { error: "No deadline provided." }, status: :unprocessable_entity
     end
   end
+  
   
 
   
