@@ -1,26 +1,19 @@
 <h1>Editing Form</h1>
 
-<%# Display error messages from flash, if any %>
+<%# Display flash alert if present %>
 <% if flash[:alert] %>
   <div class="alert alert-danger"><%= flash[:alert] %></div>
 <% end %>
 
-<%# Display form errors at the top of the page %>
+<%# Display form errors %>
 <% if @form.errors.any? %>
-  <%# Container for the entire error message block %>
   <div class="error-container">
-    <%# Icon container for visual emphasis %>
     <div class="error-icon">
-      <%# Font Awesome exclamation circle icon %>
       <i class="fas fa-exclamation-circle"></i>
     </div>
-    <%# Container for error messages %>
     <div class="error-message">
-      <%# Friendly heading for error messages %>
       <h4>Oops! Please correct the following:</h4>
-      <%# Unordered list of error messages %>
       <ul>
-        <%# Iterate through each error message %>
         <% @form.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
@@ -29,7 +22,6 @@
   </div>
 <% end %>
 
-<%# Form for editing the main form details %>
 <%= form_with(model: @form, local: true, data: { turbo: false }) do |form| %>
   <div>
     <%= form.label :name %>
@@ -41,27 +33,23 @@
     <%= form.text_area :description, class: 'form-control' %>
   </div>
   
-  <%# Deadline picker field %>
-<div class="field">
-  <%= form.label :deadline, "Set Deadline", id: "set_deadline" %>
-  <%= form.datetime_local_field :deadline, id: "deadline_picker" %>
-  <%# Button to trigger JavaScript to display the selected deadline %>
-  <button type="button" onclick="setDeadline()">Save</button>
-
-  <%# Display the selected deadline here dynamically %>
-  <p id="display_deadline"></p>
-</div>
+  <%# Deadline picker %>
+  <div class="field">
+    <%= form.label :deadline, "Set Deadline" %>
+    <%= form.datetime_local_field :deadline, id: "deadline_picker" %>
+    <button type="button" onclick="setDeadline()">Save</button>
+    <p id="display_deadline"></p>
+  </div>
 
   <%# Action buttons %>
   <div class="d-flex justify-content-between align-items-center">
     <%= link_to "Back to Forms", user_path(current_user), class: "btn btn-secondary" %>
-    <%= form.submit "Save Form", class: "btn btn-primary" %>
-    <%= button_tag 'Duplicate Form', type: 'button', class: 'button', onclick: "window.open('#{duplicate_form_path(@form)}', '_blank')" %>
+    <%= form.submit "Save Form", class: "btn btn-primary", id: "form_submit_button" %>
+    <%= button_tag 'Duplicate Form', type: 'button', class: 'btn btn-secondary', onclick: "window.open('#{duplicate_form_path(@form)}', '_blank')" %>
     <%= link_to 'Upload Students', upload_form_path(@form.id), class: 'btn btn-primary' %>
   </div>
 <% end %>
 
-<%# Display current attributes of the form %>
 <h2>Current Attributes</h2>
 <% if @form.form_attributes.any? %>
   <p>Total Weightage: <%= @form.form_attributes.sum(:weightage).round(1) %></p>
@@ -73,113 +61,76 @@
           (Min: <%= attribute.min_value %>, Max: <%= attribute.max_value %>)
         <% elsif attribute.field_type == 'mcq' %>
           <ul>
-            <%# Display each option for MCQ questions, handling nil options %>
             <% (attribute.options&.split(',') || []).each_with_index do |option, index| %>
               <li>Option <%= index + 1 %>: <%= option %></li>
             <% end %>
           </ul>
         <% end %>
-        <%# Display current weightage %>
-        <div>
-          Current Weightage: <%= attribute.weightage.present? ? attribute.weightage : "Not set" %>
-        </div>
+        <div>Current Weightage: <%= attribute.weightage || "Not set" %></div>
         <%= form_with(model: attribute, url: update_weightage_form_attribute_path(@form, attribute), method: :patch, local: true) do |f| %>
-          <div>
-            <%= f.label :weightage, "Update Weightage (0.0 to 1.0)" %>
-            <%= f.number_field :weightage, step: 0.1, min: 0, max: 1, value: attribute.weightage %>
-            <%= f.submit "Update Weightage", class: "btn btn-primary" %>
-          </div>
+          <%= f.label :weightage, "Update Weightage (0.0 to 1.0)" %>
+          <%= f.number_field :weightage, step: 0.1, min: 0, max: 1, value: attribute.weightage %>
+          <%= f.submit "Update Weightage", class: "btn btn-primary" %>
         <% end %>
         <%= button_to 'Destroy Attribute', form_attribute_path(@form, attribute), method: :delete, data: { confirm: 'Are you sure you want to remove this question?'}, class: 'btn btn-danger'%>
       </li>
-      <br>
     <% end %>
   </ul>
 <% else %>
   <p>No attributes added yet.</p>
 <% end %>
 
-<%# Form for adding a new attribute %>
 <h2>Add Attribute</h2>
 <%= form_with(model: [@form, @form.form_attributes.build], local: true) do |f| %>
-  <div>
-    <%= f.label :name, "Attribute Name" %>
-    <%= f.text_field :name, id: "attribute_name" %>
-  </div>
+  <%= f.label :name, "Attribute Name" %>
+  <%= f.text_field :name, id: "attribute_name" %>
 
-  <div>
-    <%= f.label :field_type, "Attribute Type" %>
-    <%= f.select :field_type, options_for_select([['Text', 'text_input'], ['MCQ', 'mcq'], ['Scale', 'scale']]), {}, { id: "attribute_type", onchange: 'toggleFields(this.value)' } %>
-  </div>
+  <%= f.label :field_type, "Attribute Type" %>
+  <%= f.select :field_type, options_for_select([['Text', 'text_input'], ['MCQ', 'mcq'], ['Scale', 'scale']]), {}, { id: "attribute_type", onchange: 'toggleFields(this.value)' } %>
 
-  <%# Additional fields for scale type %>
-  <div id="scale_fields" style="display: block;">
+  <%# Scale fields %>
+  <div id="scale_fields" style="display: none;">
     <%= f.label :min_value, "Minimum Value" %>
-    <%= f.number_field :min_value, id: "attribute_min_value" %>
+    <%= f.number_field :min_value %>
 
     <%= f.label :max_value, "Maximum Value" %>
-    <%= f.number_field :max_value, id: "attribute_max_value" %>
+    <%= f.number_field :max_value %>
   </div>
 
+  <%# MCQ fields %>
   <div id="mcq_fields" style="display: none;">
-  <%= f.label :options, "MCQ Options" %>
-  <div id="mcq_options_container">
-    <div class="mcq_option">
+    <%= f.label :options, "MCQ Options" %>
+    <div id="mcq_options_container">
       <input type="text" name="mcq_options[]" placeholder="Option 1" class="form-control" />
-    </div>
-    <div class="mcq_option">
       <input type="text" name="mcq_options[]" placeholder="Option 2" class="form-control" />
     </div>
+    <button type="button" class="btn btn-secondary" id="add_option_button">Add Option</button>
   </div>
 
-  <button type="button" class="btn btn-secondary" id="add_option_button">Add Option</button>
-</div>
-
-  <%= f.submit "Save Attribute", id: "save_attribute" %>
+  <%= f.submit "Save Attribute", class: "btn btn-primary" %>
 <% end %>
 
-<%# Include the preview modal from another file %>
 <%= render 'preview' %>
-
-
-
-<%# Add spacing between "Save Attribute" and action buttons %>
-<div style="margin-top: 30px;"></div>
 
 <% unless Rails.env.test? %>
   <script>
     function toggleFields(fieldType) {
-      var scaleFields = document.getElementById('scale_fields');
-      var mcqFields = document.getElementById('mcq_fields');
-
-      scaleFields.style.display = fieldType === 'scale' ? 'block' : 'none';
-      mcqFields.style.display = (fieldType === 'mcq') ? 'block' : 'none';
+      document.getElementById('scale_fields').style.display = fieldType === 'scale' ? 'block' : 'none';
+      document.getElementById('mcq_fields').style.display = fieldType === 'mcq' ? 'block' : 'none';
     }
 
     document.getElementById('add_option_button').addEventListener('click', function() {
       var container = document.getElementById('mcq_options_container');
-      var optionCount = container.getElementsByClassName('mcq_option').length + 1;
-
-      var newOptionDiv = document.createElement('div');
-      newOptionDiv.classList.add('mcq_option');
+      var optionCount = container.getElementsByClassName('form-control').length + 1;
 
       var newOptionInput = document.createElement('input');
       newOptionInput.type = 'text';
-      newOptionInput.name = 'mcq_options[]'; 
+      newOptionInput.name = 'mcq_options[]';
       newOptionInput.placeholder = 'Option ' + optionCount;
       newOptionInput.classList.add('form-control');
 
-      newOptionDiv.appendChild(newOptionInput);
-      container.appendChild(newOptionDiv);
+      container.appendChild(newOptionInput);
     });
-
-    // Initialize the visibility
-    toggleFields(document.getElementById('attribute_type').value);
-
-    function openPreviewModal() {
-      var modal = document.getElementById('previewModal');
-      modal.style.display = "block";  // Show the modal
-    }
 
     function setDeadline() {
       var deadlinePicker = document.getElementById("deadline_picker");
@@ -187,8 +138,8 @@
 
       if (selectedDeadline) {
         var date = new Date(selectedDeadline);
-        // Format to match our standard format: "October 31, 2024 at 05:35 PM CDT"
-        document.getElementById("display_deadline").innerText = "Selected Deadline: " + 
+        var displayDeadline = document.getElementById("display_deadline");
+        displayDeadline.innerText = "Selected Deadline: " + 
           date.toLocaleString('en-US', {
             year: 'numeric',
             month: 'long',
@@ -198,6 +149,12 @@
             hour12: true,
             timeZoneName: 'short'
           }).replace(',', ' at');
+        
+        // Display deadline temporarily for 5 seconds
+        displayDeadline.style.display = 'block';
+        setTimeout(function() {
+          displayDeadline.style.display = 'none';
+        }, 5000);
       } else {
         document.getElementById("display_deadline").innerText = "Please select a deadline.";
       }
@@ -210,55 +167,8 @@
 
       if (selectedDeadline < now) {
         alert("The deadline cannot be in the past.");
-        event.preventDefault(); // Prevent form submission
+        event.preventDefault();
       }
     });
-    function setDeadline() {
-    var deadlinePicker = document.getElementById("deadline_picker");
-    var selectedDeadline = deadlinePicker.value;
-
-    if (selectedDeadline) {
-      var date = new Date(selectedDeadline);
-      document.getElementById("display_deadline").innerText = "Selected Deadline: " + 
-        date.toLocaleString('en-US', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-          hour: '2-digit',
-          minute: '2-digit',
-          hour12: true,
-          timeZoneName: 'short'
-        }).replace(',', ' at');
-    } else {
-      document.getElementById("display_deadline").innerText = "Please select a deadline.";
-    }
-  }
-
-  document.getElementById('form_submit_button').addEventListener('click', function(event) {
-    var deadlinePicker = document.getElementById('deadline_picker');
-    var selectedDeadline = new Date(deadlinePicker.value);
-    var now = new Date();
-
-    if (selectedDeadline < now) {
-      alert("The deadline cannot be in the past.");
-      event.preventDefault();
-    }
-  });
-
-  // Function to display the success message and auto-hide it after 2 seconds
-  function showTemporarySuccessMessage(message) {
-    var flashNotice = document.createElement('div');
-    flashNotice.className = 'alert alert-success';
-    flashNotice.innerText = message;
-
-    document.body.appendChild(flashNotice);
-    setTimeout(function() {
-      flashNotice.remove();
-    }, 2000);
-  }
-
-  // Call this function when the form is saved
-  showTemporarySuccessMessage("Deadline saved successfully.");
-
   </script>
 <% end %>
