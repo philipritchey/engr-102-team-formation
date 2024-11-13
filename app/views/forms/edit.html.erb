@@ -56,6 +56,7 @@
   <div class="d-flex justify-content-between align-items-center">
     <%= link_to "Back to Forms", user_path(current_user), class: "btn btn-secondary" %>
     <%= form.submit "Save Form", class: "btn btn-primary" %>
+    <%= button_tag 'Preview Form', type: 'button', class: 'button', onclick: "openPreviewModal()" %>
     <%= button_tag 'Duplicate Form', type: 'button', class: 'button', onclick: "window.open('#{duplicate_form_path(@form)}', '_blank')" %>
     <%= link_to 'Upload Students', upload_form_path(@form.id), class: 'btn btn-primary' %>
   </div>
@@ -213,7 +214,52 @@
         event.preventDefault(); // Prevent form submission
       }
     });
+    function setDeadline() {
+    var deadlinePicker = document.getElementById("deadline_picker");
+    var selectedDeadline = deadlinePicker.value;
 
+    if (selectedDeadline) {
+      var date = new Date(selectedDeadline);
+      document.getElementById("display_deadline").innerText = "Selected Deadline: " + 
+        date.toLocaleString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: true,
+          timeZoneName: 'short'
+        }).replace(',', ' at');
+    } else {
+      document.getElementById("display_deadline").innerText = "Please select a deadline.";
+    }
+  }
+
+  document.getElementById('form_submit_button').addEventListener('click', function(event) {
+    var deadlinePicker = document.getElementById('deadline_picker');
+    var selectedDeadline = new Date(deadlinePicker.value);
+    var now = new Date();
+
+    if (selectedDeadline < now) {
+      alert("The deadline cannot be in the past.");
+      event.preventDefault();
+    }
+  });
+
+  // Function to display the success message and auto-hide it after 2 seconds
+  function showTemporarySuccessMessage(message) {
+    var flashNotice = document.createElement('div');
+    flashNotice.className = 'alert alert-success';
+    flashNotice.innerText = message;
+
+    document.body.appendChild(flashNotice);
+    setTimeout(function() {
+      flashNotice.remove();
+    }, 2000);
+  }
+
+  // Call this function when the form is saved
+  showTemporarySuccessMessage("Deadline saved successfully.");
 
   </script>
 <% end %>

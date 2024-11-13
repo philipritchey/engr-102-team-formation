@@ -65,19 +65,20 @@ class FormsController < ApplicationController
   # PATCH/PUT /forms/1
   # Updates an existing form
   def update
-    # Allow params with or without 'form' key
     update_params = params[:form] || params
-
-    if @form.update(update_params.permit(:name, :description, :deadline))
-      # If update succeeds, set success message and redirect to the form
+  
+    if update_params.key?(:deadline) && @form.update(update_params.permit(:deadline))
+      flash.now[:notice] = "Deadline saved successfully."
+      render :edit
+    elsif @form.update(update_params.permit(:name, :description))
       flash[:notice] = "Form was successfully updated."
       redirect_to @form
     else
-      # If update fails, rebuild the attribute and re-render the edit form
       @attribute = @form.form_attributes.build
       render :edit, status: :unprocessable_entity
     end
   end
+  
 
   # GET /forms/#id/preview
   def preview
