@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/udayreddy/team-formation/app/controllers/application_controller.rb": {
+      "/home/rithika/team-formation/app/controllers/application_controller.rb": {
         "lines": [
           null,
           null,
@@ -42,7 +42,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/attributes_controller.rb": {
+      "/home/rithika/team-formation/app/controllers/attributes_controller.rb": {
         "lines": [
           null,
           1,
@@ -196,7 +196,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/form_publishing.rb": {
+      "/home/rithika/team-formation/app/controllers/concerns/form_publishing.rb": {
         "lines": [
           1,
           1,
@@ -238,11 +238,12 @@
           2,
           2,
           2,
+          2,
           null,
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/team_calculation.rb": {
+      "/home/rithika/team-formation/app/controllers/concerns/team_calculation.rb": {
         "lines": [
           1,
           1,
@@ -398,9 +399,9 @@
           null,
           1,
           null,
-          823,
-          210,
-          261,
+          838,
+          211,
+          245,
           null,
           null,
           null,
@@ -444,7 +445,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/team_distribution_helpers.rb": {
+      "/home/rithika/team-formation/app/controllers/concerns/team_distribution_helpers.rb": {
         "lines": [
           1,
           1,
@@ -497,7 +498,7 @@
           null,
           114,
           450,
-          7250,
+          7262,
           179,
           179,
           null,
@@ -509,25 +510,25 @@
           23,
           7,
           16,
-          8,
-          null,
-          8,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          60,
-          null,
           9,
           null,
-          19,
+          7,
           null,
-          32,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          60,
+          null,
+          6,
+          null,
+          23,
+          null,
+          31,
           null,
           null,
           60,
@@ -540,20 +541,20 @@
           null,
           1,
           60,
-          211,
-          78,
+          218,
+          81,
           null,
           null,
           null,
           null,
           1,
-          5765,
-          133,
+          5911,
+          137,
           null,
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/team_ethnicity_balance.rb": {
+      "/home/rithika/team-formation/app/controllers/concerns/team_ethnicity_balance.rb": {
         "lines": [
           1,
           1,
@@ -675,7 +676,7 @@
           null,
           1,
           60,
-          2576,
+          2588,
           null,
           60,
           60,
@@ -706,7 +707,7 @@
           13,
           13,
           null,
-          575,
+          562,
           13,
           null,
           13,
@@ -765,7 +766,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/form_responses_controller.rb": {
+      "/home/rithika/team-formation/app/controllers/form_responses_controller.rb": {
         "lines": [
           null,
           1,
@@ -911,7 +912,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/forms_controller.rb": {
+      "/home/rithika/team-formation/app/controllers/forms_controller.rb": {
         "lines": [
           null,
           null,
@@ -1100,7 +1101,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/form_deadline_management.rb": {
+      "/home/rithika/team-formation/app/controllers/concerns/form_deadline_management.rb": {
         "lines": [
           1,
           1,
@@ -1121,7 +1122,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/form_uploading.rb": {
+      "/home/rithika/team-formation/app/controllers/concerns/form_uploading.rb": {
         "lines": [
           1,
           1,
@@ -1197,7 +1198,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/team_gender_balance.rb": {
+      "/home/rithika/team-formation/app/controllers/concerns/team_gender_balance.rb": {
         "lines": [
           1,
           1,
@@ -1227,7 +1228,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/team_skill_balance.rb": {
+      "/home/rithika/team-formation/app/controllers/concerns/team_skill_balance.rb": {
         "lines": [
           1,
           1,
@@ -1257,7 +1258,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/populate_teams_based_on_gender.rb": {
+      "/home/rithika/team-formation/app/controllers/concerns/populate_teams_based_on_gender.rb": {
         "lines": [
           1,
           1,
@@ -1442,7 +1443,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/generate_teams.rb": {
+      "/home/rithika/team-formation/app/controllers/concerns/generate_teams.rb": {
         "lines": [
           1,
           1,
@@ -1494,7 +1495,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/export_teams.rb": {
+      "/home/rithika/team-formation/app/controllers/concerns/export_teams.rb": {
         "lines": [
           1,
           1,
@@ -1536,7 +1537,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/sessions_controller.rb": {
+      "/home/rithika/team-formation/app/controllers/sessions_controller.rb": {
         "lines": [
           1,
           1,
@@ -1567,7 +1568,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/students_controller.rb": {
+      "/home/rithika/team-formation/app/controllers/students_controller.rb": {
         "lines": [
           1,
           1,
@@ -1618,7 +1619,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/users_controller.rb": {
+      "/home/rithika/team-formation/app/controllers/users_controller.rb": {
         "lines": [
           null,
           null,
@@ -1634,7 +1635,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/welcome_controller.rb": {
+      "/home/rithika/team-formation/app/controllers/welcome_controller.rb": {
         "lines": [
           1,
           1,
@@ -1654,7 +1655,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/jobs/check_form_deadlines_job.rb": {
+      "/home/rithika/team-formation/app/jobs/check_form_deadlines_job.rb": {
         "lines": [
           1,
           1,
@@ -1667,7 +1668,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/models/attribute.rb": {
+      "/home/rithika/team-formation/app/models/attribute.rb": {
         "lines": [
           null,
           1,
@@ -1691,10 +1692,10 @@
           null,
           null,
           null,
-          146,
+          150,
           null,
           null,
-          146,
+          150,
           null,
           1,
           null,
@@ -1725,14 +1726,14 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/models/application_record.rb": {
+      "/home/rithika/team-formation/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/models/form.rb": {
+      "/home/rithika/team-formation/app/models/form.rb": {
         "lines": [
           null,
           null,
@@ -1762,7 +1763,22 @@
           null,
           null,
           1,
-          6,
+          8,
+          null,
+          null,
+          1,
+          3,
+          null,
+          null,
+          null,
+          1,
+          15,
+          null,
+          null,
+          null,
+          1,
+          10,
+          null,
           null,
           null,
           1,
@@ -1770,11 +1786,6 @@
           null,
           null,
           null,
-          1,
-          4,
-          null,
-          null,
-          null,
           null,
           null,
           null,
@@ -1788,14 +1799,14 @@
           1,
           null,
           1,
-          230,
+          232,
           3,
           null,
           null,
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/services/forms/duplication_service.rb": {
+      "/home/rithika/team-formation/app/services/forms/duplication_service.rb": {
         "lines": [
           1,
           1,
@@ -1838,7 +1849,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/services/forms/base_service.rb": {
+      "/home/rithika/team-formation/app/services/forms/base_service.rb": {
         "lines": [
           1,
           null,
@@ -1861,7 +1872,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/models/user.rb": {
+      "/home/rithika/team-formation/app/models/user.rb": {
         "lines": [
           1,
           1,
@@ -1869,19 +1880,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/models/student.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null,
-          1,
-          1,
-          1,
-          null
-        ]
-      },
-      "/Users/udayreddy/team-formation/app/models/form_response.rb": {
+      "/home/rithika/team-formation/app/models/student.rb": {
         "lines": [
           1,
           1,
@@ -1890,12 +1889,24 @@
           1,
           1,
           1,
+          null
+        ]
+      },
+      "/home/rithika/team-formation/app/models/form_response.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
           null,
           1,
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/models/team.rb": {
+      "/home/rithika/team-formation/app/models/team.rb": {
         "lines": [
           1,
           1,
@@ -1935,11 +1946,11 @@
         ]
       }
     },
-    "timestamp": 1731348282
+    "timestamp": 1731465458
   },
   "Cucumber": {
     "coverage": {
-      "/Users/udayreddy/team-formation/app/models/user.rb": {
+      "/home/rithika/team-formation/app/models/user.rb": {
         "lines": [
           1,
           1,
@@ -1947,14 +1958,14 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/models/application_record.rb": {
+      "/home/rithika/team-formation/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/models/form.rb": {
+      "/home/rithika/team-formation/app/models/form.rb": {
         "lines": [
           null,
           null,
@@ -1984,11 +1995,21 @@
           null,
           null,
           1,
-          8,
+          5,
           null,
           null,
           1,
-          8,
+          5,
+          null,
+          null,
+          null,
+          1,
+          17,
+          null,
+          null,
+          null,
+          1,
+          13,
           null,
           null,
           null,
@@ -2017,7 +2038,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/users_controller.rb": {
+      "/home/rithika/team-formation/app/controllers/users_controller.rb": {
         "lines": [
           null,
           null,
@@ -2033,7 +2054,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/application_controller.rb": {
+      "/home/rithika/team-formation/app/controllers/application_controller.rb": {
         "lines": [
           null,
           null,
@@ -2074,7 +2095,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/forms_controller.rb": {
+      "/home/rithika/team-formation/app/controllers/forms_controller.rb": {
         "lines": [
           null,
           null,
@@ -2263,7 +2284,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/form_publishing.rb": {
+      "/home/rithika/team-formation/app/controllers/concerns/form_publishing.rb": {
         "lines": [
           1,
           1,
@@ -2305,11 +2326,12 @@
           3,
           3,
           3,
+          3,
           null,
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/form_deadline_management.rb": {
+      "/home/rithika/team-formation/app/controllers/concerns/form_deadline_management.rb": {
         "lines": [
           1,
           1,
@@ -2330,7 +2352,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/form_uploading.rb": {
+      "/home/rithika/team-formation/app/controllers/concerns/form_uploading.rb": {
         "lines": [
           1,
           1,
@@ -2406,7 +2428,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/team_calculation.rb": {
+      "/home/rithika/team-formation/app/controllers/concerns/team_calculation.rb": {
         "lines": [
           1,
           1,
@@ -2608,7 +2630,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/team_distribution_helpers.rb": {
+      "/home/rithika/team-formation/app/controllers/concerns/team_distribution_helpers.rb": {
         "lines": [
           1,
           1,
@@ -2717,7 +2739,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/team_gender_balance.rb": {
+      "/home/rithika/team-formation/app/controllers/concerns/team_gender_balance.rb": {
         "lines": [
           1,
           1,
@@ -2747,7 +2769,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/team_ethnicity_balance.rb": {
+      "/home/rithika/team-formation/app/controllers/concerns/team_ethnicity_balance.rb": {
         "lines": [
           1,
           1,
@@ -2787,14 +2809,29 @@
           null,
           null,
           null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
           null,
           1,
           0,
           0,
           null,
-          0,
-          0,
           null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
           null,
           null,
           null,
@@ -2944,7 +2981,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/team_skill_balance.rb": {
+      "/home/rithika/team-formation/app/controllers/concerns/team_skill_balance.rb": {
         "lines": [
           1,
           1,
@@ -2974,7 +3011,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/populate_teams_based_on_gender.rb": {
+      "/home/rithika/team-formation/app/controllers/concerns/populate_teams_based_on_gender.rb": {
         "lines": [
           1,
           1,
@@ -3159,7 +3196,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/generate_teams.rb": {
+      "/home/rithika/team-formation/app/controllers/concerns/generate_teams.rb": {
         "lines": [
           1,
           1,
@@ -3211,7 +3248,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/concerns/export_teams.rb": {
+      "/home/rithika/team-formation/app/controllers/concerns/export_teams.rb": {
         "lines": [
           1,
           1,
@@ -3253,7 +3290,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/models/attribute.rb": {
+      "/home/rithika/team-formation/app/models/attribute.rb": {
         "lines": [
           null,
           1,
@@ -3277,10 +3314,10 @@
           null,
           null,
           null,
-          27,
+          32,
           null,
           null,
-          27,
+          32,
           null,
           1,
           null,
@@ -3311,7 +3348,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/attributes_controller.rb": {
+      "/home/rithika/team-formation/app/controllers/attributes_controller.rb": {
         "lines": [
           null,
           1,
@@ -3465,7 +3502,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/models/form_response.rb": {
+      "/home/rithika/team-formation/app/models/form_response.rb": {
         "lines": [
           1,
           1,
@@ -3479,7 +3516,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/models/student.rb": {
+      "/home/rithika/team-formation/app/models/student.rb": {
         "lines": [
           1,
           1,
@@ -3491,7 +3528,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/students_controller.rb": {
+      "/home/rithika/team-formation/app/controllers/students_controller.rb": {
         "lines": [
           1,
           1,
@@ -3542,7 +3579,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/sessions_controller.rb": {
+      "/home/rithika/team-formation/app/controllers/sessions_controller.rb": {
         "lines": [
           1,
           1,
@@ -3573,7 +3610,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/welcome_controller.rb": {
+      "/home/rithika/team-formation/app/controllers/welcome_controller.rb": {
         "lines": [
           1,
           1,
@@ -3593,7 +3630,7 @@
           null
         ]
       },
-      "/Users/udayreddy/team-formation/app/controllers/form_responses_controller.rb": {
+      "/home/rithika/team-formation/app/controllers/form_responses_controller.rb": {
         "lines": [
           null,
           1,
@@ -3740,6 +3777,6 @@
         ]
       }
     },
-    "timestamp": 1731347954
+    "timestamp": 1731465376
   }
 }

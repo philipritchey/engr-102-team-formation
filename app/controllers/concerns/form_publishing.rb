@@ -35,7 +35,8 @@ module FormPublishing
 
   def collect_error_reasons
     reasons = []
-    reasons << "no attributes" unless @form.has_attributes?
+    reasons << "no gender attribute" unless @form.has_gender_attribute?
+    reasons << "no ethnicity attribute" unless @form.has_ethnicity_attribute?
     reasons << "no associated students" unless @form.has_associated_students?
     reasons
   end
