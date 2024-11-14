@@ -1,5 +1,6 @@
 module FormUploading
   extend ActiveSupport::Concern
+  include FormsHelper
 
   def upload
     @form = Form.find(params[:id])
@@ -40,9 +41,10 @@ module FormUploading
 
   def process_user_data(spreadsheet, header_row)
     users_to_create = []
+    name_index, uin_index, email_index, section_index = validate_header(header_row)
     (2..spreadsheet.last_row).each do |index|
       row = spreadsheet.row(index)
-      user_data = validate_row(row, index, header_row)
+      user_data = validate_row(row, index, header_row, name_index, uin_index, email_index, section_index)
       return redirect_to edit_form_path(params[:id]) if user_data.nil?
       users_to_create << user_data
     end
