@@ -43,25 +43,36 @@ module TeamGenderBalance
     section_data[:teams].each do |team|
       break if unassigned_females.size < 2
 
-      if find_and_assign_pair(section_data, unassigned_females, team)
+      if assign_pair_to_team(section_data, unassigned_females, team)
         break if unassigned_females.size == 1
       end
     end
   end
 
-  # Helper method to find and assign a pair of female students to a team
-  def find_and_assign_pair(section_data, unassigned_females, team)
+  # Checks if there are multiple unassigned females left
+  def multiple_unassigned_females?(section_data)
+    unassigned_females = filter_students(section_data, gender: "female")
+    unassigned_females.size > 1
+  end
+
+  # Attempts to find and assign a pair of female students to the team
+  def assign_pair_to_team(section_data, unassigned_females, team)
+    pair = find_student_pair(section_data, unassigned_females)
+    return false unless pair
+
+    assign_students_to_team(section_data, pair, team)
+    unassigned_females.delete(pair.first)
+    unassigned_females.delete(pair.last)
+    true
+  end
+
+  # Finds a pair of female students based on matching criteria
+  def find_student_pair(section_data, unassigned_females)
     unassigned_females.each do |student1_id|
       match_id = select_match_id(section_data, student1_id, unassigned_females)
-
-      if match_id
-        assign_students_to_team(section_data, student1_id, match_id, team)
-        unassigned_females.delete(student1_id)
-        unassigned_females.delete(match_id)
-        return true
-      end
+      return [ student1_id, match_id ] if match_id
     end
-    false
+    nil
   end
 
   # Helper method to select a matching student ID for pairing
@@ -78,9 +89,10 @@ module TeamGenderBalance
   end
 
   # Helper method to assign both students to the team
-  def assign_students_to_team(section_data, student1_id, match_id, team)
-    assign_student_to_team(section_data, student1_id, team)
-    assign_student_to_team(section_data, match_id, team)
+  def assign_students_to_team(section_data, pair, team)
+    pair.each do |student_id|
+      assign_student_to_team(section_data, student_id, team)
+    end
   end
 
   # Helper method to find a student by ID
