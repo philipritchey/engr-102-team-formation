@@ -21,8 +21,8 @@ module TeamGenderBalance
     assign_female_students(section_data)
 
     # Check if there are multiple unassigned females left; if so, stop further assignments
-    unassigned_females = filter_students(section_data, gender: "female")
-    return team_distribution if unassigned_females.size > 1
+    return team_distribution if multiple_unassigned_females?(section_data)
+
 
     # Step 2: Assign any single remaining female student
     assign_single_female_to_team(section_data)
@@ -40,12 +40,16 @@ module TeamGenderBalance
     unassigned_females = filter_students(section_data, gender: "female")
     return if unassigned_females.size < 2
 
+    assign_pairs_to_teams(section_data, unassigned_females)
+  end
+
+  # Helper method to assign pairs of females to teams
+  def assign_pairs_to_teams(section_data, unassigned_females)
     section_data[:teams].each do |team|
       break if unassigned_females.size < 2
 
-      if assign_pair_to_team(section_data, unassigned_females, team)
-        break if unassigned_females.size == 1
-      end
+      pair_assigned = assign_pair_to_team(section_data, unassigned_females, team)
+      break if pair_assigned && unassigned_females.size == 1
     end
   end
 
