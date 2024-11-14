@@ -54,12 +54,26 @@ RSpec.describe Form, type: :model do
   end
 
   describe '#has_attributes?' do
-    it 'returns true when form has attributes' do
-      create(:attribute, form: form)
+    it 'returns true when form has both gender and ethnicity attributes' do
+      create(:attribute, form: form, name: 'gender', field_type: 'text_input')
+      create(:attribute, form: form, name: 'ethnicity', field_type: 'text_input')
       expect(form.has_attributes?).to be true
     end
 
     it 'returns false when form has no attributes' do
+      expect(form.has_attributes?).to be false
+    end
+
+    it 'returns false when form has only gender attribute' do
+      # Create only the gender attribute, missing the ethnicity attribute
+      create(:attribute, form: form, name: 'gender', field_type: 'text_input')
+
+      expect(form.has_attributes?).to be false
+    end
+
+    it 'returns false when form has only ethnicity attribute' do
+      # Create only the ethnicity attribute, missing the gender attribute
+      create(:attribute, form: form, name: 'ethnicity', field_type: 'text_input')
       expect(form.has_attributes?).to be false
     end
   end
@@ -82,7 +96,8 @@ RSpec.describe Form, type: :model do
   describe '#can_publish?' do
     context 'when form has attributes and associated students' do
       before do
-        create(:attribute, form: form)
+        create(:attribute, form: form, name: 'gender', field_type: 'text_input')
+        create(:attribute, form: form, name: 'ethnicity', field_type: 'text_input')
         create(:form_response, form: form)
       end
       it 'returns true' do

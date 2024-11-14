@@ -26,11 +26,21 @@ class Form < ApplicationRecord
 
   # Add methods to check for attributes and associated students
   def has_attributes?
-    form_attributes.exists?
+    has_gender_attribute? && has_ethnicity_attribute?
   end
 
   def has_associated_students?
     form_responses.exists?
+  end
+
+  # Add a method to check if the form has a "gender" attribute
+  def has_gender_attribute?
+    form_attributes.any? { |attr| attr.name.strip.downcase == "gender" }
+  end
+
+  # Add a method to check if the form has an "ethnicity" attribute
+  def has_ethnicity_attribute?
+    form_attributes.any? { |attr| attr.name.strip.downcase == "ethnicity" }
   end
 
   # Add a method to check if the form can be published
