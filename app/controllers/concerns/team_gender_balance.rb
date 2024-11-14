@@ -131,41 +131,50 @@ module TeamGenderBalance
     teams_with_others = Set.new
 
     unassigned_others.each do |student_id|
-      other_student = find_student(section_data, student_id)
-      needed_skill_level = determine_needed_skill_level(other_student[:average])
+      team = select_team_for_other(section_data, student_id, teams_with_others)
+      next unless team  # Skip if no suitable team is found
 
-      # Find eligible teams based on the new criteria
-      eligible_teams = find_eligible_teams_for_other(section_data, teams_with_others, needed_skill_level)
-
-      if eligible_teams.any?
-        # Assign to a randomly selected eligible team
-        team = eligible_teams.sample
-      else
-        # Assign to any team with exactly 2 females and available spots
-        team = find_fallback_team(section_data, teams_with_others)
-      end
-
-      if team
-        assign_student_to_team(section_data, student_id, team)
-        teams_with_others.add(team[:team_id]) # Mark this team as having an 'other' student
-      end
+      assign_student_to_team(section_data, student_id, team)
+      teams_with_others.add(team[:team_id])  # Mark this team as having an 'other' student
     end
   end
 
+  # Selects the appropriate team for an 'other' gender student
+  def select_team_for_other(section_data, student_id, teams_with_others)
+    other_student = find_student(section_data, student_id)
+    needed_skill_level = determine_needed_skill_level(other_student[:average])
+
+    # Find eligible teams matching the needed skill level, prioritizing capacity 4 over 3
+    eligible_teams = find_eligible_teams_for_other(section_data, teams_with_others, needed_skill_level)
+
+    if eligible_teams.any?
+      # Assign to a randomly selected eligible team
+      team = eligible_teams.sample
+      team
+    else
+      # Assign to any team with exactly 2 females and available spots, prioritizing capacity 4 over 3
+      fallback_team = find_fallback_team(section_data, teams_with_others)
+      fallback_team
+    end
+  end
+
+  # Finds eligible teams for assigning an 'other' student based on skill level
   def find_eligible_teams_for_other(section_data, teams_with_others, needed_skill_level)
     section_data[:teams].select do |team|
       team[:composition][:gender]["female"] == 2 &&
       team[:spots_left] > 0 &&
       !teams_with_others.include?(team[:team_id]) &&
       determine_needed_skill_level(calculate_team_average(section_data, team)) == needed_skill_level
-    end
+    end.sort_by { |team| -team[:capacity] }  # Sort teams by descending capacity
   end
 
+  # Finds a fallback team if no eligible teams match the needed skill level
   def find_fallback_team(section_data, teams_with_others)
-    section_data[:teams].find do |team|
+    section_data[:teams].select do |team|
       team[:composition][:gender]["female"] == 2 &&
       team[:spots_left] > 0 &&
       !teams_with_others.include?(team[:team_id])
-    end
+    end.sort_by { |team| -team[:capacity] }  # Sort teams by descending capacity
+      .first
   end
 end
