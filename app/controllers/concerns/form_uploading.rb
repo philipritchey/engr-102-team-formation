@@ -11,8 +11,16 @@ module FormUploading
       process_uploaded_file
     else
       flash[:alert] = "Please upload a file."
-      redirect_to edit_form_path(params[:id])
+      redirect_to form_path(params[:id])
     end
+  end
+
+  def download_sample
+    # Specify the path to your sample CSV file
+    file_path = Rails.root.join("spec/fixtures/files", "valid_file.csv")
+
+    # Send the file to the user
+    send_file file_path, filename: "valid_file.csv", type: "text/csv"
   end
 
   private

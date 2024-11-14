@@ -43,7 +43,9 @@
     <% if !@form.published? %>
       <%= button_to "Edit this form", edit_form_path(@form), method: :get, class: "btn btn-warning me-2" %>
       <%= button_to "Publish Form", publish_form_path(@form), method: :post, class: "btn btn-primary me-2", data: { confirm: "Are you sure you want to publish this form?" } %>
+      <%= button_to 'Upload Students', upload_form_path(@form.id), method: :get, class: 'btn btn-primary me-2' %>
     <% else %>
+    
       <%= button_to "Close Form", close_form_path(@form), method: :post, class: "btn btn-danger me-2", data: { confirm: "Are you sure you want to close this form? Students will no longer be able to access it." } %>
       <div class="mt-4">
       <%= button_to "Generate Teams", 

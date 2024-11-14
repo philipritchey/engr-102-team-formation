@@ -2,3 +2,5 @@
   <%= form.file_field :file %>
   <%= form.submit "Upload", id: "upload_button" %>
 <% end %>
+<%= button_to "back to form", form_path(@form.id), method: :get, class: "btn btn-sm btn-info" %>
+<%= button_to "Download Sample CSV", download_sample_form_path(@form), method: :get, class: "btn btn-sm btn-info" %>
