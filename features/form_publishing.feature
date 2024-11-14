@@ -8,7 +8,8 @@ Feature: Form Publishing Management
     And I have created a form
     And I have added the following attributes to the form:
       | Name       | Field Type  | Options | Min Value | Max Value |
-      | Question 1 | text_input  |         |          |           |
+      | Gender     | text_input  |         |           |           |
+      | Ethnicity  | text_input  |         |           |           |
     And the deadline is set
     And students with IDs 1 and 2 have access to the form
 
@@ -29,6 +30,10 @@ Feature: Form Publishing Management
 
   Scenario: Re-publishing a closed form
     Given I have a form that is closed
+    And I have added the following attributes to the form:
+      | Name       | Field Type  | Options | Min Value | Max Value |
+      | Gender     | text_input  |         |           |           |
+      | Ethnicity  | text_input  |         |           |           |
     When I navigate to my user profile page
     And I click on "View" for that form
     And I click "Publish Form"
