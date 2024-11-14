@@ -55,5 +55,30 @@ When("I have uploaded a valid file") do
 end
 
 Then("I should be redirected to my user profile page") do
-  expect(page.current_path).to eq(edit_form_path(@form))
+  expect(page.current_path).to eq(form_path(@form))
+end
+
+Given('I am on the form home page') do
+  visit upload_form_path(@form)
+end
+
+# Step to simulate clicking the download button
+When("I click {string} button") do |button_text|
+  find('button', text: button_text).click
+end
+
+# Step to verify that the file is downloaded by checking the filename in headers
+Then('the file {string} should be downloaded') do |filename|
+  response_headers = page.response_headers
+
+  # Check the Content-Disposition header to verify the filename
+  expect(response_headers['Content-Disposition']).to include("filename=\"#{filename}\"")
+end
+
+# Step to verify the file type of the downloaded file by checking the Content-Type header
+Then('I should receive a file with type {string}') do |mime_type|
+  response_headers = page.response_headers
+
+  # Check the Content-Type header to ensure it matches the expected MIME type
+  expect(response_headers['Content-Type']).to eq(mime_type)
 end

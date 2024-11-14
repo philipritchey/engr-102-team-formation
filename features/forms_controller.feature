@@ -53,3 +53,13 @@ Feature: Validate file upload
     When I submit the upload form
     Then I should see "All validations passed."
     And I should be redirected to my user profile page
+
+  Scenario: Download sample CSV file
+    Given I am on the form home page
+    When I click "Download Sample CSV" button
+    Then the file "valid_file.csv" should be downloaded
+
+  Scenario: Verify sample CSV file type
+    Given I am on the form home page
+    When I click "Download Sample CSV" button
+    Then I should receive a file with type "text/csv"

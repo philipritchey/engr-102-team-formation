@@ -32,7 +32,7 @@ module FormUploading
       process_spreadsheet(spreadsheet)
     rescue StandardError => e
       flash[:alert] = "An error occurred: #{e.message}"
-      redirect_to edit_form_path(params[:id])
+      redirect_to form_path(params[:id])
     end
   end
 
@@ -41,7 +41,7 @@ module FormUploading
 
     if header_row.nil? || header_row.all?(&:blank?)
       flash[:alert] = "The first row is empty. Please provide column names."
-      redirect_to edit_form_path(params[:id]) and return
+      redirect_to form_path(params[:id]) and return
     end
 
     process_user_data(spreadsheet, header_row)
@@ -53,13 +53,13 @@ module FormUploading
     (2..spreadsheet.last_row).each do |index|
       row = spreadsheet.row(index)
       user_data = validate_row(row, index, header_row, name_index, uin_index, email_index, section_index)
-      return redirect_to edit_form_path(params[:id]) if user_data.nil?
+      return redirect_to form_path(params[:id]) if user_data.nil?
       users_to_create << user_data
     end
 
     create_students_and_responses(users_to_create)
     flash[:notice] = "All validations passed."
-    redirect_to edit_form_path(params[:id])
+    redirect_to form_path(params[:id])
   end
 
   def create_students_and_responses(users_to_create)
