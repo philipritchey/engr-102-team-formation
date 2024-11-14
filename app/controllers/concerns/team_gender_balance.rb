@@ -69,7 +69,9 @@ module TeamGenderBalance
 
   # Finds a pair of female students based on matching criteria
   def find_student_pair(section_data, unassigned_females)
-    unassigned_females.each do |student1_id|
+    unassigned_females_array = unassigned_females.to_a  # Convert Set to Array for sampling
+    while unassigned_females_array.size >= 2
+      student1_id = unassigned_females_array.sample
       match_id = select_match_id(section_data, student1_id, unassigned_females)
       return [ student1_id, match_id ] if match_id
     end
@@ -129,21 +131,41 @@ module TeamGenderBalance
     teams_with_others = Set.new
 
     unassigned_others.each do |student_id|
-      # Find a team with exactly 2 females, an available spot, and no other student assigned yet
-      team = find_unique_team_with_two_females(section_data, teams_with_others)
-      break unless team
+      other_student = find_student(section_data, student_id)
+      needed_skill_level = determine_needed_skill_level(other_student[:average])
 
-      assign_student_to_team(section_data, student_id, team)
-      teams_with_others.add(team[:team_id]) # Mark this team as having an 'other' student
+      # Find eligible teams based on the new criteria
+      eligible_teams = find_eligible_teams_for_other(section_data, teams_with_others, needed_skill_level)
+
+      if eligible_teams.any?
+        # Assign to a randomly selected eligible team
+        team = eligible_teams.sample
+      else
+        # Assign to any team with exactly 2 females and available spots
+        team = find_fallback_team(section_data, teams_with_others)
+      end
+
+      if team
+        assign_student_to_team(section_data, student_id, team)
+        teams_with_others.add(team[:team_id]) # Mark this team as having an 'other' student
+      end
     end
   end
-end
 
-def find_unique_team_with_two_females(section_data, teams_with_others)
-  teams_with_two_females = section_data[:teams].select do |team|
-    team[:composition][:gender]["female"] == 2 &&
-    team[:spots_left] > 0 &&
-    !teams_with_others.include?(team[:team_id])
+  def find_eligible_teams_for_other(section_data, teams_with_others, needed_skill_level)
+    section_data[:teams].select do |team|
+      team[:composition][:gender]["female"] == 2 &&
+      team[:spots_left] > 0 &&
+      !teams_with_others.include?(team[:team_id]) &&
+      determine_needed_skill_level(calculate_team_average(section_data, team)) == needed_skill_level
+    end
   end
-  teams_with_two_females.find { |team| team[:capacity] == 4 } || teams_with_two_females.find { |team| team[:capacity] == 3 }
+
+  def find_fallback_team(section_data, teams_with_others)
+    section_data[:teams].find do |team|
+      team[:composition][:gender]["female"] == 2 &&
+      team[:spots_left] > 0 &&
+      !teams_with_others.include?(team[:team_id])
+    end
+  end
 end

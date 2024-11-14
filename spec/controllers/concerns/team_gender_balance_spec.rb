@@ -38,6 +38,25 @@ RSpec.describe TeamGenderBalance do
       puts "Post-balancing Distribution:"
       print_distribution(section_a)
 
+      puts "\n\nFull Data Structure:"
+      puts "Section A:"
+      puts "  Total students: #{section_a[:students].size}"
+      puts "  Unassigned students: #{section_a[:unassigned].size}"
+      puts "\n  Students by gender:"
+      section_a[:by_gender].each do |gender, students|
+        puts "    #{gender}: #{students.size} students"
+      end
+      puts "\n  Students by ethnicity:"
+      section_a[:by_ethnicity].each do |ethnicity, students|
+        puts "    #{ethnicity}: #{students.size} students"
+      end
+      puts "\n  Students by skill level:"
+      section_a[:by_skill].each do |level, students|
+        puts "    #{level}: #{students.size} students"
+      end
+      puts "\n  Teams structure:"
+      pp section_a[:teams]
+
       female_counts = section_a[:teams].map { |team| team[:composition][:gender]["female"].to_i }
       expect(female_counts.count(2)).to be >= 5
       expect(female_counts.count(3)).to be <= 1
@@ -66,6 +85,25 @@ RSpec.describe TeamGenderBalance do
       puts "Post-balancing Distribution:"
       print_distribution(section_a)
 
+      puts "\n\nFull Data Structure:"
+      puts "Section A:"
+      puts "  Total students: #{section_a[:students].size}"
+      puts "  Unassigned students: #{section_a[:unassigned].size}"
+      puts "\n  Students by gender:"
+      section_a[:by_gender].each do |gender, students|
+        puts "    #{gender}: #{students.size} students"
+      end
+      puts "\n  Students by ethnicity:"
+      section_a[:by_ethnicity].each do |ethnicity, students|
+        puts "    #{ethnicity}: #{students.size} students"
+      end
+      puts "\n  Students by skill level:"
+      section_a[:by_skill].each do |level, students|
+        puts "    #{level}: #{students.size} students"
+      end
+      puts "\n  Teams structure:"
+      pp section_a[:teams]
+
       female_counts = section_a[:teams].map { |team| team[:composition][:gender]["female"].to_i }
       expect(female_counts.count(2)).to be >= 12
       expect(female_counts.include?(3)).to be false
@@ -93,6 +131,25 @@ RSpec.describe TeamGenderBalance do
 
       puts "Post-balancing Distribution:"
       print_distribution(section_a)
+
+      puts "\n\nFull Data Structure:"
+      puts "Section A:"
+      puts "  Total students: #{section_a[:students].size}"
+      puts "  Unassigned students: #{section_a[:unassigned].size}"
+      puts "\n  Students by gender:"
+      section_a[:by_gender].each do |gender, students|
+        puts "    #{gender}: #{students.size} students"
+      end
+      puts "\n  Students by ethnicity:"
+      section_a[:by_ethnicity].each do |ethnicity, students|
+        puts "    #{ethnicity}: #{students.size} students"
+      end
+      puts "\n  Students by skill level:"
+      section_a[:by_skill].each do |level, students|
+        puts "    #{level}: #{students.size} students"
+      end
+      puts "\n  Teams structure:"
+      pp section_a[:teams]
 
       female_counts = section_a[:teams].map { |team| team[:composition][:gender]["female"].to_i }
       expect(female_counts.count(2)).to eq(section_a[:teams].size)
