@@ -67,7 +67,7 @@ RSpec.describe FormPublishing, type: :controller do
       it 'does not publish the form and shows error messages' do
         post :publish, params: { id: form.id }
         expect(form.reload.published).to be false
-        expect(flash[:alert]).to eq('Form cannot be published. Reasons: no attributes, no associated students.')
+        expect(flash[:alert]).to eq('Form cannot be published. Reasons: no gender attribute, no ethnicity attribute, no associated students.')
         expect(response).to redirect_to(form)
       end
     end

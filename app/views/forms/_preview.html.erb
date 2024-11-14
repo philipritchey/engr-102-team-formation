@@ -6,46 +6,51 @@
       <p><%= @form.description %></p>
 
       <% if @form.form_attributes.any? %>
-        <ul>
-          <% @form.form_attributes.each do |attribute| %>
-            <% if attribute.present? %>
-              <li>
-                <strong><%= attribute.name %></strong>
-                
-                <% if attribute.field_type == 'text_input' %>
-                  <div style="margin-top: 10px;">
-                    <input type="text" placeholder="Enter text here..." disabled>
-                  </div>
+        <table class="attributes-table">
+          <thead>
+            <tr>
+              <th>Attribute Name</th>
+              <th>Preview</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @form.form_attributes.each do |attribute| %>
+              <% if attribute.present? && attribute.name.present? %> <!-- Ensure valid attributes -->
+                <tr>
+                  <td><strong><%= attribute.name %></strong></td>
+                  <td>
+                    <% if attribute.field_type == 'text_input' %>
+                      <input type="text" placeholder="Enter text here..." disabled>
 
-                <% elsif attribute.field_type == 'mcq' %>
-                  <div style="margin-top: 10px;">
-                    <select disabled>
-                      <option value="">Select an option</option>
-                      <%# TO_DO Change options to pull from form_data once implemented %>
-                    </select>
-                  </div>
+                    <% elsif attribute.field_type == 'mcq' %>
+                      <select disabled>
+                        <option value="">Select an option</option>
+                        <!-- TO_DO Change options to pull from form_data once implemented -->
+                      </select>
 
-                <% elsif attribute.field_type == 'scale' %>
-                  <div style="margin-top: 10px;">
-                    <label><%= attribute.name %>: </label>
-                    <span><%= attribute.min_value %></span>
-                    <input type="range" min="<%= attribute.min_value %>" max="<%= attribute.max_value %>" disabled style="width: 80%;">
-                    <span><%= attribute.max_value %></span>
-                  </div>
-                <% end %>
-              </li>
-            <% else %>
-              <li>Attribute is not defined.</li>
-            <% end %>
-          <% end %>
-        </ul>
+                    <% elsif attribute.field_type == 'scale' %>
+                      <label><%= attribute.name %>: </label>
+                      <span><%= attribute.min_value %></span>
+                      <input type="range" min="<%= attribute.min_value %>" max="<%= attribute.max_value %>" disabled style="width: 80%;">
+                      <span><%= attribute.max_value %></span>
+
+                    <% end %> <!-- End field type check -->
+                  </td>
+                </tr>
+              <% end %> <!-- End valid attribute check -->
+            <% end %> <!-- End loop -->
+          </tbody>
+        </table>
+
       <% else %>
         <p>No attributes have been added to this form.</p>
       <% end %>
-      <button type="button" class="close-button" onclick="closePreviewModal()">Close</button>
+
+      <button type="button" class="btn btn-warning action-btn float-right" onclick="closePreviewModal()">Close</button>
     </div>
   </div>
 </div>
+
 
 <style>
 /* Modal styles */
@@ -64,29 +69,60 @@
   background-color: #fefefe;
   margin: 10% auto;
   padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
+  border-radius: 8px;
+  border: none;
+  width: 70%;
   max-height: 80%;
   overflow-y: auto;
 }
 
 .close-button {
-  color: #aaa;
   float: right;
   font-size: 20px;
-  font-weight: bold;
+  background-color: #5d0025;
+  color: white;
+}
+.float-right {
+  float: right;
 }
 
-.close-button:hover,
-.close-button:focus {
-  color: black;
-  cursor: pointer;
+/* Table Styling */
+.attributes-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.attributes-table th, .attributes-table td {
+  padding: 12px;
+  border-bottom: solid #5d0025; /* Match theme color */
+}
+
+.attributes-table th {
+  background-color: #5d0025; /* Dark header */
+  color: white; /* White text for contrast */
+}
+
+.attributes-table td {
+  text-align: left;
+}
+
+.attributes-table input[type='text'],
+.attributes-table select,
+.attributes-table input[type='range'] {
+  width: calc(100% - 20px); /* Ensure inputs are responsive */
 }
 </style>
 
 <script>
 function closePreviewModal() {
+    var modal = document.getElementById('previewModal');
+    modal.style.display = "none";
+}
+// Close modal when clicking outside
+window.onclick = function(event) {
   var modal = document.getElementById('previewModal');
-  modal.style.display = "none";
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
 }
 </script>

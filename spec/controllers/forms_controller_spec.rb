@@ -417,7 +417,7 @@ RSpec.describe FormsController, type: :controller do
       }.not_to change { form.reload.published }
 
       expect(response).to redirect_to(form)
-      expect(flash[:alert]).to eq("Form cannot be published. Reasons: no attributes, no associated students.")
+      expect(flash[:alert]).to eq("Form cannot be published. Reasons: no gender attribute, no ethnicity attribute, no associated students.")
     end
   end
 
