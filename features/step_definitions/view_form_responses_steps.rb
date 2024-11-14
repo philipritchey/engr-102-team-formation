@@ -79,17 +79,15 @@ Given("I log in as a professor") do
     end
   end
 
-  Then("I should see {string} and {string} buttons for that form") do |button1, button2|
+  Then("I should see {string} button for that form") do |button|
     within('tr', text: @form.name) do
-      expect(page).to have_content(button1)
-      expect(page).to have_content(button2)
+      expect(page).to have_content(button)
     end
   end
 
-  Then("I should not see {string} or {string} buttons for that form") do |button1, button2|
+  Then("I should not see {string} button for that form") do |button|
     within('tr', text: @form.name) do
-      expect(page).not_to have_content(button1)
-      expect(page).not_to have_content(button2)
+      expect(page).not_to have_content(button)
     end
   end
 
