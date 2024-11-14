@@ -18,7 +18,8 @@ module FormsHelper
     [ name_index, uin_index, email_index, section_index ] # Return indices if validation passes
   end
 
-  def validate_row(row, index, header_row, name_index, uin_index, email_index, section_index)
+  def validate_row(row, index, header_row, indices)
+    name_index, uin_index, email_index, section_index = indices[0], indices[1], indices[2], indices[3]
     return nil if name_index.nil? || uin_index.nil? || email_index.nil? || section_index.nil?
 
     # Validate Name
