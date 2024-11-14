@@ -43,32 +43,44 @@ module TeamGenderBalance
     section_data[:teams].each do |team|
       break if unassigned_females.size < 2
 
-      pair_found = find_and_assign_pair(section_data, unassigned_females, team)
-
-      break if unassigned_females.size == 1
+      if find_and_assign_pair(section_data, unassigned_females, team)
+        break if unassigned_females.size == 1
+      end
     end
   end
 
   # Helper method to find and assign a pair of female students to a team
   def find_and_assign_pair(section_data, unassigned_females, team)
     unassigned_females.each do |student1_id|
-      student1 = find_student(section_data, student1_id)
-      potential_pairs = get_potential_pairs(unassigned_females, student1_id)
-      match_id = find_matching_pair(section_data, student1, potential_pairs.to_a)
-
-      if match_id.nil? && unassigned_females.size > 1
-        # If no match is found with strict skill level matching, try without skill constraints
-        match_id = potential_pairs.first
-      end
+      match_id = select_match_id(section_data, student1_id, unassigned_females)
 
       if match_id
-        assign_pair_to_team(section_data, student1_id, match_id, team)
+        assign_students_to_team(section_data, student1_id, match_id, team)
         unassigned_females.delete(student1_id)
         unassigned_females.delete(match_id)
         return true
       end
     end
     false
+  end
+
+  # Helper method to select a matching student ID for pairing
+  def select_match_id(section_data, student1_id, unassigned_females)
+    student1 = find_student(section_data, student1_id)
+    potential_pairs = get_potential_pairs(unassigned_females, student1_id)
+    match_id = find_matching_pair(section_data, student1, potential_pairs.to_a)
+
+    if match_id.nil? && unassigned_females.size > 1
+      # If no strict match is found, try without skill constraints
+      match_id = potential_pairs.first
+    end
+    match_id
+  end
+
+  # Helper method to assign both students to the team
+  def assign_students_to_team(section_data, student1_id, match_id, team)
+    assign_student_to_team(section_data, student1_id, team)
+    assign_student_to_team(section_data, match_id, team)
   end
 
   # Helper method to find a student by ID
@@ -79,12 +91,6 @@ module TeamGenderBalance
   # Helper method to get potential pairs excluding the current student
   def get_potential_pairs(unassigned_females, current_id)
     unassigned_females - [ current_id ]
-  end
-
-  # Helper method to assign both students to the team
-  def assign_pair_to_team(section_data, student1_id, match_id, team)
-    assign_student_to_team(section_data, student1_id, team)
-    assign_student_to_team(section_data, match_id, team)
   end
 
 
