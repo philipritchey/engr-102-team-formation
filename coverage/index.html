@@ -109,18 +109,18 @@
             <td class="cell--number">9</td>
             <td class="cell--number">9</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">2.78</td>
+            <td class="cell--number">2.44</td>
             
           </tr>
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#008ad96558fa8850b3426af20c153a23d6335781" class="src_link" title="app/controllers/concerns/form_publishing.rb">app/controllers/concerns/form_publishing.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">42</td>
-            <td class="cell--number">24</td>
-            <td class="cell--number">24</td>
+            <td class="cell--number">46</td>
+            <td class="cell--number">22</td>
+            <td class="cell--number">22</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">4.21</td>
+            <td class="cell--number">4.82</td>
             
           </tr>
         
@@ -185,7 +185,10 @@
             <td class="cell--number">208</td>
             <td class="cell--number">80</td>
             <td class="cell--number">80</td>
+            <td class="cell--number">80</td>
+            <td class="cell--number">80</td>
             <td class="cell--number">0</td>
+            <td class="cell--number">99.19</td>
             <td class="cell--number">99.19</td>
             
           </tr>
@@ -263,7 +266,7 @@
             <td class="cell--number">3</td>
             <td class="cell--number">3</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">10.67</td>
+            <td class="cell--number">10.00</td>
             
           </tr>
         
@@ -314,11 +317,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#cea07da00564e9b70e9d4b7d45760676c3a89f35" class="src_link" title="app/models/form.rb">app/models/form.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">59</td>
-            <td class="cell--number">21</td>
-            <td class="cell--number">21</td>
+            <td class="cell--number">69</td>
+            <td class="cell--number">25</td>
+            <td class="cell--number">25</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">17.38</td>
+            <td class="cell--number">16.76</td>
             
           </tr>
         
@@ -3023,9 +3026,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="5" data-linenumber="5">
+          <li class="covered" data-hits="4" data-linenumber="5">
             
-              <span class="hits">5</span>
+              <span class="hits">4</span>
             
 
             
@@ -3035,9 +3038,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="3" data-linenumber="6">
+          <li class="covered" data-hits="2" data-linenumber="6">
             
-              <span class="hits">3</span>
+              <span class="hits">2</span>
             
 
             
@@ -3133,9 +3136,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="5" data-linenumber="15">
+          <li class="covered" data-hits="4" data-linenumber="15">
             
-              <span class="hits">5</span>
+              <span class="hits">4</span>
             
 
             
@@ -3183,8 +3186,8 @@
     
 
     <div class="t-line-summary">
-      <b>24</b> relevant lines.
-      <span class="green"><b>24</b> lines covered</span> and
+      <b>22</b> relevant lines.
+      <span class="green"><b>22</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -3596,14 +3599,12 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="5" data-linenumber="37">
-            
-              <span class="hits">5</span>
+          <li class="never" data-hits="" data-linenumber="37">
             
 
             
 
-            <code class="ruby">    reasons = []</code>
+            <code class="ruby">    error_conditions = {</code>
           </li>
         </div>
       
@@ -3615,31 +3616,27 @@
 
             
 
-            <code class="ruby">    reasons &lt;&lt; &quot;no attributes&quot; unless @form.has_attributes?</code>
+            <code class="ruby">      &quot;no gender attribute&quot; =&gt; !@form.has_gender_attribute?,</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="5" data-linenumber="39">
-            
-              <span class="hits">5</span>
+          <li class="never" data-hits="" data-linenumber="39">
             
 
             
 
-            <code class="ruby">    reasons &lt;&lt; &quot;no associated students&quot; unless @form.has_associated_students?</code>
+            <code class="ruby">      &quot;no ethnicity attribute&quot; =&gt; !@form.has_ethnicity_attribute?,</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="5" data-linenumber="40">
-            
-              <span class="hits">5</span>
+          <li class="never" data-hits="" data-linenumber="40">
             
 
             
 
-            <code class="ruby">    reasons</code>
+            <code class="ruby">      &quot;no associated students&quot; =&gt; !@form.has_associated_students?</code>
           </li>
         </div>
       
@@ -3649,12 +3646,54 @@
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">    }</code>
           </li>
         </div>
       
         <div>
           <li class="never" data-hits="" data-linenumber="42">
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="43">
+            
+
+            
+
+            <code class="ruby">    # Collect all the reasons where the condition is true</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="20" data-linenumber="44">
+            
+              <span class="hits">20</span>
+            
+
+            
+
+            <code class="ruby">    error_conditions.select { |_, condition| condition }.keys</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="45">
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="46">
             
 
             
@@ -10519,6 +10558,8 @@
     <div class="t-line-summary">
       <b>80</b> relevant lines.
       <span class="green"><b>80</b> lines covered</span> and
+      <b>80</b> relevant lines.
+      <span class="green"><b>80</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -10949,7 +10990,9 @@
       
         <div>
           <li class="covered" data-hits="2" data-linenumber="39">
+          <li class="covered" data-hits="2" data-linenumber="39">
             
+              <span class="hits">2</span>
               <span class="hits">2</span>
             
 
@@ -10961,7 +11004,9 @@
       
         <div>
           <li class="covered" data-hits="48" data-linenumber="40">
+          <li class="covered" data-hits="48" data-linenumber="40">
             
+              <span class="hits">48</span>
               <span class="hits">48</span>
             
 
@@ -11055,7 +11100,9 @@
       
         <div>
           <li class="covered" data-hits="2" data-linenumber="49">
+          <li class="covered" data-hits="2" data-linenumber="49">
             
+              <span class="hits">2</span>
               <span class="hits">2</span>
             
 
@@ -11100,6 +11147,7 @@
         </div>
       
         <div>
+          <li class="never" data-hits="" data-linenumber="53">
           <li class="never" data-hits="" data-linenumber="53">
             
 
@@ -11161,7 +11209,9 @@
       
         <div>
           <li class="covered" data-hits="2" data-linenumber="59">
+          <li class="covered" data-hits="2" data-linenumber="59">
             
+              <span class="hits">2</span>
               <span class="hits">2</span>
             
 
@@ -11227,6 +11277,7 @@
       
         <div>
           <li class="never" data-hits="" data-linenumber="65">
+          <li class="never" data-hits="" data-linenumber="65">
             
 
             
@@ -11257,7 +11308,9 @@
       
         <div>
           <li class="covered" data-hits="2" data-linenumber="68">
+          <li class="covered" data-hits="2" data-linenumber="68">
             
+              <span class="hits">2</span>
               <span class="hits">2</span>
             
 
@@ -11383,7 +11436,9 @@
       
         <div>
           <li class="covered" data-hits="2" data-linenumber="80">
+          <li class="covered" data-hits="2" data-linenumber="80">
             
+              <span class="hits">2</span>
               <span class="hits">2</span>
             
 
@@ -11428,6 +11483,7 @@
         </div>
       
         <div>
+          <li class="never" data-hits="" data-linenumber="84">
           <li class="never" data-hits="" data-linenumber="84">
             
 
@@ -11583,7 +11639,9 @@
       
         <div>
           <li class="covered" data-hits="2" data-linenumber="99">
+          <li class="covered" data-hits="2" data-linenumber="99">
             
+              <span class="hits">2</span>
               <span class="hits">2</span>
             
 
@@ -11641,7 +11699,9 @@
       
         <div>
           <li class="covered" data-hits="60" data-linenumber="104">
+          <li class="covered" data-hits="60" data-linenumber="104">
             
+              <span class="hits">60</span>
               <span class="hits">60</span>
             
 
@@ -11789,6 +11849,7 @@
       
         <div>
           <li class="never" data-hits="" data-linenumber="118">
+          <li class="never" data-hits="" data-linenumber="118">
             
 
             
@@ -11799,7 +11860,9 @@
       
         <div>
           <li class="covered" data-hits="2" data-linenumber="119">
+          <li class="covered" data-hits="2" data-linenumber="119">
             
+              <span class="hits">2</span>
               <span class="hits">2</span>
             
 
@@ -12115,7 +12178,9 @@
       
         <div>
           <li class="covered" data-hits="2" data-linenumber="148">
+          <li class="covered" data-hits="2" data-linenumber="148">
             
+              <span class="hits">2</span>
               <span class="hits">2</span>
             
 
@@ -12139,7 +12204,9 @@
       
         <div>
           <li class="covered" data-hits="13" data-linenumber="150">
+          <li class="covered" data-hits="13" data-linenumber="150">
             
+              <span class="hits">13</span>
               <span class="hits">13</span>
             
 
@@ -12459,7 +12526,9 @@
       
         <div>
           <li class="covered" data-hits="2" data-linenumber="180">
+          <li class="covered" data-hits="2" data-linenumber="180">
             
+              <span class="hits">2</span>
               <span class="hits">2</span>
             
 
@@ -12493,7 +12562,9 @@
       
         <div>
           <li class="covered" data-hits="155" data-linenumber="183">
+          <li class="covered" data-hits="155" data-linenumber="183">
             
+              <span class="hits">155</span>
               <span class="hits">155</span>
             
 
@@ -12649,7 +12720,9 @@
       
         <div>
           <li class="covered" data-hits="2" data-linenumber="198">
+          <li class="covered" data-hits="2" data-linenumber="198">
             
+              <span class="hits">2</span>
               <span class="hits">2</span>
             
 
@@ -19577,9 +19650,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="28" data-linenumber="9">
+          <li class="covered" data-hits="26" data-linenumber="9">
             
-              <span class="hits">28</span>
+              <span class="hits">26</span>
             
 
             
@@ -20284,7 +20357,9 @@
       
         <div>
           <li class="covered" data-hits="182" data-linenumber="23">
+          <li class="covered" data-hits="182" data-linenumber="23">
             
+              <span class="hits">182</span>
               <span class="hits">182</span>
             
 
@@ -20316,7 +20391,9 @@
       
         <div>
           <li class="covered" data-hits="182" data-linenumber="26">
+          <li class="covered" data-hits="182" data-linenumber="26">
             
+              <span class="hits">182</span>
               <span class="hits">182</span>
             
 
@@ -20643,8 +20720,8 @@
     
 
     <div class="t-line-summary">
-      <b>21</b> relevant lines.
-      <span class="green"><b>21</b> lines covered</span> and
+      <b>25</b> relevant lines.
+      <span class="green"><b>25</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -20954,14 +21031,14 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="14" data-linenumber="29">
+          <li class="covered" data-hits="13" data-linenumber="29">
             
-              <span class="hits">14</span>
-            
-
+              <span class="hits">13</span>
             
 
-            <code class="ruby">    form_attributes.exists?</code>
+            
+
+            <code class="ruby">    has_gender_attribute? &amp;&amp; has_ethnicity_attribute?</code>
           </li>
         </div>
       
@@ -20998,9 +21075,9 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="12" data-linenumber="33">
+          <li class="covered" data-hits="8" data-linenumber="33">
             
-              <span class="hits">12</span>
+              <span class="hits">8</span>
             
 
             
@@ -21035,7 +21112,7 @@
 
             
 
-            <code class="ruby">  # Add a method to check if the form can be published</code>
+            <code class="ruby">  # Add a method to check if the form has a &quot;gender&quot; attribute</code>
           </li>
         </div>
       
@@ -21047,19 +21124,19 @@
 
             
 
-            <code class="ruby">  def can_publish?</code>
+            <code class="ruby">  def has_gender_attribute?</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="9" data-linenumber="38">
+          <li class="covered" data-hits="32" data-linenumber="38">
             
-              <span class="hits">9</span>
-            
-
+              <span class="hits">32</span>
             
 
-            <code class="ruby">    has_attributes? &amp;&amp; has_associated_students?</code>
+            
+
+            <code class="ruby">    form_attributes.any? { |attr| attr.name.strip.downcase == &quot;gender&quot; }</code>
           </li>
         </div>
       
@@ -21089,27 +21166,31 @@
 
             
 
-            <code class="ruby">  # Validations</code>
+            <code class="ruby">  # Add a method to check if the form has an &quot;ethnicity&quot; attribute</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="42">
+          <li class="covered" data-hits="2" data-linenumber="42">
+            
+              <span class="hits">2</span>
             
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">  def has_ethnicity_attribute?</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="43">
+          <li class="covered" data-hits="23" data-linenumber="43">
+            
+              <span class="hits">23</span>
             
 
             
 
-            <code class="ruby">  # Ensures that every form has a name</code>
+            <code class="ruby">    form_attributes.any? { |attr| attr.name.strip.downcase == &quot;ethnicity&quot; }</code>
           </li>
         </div>
       
@@ -21119,12 +21200,116 @@
 
             
 
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="45">
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="46">
+            
+
+            
+
+            <code class="ruby">  # Add a method to check if the form can be published</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="47">
+            
+              <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">  def can_publish?</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="9" data-linenumber="48">
+            
+              <span class="hits">9</span>
+            
+
+            
+
+            <code class="ruby">    has_attributes? &amp;&amp; has_associated_students?</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="49">
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="50">
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="51">
+            
+
+            
+
+            <code class="ruby">  # Validations</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="52">
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="53">
+            
+
+            
+
+            <code class="ruby">  # Ensures that every form has a name</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="54">
+            
+
+            
+
             <code class="ruby">  # The &#39;uniqueness: true&#39; option ensures that no two forms can have the same name</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="45">
+          <li class="covered" data-hits="2" data-linenumber="55">
             
               <span class="hits">2</span>
             
@@ -21136,7 +21321,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="46">
+          <li class="never" data-hits="" data-linenumber="56">
             
 
             
@@ -21146,7 +21331,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="47">
+          <li class="never" data-hits="" data-linenumber="57">
             
 
             
@@ -21156,7 +21341,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="48">
+          <li class="covered" data-hits="2" data-linenumber="58">
             
               <span class="hits">2</span>
             
@@ -21168,7 +21353,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="49">
+          <li class="never" data-hits="" data-linenumber="59">
             
 
             
@@ -21178,7 +21363,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="50">
+          <li class="covered" data-hits="2" data-linenumber="60">
             
               <span class="hits">2</span>
             
@@ -21190,7 +21375,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="51">
+          <li class="never" data-hits="" data-linenumber="61">
             
 
             
@@ -21200,7 +21385,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="52">
+          <li class="covered" data-hits="2" data-linenumber="62">
             
               <span class="hits">2</span>
             
@@ -21212,7 +21397,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="53">
+          <li class="never" data-hits="" data-linenumber="63">
             
 
             
@@ -21222,7 +21407,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="54">
+          <li class="covered" data-hits="2" data-linenumber="64">
             
               <span class="hits">2</span>
             
@@ -21258,7 +21443,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="57">
+          <li class="never" data-hits="" data-linenumber="67">
             
 
             
@@ -21268,7 +21453,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="58">
+          <li class="never" data-hits="" data-linenumber="68">
             
 
             
@@ -21278,7 +21463,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="59">
+          <li class="never" data-hits="" data-linenumber="69">
             
 
             
