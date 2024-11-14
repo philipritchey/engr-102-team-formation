@@ -45,10 +45,13 @@ module TeamSkillBalance
         # Step 4: Get the current average skill level of the team
         team_avg = calculate_team_average(section_data, team)
         
+        # Step 5: Get student id of best suited student by skill
         student_id = find_student_id_to_fill(team_avg, sorted_students, section_data)
 
+        # Step 6: Assign the student to team
         student_assigned = assign_student_to_team(section_data, student_id, team)
 
+        # Step 7: If assigned successfully then update unassigned students
         if student_assigned
           sorted_students.delete(student_id)
           unassigned.delete(student_id)
