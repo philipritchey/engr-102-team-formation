@@ -43,13 +43,10 @@ module TeamGenderBalance
     assign_pairs_to_teams(section_data, unassigned_females)
   end
 
-  # Helper method to assign pairs of females to teams
+  # Refactored assign_pairs_to_teams method with reduced Cognitive Complexity
   def assign_pairs_to_teams(section_data, unassigned_females)
     section_data[:teams].each do |team|
-      break if unassigned_females.size < 2
-
-      pair_assigned = assign_pair_to_team(section_data, unassigned_females, team)
-      break if pair_assigned && unassigned_females.size == 1
+      break if unassigned_females.size < 2 || (assign_pair_to_team(section_data, unassigned_females, team) && unassigned_females.size == 1)
     end
   end
 
