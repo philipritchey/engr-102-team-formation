@@ -1,67 +1,56 @@
-<div class="container">
-  <h2 class="greeting">Howdy, <%= @current_user.name %></h2>
-  <div class="user-details">
-    <p><strong>Email:</strong> <%= @current_user.email %></p>
-  </div>
-  <h3 class="forms-title">Your Forms</h3>
-  
-  <%= link_to "Create New Form", new_form_path, class: "create-form-btn" %>
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <div class="user-info">
+      <h1 class="greeting">Howdy! <%= @current_user.name %></h1>
+      <p class="user-email"><%= @current_user.email %></p>
+    </div>
+    <%= link_to "Logout", logout_path, class: "btn btn-secondary logout-btn" %>
+  </header>
+  <main class="dashboard-content">
+    <section class="forms-section">
+      <div class="section-header">
+        <h2 class="forms-title">Your Forms</h2>
+        <%= link_to "Create New Form", new_form_path, class: "btn btn-primary create-form-btn" %>
+      </div>
 
-  <% if @forms.any? %>
-    <table class="form-table table table-striped">
-      <thead class="table-header">
-        <tr>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Deadline</th>
-          <th>Status</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @forms.each do |form| %>
-          <tr>
-            <td><%= form.name %></td>
-            <td><%= form.description %></td>
-            <td>
-              <% if form.deadline %>
-                <span class="deadline">
-                  <%= format_deadline(form.deadline).html_safe %>
+      <% if @forms.any? %>
+        <div class="forms-list">
+          <% @forms.each do |form| %>
+            <div class="form-card <%= form.published? ? 'published' : 'draft' %>">
+              <h3 class="form-name"><%= form.name %></h3>
+              <p class="form-description"><strong>Description: </strong><%= truncate(form.description, length: 100) %></p>
+              <div class="form-status">
+                <strong>Status: </strong>
+                <% if form.published? %>
+                  <span class="badge badge-published">Published</span>
+                <% else %>
+                  <span class="badge badge-draft">Not Published</span>
+                <% end %>
+              </div>
+              <div class="form-deadline">
+                <strong>Deadline: </strong>
+                <span class="form-deadline">
+                  <% if form.deadline %>
+                    <%= format_deadline(form.deadline).html_safe %>
+                  <% else %>
+                    No deadline set
+                  <% end %>
                 </span>
-              <% else %>
-                No deadline set
-              <% end %>
-            </td>
-            <td>
-              <% if form.published? %>
-                <span class="badge bg-success">Published</span>
-              <% else %>
-                <span class="badge bg-secondary">Draft</span>
-              <% end %>
-            </td>
-            <td class="actions-cell">
-              <%= link_to "View", form_path(form), class: "btn btn-info action-btn" %>
-              
-              <% if form.published? %>
-                <%= link_to "View Responses", form_form_responses_path(form), class: "btn btn-sm btn-info" %>
-              <% else %>
-                <%= link_to "Edit", edit_form_path(form), class: "btn btn-warning action-btn" %>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  <% else %>
-    <p class="no-forms-message">No forms have been created yet.</p>
-  <% end %>
-
-  <%= link_to "Logout", logout_path, class: "btn btn-secondary mt-3 logout-btn mt-3" %>
-
-  <script>
-    function toggleDeadlinePicker(formId) {
-      var picker = document.getElementById("deadline-picker-" + formId);
-      picker.style.display = picker.style.display === "none" ? "block" : "none";
-    }
-  </script>
+              </div>
+              <div class="form-actions">
+                <%= link_to "View", form_path(form), class: "btn btn-info" %>
+                <% if form.published? %>
+                  <%= link_to "View Responses", form_form_responses_path(form), class: "btn btn-primary" %>
+                <% else %>
+                  <%= link_to "Edit", edit_form_path(form), class: "btn btn-warning" %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <p class="no-forms-message">No forms have been created yet.</p>
+      <% end %>
+    </section>
+  </main>
 </div>

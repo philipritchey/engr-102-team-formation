@@ -25,4 +25,4 @@ Feature: Form Deadline Expiration
     And I publish the form
     And I wait for 6 seconds
     And I navigate to my user profile page
-    Then I should see "Draft" status for that form
+    Then I should see "Not Published" status for that form
