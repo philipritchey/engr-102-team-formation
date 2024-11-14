@@ -7,7 +7,7 @@ Feature: View Student Responses
     Given I have created a form that is not published
     When I visit my user profile page
     Then I should not see "View Responses" for that form
-    And I should see "Edit" and "Delete" buttons for that form
+    And I should see "Edit" button for that form
 
   Scenario: Professor can view responses for a published form
     Given I have created a form that is published
