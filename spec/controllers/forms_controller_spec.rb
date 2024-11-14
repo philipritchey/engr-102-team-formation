@@ -309,38 +309,65 @@ RSpec.describe FormsController, type: :controller do
   end
 
   describe 'PATCH #update_deadline' do
-    context 'with valid deadline' do
-      let(:new_deadline) { { deadline: (Time.current + 3.days) } }
+  let(:form) { create(:form, user: user) }
 
-      it 'updates the form deadline' do
-        patch :update_deadline, params: { id: form.id, form: new_deadline }
-        form.reload
-        expect(form.deadline.to_i).to eq(new_deadline[:deadline].to_i)
-      end
+  context 'with valid deadline' do
+    let(:new_deadline) { (Time.current + 3.days).strftime("%Y-%m-%dT%H:%M") }
 
-      it 'redirects to the index page with a success message' do
-        patch :update_deadline, params: { id: form.id, form: new_deadline }
-        expect(response).to redirect_to(user_path(user))
-        expect(flash[:notice]).to eq('Deadline was successfully updated.')
-      end
+    it 'updates the form deadline' do
+      patch :update_deadline, params: { id: form.id, deadline: new_deadline }
+      form.reload
+      expect(form.deadline.strftime("%Y-%m-%dT%H:%M")).to eq(new_deadline)
     end
 
-    context 'with invalid deadline' do
-      let(:invalid_deadline) { { deadline: (Time.current - 1.day) } }
-
-      it 'does not update the form deadline' do
-        patch :update_deadline, params: { id: form.id, form: invalid_deadline }
-        form.reload
-        expect(form.deadline).not_to eq(invalid_deadline[:deadline])
-      end
-
-      it 'redirects to the index page with an error message' do
-        patch :update_deadline, params: { id: form.id, form: invalid_deadline }
-        expect(response).to redirect_to(user_path(user))
-        expect(flash[:alert]).to eq('Failed to update the deadline.')
-      end
+    it 'returns a success JSON response' do
+      patch :update_deadline, params: { id: form.id, deadline: new_deadline }
+      expect(response).to have_http_status(:ok)
+      expect(JSON.parse(response.body)).to include(
+        "message" => "Deadline updated successfully.",
+        "new_deadline" => new_deadline
+      )
     end
   end
+
+  context 'with invalid deadline' do
+    let(:invalid_deadline) { '' }
+
+    it 'does not update the form deadline' do
+      expect {
+        patch :update_deadline, params: { id: form.id, deadline: invalid_deadline }
+      }.not_to change { form.reload.deadline }
+    end
+
+    it 'returns an error JSON response' do
+      patch :update_deadline, params: { id: form.id, deadline: invalid_deadline }
+      expect(response).to have_http_status(:unprocessable_entity)
+      expect(JSON.parse(response.body)).to include(
+        "error" => "No deadline provided."
+      )
+    end
+  end
+
+  context 'with past deadline' do
+    let(:past_deadline) { (Time.current - 1.day).strftime("%Y-%m-%dT%H:%M") }
+
+    it 'does not update the form deadline' do
+      expect {
+        patch :update_deadline, params: { id: form.id, deadline: past_deadline }
+      }.not_to change { form.reload.deadline }
+    end
+
+    it 'returns an error JSON response' do
+      patch :update_deadline, params: { id: form.id, deadline: past_deadline }
+      expect(response).to have_http_status(:unprocessable_entity)
+      expect(JSON.parse(response.body)).to include(
+        "error" => "The deadline cannot be in the past."
+      )
+    end
+  end
+end
+
+
 
   describe 'GET #preview' do
     before do
