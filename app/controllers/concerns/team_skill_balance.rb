@@ -48,23 +48,27 @@ module TeamSkillBalance
     unassigned.sort_by { |student_id| get_student_level(section_data, student_id) }
   end
 
+
   # Main function to assign students to teams
   def assign_students_to_teams(section_data, sorted_teams, sorted_students, unassigned)
     sorted_teams.each do |team|
-      next unless team_has_empty_spot?(team)  # Skip teams with no empty spots
-
-      # Exit if there are no students left to assign
-      return if sorted_students.empty?
-
-      assign_student_to_team_if_possible(section_data, team, sorted_students, unassigned)
+      process_team_assignment(section_data, team, sorted_students, unassigned)
     end
   end
 
-  def team_has_empty_spot?(team)
-    team[:members].include?(0)
+  # Function to handle team assignment if criteria are met
+  def process_team_assignment(section_data, team, sorted_students, unassigned)
+    return unless team_has_empty_spot?(team) && students_available?(sorted_students)
+
+    assign_student_to_team_if_possible(section_data, team, sorted_students, unassigned)
   end
 
-  # Function to handle the assignment process for a single team
+  # Check if there are students left to assign
+  def students_available?(sorted_students)
+    !sorted_students.empty?
+  end
+
+  # Function to assign a student to a team if possible
   def assign_student_to_team_if_possible(section_data, team, sorted_students, unassigned)
     team_avg = calculate_team_average(section_data, team)  # Step 4: Calculate team average skill
     student_id = find_student_id_to_fill(team_avg, sorted_students, section_data)  # Step 5: Find suitable student
@@ -73,6 +77,10 @@ module TeamSkillBalance
     if assign_student_to_team(section_data, student_id, team)
       update_student_assignment_status(student_id, sorted_students, unassigned)
     end
+  end
+
+  def team_has_empty_spot?(team)
+    team[:members].include?(0)
   end
 
   def find_student_id_to_fill(team_avg, sorted_students, section_data)
