@@ -25,7 +25,7 @@ RSpec.describe FormsController, type: :controller do
       it "sets a flash alert and redirects to the user page" do
         post :validate_upload, params: { id: form.id, file: nil }, format: :js
         expect(flash[:alert]).to eq("Please upload a file.")
-        expect(response).to redirect_to(edit_form_path(form.id))
+        expect(response).to redirect_to(form_path(form.id))
       end
     end
 
@@ -64,7 +64,7 @@ RSpec.describe FormsController, type: :controller do
         it "sets a flash alert for invalid UIN and redirects" do
           post :validate_upload, params: { id: form.id, file: file }
           expect(flash[:alert]).to eq("Invalid UIN in 'UIN' column for row 2. It must be a 9-digit number.")
-          expect(response).to redirect_to(edit_form_path(form.id))
+          expect(response).to redirect_to(form_path(form.id))
         end
       end
 
@@ -74,7 +74,7 @@ RSpec.describe FormsController, type: :controller do
         it "sets a flash alert for missing email and redirects" do
           post :validate_upload, params: { id: form.id, file: file }
           expect(flash[:alert]).to eq("Missing value in 'Email ID' column for row 2.")
-          expect(response).to redirect_to(edit_form_path(form.id))
+          expect(response).to redirect_to(form_path(form.id))
         end
       end
 
@@ -84,7 +84,7 @@ RSpec.describe FormsController, type: :controller do
         it "sets a flash alert for invalid email and redirects" do
           post :validate_upload, params: { id: form.id, file: file }
           expect(flash[:alert]).to eq("Invalid email in 'Email ID' column for row 2.")
-          expect(response).to redirect_to(edit_form_path(form.id))
+          expect(response).to redirect_to(form_path(form.id))
         end
       end
 
@@ -444,7 +444,7 @@ end
       }.not_to change { form.reload.published }
 
       expect(response).to redirect_to(form)
-      expect(flash[:alert]).to eq("Form cannot be published. Reasons: no attributes, no associated students.")
+      expect(flash[:alert]).to eq("Form cannot be published. Reasons: no gender attribute, no ethnicity attribute, no associated students.")
     end
   end
 
