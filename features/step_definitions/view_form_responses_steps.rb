@@ -85,10 +85,9 @@ Given("I log in as a professor") do
     end
   end
 
-  Then("I should not see {string} or {string} buttons for that form") do |button1, button2|
+  Then("I should not see {string} button for that form") do |button|
     within('.form-card', text: @form.name) do
-      expect(page).not_to have_link(button1)
-      expect(page).not_to have_link(button2)
+      expect(page).not_to have_link(button)
     end
   end
 

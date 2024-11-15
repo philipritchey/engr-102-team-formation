@@ -9,6 +9,7 @@ class AttributesController < ApplicationController
     # Creates a new attribute for a specific form
     def create
         @attribute = build_attribute
+        @attribute.weightage = nil if skip_weightage?(@attribute)
 
         if @attribute.save
             redirect_to_form_with_notice("Attribute was successfully added.")
@@ -24,6 +25,9 @@ class AttributesController < ApplicationController
         return redirect_with_total_exceeded_message(new_weightage) if exceeds_total_limit?(new_weightage)
 
         update_and_redirect
+    end
+    def skip_weightage?(attribute)
+        [ "gender", "ethnicity" ].include?(attribute.name.downcase)
     end
 
     # DELETE /forms/:form_id/attributes/:id
