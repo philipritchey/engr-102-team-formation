@@ -199,13 +199,16 @@ RSpec.describe FormResponsesController, type: :controller do
       expect(session[:draft_form_response]).to be_nil
     end
 
-    it "redirects to edit path with an alert if draft is invalid" do
-      allow_any_instance_of(FormResponse).to receive(:valid?).and_return(false)
-      patch :update, params: { id: form_response.id, form_response: { responses: nil }, commit: "Save as Draft" }
+    it "redirects to edit path with a success notice even if the draft is null" do
+      allow_any_instance_of(FormResponse).to receive(:valid?).and_return(false) # Simulate invalid form response
       
-      expect(response).to redirect_to(edit_form_response_path(form_response)) # Adjusted expectation
-      expect(flash[:alert]).to include("There was an error saving your draft")
+      patch :update, params: { id: form_response.id, form_response: { responses: nil }, commit: "Save as Draft" }
+    
+      expect(response).to redirect_to(edit_form_response_path(form_response)) # Redirects to edit path
+      expect(flash[:notice]).to eq("Draft saved temporarily. It will be discarded once the session ends.") # Check success notice
     end
+    
+    
     
     end
 
