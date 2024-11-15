@@ -85,22 +85,23 @@ class FormsController < ApplicationController
     new_deadline = params[:deadline]
     
     if new_deadline.present?
-      # Parse the date string as it is, without timezone conversion
-      parsed_deadline = Time.zone.parse(new_deadline)
-      print(parsed_deadline)
+      parsed_deadline = parse_deadline(new_deadline)
       
-      if parsed_deadline < DateTime.now
-        render json: { error: "The deadline cannot be in the past." }, status: :unprocessable_entity
-      elsif @form.update(deadline: parsed_deadline)
-        # Return the deadline exactly as it was saved
-        render json: { message: "Deadline updated successfully.", new_deadline: @form.deadline.strftime("%Y-%m-%dT%H:%M") }, status: :ok
+      if invalid_deadline?(parsed_deadline)
+        return render_error("The deadline cannot be in the past.")
+      end
+      
+      if @form.update(deadline: parsed_deadline)
+        render_success
       else
-        render json: { error: "Failed to update deadline." }, status: :unprocessable_entity
+        render_error("Failed to update deadline.")
       end
     else
-      render json: { error: "No deadline provided." }, status: :unprocessable_entity
+      render_error("No deadline provided.")
     end
   end
+  
+  
   
   
 
@@ -210,4 +211,23 @@ class FormsController < ApplicationController
       # Return the weighted average score
       total_weight > 0 ? (total_score / total_weight) : 0
     end
+
+
+  
+  def parse_deadline(deadline_str)
+    Time.zone.parse(deadline_str)
+  end
+  
+  def invalid_deadline?(parsed_deadline)
+    parsed_deadline < DateTime.now
+  end
+  
+  def render_error(message)
+    render json: { error: message }, status: :unprocessable_entity
+  end
+  
+  def render_success
+    render json: { message: "Deadline updated successfully.", new_deadline: @form.deadline.strftime("%Y-%m-%dT%H:%M") }, status: :ok
+  end
 end
+  
