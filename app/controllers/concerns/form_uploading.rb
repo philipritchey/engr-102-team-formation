@@ -51,55 +51,46 @@ module FormUploading
     process_user_data(spreadsheet, header_row)
   end
 
-  # def process_user_data(spreadsheet, header_row)
-  #   users_to_create = []
-  #   name_index, uin_index, email_index, section_index = validate_header(header_row)
-  #   (2..spreadsheet.last_row).each do |index|
-  #     row = spreadsheet.row(index)
-  #     next if row.all?(&:blank?)
-  #     user_data = validate_row(row, index, header_row, [ name_index, uin_index, email_index, section_index ])
-  #     return redirect_to form_path(params[:id]) if user_data.nil?
-  #     users_to_create << user_data
-  #   end
-
-  #   create_students_and_responses(users_to_create)
-  #   flash[:notice] = "All validations passed."
-  #   redirect_to form_path(params[:id])
-  # end
-  #
   def process_user_data(spreadsheet, header_row)
-    users_to_create = []
+    header_indexes = validate_and_parse_header(header_row)
+    return if header_indexes.nil?
+    users_to_create = process_rows(spreadsheet, header_row, header_indexes)
+    return if users_to_create.nil?
+    if users_to_create.any?
+      create_students_and_responses(users_to_create)
+      flash[:notice] = "All validations passed."
+    end
 
-    # Validate the header row
+    redirect_to form_path(params[:id])
+  end
+
+  private
+
+  def validate_and_parse_header(header_row)
     header_indexes = validate_header(header_row)
-
-    # Check if validate_header returned false
     if header_indexes == false
       flash[:alert] = "Invalid header. Please ensure the file contains 'Name', 'UIN', 'Email ID', and 'Section' columns."
-      return redirect_to form_path(params[:id])
+      redirect_to form_path(params[:id])
+      return nil
     end
+    header_indexes
+  end
 
-    # Extract indexes from the result of validate_header
+  def process_rows(spreadsheet, header_row, header_indexes)
+    users_to_create = []
     name_index, uin_index, email_index, section_index = header_indexes
 
-    # Process each row in the spreadsheet
     (2..spreadsheet.last_row).each do |index|
       row = spreadsheet.row(index)
-
-      # Skip rows where all values are empty
       next if row.all?(&:blank?)
-
-      # Validate individual rows
       user_data = validate_row(row, index, header_row, [ name_index, uin_index, email_index, section_index ])
-      return redirect_to form_path(params[:id]) if user_data.nil?
-
+      if user_data.nil?
+        redirect_to form_path(params[:id])
+        return nil
+      end
       users_to_create << user_data
     end
-
-    # Save valid users and responses
-    create_students_and_responses(users_to_create)
-    flash[:notice] = "All validations passed."
-    redirect_to form_path(params[:id])
+    users_to_create
   end
 
   def create_students_and_responses(users_to_create)
