@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>Code coverage for Team-formation</title>
+    <title>Code coverage for Team-formation-13</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <script src='./assets/0.13.1/application.js' type='text/javascript'></script>
     <link href='./assets/0.13.1/application.css' media='screen, projection, print' rel='stylesheet' type='text/css' />
@@ -3708,8 +3708,8 @@
   <div class="header">
     <h3>app/controllers/concerns/form_uploading.rb</h3>
     <h4>
-      <span class="red">
-  80.0%
+      <span class="green">
+  95.0%
 </span>
 
       lines covered
@@ -3719,8 +3719,8 @@
 
     <div class="t-line-summary">
       <b>40</b> relevant lines.
-      <span class="green"><b>32</b> lines covered</span> and
-      <span class="red"><b>8</b> lines missed.</span>
+      <span class="green"><b>38</b> lines covered</span> and
+      <span class="red"><b>2</b> lines missed.</span>
     </div>
 
     
@@ -4291,7 +4291,9 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="51">
+          <li class="covered" data-hits="2" data-linenumber="51">
+            
+              <span class="hits">2</span>
             
 
             
@@ -4301,7 +4303,9 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="52">
+          <li class="covered" data-hits="2" data-linenumber="52">
+            
+              <span class="hits">2</span>
             
 
             
@@ -4355,7 +4359,9 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="57">
+          <li class="covered" data-hits="4" data-linenumber="57">
+            
+              <span class="hits">4</span>
             
 
             
@@ -4365,7 +4371,9 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="58">
+          <li class="covered" data-hits="2" data-linenumber="58">
+            
+              <span class="hits">2</span>
             
 
             
@@ -4385,7 +4393,9 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="60">
+          <li class="covered" data-hits="2" data-linenumber="60">
+            
+              <span class="hits">2</span>
             
 
             
@@ -4395,7 +4405,9 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="61">
+          <li class="covered" data-hits="2" data-linenumber="61">
+            
+              <span class="hits">2</span>
             
 
             
@@ -4425,7 +4437,9 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="64">
+          <li class="covered" data-hits="2" data-linenumber="64">
+            
+              <span class="hits">2</span>
             
 
             
@@ -4485,7 +4499,9 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="70">
+          <li class="covered" data-hits="2" data-linenumber="70">
+            
+              <span class="hits">2</span>
             
 
             
@@ -14809,8 +14825,8 @@
   <div class="header">
     <h3>app/controllers/concerns/team_skill_balance.rb</h3>
     <h4>
-      <span class="yellow">
-  83.33%
+      <span class="green">
+  100.0%
 </span>
 
       lines covered
@@ -14819,9 +14835,9 @@
     
 
     <div class="t-line-summary">
-      <b>6</b> relevant lines.
-      <span class="green"><b>5</b> lines covered</span> and
-      <span class="red"><b>1</b> lines missed.</span>
+      <b>53</b> relevant lines.
+      <span class="green"><b>53</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
     </div>
 
     
@@ -15015,27 +15031,31 @@
 
             
 
-            <code class="ruby">  def balance_by_skill(team_distribution)</code>
+            <code class="ruby">  def balance_by_skills(team_distribution)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="19">
+          <li class="covered" data-hits="5" data-linenumber="19">
+            
+              <span class="hits">5</span>
             
 
             
 
-            <code class="ruby">    # TODO: Implement skill balancing logic</code>
+            <code class="ruby">    team_distribution.each do |section, section_data|</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="20">
+          <li class="covered" data-hits="6" data-linenumber="20">
+            
+              <span class="hits">6</span>
             
 
             
 
-            <code class="ruby">    team_distribution</code>
+            <code class="ruby">      balance_sections_by_skills(section_data)</code>
           </li>
         </div>
       
@@ -15045,12 +15065,34 @@
 
             
 
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="5" data-linenumber="22">
+            
+              <span class="hits">5</span>
+            
+
+            
+
+            <code class="ruby">    team_distribution</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="23">
+            
+
+            
+
             <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="22">
+          <li class="never" data-hits="" data-linenumber="24">
             
 
             
@@ -15072,7 +15114,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="24">
+          <li class="never" data-hits="" data-linenumber="120">
             
 
             
@@ -15082,7 +15124,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="25">
+          <li class="never" data-hits="" data-linenumber="121">
             
 
             
@@ -15092,7 +15134,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="26">
+          <li class="never" data-hits="" data-linenumber="122">
             
 
             
