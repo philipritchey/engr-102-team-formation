@@ -14,6 +14,15 @@
  *= require_self
  */
 
+ .error-container ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.error-container li {
+  margin-bottom: 5px;
+}
+
 .error-container {
   background-color: #fff3f3;
   border: 1px solid #ffcccb;
