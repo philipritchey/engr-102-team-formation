@@ -1,6 +1,6 @@
 <%= form_with url: validate_upload_form_path(@form.id), local: true, multipart: true do |form| %>
   <%= form.file_field :file %>
-  <%= form.submit "Upload", id: "upload_button" %>
+  <%= form.submit "Upload Students", id: "upload_button" %>
 <% end %>
 <%= button_to "back to form", form_path(@form.id), method: :get, class: "btn btn-sm btn-info" %>
 <%= button_to "Download Sample CSV", download_sample_form_path(@form), method: :get, class: "btn btn-sm btn-info" %>

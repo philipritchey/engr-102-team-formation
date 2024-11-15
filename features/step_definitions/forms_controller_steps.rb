@@ -7,34 +7,39 @@ Given("I am logged in as a valid user with a form created") do
   page.set_rack_session(user_id: @user.id)
 end
 
-Given("I am on the upload page") do
-  visit upload_form_path(@form)
+Given("I am on the form view page") do
+  visit form_path(@form)
+end
+
+Then("I should be redirected to the upload page") do
+  # Check if the current path is the edit path for the last created form
+  expect(page).to have_current_path(upload_form_path(@form.id))
 end
 
 When("I submit the upload form without a file") do
-  click_button "upload_button"
+  click_button "Upload Students"
 end
 
 When("I submit the upload form") do
-  click_button "upload_button"
+  click_button "Upload Students"
 end
 
-When("I have uploaded a file with an empty first row") do
+Then("I have uploaded a file with an empty first row") do
   file_path = Rails.root.join("spec/fixtures/files/empty_header.csv")
   attach_file("file", file_path)
 end
 
-When("I have uploaded a file without 'Name', 'UIN', and 'Email ID' columns") do
+Then("I have uploaded a file without 'Name', 'UIN', and 'Email ID' columns") do
   file_path = Rails.root.join("spec/fixtures/files/missing_columns.csv")
   attach_file("file", file_path)
 end
 
-When("I have uploaded a file with missing name in a row") do
+Then("I have uploaded a file with missing name in a row") do
   file_path = Rails.root.join("spec/fixtures/files/missing_name.csv")
   attach_file("file", file_path)
 end
 
-When("I have uploaded a file with an invalid UIN in a row") do
+Then("I have uploaded a file with an invalid UIN in a row") do
   file_path = Rails.root.join("spec/fixtures/files/invalid_uin.csv")
   attach_file("file", file_path)
 end
@@ -51,6 +56,11 @@ end
 
 When("I have uploaded a valid file") do
   file_path = Rails.root.join("spec/fixtures/files/valid_file.csv")
+  attach_file("file", file_path)
+end
+
+When("I have uploaded a xlsx valid file") do
+  file_path = Rails.root.join("spec/fixtures/files/valid_file.xlsx")
   attach_file("file", file_path)
 end
 

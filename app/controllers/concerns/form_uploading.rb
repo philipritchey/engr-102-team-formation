@@ -28,8 +28,12 @@ module FormUploading
   def process_uploaded_file
     file = params[:file].path
     begin
-      spreadsheet = Roo::Spreadsheet.open(file)
+      # Detect the file format and open it using Roo
+      spreadsheet = Roo::Spreadsheet.open(file, extension: File.extname(file).delete(".").downcase)
       process_spreadsheet(spreadsheet)
+    rescue ArgumentError => e
+      flash[:alert] = "Unsupported file type. Please upload a valid .csv or .xlsx file."
+      redirect_to form_path(params[:id])
     rescue StandardError => e
       flash[:alert] = "An error occurred: #{e.message}"
       redirect_to form_path(params[:id])
@@ -47,16 +51,52 @@ module FormUploading
     process_user_data(spreadsheet, header_row)
   end
 
+  # def process_user_data(spreadsheet, header_row)
+  #   users_to_create = []
+  #   name_index, uin_index, email_index, section_index = validate_header(header_row)
+  #   (2..spreadsheet.last_row).each do |index|
+  #     row = spreadsheet.row(index)
+  #     next if row.all?(&:blank?)
+  #     user_data = validate_row(row, index, header_row, [ name_index, uin_index, email_index, section_index ])
+  #     return redirect_to form_path(params[:id]) if user_data.nil?
+  #     users_to_create << user_data
+  #   end
+
+  #   create_students_and_responses(users_to_create)
+  #   flash[:notice] = "All validations passed."
+  #   redirect_to form_path(params[:id])
+  # end
+  #
   def process_user_data(spreadsheet, header_row)
     users_to_create = []
-    name_index, uin_index, email_index, section_index = validate_header(header_row)
+
+    # Validate the header row
+    header_indexes = validate_header(header_row)
+
+    # Check if validate_header returned false
+    if header_indexes == false
+      flash[:alert] = "Invalid header. Please ensure the file contains 'Name', 'UIN', 'Email ID', and 'Section' columns."
+      return redirect_to form_path(params[:id])
+    end
+
+    # Extract indexes from the result of validate_header
+    name_index, uin_index, email_index, section_index = header_indexes
+
+    # Process each row in the spreadsheet
     (2..spreadsheet.last_row).each do |index|
       row = spreadsheet.row(index)
+
+      # Skip rows where all values are empty
+      next if row.all?(&:blank?)
+
+      # Validate individual rows
       user_data = validate_row(row, index, header_row, [ name_index, uin_index, email_index, section_index ])
       return redirect_to form_path(params[:id]) if user_data.nil?
+
       users_to_create << user_data
     end
 
+    # Save valid users and responses
     create_students_and_responses(users_to_create)
     flash[:notice] = "All validations passed."
     redirect_to form_path(params[:id])
