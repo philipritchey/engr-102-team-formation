@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :forms do
     member do
+      get :download_sample
       get "preview"
       get "duplicate"
       patch "update_deadline"

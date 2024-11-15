@@ -67,6 +67,7 @@ module TeamDistributionHelpers
     end
   end
 
+
   # Finds a matching student pair based on skill level compatibility
   # @param section_data [Hash] Section information
   # @param student1 [Hash] The first student's information
