@@ -41,7 +41,8 @@
     </div>
     <br>
   <% end %>
-
+<!-- Back Button -->
+  <%= link_to 'Back', student_path(@student), class: 'btn btn-secondary' %>
   <%= button_tag 'Submit Response', type: 'submit', id: 'submit_response_button' %>
   <%= button_tag 'Save as Draft', name: 'commit', value: 'Save as Draft', type: 'submit' %>
 <% end %>

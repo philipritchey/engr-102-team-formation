@@ -50,7 +50,7 @@ class FormResponsesController < ApplicationController
     else
       if @form_response.save
         session.delete(:draft_form_response)
-        render :success
+        redirect_to student_path(@student), notice: "Response submitted successfully." # Redirect to student's homepage
       else
         flash.now[:alert] = "There was an error submitting your response."
         render :new
@@ -77,22 +77,20 @@ class FormResponsesController < ApplicationController
 
   def update
     @form_response = FormResponse.find(params[:id])
-
+  
     if params[:commit] == "Save as Draft"
-      if @form_response.valid?
-        session[:draft_form_response] = form_response_params.to_h || {}
-        redirect_to edit_form_response_path(@form_response), notice: "Draft saved temporarily. It will be discarded once the session ends."
+      session[:draft_form_response] = form_response_params.to_h.presence || {}
+      redirect_to edit_form_response_path(@form_response), notice: "Draft saved temporarily. It will be discarded once the session ends."
+    else
+      if @form_response.update(form_response_params)
+        session.delete(:draft_form_response)
+        redirect_to student_path(@form_response.student), notice: "Response updated successfully." # Redirect to student's homepage
       else
-        session[:draft_form_response] = nil
-        flash.now[:alert] = "There was an error saving your draft. Please check your input."
+        flash.now[:alert] = "There was an error updating your response."
         render :edit
       end
-    else
-      handle_final_update
     end
   end
-
-
 
 
 
