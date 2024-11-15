@@ -54,7 +54,7 @@ RSpec.describe FormsController, type: :controller do
 
         it "sets a flash alert for missing columns and redirects" do
           post :validate_upload, params: { id: form.id, file: file }
-          expect(flash[:alert]).to eq("Missing required columns. Ensure 'Name', 'UIN', 'Section' and 'Email ID' are present.")
+          expect(flash[:alert]).to eq("Invalid header. Please ensure the file contains 'Name', 'UIN', 'Email ID', and 'Section' columns.")
         end
       end
 
@@ -73,7 +73,7 @@ RSpec.describe FormsController, type: :controller do
 
         it "sets a flash alert for missing email and redirects" do
           post :validate_upload, params: { id: form.id, file: file }
-          expect(flash[:alert]).to eq("Missing value in 'Email ID' column for row 2.")
+          expect(flash[:alert]).to eq("Invalid email in 'Email ID' column for row 2.")
           expect(response).to redirect_to(form_path(form.id))
         end
       end
