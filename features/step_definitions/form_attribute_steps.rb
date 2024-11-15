@@ -111,3 +111,18 @@ Then("I should see an error message about exceeding total weightage") do
   expect(page).to have_content("Total weightage would be")
   expect(page).to have_content("Weightages should sum to 1")
 end
+
+Then("I should not see a weightage input field for the {string} attribute") do |attribute_name|
+  expect(page).not_to have_field("Update Weightage (0.0 to 1.0)", wait: 5)
+end
+
+Then("the {string} attribute should be saved without a weightage value") do |attribute_name|
+  attribute = @form.form_attributes.find_by(name: attribute_name)
+  expect(attribute.weightage).to be_nil
+end
+
+Then("I should see {string} displayed for the weightage of {string} and {string} attributes") do |weightage_text, attr1, attr2|
+  expect(page).to have_content("#{attr1}")
+  expect(page).to have_content("#{attr2}")
+  expect(page).to have_content("Current Weightage: #{weightage_text}")
+end

@@ -12,6 +12,7 @@ class FormsController < ApplicationController
   include TeamSkillBalance
   include PopulateTeamsBasedOnGender
   include GenerateTeams
+  include FormDeadlineManagement
   include ExportTeams
   require "roo"
 
@@ -64,6 +65,8 @@ class FormsController < ApplicationController
 
   # PATCH/PUT /forms/1
   # Updates an existing form
+  # In FormsController
+
   def update
     # Allow params with or without 'form' key
     update_params = params[:form] || params
@@ -78,6 +81,26 @@ class FormsController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
+  def update_deadline
+    new_deadline = params[:deadline]
+  
+    return render_error("No deadline provided.") if new_deadline.blank?
+  
+    parsed_deadline = Time.zone.parse(new_deadline)
+  
+    return render_error("The deadline cannot be in the past.") if parsed_deadline < DateTime.now
+  
+    if @form.update(deadline: parsed_deadline)
+      render_success
+    else
+      render_error("Failed to update deadline.")
+    end
+  end
+  
+  
+
+  
+  
 
   # GET /forms/#id/preview
   def preview
@@ -115,6 +138,15 @@ class FormsController < ApplicationController
     @teams = @form.teams
   end
   private
+
+  
+  def render_error(message)
+    render json: { error: message }, status: :unprocessable_entity
+  end
+  
+  def render_success
+    render json: { message: "Deadline updated successfully.", new_deadline: @form.deadline.strftime("%Y-%m-%dT%H:%M") }, status: :ok
+  end
     # Sets @form instance variable based on the id parameter
     # Only finds forms belonging to the current user for security
     def set_form
