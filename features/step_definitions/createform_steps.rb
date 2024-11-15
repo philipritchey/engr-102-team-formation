@@ -74,9 +74,8 @@ end
 
 # This step clicks on a specific action for a specific form
 When("I click on {string} for {string}") do |action, form_name|
-  within('table.table-striped') do
-    row = find('tr', text: form_name)
-    within(row) do
+  within('.forms-list') do
+    within('.form-card', text: form_name) do
       click_link action
     end
   end
@@ -94,21 +93,14 @@ Then("I should see the form details") do
   expect(page).to have_content(@form.description)
 end
 
-# This step checks for the presence of a table of forms
-Then("I should see a table of forms") do
-  expect(page).to have_css('table.table-striped')
-end
-
-# This step checks if a specific form name is in the forms table
-Then("I should see {string} in the forms table") do |form_name|
-  within('table.table-striped') do
-    expect(page).to have_content(form_name)
-  end
+# This step checks for the presence of a list of forms
+Then("I should see a list of forms") do
+  expect(page).to have_css('.forms-list')
 end
 
 # This step checks if a specific form name is in the list of forms
 Then("I should see {string} in the list of forms") do |form_name|
-  within('table.table-striped') do
+  within('.forms-list') do
     expect(page).to have_content(form_name)
   end
 end
