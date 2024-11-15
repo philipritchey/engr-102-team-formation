@@ -70,6 +70,8 @@
             <%= button_to "Edit this form", edit_form_path(@form), method: :get, class: "btn btn-warning" %>
             <%= button_to "Publish Form", publish_form_path(@form), method: :post, class: "btn btn-primary", data: { confirm: "Are you sure you want to publish this form?" } %>
             <%= button_to "Destroy this form", @form, method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure you want to delete this form?" } %>
+            <%= button_to "Upload Students", upload_form_path(@form.id), method: :get, class: "btn btn-danger" %>
+            
           </div>
         <% else %>
           <div class="action-row">
