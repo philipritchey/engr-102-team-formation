@@ -589,3 +589,21 @@ a, a:link, a:visited {
   color: #5d0025;
   margin: 0 0 10px;
 }
+
+.btn-uniform {
+  width: 100%;
+  padding: 10px;
+  font-size: 1em;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
