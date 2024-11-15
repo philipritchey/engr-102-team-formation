@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       get :download_sample
       get "preview"
       get "duplicate"
-      patch 'forms/:id/update_deadline', to: 'forms#update_deadline', as: 'update_form_deadline'
+      patch "forms/:id/update_deadline", to: "forms#update_deadline", as: "update_form_deadline"
       patch "update_deadline"
       post "publish"
       post "close"

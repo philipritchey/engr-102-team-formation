@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe TeamSkillBalance do
   let(:user) { create(:user) }
-  let(:dummy_class) { Class.new { include TeamCalculation; include TeamEthnicityBalance; include TeamSkillBalance} }
+  let(:dummy_class) { Class.new { include TeamCalculation; include TeamEthnicityBalance; include TeamSkillBalance } }
   let(:instance) { dummy_class.new }
 
   before do
@@ -42,16 +42,15 @@ RSpec.describe TeamSkillBalance do
       form: @form,
       student: student,
       responses: {
-        "gender" => gender,
-        "ethnicity" => ethnicity,
-        "programming_skill" => skill_level
+        @gender_attr.id.to_s => gender,
+        @ethnicity_attr.id.to_s => ethnicity,
+        @skill_attr.id.to_s => skill_level
       }
     )
   end
 
   context "with a diverse skill set of students" do
     before do
-
       2.times do |i|
         create_student_with_response(
           "A",
@@ -122,7 +121,7 @@ RSpec.describe TeamSkillBalance do
       updated_distribution = instance.balance_by_skills(distribution)
 
       section_a = updated_distribution["A"]
-      
+
       puts "\nTeam Distribution after balancing by skills basic scenario:"
       section_a[:teams].each do |team|
         puts "\nTeam #{team[:team_id]}:"
@@ -135,26 +134,24 @@ RSpec.describe TeamSkillBalance do
         # Since the team_avg was in medium range and remaining students were fairly ditributed team_avg after balancing should be average too
         expect(team_avg).to be_between(5, 7).inclusive
       end
-      
+
       puts "\n\nFull Data Structure:"
       puts "Section A:"
       puts "  Total students: #{section_a[:students].size}"
       puts "  Unassigned students: #{section_a[:unassigned].size}"
-      
+
       puts "\n  Students by skill level:"
       section_a[:by_skill].each do |level, students|
         puts "    #{level}: #{students.size} students"
       end
-        
+
       puts "\n  Teams structure:"
       pp section_a[:teams]
-
     end
   end
 
   context "with a skill set skewed towards high" do
     before do
-
       11.times do |i|
         create_student_with_response(
           "A",
@@ -163,7 +160,7 @@ RSpec.describe TeamSkillBalance do
            10
         )
       end
-      
+
       @team_distribution = instance.calculate_teams
     end
 
@@ -185,21 +182,18 @@ RSpec.describe TeamSkillBalance do
       updated_distribution = instance.balance_by_skills(distribution)
 
       section_a = updated_distribution["A"]
-      
-      section_a[:teams].each do |team|
 
+      section_a[:teams].each do |team|
         team_avg = instance.send(:calculate_team_average, section_a, team).round(2)
 
         # Since the team_avg was in high range and remaining students were also high range the team_avg should also be high
-        expect(team_avg).to be_between(8,10).inclusive
+        expect(team_avg).to be_between(8, 10).inclusive
       end
-
     end
   end
 
   context "with a diverse skill set of students after ethnicity balancing" do
     before do
-
       10.times do |i|
         create_student_with_response(
           "A",
@@ -258,14 +252,12 @@ RSpec.describe TeamSkillBalance do
         puts "Members: #{team[:members].reject(&:zero?).size}/#{team[:capacity]}"
         puts "Skill composition: #{team[:composition][:skill]}"
         puts "Average skill: #{instance.send(:calculate_team_average, section_a, team).round(2)}"
-
-
       end
 
       updated_distribution = instance.balance_by_skills(distribution)
 
       section_a = updated_distribution["A"]
-      
+
       puts "\nTeam Distribution after balancing by skills after ethnicity:"
       section_a[:teams].each do |team|
         puts "\nTeam #{team[:team_id]}:"
@@ -276,15 +268,13 @@ RSpec.describe TeamSkillBalance do
         team_avg = instance.send(:calculate_team_average, section_a, team).round(2)
 
         # Team average is in the medium range between 4 to 8
-        expect(team_avg).to be_between(4,8).inclusive
+        expect(team_avg).to be_between(4, 8).inclusive
       end
-
     end
   end
 
   context "only one student is left for assigning" do
     before do
-
       2.times do |i|
         create_student_with_response(
           "A",
@@ -357,10 +347,9 @@ RSpec.describe TeamSkillBalance do
       updated_distribution = instance.balance_by_skills(distribution)
 
       section_a = updated_distribution["A"]
-      
+
       puts "\nTeam Distribution after balancing by skills:"
       section_a[:teams].each do |team|
-
         team_avg = instance.send(:calculate_team_average, section_a, team).round(2)
 
         # only one student was left to assign assigned proerly and team_avg is maintained
@@ -371,7 +360,6 @@ RSpec.describe TeamSkillBalance do
 
   context "with a diverse skill set of students for 2 sections" do
     before do
-
       2.times do |i|
         create_student_with_response(
           "A",
@@ -500,9 +488,8 @@ RSpec.describe TeamSkillBalance do
       updated_distribution = instance.balance_by_skills(distribution)
 
       section_a = updated_distribution["A"]
-      
-      section_a[:teams].each do |team|
 
+      section_a[:teams].each do |team|
         team_avg = instance.send(:calculate_team_average, section_a, team).round(2)
 
         # Since the team_avg was in medium range and remaining students were fairly ditributed team_avg after balancing should be average too
@@ -510,15 +497,13 @@ RSpec.describe TeamSkillBalance do
       end
 
       section_b = updated_distribution["B"]
-      
-      section_b[:teams].each do |team|
 
+      section_b[:teams].each do |team|
         team_avg = instance.send(:calculate_team_average, section_b, team).round(2)
 
         # Since the team_avg was in medium range and remaining students were fairly ditributed team_avg after balancing should be average too
         expect(team_avg).to be_between(5, 8).inclusive
       end
-      
     end
   end
 end

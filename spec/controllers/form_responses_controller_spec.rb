@@ -63,7 +63,7 @@ RSpec.describe FormResponsesController, type: :controller do
         expect {
           post :create, params: { form_id: form.id, student_id: student.id, form_response: valid_attributes }
         }.to change(FormResponse, :count).by(1)
-        expect(response).to redirect_to(student_path(student)) 
+        expect(response).to redirect_to(student_path(student))
       end
     end
 
@@ -201,22 +201,19 @@ RSpec.describe FormResponsesController, type: :controller do
 
     it "redirects to edit path with a success notice even if the draft is null" do
       allow_any_instance_of(FormResponse).to receive(:valid?).and_return(false) # Simulate invalid form response
-      
+
       patch :update, params: { id: form_response.id, form_response: { responses: nil }, commit: "Save as Draft" }
-    
+
       expect(response).to redirect_to(edit_form_response_path(form_response)) # Redirects to edit path
       expect(flash[:notice]).to eq("Draft saved temporarily. It will be discarded once the session ends.") # Check success notice
     end
-    
-    
-    
     end
 
     context "when submitting final response" do
       it "updates the form_response and renders success template" do
         patch :update, params: { id: form_response.id, form_response: valid_attributes }
         expect(form_response.reload.responses).to eq(valid_attributes[:responses].stringify_keys)
-        expect(response).to redirect_to(student_path(student)) 
+        expect(response).to redirect_to(student_path(student))
       end
 
       it "clears the draft from session on successful submission" do
@@ -233,7 +230,7 @@ RSpec.describe FormResponsesController, type: :controller do
       end
     end
   end
-end 
+end
 
 RSpec.describe FormResponsesController, type: :controller do
   let(:user) { create(:user) }
@@ -267,18 +264,16 @@ RSpec.describe FormResponsesController, type: :controller do
 
       it "handles invalid draft" do
         allow_any_instance_of(FormResponse).to receive(:valid?).and_return(false)
-      
+
         patch :update, params: {
           id: form_response.id,
           form_response: invalid_attributes,
           commit: "Save as Draft"
         }
-      
+
         # Expect session[:draft_form_response] to be an empty hash
         expect(session[:draft_form_response]).to eq({})
-
       end
-          
     end
 
     context "when submitting final response" do
@@ -286,7 +281,7 @@ RSpec.describe FormResponsesController, type: :controller do
         patch :update, params: { id: form_response.id, form_response: valid_attributes }
 
         expect(form_response.reload.responses).to eq(valid_attributes[:responses].stringify_keys)
-        expect(response).to redirect_to(student_path(student)) 
+        expect(response).to redirect_to(student_path(student))
         expect(session[:draft_form_response]).to be_nil
       end
 
@@ -330,7 +325,7 @@ RSpec.describe FormResponsesController, type: :controller do
           }
         }.to change(FormResponse, :count).by(1)
 
-        expect(response).to redirect_to(student_path(student)) 
+        expect(response).to redirect_to(student_path(student))
         expect(session[:draft_form_response]).to be_nil
       end
 
@@ -368,4 +363,3 @@ RSpec.describe FormResponsesController, type: :controller do
     end
   end
 end
-
