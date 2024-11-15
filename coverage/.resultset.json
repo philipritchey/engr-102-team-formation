@@ -46,6 +46,7 @@
         "lines": [
           null,
           1,
+          1,
           null,
           1,
           null,
@@ -72,8 +73,6 @@
           null,
           3,
           null,
-          1,
-          10,
           null,
           null,
           null,
@@ -176,26 +175,39 @@
           null,
           null,
           1,
-          10,
-          10,
-          null,
-          null,
-          null,
-          1,
-          10,
-          null,
-          null,
-          1,
-          2,
-          2,
-          null,
-          null,
-          1,
           7,
           null,
           null,
           1,
           5,
+          null,
+          null
+        ]
+      },
+      "/Users/sahithiduppati/team-formation/app/controllers/concerns/attribute_helpers.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          10,
+          null,
+          null,
+          1,
+          10,
+          null,
+          null,
+          1,
+          2,
+          2,
+          null,
+          null,
+          1,
+          10,
+          10,
+          null,
           null,
           null
         ]
@@ -406,9 +418,9 @@
           null,
           1,
           null,
-          953,
-          230,
-          313,
+          955,
+          229,
+          312,
           null,
           null,
           null,
@@ -505,7 +517,7 @@
           null,
           312,
           1184,
-          15576,
+          15575,
           647,
           647,
           null,
@@ -531,11 +543,11 @@
           1,
           65,
           null,
-          10,
+          13,
           null,
-          23,
+          18,
           null,
-          32,
+          34,
           null,
           null,
           65,
@@ -548,15 +560,15 @@
           null,
           1,
           65,
-          268,
-          87,
+          280,
+          89,
           null,
           null,
           null,
           null,
           1,
-          12825,
-          443,
+          13276,
+          453,
           null,
           null
         ]
@@ -683,7 +695,7 @@
           null,
           1,
           65,
-          2585,
+          2567,
           null,
           65,
           65,
@@ -714,7 +726,7 @@
           13,
           13,
           null,
-          568,
+          570,
           13,
           null,
           13,
@@ -2049,7 +2061,7 @@
         ]
       }
     },
-    "timestamp": 1731635817
+    "timestamp": 1731637073
   },
   "Cucumber": {
     "coverage": {
@@ -3554,6 +3566,7 @@
         "lines": [
           null,
           1,
+          1,
           null,
           1,
           null,
@@ -3580,8 +3593,6 @@
           null,
           1,
           null,
-          1,
-          5,
           null,
           null,
           null,
@@ -3685,8 +3696,23 @@
           null,
           1,
           5,
-          5,
           null,
+          null,
+          1,
+          0,
+          null,
+          null
+        ]
+      },
+      "/Users/sahithiduppati/team-formation/app/controllers/concerns/attribute_helpers.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          5,
           null,
           null,
           1,
@@ -3700,10 +3726,8 @@
           null,
           1,
           5,
+          5,
           null,
-          null,
-          1,
-          0,
           null,
           null
         ]
@@ -3983,6 +4007,6 @@
         ]
       }
     },
-    "timestamp": 1731635826
+    "timestamp": 1731637081
   }
 }
