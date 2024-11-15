@@ -24,7 +24,7 @@ module TeamSkillBalance
 
   def balance_sections_by_skills(section_data)
     unassigned = filter_students(section_data)
-    return if unassigned.empty? 
+    return if unassigned.empty?
     while unassigned.size>0
 
       # Step 1: Sort teams by their current average skill level (ascending)
@@ -72,7 +72,7 @@ module TeamSkillBalance
   def assign_student_to_team_if_possible(section_data, team, sorted_students, unassigned)
     team_avg = calculate_team_average(section_data, team)  # Step 4: Calculate team average skill
     student_id = find_student_id_to_fill(team_avg, sorted_students, section_data)  # Step 5: Find suitable student
-    
+
     # Step 6: Assign student to team and update assignment status if successful
     if assign_student_to_team(section_data, student_id, team)
       update_student_assignment_status(student_id, sorted_students, unassigned)
@@ -100,15 +100,15 @@ module TeamSkillBalance
   end
 
   def find_student_for_low_skill_team(sorted_students, section_data)
-    find_student_by_level(sorted_students, section_data, ["high", "medium"]) || sorted_students.shift
+    find_student_by_level(sorted_students, section_data, [ "high", "medium" ]) || sorted_students.shift
   end
-  
+
   def find_student_for_medium_skill_team(sorted_students, section_data)
-    find_student_by_level(sorted_students, section_data, ["high", "medium"]) || sorted_students.shift
+    find_student_by_level(sorted_students, section_data, [ "high", "medium" ]) || sorted_students.shift
   end
-  
+
   def find_student_for_high_skill_team(sorted_students, section_data)
-    find_student_by_level(sorted_students, section_data, ["low", "medium"]) || sorted_students.shift
+    find_student_by_level(sorted_students, section_data, [ "low", "medium" ]) || sorted_students.shift
   end
 
   def find_student_by_level(sorted_students, section_data, skill_levels)
