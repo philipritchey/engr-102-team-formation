@@ -1,5 +1,6 @@
 # This controller handles CRUD operations for Attributes nested under Forms
 class AttributesController < ApplicationController
+    include AttributeHelpers
     # This before_action ensures @form is set before any action is executed
     before_action :set_form
     # This before_action sets @attribute only for the destroy action
@@ -9,6 +10,7 @@ class AttributesController < ApplicationController
     # Creates a new attribute for a specific form
     def create
         @attribute = build_attribute
+        @attribute.weightage = nil if skip_weightage?(@attribute)
 
         if @attribute.save
             redirect_to_form_with_notice("Attribute was successfully added.")
@@ -25,6 +27,7 @@ class AttributesController < ApplicationController
 
         update_and_redirect
     end
+
 
     # DELETE /forms/:form_id/attributes/:id
     # Removes an attribute from a specific form
@@ -67,17 +70,6 @@ class AttributesController < ApplicationController
     def attribute_params
         params.require(:attribute).permit(:name, :field_type, :min_value, :max_value, :options)
     end
-
-    # def weightage_params
-    #     params.require(:attribute).permit(:weightage).tap do |whitelisted|
-    #         if whitelisted[:weightage].present?
-    #           whitelisted[:weightage] = whitelisted[:weightage].to_f.round(1)
-    #           if whitelisted[:weightage] < 0.0 || whitelisted[:weightage] > 1.0
-    #             whitelisted[:weightage] = nil
-    #           end
-    #         end
-    #       end
-    # end
 
     def weightage_params
         parsed_weightage = parse_weightage(raw_weightage)
@@ -123,21 +115,6 @@ class AttributesController < ApplicationController
 
     def valid_weightage?(value)
         value.between?(0.0, 1.0)
-    end
-
-    def build_attribute
-        @form.form_attributes.build(attribute_params).tap do |attr|
-            set_mcq_options(attr) if mcq_field?
-        end
-    end
-
-    def mcq_field?
-        params[:attribute][:field_type] == "mcq"
-    end
-
-    def set_mcq_options(attribute)
-        mcq_options = params[:mcq_options].reject(&:blank?)
-        attribute.options = mcq_options.join(",") unless mcq_options.empty?
     end
 
     def redirect_to_form_with_notice(message)
