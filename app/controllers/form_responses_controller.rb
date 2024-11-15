@@ -45,7 +45,7 @@ class FormResponsesController < ApplicationController
     @form_response.student = @student
 
     if params[:commit] == "Save as Draft"
-      session[:draft_form_response] = form_response_params.to_h
+      session[:draft_form_response] = form_response_params.to_h || {}
       redirect_to new_form_student_form_response_path(@form, @student), notice: "Draft saved temporarily. It will be discarded once the session ends."
     else
       if @form_response.save
@@ -80,7 +80,7 @@ class FormResponsesController < ApplicationController
 
     if params[:commit] == "Save as Draft"
       if @form_response.valid?
-        session[:draft_form_response] = form_response_params.to_h
+        session[:draft_form_response] = form_response_params.to_h || {}
         redirect_to edit_form_response_path(@form_response), notice: "Draft saved temporarily. It will be discarded once the session ends."
       else
         session[:draft_form_response] = nil
