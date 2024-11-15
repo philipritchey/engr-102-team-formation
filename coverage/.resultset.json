@@ -398,9 +398,9 @@
           null,
           1,
           null,
-          828,
-          206,
-          260,
+          830,
+          209,
+          255,
           null,
           null,
           null,
@@ -497,7 +497,7 @@
           null,
           114,
           450,
-          7260,
+          7261,
           179,
           179,
           null,
@@ -523,11 +523,11 @@
           1,
           60,
           null,
-          5,
+          7,
           null,
-          22,
+          18,
           null,
-          33,
+          35,
           null,
           null,
           60,
@@ -540,15 +540,15 @@
           null,
           1,
           60,
-          221,
-          79,
+          220,
+          85,
           null,
           null,
           null,
           null,
           1,
-          6229,
-          142,
+          5888,
+          135,
           null,
           null
         ]
@@ -675,7 +675,7 @@
           null,
           1,
           60,
-          2557,
+          2570,
           null,
           60,
           60,
@@ -706,7 +706,7 @@
           13,
           13,
           null,
-          564,
+          563,
           13,
           null,
           13,
@@ -1963,7 +1963,7 @@
         ]
       }
     },
-    "timestamp": 1731544387
+    "timestamp": 1731691890
   },
   "Cucumber": {
     "coverage": {
@@ -3536,6 +3536,30 @@
           null
         ]
       },
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/jobs/check_form_deadlines_job.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/jobs/application_job.rb": {
+        "lines": [
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
       "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF60/team-formation/app/models/form_response.rb": {
         "lines": [
           1,
@@ -3811,6 +3835,6 @@
         ]
       }
     },
-    "timestamp": 1731541315
+    "timestamp": 1731691825
   }
 }
