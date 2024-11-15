@@ -58,7 +58,7 @@
     <%= form.submit "Save Form", class: "btn btn-primary" %>
     <%= button_tag 'Preview Form', type: 'button', class: 'button', onclick: "openPreviewModal()" %>
     <%= button_tag 'Duplicate Form', type: 'button', class: 'button', onclick: "window.open('#{duplicate_form_path(@form)}', '_blank')" %>
-  </div>
+   </div>
 <% end %>
 
 <%# Display current attributes of the form %>
@@ -188,38 +188,71 @@
       modal.style.display = "block";  // Show the modal
     }
 
-    function setDeadline() {
-      var deadlinePicker = document.getElementById("deadline_picker");
-      var selectedDeadline = deadlinePicker.value;
+function setDeadline() {
+  var deadlinePicker = document.getElementById("deadline_picker");
+  var selectedDeadline = deadlinePicker.value;
+  var formId = <%= @form.id %>;
 
-      if (selectedDeadline) {
-        var date = new Date(selectedDeadline);
-        // Format to match our standard format: "October 31, 2024 at 05:35 PM CDT"
-        document.getElementById("display_deadline").innerText = "Selected Deadline: " + 
-          date.toLocaleString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit',
-            hour12: true,
-            timeZoneName: 'short'
-          }).replace(',', ' at');
+  if (selectedDeadline) {
+    fetch(`/forms/${formId}/update_deadline`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content
+      },
+      body: JSON.stringify({ deadline: selectedDeadline })
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.error) {
+        alert(data.error);
       } else {
-        document.getElementById("display_deadline").innerText = "Please select a deadline.";
+        // Format the date string manually to avoid timezone conversions
+        var date = new Date(selectedDeadline);
+        var formattedDate = date.toLocaleString('en-US', {
+          year: 'numeric', month: 'long', day: 'numeric',
+          hour: '2-digit', minute: '2-digit', hour12: true
+        }).replace(',', ' at');
+        
+        document.getElementById("display_deadline").innerText = "Deadline saved successfully"
+        
+        // Clear the message after 5 seconds
+        setTimeout(() => {
+          document.getElementById("display_deadline").innerText = "";
+        }, 5000);
       }
-    }
-
-    document.getElementById('form_submit_button').addEventListener('click', function(event) {
-      var deadlinePicker = document.getElementById('deadline_picker');
-      var selectedDeadline = new Date(deadlinePicker.value);
-      var now = new Date();
-
-      if (selectedDeadline < now) {
-        alert("The deadline cannot be in the past.");
-        event.preventDefault(); // Prevent form submission
-      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert("An error occurred while updating the deadline.");
     });
+  } else {
+    document.getElementById("display_deadline").innerText = "Please select a deadline.";
+    
+    // Clear this message after 5 seconds as well
+    setTimeout(() => {
+      document.getElementById("display_deadline").innerText = "";
+    }, 5000);
+  }
+}
+
+
+
+
+document.getElementById('form_submit_button').addEventListener('click', function(event) {
+  var deadlinePicker = document.getElementById('deadline_picker');
+  var selectedDeadline = new Date(deadlinePicker.value);
+  var now = new Date();
+
+  if (selectedDeadline < now) {
+    alert("The deadline cannot be in the past.");
+    event.preventDefault(); // Prevent form submission
+  } else {
+    // Trigger form submission if the deadline is valid
+    setDeadline();
+  }
+});
+
 
 
   </script>
