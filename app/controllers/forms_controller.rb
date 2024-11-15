@@ -83,25 +83,21 @@ class FormsController < ApplicationController
   end
   def update_deadline
     new_deadline = params[:deadline]
-    
-    if new_deadline.present?
-      parsed_deadline = parse_deadline(new_deadline)
+  
+    if new_deadline.blank?
+      render_error("No deadline provided.")
+    else
+      parsed_deadline = Time.zone.parse(new_deadline)
       
-      if invalid_deadline?(parsed_deadline)
-        return render_error("The deadline cannot be in the past.")
-      end
-      
-      if @form.update(deadline: parsed_deadline)
+      if parsed_deadline < DateTime.now
+        render_error("The deadline cannot be in the past.")
+      elsif @form.update(deadline: parsed_deadline)
         render_success
       else
         render_error("Failed to update deadline.")
       end
-    else
-      render_error("No deadline provided.")
     end
   end
-  
-  
   
   
 
@@ -144,6 +140,13 @@ class FormsController < ApplicationController
     @teams = @form.teams
   end
   private
+  def render_error(message)
+    render json: { error: message }, status: :unprocessable_entity
+  end
+  
+  def render_success
+    render json: { message: "Deadline updated successfully.", new_deadline: @form.deadline.strftime("%Y-%m-%dT%H:%M") }, status: :ok
+  end
     # Sets @form instance variable based on the id parameter
     # Only finds forms belonging to the current user for security
     def set_form
@@ -211,23 +214,4 @@ class FormsController < ApplicationController
       # Return the weighted average score
       total_weight > 0 ? (total_score / total_weight) : 0
     end
-
-
-  
-  def parse_deadline(deadline_str)
-    Time.zone.parse(deadline_str)
-  end
-  
-  def invalid_deadline?(parsed_deadline)
-    parsed_deadline < DateTime.now
-  end
-  
-  def render_error(message)
-    render json: { error: message }, status: :unprocessable_entity
-  end
-  
-  def render_success
-    render json: { message: "Deadline updated successfully.", new_deadline: @form.deadline.strftime("%Y-%m-%dT%H:%M") }, status: :ok
-  end
 end
-  
