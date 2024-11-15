@@ -84,18 +84,16 @@ class FormsController < ApplicationController
   def update_deadline
     new_deadline = params[:deadline]
   
-    if new_deadline.blank?
-      render_error("No deadline provided.")
+    return render_error("No deadline provided.") if new_deadline.blank?
+  
+    parsed_deadline = Time.zone.parse(new_deadline)
+  
+    return render_error("The deadline cannot be in the past.") if parsed_deadline < DateTime.now
+  
+    if @form.update(deadline: parsed_deadline)
+      render_success
     else
-      parsed_deadline = Time.zone.parse(new_deadline)
-      
-      if parsed_deadline < DateTime.now
-        render_error("The deadline cannot be in the past.")
-      elsif @form.update(deadline: parsed_deadline)
-        render_success
-      else
-        render_error("Failed to update deadline.")
-      end
+      render_error("Failed to update deadline.")
     end
   end
   
@@ -140,6 +138,8 @@ class FormsController < ApplicationController
     @teams = @form.teams
   end
   private
+
+  
   def render_error(message)
     render json: { error: message }, status: :unprocessable_entity
   end
