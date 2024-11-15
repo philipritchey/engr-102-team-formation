@@ -58,7 +58,6 @@
     <%= form.submit "Save Form", class: "btn btn-primary" %>
     <%= button_tag 'Preview Form', type: 'button', class: 'button', onclick: "openPreviewModal()" %>
     <%= button_tag 'Duplicate Form', type: 'button', class: 'button', onclick: "window.open('#{duplicate_form_path(@form)}', '_blank')" %>
-    <%= link_to 'Upload Students', upload_form_path(@form.id), class: 'btn btn-primary' %>
   </div>
 <% end %>
 

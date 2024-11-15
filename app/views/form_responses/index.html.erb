@@ -1,6 +1,13 @@
 <h1>Responses for <%= @form.name %></h1>
 
-<% if @form_responses.any? %>
+
+<% # Filter out responses where there are no actual responses associated %>
+<% filtered_responses = @form_responses.select do |response| 
+     parsed_responses = response.responses.is_a?(String) ? JSON.parse(response.responses) : response.responses
+     parsed_responses.present? && parsed_responses.values.any?(&:present?)
+   end %>
+
+<% if filtered_responses.any? %>
   <table class="table table-bordered table-hover form-responses-table">
     <thead class="thead-dark">
       <tr>
@@ -10,7 +17,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @form_responses.each_with_index do |response, index| %>
+      <% filtered_responses.each_with_index do |response, index| %>
         <tr class="<%= 'alt-row' if index.odd? %>">
           <td><%= response.student_id %></td>
           <td><%= response.created_at.strftime("%B %d, %Y %H:%M") %></td>
