@@ -63,7 +63,7 @@ RSpec.describe FormResponsesController, type: :controller do
         expect {
           post :create, params: { form_id: form.id, student_id: student.id, form_response: valid_attributes }
         }.to change(FormResponse, :count).by(1)
-        expect(response).to render_template(:success)
+        expect(response).to redirect_to(student_path(student)) 
       end
     end
 
@@ -199,19 +199,21 @@ RSpec.describe FormResponsesController, type: :controller do
       expect(session[:draft_form_response]).to be_nil
     end
 
-    it "renders edit with alert if draft is invalid" do
+    it "redirects to edit path with an alert if draft is invalid" do
       allow_any_instance_of(FormResponse).to receive(:valid?).and_return(false)
       patch :update, params: { id: form_response.id, form_response: { responses: nil }, commit: "Save as Draft" }
-      expect(response).to render_template(:edit)
+      
+      expect(response).to redirect_to(edit_form_response_path(form_response)) # Adjusted expectation
       expect(flash[:alert]).to include("There was an error saving your draft")
     end
+    
     end
 
     context "when submitting final response" do
       it "updates the form_response and renders success template" do
         patch :update, params: { id: form_response.id, form_response: valid_attributes }
         expect(form_response.reload.responses).to eq(valid_attributes[:responses].stringify_keys)
-        expect(response).to render_template(:success)
+        expect(response).to redirect_to(student_path(student)) 
       end
 
       it "clears the draft from session on successful submission" do
@@ -281,7 +283,7 @@ RSpec.describe FormResponsesController, type: :controller do
         patch :update, params: { id: form_response.id, form_response: valid_attributes }
 
         expect(form_response.reload.responses).to eq(valid_attributes[:responses].stringify_keys)
-        expect(response).to render_template(:success)
+        expect(response).to redirect_to(student_path(student)) 
         expect(session[:draft_form_response]).to be_nil
       end
 
@@ -325,7 +327,7 @@ RSpec.describe FormResponsesController, type: :controller do
           }
         }.to change(FormResponse, :count).by(1)
 
-        expect(response).to render_template(:success)
+        expect(response).to redirect_to(student_path(student)) 
         expect(session[:draft_form_response]).to be_nil
       end
 
