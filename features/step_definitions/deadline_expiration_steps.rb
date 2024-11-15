@@ -18,7 +18,7 @@ When("I wait for {int} seconds") do |seconds|
 end
 
 Then('I should see {string} status for that form') do |status|
-  within('tr', text: @form.name) do
+  within('.form-card', text: @form.name) do
     expect(page).to have_css('.badge', text: status)
   end
 end
