@@ -1404,6 +1404,28 @@
           null
         ]
       },
+      "/Users/sahithiduppati/team-formation/app/controllers/concerns/team_gender_balance.rb": {
+        "lines": [
+          1,
+          1,
+          2,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null
+        ]
+      },
       "/Users/ramyagotika/fall_2024/csce_606/final_project/team-formation/app/controllers/concerns/team_skill_balance.rb": {
         "lines": [
           1,
