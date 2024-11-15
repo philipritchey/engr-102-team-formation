@@ -52,7 +52,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_30_015930) do
     t.string "section"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["uin"], name: "index_students_on_uin"
+    t.index ["uin"], name: "index_students_on_uin", unique: true
   end
 
   create_table "teams", force: :cascade do |t|
