@@ -14,7 +14,7 @@
  *= require_self
  */
 
-.error-container {
+ .error-container {
   background-color: #fff3f3;
   border: 1px solid #ffcccb;
   border-radius: 8px;
@@ -124,14 +124,32 @@ h1, h2, h3 {
   max-width: 1100px;
   border-collapse: collapse;
   margin-top: 20px;
+  table-layout: fixed;
 }
 
 .form-table th, .form-table td {
+  word-wrap: break-word;
+  word-break: break-word;
+  max-width: 200px;
+  white-space: normal;
   padding: 12px;
   text-align: left;
   border: 1px solid #5d0025;
 }
+.form-table th:nth-child(1),
+.form-table td:nth-child(1) {
+  width: 28%; 
+}
 
+.form-table th:nth-child(2),
+.form-table td:nth-child(2) {
+  width: 32%; 
+}
+
+.form-table th:nth-child(3),
+.form-table td:nth-child(3) {
+  width: 40%; 
+}
 .table-header th {
   background-color: #5d0025;
   color: white;
@@ -579,6 +597,7 @@ a, a:link, a:visited {
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow-x: auto;
 }
 
 .form-card:hover {
