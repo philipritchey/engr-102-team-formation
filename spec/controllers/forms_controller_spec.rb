@@ -35,7 +35,7 @@ RSpec.describe FormsController, type: :controller do
       it "successfully validates the file and creates users" do
         expect {
           post :validate_upload, params: { id: form.id, file: file }
-        }.to change(Student, :count).by(1)
+        }.to change(Student, :count).by(2)
 
         expect(flash[:notice]).to eq("All validations passed.")
       end
