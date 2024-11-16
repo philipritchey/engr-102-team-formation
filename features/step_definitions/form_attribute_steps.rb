@@ -19,22 +19,22 @@ When("I enter {string} as the attribute name") do |attribute_name|
 end
 
 # This step selects the attribute type from a dropdown
-When("I select {string} as the attribute type") do |attribute_type|
-  select attribute_type, from: "attribute_type"
+When("I select {string} as the attribute type") do |field_type|
+  select field_type, from: "attribute_type"
 end
 
 # This step fills in the minimum value for a scale attribute
 # It also waits for the field to become visible (important for JavaScript-driven forms)
 When("I enter {string} as the minimum value") do |min_value|
-  expect(page).to have_field("Minimum Value", visible: true)
-  fill_in "Minimum Value", with: min_value
+  expect(page).to have_field("attribute_min_value", visible: :all)
+  fill_in "attribute_min_value", with: min_value, visible: :all
 end
 
 # This step fills in the maximum value for a scale attribute
 # It also waits for the field to become visible (important for JavaScript-driven forms)
 When("I enter {string} as the maximum value") do |max_value|
-  expect(page).to have_field("Maximum Value", visible: true)
-  fill_in "Maximum Value", with: max_value
+  expect(page).to have_field("attribute_max_value", visible: :all)
+  fill_in "attribute_max_value", with: max_value, visible: :all
 end
 
 # This step submits the new attribute form
