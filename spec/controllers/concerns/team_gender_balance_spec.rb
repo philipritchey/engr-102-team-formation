@@ -14,11 +14,18 @@ RSpec.describe TeamGenderBalance do
     instance.instance_variable_set(:@form, @form)
   end
 
-  def create_student_with_response(section, gender, skill_level, ethnicity = "asian")
+  def create_student_with_response(section, gender, ethnicity = "asian", skill_level)
     student = create(:student, section: section)
-    create(:form_response, form: @form, student: student, responses: { "gender" => gender, "ethnicity" => ethnicity, "programming_skill" => skill_level })
+    create(:form_response,
+      form: @form,
+      student: student,
+      responses: {
+        @gender_attr.id.to_s => gender,
+        @ethnicity_attr.id.to_s => ethnicity,
+        @skill_attr.id.to_s => skill_level
+      }
+    )
   end
-
   context "large group with odd number of females (e.g., 21 females, 20 males, 5 others)" do
     before do
       21.times { create_student_with_response("A", "female", rand(1..10)) }

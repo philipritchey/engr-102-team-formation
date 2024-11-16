@@ -133,14 +133,32 @@ h1, h2, h3 {
   max-width: 1100px;
   border-collapse: collapse;
   margin-top: 20px;
+  table-layout: fixed;
 }
 
 .form-table th, .form-table td {
+  word-wrap: break-word;
+  word-break: break-word;
+  max-width: 200px;
+  white-space: normal;
   padding: 12px;
   text-align: left;
   border: 1px solid #5d0025;
 }
+.form-table th:nth-child(1),
+.form-table td:nth-child(1) {
+  width: 28%; 
+}
 
+.form-table th:nth-child(2),
+.form-table td:nth-child(2) {
+  width: 32%; 
+}
+
+.form-table th:nth-child(3),
+.form-table td:nth-child(3) {
+  width: 40%; 
+}
 .table-header th {
   background-color: #5d0025;
   color: white;
@@ -158,6 +176,7 @@ h1, h2, h3 {
 }
 
 .btn {
+  white-space: nowrap;
   padding: 6px 12px;
   border-radius: 5px;
 }
@@ -308,6 +327,20 @@ h1, h2, h3 {
 
 .form-group {
   margin-bottom: 25px;
+  
+}
+
+.form-group-weightage-deadline {
+  display: flex; 
+  align-items: center;
+  gap: 10px;
+}
+
+.form-group-weightage-deadline label{
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #5d0025;
 }
 
 .form-group label {
@@ -323,6 +356,7 @@ h1, h2, h3 {
   border: 1px solid #ced4da;
   border-radius: 4px;
   font-size: 1em;
+  box-sizing: border-box;
 }
 
 .scale-input {
@@ -404,6 +438,7 @@ h1, h2, h3 {
   border-radius: 6px;
   margin-top: 20px;
   font-weight: bold;
+  text-align: center;
 }
 
 .alert-info {
@@ -471,11 +506,13 @@ h1, h2, h3 {
 
 .scale-info, .mcq-options {
   margin-bottom: 15px;
-  color: #6c757d;
+  color: #5d0025;
+  font-size: 1em;
 }
 
 .weightage-info {
   font-weight: bold;
+  color: #5d0025;
   margin-bottom: 10px;
 }
 
@@ -569,6 +606,7 @@ a, a:link, a:visited {
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow-x: auto;
 }
 
 .form-card:hover {
@@ -607,3 +645,7 @@ a, a:link, a:visited {
   gap: 10px;
 }
 
+
+.export-btn {
+  white-space: nowrap;
+}

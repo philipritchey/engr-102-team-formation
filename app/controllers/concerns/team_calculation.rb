@@ -131,7 +131,7 @@ module TeamCalculation
   end
 
   def extract_mcq_response(response, attribute)
-    response.responses[attribute.name]
+    response.responses[attribute.id.to_s]
   end
 
   def calculate_weighted_average(response, scale_attributes)
@@ -139,7 +139,7 @@ module TeamCalculation
     weighted_sum = 0
 
     scale_attributes.each do |attribute|
-      value = response.responses[attribute.name].to_f
+      value = response.responses[attribute.id.to_s].to_f
       weight = attribute.weightage || 0
 
       weighted_sum += value * weight

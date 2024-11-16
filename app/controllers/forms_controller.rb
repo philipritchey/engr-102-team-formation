@@ -4,15 +4,12 @@
 class FormsController < ApplicationController
   include FormsHelper
   include FormPublishing
-  include FormDeadlineManagement
   include FormUploading
   include TeamCalculation
   include TeamGenderBalance
   include TeamEthnicityBalance
   include TeamSkillBalance
-  include PopulateTeamsBasedOnGender
   include GenerateTeams
-  include FormDeadlineManagement
   include ExportTeams
   require "roo"
 
@@ -83,24 +80,24 @@ class FormsController < ApplicationController
   end
   def update_deadline
     new_deadline = params[:deadline]
-  
+
     return render_error("No deadline provided.") if new_deadline.blank?
-  
+
     parsed_deadline = Time.zone.parse(new_deadline)
-  
+
     return render_error("The deadline cannot be in the past.") if parsed_deadline < DateTime.now
-  
+
     if @form.update(deadline: parsed_deadline)
       render_success
     else
       render_error("Failed to update deadline.")
     end
   end
-  
-  
 
-  
-  
+
+
+
+
 
   # GET /forms/#id/preview
   def preview
@@ -135,15 +132,16 @@ class FormsController < ApplicationController
   end
   # GET /forms/1/view_teams
   def view_teams
-    @teams = @form.teams
+    @form = Form.find(params[:id])
+    @teams = @form.teams.includes(:form)
   end
   private
 
-  
+
   def render_error(message)
     render json: { error: message }, status: :unprocessable_entity
   end
-  
+
   def render_success
     render json: { message: "Deadline updated successfully.", new_deadline: @form.deadline.strftime("%Y-%m-%dT%H:%M") }, status: :ok
   end
@@ -161,57 +159,5 @@ class FormsController < ApplicationController
       # If :form key is missing, permit name and description directly from params
       # This allows for more flexible parameter handling
       params.permit(:name, :description, :deadline)
-    end
-
-    def optimize_teams_based_on_ethnicity(team_distribution)
-      # Dummy function: Just return the input for now
-      team_distribution
-    end
-
-    def distribute_remaining_students(team_distribution)
-      # Dummy function: Distribute remaining students randomly
-      team_distribution
-    end
-
-    def optimize_team_by_swaps(team_distribution)
-      # Dummy function: Just return the input for now
-      team_distribution
-    end
-    def format_team_members(team_members_ids)
-      return [] if team_members_ids.blank?
-
-      students = Student.where(id: team_members_ids)
-      formatted_members = students.map do |student|
-        {
-          id: student.id,
-          name: student.name,
-          uin: student.uin,
-          email: student.email
-        }
-      end
-
-      formatted_members.presence || []
-    end
-
-    # Helper method to calculate the weighted average score for a student
-    def calculate_weighted_average(response)
-      excluded_attrs = [ "gender", "ethnicity" ]
-      attributes = response.form.form_attributes.reject { |attr| excluded_attrs.include?(attr.name.downcase) }
-
-      total_score = 0.0
-      total_weight = 0.0
-
-      attributes.each do |attribute|
-        weightage = attribute.weightage
-        student_response = response.responses[attribute.id.to_s]  # Convert id to string
-
-        if student_response.present?
-          score = student_response.to_f
-          total_score += score * weightage
-          total_weight += weightage
-        end
-      end
-      # Return the weighted average score
-      total_weight > 0 ? (total_score / total_weight) : 0
     end
 end

@@ -77,7 +77,7 @@ class FormResponsesController < ApplicationController
 
   def update
     @form_response = FormResponse.find(params[:id])
-  
+
     if params[:commit] == "Save as Draft"
       session[:draft_form_response] = form_response_params.to_h.presence || {}
       redirect_to edit_form_response_path(@form_response), notice: "Draft saved temporarily. It will be discarded once the session ends."

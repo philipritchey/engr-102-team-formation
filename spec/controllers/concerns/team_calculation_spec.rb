@@ -43,9 +43,9 @@ RSpec.describe TeamCalculation do
       form: @form,
       student: student,
       responses: {
-        "gender" => gender,
-        "ethnicity" => ethnicity,
-        "programming_skill" => skill_level
+        @gender_attr.id.to_s => gender,
+        @ethnicity_attr.id.to_s => ethnicity,
+        @skill_attr.id.to_s => skill_level
       }
     )
   end
