@@ -19,22 +19,22 @@ When("I enter {string} as the attribute name") do |attribute_name|
 end
 
 # This step selects the attribute type from a dropdown
-When("I select {string} as the attribute type") do |attribute_type|
-  select attribute_type, from: "attribute_type"
+When("I select {string} as the attribute type") do |field_type|
+  select field_type, from: "attribute_type"
 end
 
 # This step fills in the minimum value for a scale attribute
 # It also waits for the field to become visible (important for JavaScript-driven forms)
 When("I enter {string} as the minimum value") do |min_value|
-  expect(page).to have_field("Minimum Value", visible: true)
-  fill_in "Minimum Value", with: min_value
+  expect(page).to have_field("attribute_min_value", visible: :all)
+  fill_in "attribute_min_value", with: min_value, visible: :all
 end
 
 # This step fills in the maximum value for a scale attribute
 # It also waits for the field to become visible (important for JavaScript-driven forms)
 When("I enter {string} as the maximum value") do |max_value|
-  expect(page).to have_field("Maximum Value", visible: true)
-  fill_in "Maximum Value", with: max_value
+  expect(page).to have_field("attribute_max_value", visible: :all)
+  fill_in "attribute_max_value", with: max_value, visible: :all
 end
 
 # This step submits the new attribute form
@@ -110,4 +110,19 @@ end
 Then("I should see an error message about exceeding total weightage") do
   expect(page).to have_content("Total weightage would be")
   expect(page).to have_content("Weightages should sum to 1")
+end
+
+Then("I should not see a weightage input field for the {string} attribute") do |attribute_name|
+  expect(page).not_to have_field("Update Weightage (0.0 to 1.0)", wait: 5)
+end
+
+Then("the {string} attribute should be saved without a weightage value") do |attribute_name|
+  attribute = @form.form_attributes.find_by(name: attribute_name)
+  expect(attribute.weightage).to be_nil
+end
+
+Then("I should see {string} displayed for the weightage of {string} and {string} attributes") do |weightage_text, attr1, attr2|
+  expect(page).to have_content("#{attr1}")
+  expect(page).to have_content("#{attr2}")
+  expect(page).to have_content("Current Weightage: #{weightage_text}")
 end

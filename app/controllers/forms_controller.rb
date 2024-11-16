@@ -4,9 +4,11 @@
 class FormsController < ApplicationController
   include FormsHelper
   include FormPublishing
-  include FormDeadlineManagement
   include FormUploading
-  include PopulateTeamsBasedOnGender
+  include TeamCalculation
+  include TeamGenderBalance
+  include TeamEthnicityBalance
+  include TeamSkillBalance
   include GenerateTeams
   include ExportTeams
   require "roo"
@@ -60,6 +62,8 @@ class FormsController < ApplicationController
 
   # PATCH/PUT /forms/1
   # Updates an existing form
+  # In FormsController
+
   def update
     # Allow params with or without 'form' key
     update_params = params[:form] || params
@@ -74,6 +78,26 @@ class FormsController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
+  def update_deadline
+    new_deadline = params[:deadline]
+
+    return render_error("No deadline provided.") if new_deadline.blank?
+
+    parsed_deadline = Time.zone.parse(new_deadline)
+
+    return render_error("The deadline cannot be in the past.") if parsed_deadline < DateTime.now
+
+    if @form.update(deadline: parsed_deadline)
+      render_success
+    else
+      render_error("Failed to update deadline.")
+    end
+  end
+
+
+
+
+
 
   # GET /forms/#id/preview
   def preview
@@ -85,13 +109,13 @@ class FormsController < ApplicationController
   # opens new /forms/#new_id/edit
   def duplicate
     original_form = Form.find(params[:id])
-    result = Forms::DuplicationService.call(original_form)
+    result = Forms::DuplicationService.new(original_form).call
 
     if result.success?
       redirect_to edit_form_path(result.form), notice: "Form was successfully duplicated."
     else
       redirect_to edit_form_path(original_form),
-                  alert: "Failed to duplicate the form. #{result.errors&.join(', ')}"
+                  alert: "Failed to duplicate the form: #{result.errors&.join(', ')}."
     end
   end
 
@@ -108,9 +132,19 @@ class FormsController < ApplicationController
   end
   # GET /forms/1/view_teams
   def view_teams
-    @teams = @form.teams
+    @form = Form.find(params[:id])
+    @teams = @form.teams.includes(:form)
   end
   private
+
+
+  def render_error(message)
+    render json: { error: message }, status: :unprocessable_entity
+  end
+
+  def render_success
+    render json: { message: "Deadline updated successfully.", new_deadline: @form.deadline.strftime("%Y-%m-%dT%H:%M") }, status: :ok
+  end
     # Sets @form instance variable based on the id parameter
     # Only finds forms belonging to the current user for security
     def set_form
@@ -125,111 +159,5 @@ class FormsController < ApplicationController
       # If :form key is missing, permit name and description directly from params
       # This allows for more flexible parameter handling
       params.permit(:name, :description, :deadline)
-    end
-
-    def calculate_teams
-      # Fetch all form responses for this form and group them by the student's section
-      # The 'includes(:student)' eager loads the associated student data to avoid N+1 queries
-      # The result is a hash where keys are section names and values are arrays of form responses
-      sections = @form.form_responses.includes(:student).group_by { |response| response.student.section }
-
-      # Initialize an empty hash to store the team distribution for each section
-      team_distribution = {}
-
-      # Iterate over each section and its responses
-      sections.each do |section, responses|
-        # Count the total number of students (responses) in this section
-        total_students = responses.count
-
-        # Calculate the base number of teams of 4 we can form
-        base_teams = total_students / 4
-
-        # Calculate how many students are left over after forming teams of 4
-        remainder = total_students % 4
-
-        # Determine the final number of teams of 4 based on the remainder
-        # We adjust this to allow for teams of 3 when necessary
-        teams_of_4 = case remainder
-        when 0 then base_teams     # If no remainder, all teams are of size 4
-        when 1 then base_teams - 2 # If remainder 1, we need 3 teams of 3
-        when 2 then base_teams - 1 # If remainder 2, we need 2 teams of 3
-        when 3 then base_teams     # If remainder 3, we need 1 team of 3
-        end
-
-        teams_of_3 = remainder.zero? ? 0 : 4 - remainder
-
-        # Store the calculated distribution for this section
-        team_distribution[section] = {
-          total_students: total_students,  # Total number of students in this section
-          teams_of_4: teams_of_4,          # Number of teams with 4 members
-          teams_of_3: teams_of_3,          # Number of teams with 3 members
-          total_teams: teams_of_4 + teams_of_3,  # Total number of teams in this section
-          form_responses: responses        # Array of form response objects for this section
-        }
-      end
-
-      # Return the complete team distribution hash
-      # This hash contains the team distribution data for all sections
-      team_distribution
-    end
-    # def populate_teams_based_on_gender(team_distribution)
-    #   # Dummy function: Just return the input for now
-    #   team_distribution.each do |section, details|
-    #     details[:teams] = Array.new(details[:total_teams]) { [] }
-    #     details[:remaining_students] = details[:form_responses].map(&:student)
-    #   end
-    #   team_distribution
-    # end
-
-    def optimize_teams_based_on_ethnicity(team_distribution)
-      # Dummy function: Just return the input for now
-      team_distribution
-    end
-
-    def distribute_remaining_students(team_distribution)
-      # Dummy function: Distribute remaining students randomly
-      team_distribution
-    end
-
-    def optimize_team_by_swaps(team_distribution)
-      # Dummy function: Just return the input for now
-      team_distribution
-    end
-    def format_team_members(team_members_ids)
-      return [] if team_members_ids.blank?
-
-      students = Student.where(id: team_members_ids)
-      formatted_members = students.map do |student|
-        {
-          id: student.id,
-          name: student.name,
-          uin: student.uin,
-          email: student.email
-        }
-      end
-
-      formatted_members.presence || []
-    end
-
-    # Helper method to calculate the weighted average score for a student
-    def calculate_weighted_average(response)
-      excluded_attrs = [ "gender", "ethnicity" ]
-      attributes = response.form.form_attributes.reject { |attr| excluded_attrs.include?(attr.name.downcase) }
-
-      total_score = 0.0
-      total_weight = 0.0
-
-      attributes.each do |attribute|
-        weightage = attribute.weightage
-        student_response = response.responses[attribute.id.to_s]  # Convert id to string
-
-        if student_response.present?
-          score = student_response.to_f
-          total_score += score * weightage
-          total_weight += weightage
-        end
-      end
-      # Return the weighted average score
-      total_weight > 0 ? (total_score / total_weight) : 0
     end
 end

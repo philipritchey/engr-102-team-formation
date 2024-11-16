@@ -74,27 +74,25 @@ Given("I log in as a professor") do
   end
 
   Then("I should not see {string} for that form") do |button_text|
-    within('tr', text: @form.name) do
-      expect(page).not_to have_content(button_text)
+    within('.form-card', text: @form.name) do
+      expect(page).not_to have_link(button_text)
     end
   end
 
-  Then("I should see {string} and {string} buttons for that form") do |button1, button2|
-    within('tr', text: @form.name) do
-      expect(page).to have_content(button1)
-      expect(page).to have_content(button2)
+  Then("I should see {string} button for that form") do |button|
+    within('.form-card', text: @form.name) do
+      expect(page).to have_link(button)
     end
   end
 
-  Then("I should not see {string} or {string} buttons for that form") do |button1, button2|
-    within('tr', text: @form.name) do
-      expect(page).not_to have_content(button1)
-      expect(page).not_to have_content(button2)
+  Then("I should not see {string} button for that form") do |button|
+    within('.form-card', text: @form.name) do
+      expect(page).not_to have_link(button)
     end
   end
 
   Then("I should see {string} for that form") do |button_text|
-    within('tr', text: @form.name) do
-      expect(page).to have_content(button_text)
+    within('.form-card', text: @form.name) do
+      expect(page).to have_link(button_text)
     end
   end

@@ -24,6 +24,7 @@
             <%= link_to "View", form_path(form), class: "btn btn-sm btn-info" %>
             <%= link_to "Edit", edit_form_path(form), class: "btn btn-sm btn-warning" %>
             <%= link_to "Delete", form_path(form), method: :delete, data: { confirm: "Are you sure you want to delete this form?" }, class: "btn btn-sm btn-danger" %>
+            
             <!-- Button to show deadline picker -->
             <button type="button" class="btn btn-sm btn-primary" onclick="toggleDeadlinePicker(<%= form.id %>)">Update Deadline</button>
 
