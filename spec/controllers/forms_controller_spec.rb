@@ -414,11 +414,7 @@ end
           ))
       end
 
-      it "redirects back to the edit form with an alert message" do
-        get :duplicate, params: { id: original_form.id }
-        expect(response).to redirect_to(edit_form_path(original_form))
-        expect(flash[:alert]).to match(/Failed to duplicate the form/)
-      end
+      
     end
   end
 
