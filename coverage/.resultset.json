@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/phanijyothi11/team-formation-16/app/controllers/application_controller.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/controllers/application_controller.rb": {
         "lines": [
           null,
           null,
@@ -42,7 +42,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/controllers/attributes_controller.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/controllers/attributes_controller.rb": {
         "lines": [
           null,
           1,
@@ -173,7 +173,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/controllers/concerns/attribute_helpers.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/controllers/concerns/attribute_helpers.rb": {
         "lines": [
           1,
           1,
@@ -201,7 +201,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/controllers/concerns/form_publishing.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/controllers/concerns/form_publishing.rb": {
         "lines": [
           1,
           1,
@@ -251,7 +251,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/controllers/concerns/team_calculation.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/controllers/concerns/team_calculation.rb": {
         "lines": [
           1,
           1,
@@ -407,9 +407,9 @@
           null,
           1,
           null,
-          1387,
-          390,
-          451,
+          1391,
+          384,
+          453,
           null,
           null,
           null,
@@ -453,7 +453,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/controllers/concerns/team_distribution_helpers.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/controllers/concerns/team_distribution_helpers.rb": {
         "lines": [
           1,
           1,
@@ -461,86 +461,68 @@
           1,
           null,
           1,
-          217,
+          218,
           null,
-          217,
+          218,
           26,
           null,
           null,
-          217,
-          183,
+          218,
+          184,
           null,
           null,
-          217,
-          29,
+          218,
+          30,
           null,
           null,
-          217,
-          null,
-          null,
-          1,
-          16045,
-          578,
-          null,
-          578,
-          578,
-          null,
-          578,
-          578,
-          null,
-          578,
-          578,
-          null,
-          578,
-          578,
-          578,
-          null,
-          578,
-          null,
-          578,
+          218,
           null,
           null,
           1,
-          777,
-          777,
+          16036,
+          578,
           null,
-          777,
-          2971,
-          40608,
-          1598,
-          1598,
+          578,
+          578,
           null,
+          578,
+          578,
           null,
-          777,
+          578,
+          578,
           null,
+          578,
+          578,
+          578,
           null,
-          1,
-          199,
-          38,
-          161,
-          18,
+          578,
           null,
-          143,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
+          578,
           null,
           null,
           1,
-          133,
+          779,
+          779,
           null,
-          23,
+          779,
+          2979,
+          40821,
+          1595,
+          1595,
           null,
-          51,
           null,
-          59,
+          779,
           null,
           null,
-          133,
+          1,
+          200,
+          36,
+          164,
+          11,
+          null,
+          153,
+          null,
+          null,
           null,
           null,
           null,
@@ -549,21 +531,39 @@
           null,
           null,
           1,
-          133,
-          601,
+          132,
+          null,
+          16,
+          null,
+          48,
+          null,
+          68,
+          null,
+          null,
+          132,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          132,
+          553,
           173,
           null,
           null,
           null,
           null,
           1,
-          22755,
-          882,
+          23738,
+          836,
           null,
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/controllers/concerns/team_ethnicity_balance.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/controllers/concerns/team_ethnicity_balance.rb": {
         "lines": [
           1,
           1,
@@ -605,7 +605,7 @@
           null,
           1,
           61,
-          29,
+          30,
           null,
           null,
           null,
@@ -624,8 +624,8 @@
           null,
           null,
           1,
-          29,
-          29,
+          30,
+          30,
           null,
           null,
           null,
@@ -645,17 +645,17 @@
           null,
           null,
           1,
-          29,
-          29,
+          30,
+          30,
           null,
           null,
-          29,
+          30,
           null,
           null,
           null,
           null,
           null,
-          29,
+          30,
           null,
           null,
           null,
@@ -668,11 +668,11 @@
           61,
           null,
           31,
-          77,
-          77,
+          76,
+          76,
           null,
           null,
-          77,
+          76,
           null,
           null,
           null,
@@ -684,13 +684,13 @@
           null,
           null,
           1,
-          77,
-          3171,
+          76,
+          3102,
           null,
-          77,
-          77,
+          76,
+          76,
           null,
-          77,
+          76,
           null,
           null,
           null,
@@ -698,11 +698,11 @@
           null,
           null,
           1,
-          1062,
-          77,
+          1047,
+          76,
           null,
-          77,
-          219,
+          76,
+          216,
           4,
           4,
           null,
@@ -713,29 +713,14 @@
           null,
           null,
           1,
-          16,
-          16,
+          17,
+          17,
           null,
-          727,
-          16,
+          753,
+          17,
           null,
-          16,
-          16,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          16,
-          16,
-          null,
-          16,
-          41,
-          null,
+          17,
+          17,
           null,
           null,
           null,
@@ -745,14 +730,11 @@
           null,
           null,
           1,
+          17,
+          17,
           null,
-          16,
-          197,
-          181,
-          null,
-          null,
-          null,
-          28,
+          17,
+          42,
           null,
           null,
           null,
@@ -763,19 +745,37 @@
           null,
           null,
           1,
-          41,
-          41,
-          41,
+          null,
+          17,
+          211,
+          191,
           null,
           null,
-          41,
-          41,
+          null,
+          29,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          42,
+          42,
+          42,
+          null,
+          null,
+          42,
+          42,
           null,
           null,
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/controllers/concerns/team_gender_balance.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/controllers/concerns/team_gender_balance.rb": {
         "lines": [
           1,
           1,
@@ -865,7 +865,7 @@
           null,
           56,
           null,
-          2,
+          1,
           null,
           56,
           null,
@@ -879,7 +879,7 @@
           null,
           null,
           1,
-          2755,
+          2676,
           null,
           null,
           null,
@@ -928,12 +928,12 @@
           null,
           33,
           null,
-          8,
-          8,
+          4,
+          4,
           null,
           null,
-          25,
-          25,
+          29,
+          29,
           null,
           null,
           null,
@@ -944,16 +944,16 @@
           null,
           null,
           null,
-          51,
+          31,
           null,
           null,
           null,
           1,
-          25,
-          350,
+          29,
+          402,
           null,
           null,
-          69,
+          106,
           null,
           null,
           null,
@@ -976,7 +976,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/controllers/concerns/generate_teams.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/controllers/concerns/generate_teams.rb": {
         "lines": [
           1,
           1,
@@ -1038,7 +1038,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/controllers/concerns/team_skill_balance.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/controllers/concerns/team_skill_balance.rb": {
         "lines": [
           1,
           1,
@@ -1087,7 +1087,7 @@
           null,
           null,
           1,
-          237,
+          241,
           null,
           null,
           null,
@@ -1127,35 +1127,35 @@
           null,
           1,
           113,
-          29,
-          84,
-          57,
+          31,
+          82,
+          52,
           null,
-          27,
-          null,
-          null,
+          30,
           null,
           null,
-          1,
-          113,
-          113,
-          null,
-          null,
-          1,
-          29,
-          null,
-          null,
-          1,
-          57,
-          null,
-          null,
-          1,
-          27,
           null,
           null,
           1,
           113,
-          239,
+          113,
+          null,
+          null,
+          1,
+          31,
+          null,
+          null,
+          1,
+          52,
+          null,
+          null,
+          1,
+          30,
+          null,
+          null,
+          1,
+          113,
+          237,
           null,
           null,
           1,
@@ -1164,7 +1164,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/controllers/form_responses_controller.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/controllers/form_responses_controller.rb": {
         "lines": [
           null,
           1,
@@ -1308,7 +1308,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/controllers/forms_controller.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/controllers/forms_controller.rb": {
         "lines": [
           null,
           null,
@@ -1475,7 +1475,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/controllers/concerns/form_uploading.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/controllers/concerns/form_uploading.rb": {
         "lines": [
           1,
           1,
@@ -1592,7 +1592,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/controllers/concerns/export_teams.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/controllers/concerns/export_teams.rb": {
         "lines": [
           1,
           1,
@@ -1641,7 +1641,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/controllers/sessions_controller.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/controllers/sessions_controller.rb": {
         "lines": [
           1,
           1,
@@ -1672,7 +1672,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/controllers/students_controller.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/controllers/students_controller.rb": {
         "lines": [
           1,
           1,
@@ -1723,7 +1723,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/controllers/users_controller.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/controllers/users_controller.rb": {
         "lines": [
           null,
           null,
@@ -1739,7 +1739,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/controllers/welcome_controller.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/controllers/welcome_controller.rb": {
         "lines": [
           1,
           1,
@@ -1759,7 +1759,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/jobs/check_form_deadlines_job.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/jobs/check_form_deadlines_job.rb": {
         "lines": [
           1,
           1,
@@ -1772,7 +1772,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/models/attribute.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/models/attribute.rb": {
         "lines": [
           null,
           1,
@@ -1830,14 +1830,14 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/models/application_record.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/models/form.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/models/form.rb": {
         "lines": [
           null,
           null,
@@ -1910,7 +1910,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/services/forms/duplication_service.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/services/forms/duplication_service.rb": {
         "lines": [
           1,
           1,
@@ -1962,7 +1962,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/services/forms/base_service.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/services/forms/base_service.rb": {
         "lines": [
           1,
           null,
@@ -1985,7 +1985,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/models/user.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/models/user.rb": {
         "lines": [
           1,
           1,
@@ -1993,19 +1993,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/models/student.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null,
-          1,
-          1,
-          1,
-          null
-        ]
-      },
-      "/home/phanijyothi11/team-formation-16/app/models/form_response.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/models/student.rb": {
         "lines": [
           1,
           1,
@@ -2014,12 +2002,24 @@
           1,
           1,
           1,
+          null
+        ]
+      },
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/models/form_response.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
           null,
           1,
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/models/team.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/models/team.rb": {
         "lines": [
           1,
           1,
@@ -2059,11 +2059,11 @@
         ]
       }
     },
-    "timestamp": 1731732255
+    "timestamp": 1731733915
   },
   "Cucumber": {
     "coverage": {
-      "/home/phanijyothi11/team-formation-16/app/models/user.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/models/user.rb": {
         "lines": [
           1,
           1,
@@ -2071,14 +2071,14 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/models/application_record.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/models/form.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/models/form.rb": {
         "lines": [
           null,
           null,
@@ -2144,14 +2144,14 @@
           1,
           null,
           1,
-          65,
+          66,
           4,
           null,
           null,
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/controllers/users_controller.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/controllers/users_controller.rb": {
         "lines": [
           null,
           null,
@@ -2161,13 +2161,13 @@
           1,
           null,
           null,
-          22,
+          24,
           null,
           null,
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/controllers/application_controller.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/controllers/application_controller.rb": {
         "lines": [
           null,
           null,
@@ -2181,12 +2181,12 @@
           null,
           1,
           null,
-          373,
+          389,
           null,
           null,
           1,
           null,
-          12,
+          25,
           null,
           null,
           null,
@@ -2194,21 +2194,21 @@
           1,
           null,
           null,
-          166,
+          179,
           null,
           null,
           null,
           1,
-          155,
+          160,
           null,
           null,
-          2,
+          5,
           null,
           null,
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/controllers/forms_controller.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/controllers/forms_controller.rb": {
         "lines": [
           null,
           null,
@@ -2375,7 +2375,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/controllers/concerns/form_publishing.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/controllers/concerns/form_publishing.rb": {
         "lines": [
           1,
           1,
@@ -2425,7 +2425,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/controllers/concerns/form_uploading.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/controllers/concerns/form_uploading.rb": {
         "lines": [
           1,
           1,
@@ -2542,7 +2542,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/controllers/concerns/team_calculation.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/controllers/concerns/team_calculation.rb": {
         "lines": [
           1,
           1,
@@ -2744,7 +2744,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/controllers/concerns/team_distribution_helpers.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/controllers/concerns/team_distribution_helpers.rb": {
         "lines": [
           1,
           1,
@@ -2854,7 +2854,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/controllers/concerns/team_gender_balance.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/controllers/concerns/team_gender_balance.rb": {
         "lines": [
           1,
           1,
@@ -3055,7 +3055,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/controllers/concerns/team_ethnicity_balance.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/controllers/concerns/team_ethnicity_balance.rb": {
         "lines": [
           1,
           1,
@@ -3267,7 +3267,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/controllers/concerns/team_skill_balance.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/controllers/concerns/team_skill_balance.rb": {
         "lines": [
           1,
           1,
@@ -3393,7 +3393,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/controllers/concerns/generate_teams.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/controllers/concerns/generate_teams.rb": {
         "lines": [
           1,
           1,
@@ -3455,7 +3455,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/controllers/concerns/export_teams.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/controllers/concerns/export_teams.rb": {
         "lines": [
           1,
           1,
@@ -3504,7 +3504,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/models/attribute.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/models/attribute.rb": {
         "lines": [
           null,
           1,
@@ -3562,7 +3562,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/controllers/attributes_controller.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/controllers/attributes_controller.rb": {
         "lines": [
           null,
           1,
@@ -3693,7 +3693,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/controllers/concerns/attribute_helpers.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/controllers/concerns/attribute_helpers.rb": {
         "lines": [
           1,
           1,
@@ -3721,7 +3721,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/models/form_response.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/models/form_response.rb": {
         "lines": [
           1,
           1,
@@ -3735,7 +3735,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/models/student.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/models/student.rb": {
         "lines": [
           1,
           1,
@@ -3747,7 +3747,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/controllers/students_controller.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/controllers/students_controller.rb": {
         "lines": [
           1,
           1,
@@ -3757,11 +3757,11 @@
           null,
           null,
           1,
-          9,
-          9,
-          9,
+          12,
+          12,
+          12,
           null,
-          9,
+          12,
           null,
           null,
           1,
@@ -3798,7 +3798,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/services/forms/duplication_service.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/services/forms/duplication_service.rb": {
         "lines": [
           1,
           1,
@@ -3850,7 +3850,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/services/forms/base_service.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/services/forms/base_service.rb": {
         "lines": [
           1,
           null,
@@ -3873,50 +3873,23 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/controllers/sessions_controller.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/jobs/check_form_deadlines_job.rb": {
         "lines": [
           1,
           1,
           null,
-          null,
           1,
-          1,
-          1,
-          null,
-          null,
-          null,
-          1,
-          4,
-          null,
-          4,
-          4,
-          null,
-          4,
-          0,
-          0,
-          4,
-          0,
           0,
           null,
-          4,
           null,
           null,
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/controllers/welcome_controller.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/jobs/application_job.rb": {
         "lines": [
           1,
-          1,
-          1,
-          11,
-          1,
-          1,
-          0,
-          0,
           null,
-          null,
-          10,
           null,
           null,
           null,
@@ -3924,7 +3897,7 @@
           null
         ]
       },
-      "/home/phanijyothi11/team-formation-16/app/controllers/form_responses_controller.rb": {
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/controllers/form_responses_controller.rb": {
         "lines": [
           null,
           1,
@@ -4064,11 +4037,62 @@
           null,
           1,
           0,
+          null,
+          null
+        ]
+      },
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/controllers/welcome_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          19,
+          2,
+          1,
+          1,
+          1,
+          null,
+          null,
+          17,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/mnt/c/Users/91790/Documents/SoftwareEngineering/TF-cucumber/team-formation/app/controllers/sessions_controller.rb": {
+        "lines": [
+          1,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
+          8,
+          null,
+          8,
+          8,
+          null,
+          8,
+          1,
+          1,
+          7,
+          1,
+          1,
+          null,
+          6,
+          null,
           null,
           null
         ]
       }
     },
-    "timestamp": 1731732266
+    "timestamp": 1731733950
   }
 }
