@@ -1,60 +1,83 @@
-# team-formation
+# Team Formation
 
-Code climate link
-https://codeclimate.com/github/phanijyothi11-tamu/team-formation
+## Code Climate Link
+[Code Climate](https://codeclimate.com/github/phanijyothi11-tamu/team-formation)
 
-Deployed heroku app
-https://teamformation-c5eaebc1d53b.herokuapp.com/
+## Deployed Heroku App
+[Heroku App](https://teamformation-c5eaebc1d53b.herokuapp.com/)
 
-1. Introduction
+---
+
+## 1. Introduction
 The "Team Formation" project is a web application designed to facilitate the users in creation of balanced and effective teams for academic projects. Developed using Ruby on Rails, this application allows users to input student data and specify criteria for team composition, such as skill sets and diversity factors. The system then processes this information to generate optimal team assignments that align with the defined parameters. By automating the team formation process, the application aims to enhance collaboration and project outcomes in educational settings.
 
-2. Getting Started and Running Locally
-2.1 Setup
-Prerequisites
-Required Tools:
-Ruby (version >= 2.7)
-Ruby on Rails (version >= 6.0)
-Git
-PostgreSQL (version >= 12)
-Node.js (version >= 12) and npm/yarn
-Bundler (Ruby gem for dependency management)
-A terminal/command line interface (CLI)
-Software:
-A code editor such as Visual Studio Code, Atom, or RubyMine.
-A web browser for testing (Google Chrome recommended).
-Platform:
-Compatible with Linux, macOS, or Windows (with WSL2 recommended for Windows users).
+---
 
+## 2. Getting Started and Running Locally
 
+### 2.1 Setup
 
+#### Prerequisites
 
+**Required Tools:**
+- Ruby (version >= 2.7)
+- Ruby on Rails (version >= 6.0)
+- Git
+- PostgreSQL (version >= 12)
+- Node.js (version >= 12) and npm/yarn
+- Bundler (Ruby gem for dependency management)
+- A terminal/command line interface (CLI)
 
-Step-by-Step Instructions to Set Up the Development Environment
-Clone the Repository
-git clone https://github.com/phanijyothi11-tamu/team-formation.git
-cd team-formation
-Install Ruby Version: Ensure the Ruby version specified in the .ruby-version file is installed
-rbenv install $(cat .ruby-version) 
-rbenv local $(cat .ruby-version)
-Install Bundler: Install Bundler to manage Ruby dependencies
-gem install bundler
-Install Project Dependencies: Use Bundler to install Ruby dependencies
-bundle install
-Install JavaScript Dependencies: Install JavaScript dependencies using npm or yarn
-yarn install
-Setup the Database: Create, migrate, and seed the database
-rails db:create
-rails db:migrate
-rails db:seed
-Add the master.key File: To run the application locally and add a user, create a file named master.key in the config folder and add the following line:
-bce3caa08d1af07d574188a55ca6d392
-Run the Server: Start the Rails server
-rails server
-Access the Application: Open your web browser and navigate to:
-http://localhost:3000
+**Software:**
+- A code editor such as Visual Studio Code, Atom, or RubyMine.
+- A web browser for testing (Google Chrome recommended).
 
-2.2 Dependencies
+**Platform:**
+- Compatible with Linux, macOS, or Windows (with WSL2 recommended for Windows users).
+
+---
+
+### Step-by-Step Instructions to Set Up the Development Environment
+
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/phanijyothi11-tamu/team-formation.git
+   cd team-formation
+
+2. **Install Ruby Version**
+   ```bash
+   rbenv install $(cat .ruby-version) 
+   rbenv local $(cat .ruby-version)
+   
+3. **Install Bundler**
+   ```bash
+   gem install bundler
+
+4. **Install Project Dependencies**
+   ```bash
+   bundle install
+
+5. **Install JavaScript Dependencies**
+   ```bash
+   yarn install
+
+6. **Setup the Database**
+   ```bash
+   rails db:create
+   rails db:migrate
+   rails db:seed
+
+7. **Add the master.key File Create a file named master.key in the config folder and add:**
+   ```bash
+   bce3caa08d1af07d574188a55ca6d392
+
+8. **Run the Server**
+   ```bash
+   rails server
+
+9. **Access the Application Open your web browser and navigate to: http://localhost:3000**
+
+### 2.2 Dependencies
 List of Dependencies with Versions
 Ruby Gems:
 Rails: >= 6.0
@@ -74,8 +97,8 @@ yarn install
 
 
 
-3. Running the Tests
-3.1 Test Setup
+## 3. Running the Tests
+### 3.1 Test Setup
 Instructions to Run the Tests:
 Ensure the application is set up and all dependencies are installed (refer to the Getting Started section).
 Open a terminal in the project directory.
@@ -91,7 +114,7 @@ The test environment requires a separate database. Ensure the test database is c
 
 RAILS_ENV=test rails db:create 
 RAILS_ENV=test rails db:migrate
-3.2 Test Metrics
+### 3.2 Test Metrics
 Test Coverage:
 The project aims for a minimum of 90% test coverage to ensure robustness and reliability.
 Generating Coverage Reports:
@@ -104,16 +127,17 @@ bundle exec rspec
 View the Coverage Report:
 After running the tests, the coverage report will be generated in the coverage/ directory.
 Open the index.html file in a web browser to view detailed coverage metrics.
-5. Deployment Guide
-1.Log in to Heroku: heroku login
 
-2.Create App: heroku create <app-name>
+## 4. Deployment Guide
+- 1.Log in to Heroku: heroku login
 
-3.Login in to your heroku in browser -> Open the application you just created -> Navigate to Resources -> Search for Heroku Postgres -> Add that on to the application.
+- 2.Create App: heroku create <app-name>
 
-4.Same page navigate to settings.
+- 3.Login in to your heroku in browser -> Open the application you just created -> Navigate to Resources -> Search for Heroku Postgres -> Add that on to the application.
+
+- 4.Same page navigate to settings.
    
-   Click on Reveal Config Vars and add below 
+   - Click on Reveal Config Vars and add below 
 
    KEY                                 
    GOOGLE_CLIENT_ID 
@@ -128,9 +152,9 @@ Open the index.html file in a web browser to view detailed coverage metrics.
    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
           
 
-3.Add a Heroku Git remote: git remote add heroku https://git.heroku.com/<app-name>.git
+- 5.Add a Heroku Git remote: git remote add heroku https://git.heroku.com/<app-name>.git
 
-4. Since local and production differ in storing secrets we need to add GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET while deploying.
+- 6. Since local and production differ in storing secrets we need to add GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET while deploying.
 
 -> Open the omniauth.rb and replace below line 
 
@@ -150,7 +174,7 @@ NOTE THAT : THE APP URL ALSO NEED TO BE AUTHORIZED BY THE GOOGLE CREDENTIALS HOL
 If you want to deploy in your own heroku app create an account and in that add restrictions to tamu domain an add the link credentials->Authorized redirect URIs here which looks like https://teamformation-c5eaebc1d53b.herokuapp.com/auth/google_oauth2/callback.
 App is deployed at this stage
 
-5. heroku run rails db:migrate 
+- 7. heroku run rails db:migrate 
 
 In case you encounter an error here:
 
@@ -158,7 +182,7 @@ Remove this line     remove_column :users, :name, :string from db/migrate/202410
 
 And commit and deploy again -> then run heroku run rails db:migrate
 
-6. Once we add users we need to be able to access the app, to do that:
+- 8. Once we add users we need to be able to access the app, to do that:
 To run application we need to add the user details (so that they can login) which can be done by creating user.
 In the terminal, type the command  “heroku run rails console -a appname”
 Then you can add the user by following command:
@@ -166,7 +190,7 @@ User.create(email: "saijaideepreddymure@tamu.edu",name: "JaideepReddy", uin: "12
 
 
 
-6. Contact Information
+## 5. Contact Information
 For any questions, support, or feedback related to the "Team Formation" project, please feel free to reach out to the team members:
 Name
 Email ID
