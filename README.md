@@ -41,41 +41,77 @@ The "Team Formation" project is a web application designed to facilitate the use
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/phanijyothi11-tamu/team-formation.git
-   cd team-formation
+   git clone git@github.com:philipritchey/engr-102-team-formation.git
+   cd engr-102-team-formation.git
+   ```
 
 2. **Install Ruby Version**
    ```bash
-   rbenv install $(cat .ruby-version) 
+   rbenv install $(cat .ruby-version)
    rbenv local $(cat .ruby-version)
-   
+   ```
+
 3. **Install Bundler**
    ```bash
    gem install bundler
+   ```
 
-4. **Install Project Dependencies**
+4. **Install Ruby on Rails Dependencies**
    ```bash
+   bundle config without production
    bundle install
+   ```
 
 5. **Install JavaScript Dependencies**
    ```bash
    yarn install
+   ```
 
 6. **Setup the Database**
    ```bash
-   rails db:create
-   rails db:migrate
+   bundle exec rails db:create
+   bundle exec rails db:migrate
+   bundle exec rails db:test:prepare
+   ```
+
+7. **Run Tests**
+   ```bash
+   bundle exec rspec
+   bundle exec cucumber
+   ```
+
+8. **Seed the database**
+   ```bash
    rails db:seed
+   ```
 
-7. **Add the master.key File Create a file named master.key in the config folder and add:**
+9. **Create a Google OAuth client**
+   [Go to Google cloud console](https://console.cloud.google.com/) and set up your app's OAuth client.
+
+   **SAVE THE CREDENTIALS!** you need them in the next step.
+
+   Add redirect URI `http://127.0.0.1:3000/auth/google_oauth2/callback`
+
+10. **Generate a new master.key and add Google OAuth client id and secret to it**
    ```bash
-   bce3caa08d1af07d574188a55ca6d392
+   EDITOR="nano" rails credentials:edit
+   ```
 
-8. **Run the Server**
-   ```bash
-   rails server
+   Put the google client credentials in the Rails credential file:
 
-9. **Access the Application Open your web browser and navigate to: http://localhost:3000**
+   ```yaml
+   google:
+       client_id: ...your client id here...
+       client_secret: ...your client secret here...
+   ```
+
+
+11. **Run the Server**
+    ```bash
+    rails server
+    ```
+
+12. **Access the Application Open your web browser and navigate to: http://localhost:3000**
 
 ### 2.2 Dependencies
 List of Dependencies with Versions
@@ -112,7 +148,7 @@ bundle install
 Database Setup for Testing:
 The test environment requires a separate database. Ensure the test database is created and migrated:
 
-RAILS_ENV=test rails db:create 
+RAILS_ENV=test rails db:create
 RAILS_ENV=test rails db:migrate
 ### 3.2 Test Metrics
 Test Coverage:
@@ -129,87 +165,38 @@ After running the tests, the coverage report will be generated in the coverage/ 
 Open the index.html file in a web browser to view detailed coverage metrics.
 
 ## 4. Deployment Guide
-- 1.Log in to Heroku: heroku login
+1. Log in to Heroku: heroku login
 
-- 2.Create App: heroku create <app-name>
+2. Create App:
+   ```bash
+   heroku create <app-name>
+   ```
 
-- 3.Login in to your heroku in browser -> Open the application you just created -> Navigate to Resources -> Search for Heroku Postgres -> Add that on to the application.
+3. Provison postgres for your app:
+   ```bash
+   heroku addons:create heroku-postgresql:essential-0 -a <app-name>
+   ```
 
-- 4.Same page navigate to settings.
-   
-   - Click on Reveal Config Vars and add below 
+4. Set the RAILS_MASTER_KEY environment variable:
+   ```bash
+   heroku config:set RAILS_MASTER_KEY=`cat config/master.key`
+   ```
 
-   KEY                                 
-   GOOGLE_CLIENT_ID 
-    
-   VALUE 
-   765932404922-vvd8svdheovq1kf1u4hkrof6d0a4o04g.apps.googleusercontent.com
+5. Push code to Heroku:
+   ```bash
+   git push heroku main
+   ```
 
-   KEY
-   GOOGLE_CLIENT_SECRET
+6. To add users to the app (i.e. professors):
+   ```bash
+   heroku run rails console -a <app-name>
+   ```
 
-   VALUE
-   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
-          
+   Then you can add the user by following command:
+   ```ruby
+   User.create(email: "netid@tamu.edu",name: "FirstLast", uin: "123006789")
+   ```
 
-- 5.Add a Heroku Git remote: git remote add heroku https://git.heroku.com/<app-name>.git
-
-- 6. Since local and production differ in storing secrets we need to add GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET while deploying.
-
--> Open the omniauth.rb and replace below line 
-
-provider :google_oauth2, google_credentials[:client_id], google_credentials[:client_secret],
-
-
-
-With
-
-provider :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'],
-
-The commit the changes
-git add .
-git commit -m “google client details”
-git push heroku main
-NOTE THAT : THE APP URL ALSO NEED TO BE AUTHORIZED BY THE GOOGLE CREDENTIALS HOLDER -> RIGHT NOW CONTACT saijaideepreddymure@tamu.edu AS HE IS THE OWNER.
-If you want to deploy in your own heroku app create an account and in that add restrictions to tamu domain an add the link credentials->Authorized redirect URIs here which looks like https://teamformation-c5eaebc1d53b.herokuapp.com/auth/google_oauth2/callback.
-App is deployed at this stage
-
-- 7. heroku run rails db:migrate 
-
-In case you encounter an error here:
-
-Remove this line     remove_column :users, :name, :string from db/migrate/20241003222758_modify_users_table1.rb
-
-And commit and deploy again -> then run heroku run rails db:migrate
-
-- 8. Once we add users we need to be able to access the app, to do that:
-To run application we need to add the user details (so that they can login) which can be done by creating user.
-In the terminal, type the command  “heroku run rails console -a appname”
-Then you can add the user by following command:
-User.create(email: "saijaideepreddymure@tamu.edu",name: "JaideepReddy", uin: "12345")
-
-
-
-## 5. Contact Information
-For any questions, support, or feedback related to the "Team Formation" project, please feel free to reach out to the team members:
-Name
-Email ID
-Hitha Magadi Vijayanand
-hoshi_1996@tamu.edu
-Phani Jyothi Kurada
-phanijyothi11@tamu.edu
-Raja Karthik Vobugari
-raju@tamu.edu
-Ramya Reddy Gotika
-ramyagotika@tamu.edu
-Rithika Sapparapu
-rithikasapparapu@tamu.edu
-Sahithi Duppati
-sahithi@tamu.edu
-Sai Jaideep Reddy Mure
-saijaideepreddymure@tamu.edu
-Uday Kumar Reddy Mettukuru
-urt23@tamu.edu
 
 
 
