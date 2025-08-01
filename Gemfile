@@ -49,7 +49,7 @@ gem "roo", "~> 2.10.0"
 gem "csv"
 
 gem "rufus-scheduler"
-gem "rubyzip"
+gem "rubyzip", "~>2.4.1"
 gem "axlsx"
 gem "caxlsx_rails"
 gem "wicked_pdf"
