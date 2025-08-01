@@ -543,7 +543,7 @@ DEPENDENCIES
   rubocop
   rubocop-rails-omakase
   rubocop-rspec
-  rubyzip
+  rubyzip (~> 2.4.1)
   rufus-scheduler
   selenium-webdriver
   shoulda-matchers
