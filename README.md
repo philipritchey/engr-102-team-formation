@@ -197,8 +197,5 @@ Open the index.html file in a web browser to view detailed coverage metrics.
    User.create(email: "netid@tamu.edu",name: "First Last", uin: "123006789")
    ```
 
-
-
-
-
+7. [Go to Google cloud console](https://console.cloud.google.com/) and add redirect URI `https://APPNAME-JUNK.herokuapp.com/auth/google_oauth2/callback`
 
