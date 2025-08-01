@@ -77,39 +77,39 @@
 
       .students {
           position: relative;
-          height: 200px; 
-          margin-top: 30px; 
+          height: 200px;
+          margin-top: 30px;
       }
 
       .student {
-          position: absolute; 
-          width: 40px; 
-          height: 80px; 
-          background-color: var(--tamu-maroon); 
-          border-radius: 10px; 
+          position: absolute;
+          width: 40px;
+          height: 80px;
+          background-color: var(--tamu-maroon);
+          border-radius: 10px;
       }
 
       .head {
-        width: 30px; 
-        height: 30px; 
-        background-color: var(--tamu-white); 
-        border-radius: 50%; 
-        position:absolute; 
-        top:-15px; 
-        left:-5px; 
-        border:2px solid var(--tamu-maroon); 
+        width: 30px;
+        height: 30px;
+        background-color: var(--tamu-white);
+        border-radius: 50%;
+        position:absolute;
+        top:-15px;
+        left:-5px;
+        border:2px solid var(--tamu-maroon);
     }
 
     .thought-bubble {
-        position:absolute; 
-        background-color:white; 
-        border-radius :10px; 
-        padding :5px ; 
-        font-size :12px; 
-        opacity :0; 
-        transition :opacity .3s ease ; 
-        pointer-events:none ; 
-        border :2px solid var(--tamu-maroon); 
+        position:absolute;
+        background-color:white;
+        border-radius :10px;
+        padding :5px ;
+        font-size :12px;
+        opacity :0;
+        transition :opacity .3s ease ;
+        pointer-events:none ;
+        border :2px solid var(--tamu-maroon);
     }
     </style>
 </head>
@@ -124,10 +124,8 @@
     </div>
     <div class="container">
         <h2 id="animatedTitle">Welcome To Team      Formation Aggies !</h2>
-        
-        <%= form_tag "/auth/google_oauth2", data: { turbo: false } do %>
-           <%= button_tag "Login with Google", type: :submit, class: "button" %>
-        <% end %>
+
+        <p><%= button_to "Login with Google", "/auth/google_oauth2", data: {turbo: "false"} %></p>
 
        <div class="students"></div>
     </div>
@@ -152,52 +150,52 @@
           });
 
           const studentsContainer = document.querySelector('.students');
-          const studentCount = 5; 
+          const studentCount = 5;
           const thoughts = ['Gig \'em!', 'Howdy!', 'Go Aggies!', '12th Man!', 'Whoop!'];
 
           for (let i = 0; i < studentCount; i++) {
-              const student = document.createElement('div'); 
-              student.classList.add('student'); 
-              student.style.left = `${i * (100 / studentCount) + (100 / (studentCount * 2))}%`; 
-              student.style.top = `${Math.random() * (140)}px`; 
+              const student = document.createElement('div');
+              student.classList.add('student');
+              student.style.left = `${i * (100 / studentCount) + (100 / (studentCount * 2))}%`;
+              student.style.top = `${Math.random() * (140)}px`;
 
               // Create head for the student
               const head = document.createElement('div');
               head.classList.add('head');
               student.appendChild(head); // Append head to student
 
-              studentsContainer.appendChild(student); 
+              studentsContainer.appendChild(student);
 
-              const thoughtBubble = document.createElement('div'); 
-              thoughtBubble.classList.add('thought-bubble'); 
-              thoughtBubble.textContent = thoughts[i]; 
+              const thoughtBubble = document.createElement('div');
+              thoughtBubble.classList.add('thought-bubble');
+              thoughtBubble.textContent = thoughts[i];
               thoughtBubble.style.left = `${i * (100 / studentCount) + (100 / (studentCount * 2))}%`;
-              thoughtBubble.style.top = `${parseInt(student.style.top) - 40}px`; 
+              thoughtBubble.style.top = `${parseInt(student.style.top) - 40}px`;
 
-              studentsContainer.appendChild(thoughtBubble); 
+              studentsContainer.appendChild(thoughtBubble);
 
-              student.addEventListener('mouseenter', () => { 
-                  thoughtBubble.style.opacity = '1'; 
+              student.addEventListener('mouseenter', () => {
+                  thoughtBubble.style.opacity = '1';
               });
-              student.addEventListener('mouseleave', () => { 
-                  thoughtBubble.style.opacity = '0'; 
+              student.addEventListener('mouseleave', () => {
+                  thoughtBubble.style.opacity = '0';
               });
 
-              student.addEventListener('click', () => { 
-                  student.style.transform = 'scale(1.1)'; 
-                  setTimeout(() => { 
-                      student.style.transform = 'scale(1)'; 
-                  }, 200); 
+              student.addEventListener('click', () => {
+                  student.style.transform = 'scale(1.1)';
+                  setTimeout(() => {
+                      student.style.transform = 'scale(1)';
+                  }, 200);
               });
           }
 
-          function animateStudents() { 
-              const students = document.querySelectorAll('.student'); 
-              students.forEach((student) => { 
-                  const newY = Math.random() * (140); 
-                  student.style.transition = 'top 2s ease-in-out'; 
-                  student.style.top = `${newY}px`; 
-              }); 
+          function animateStudents() {
+              const students = document.querySelectorAll('.student');
+              students.forEach((student) => {
+                  const newY = Math.random() * (140);
+                  student.style.transition = 'top 2s ease-in-out';
+                  student.style.top = `${newY}px`;
+              });
 
               setTimeout(animateStudents, 3000); // Repeat every few seconds
           }
