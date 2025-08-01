@@ -194,7 +194,7 @@ Open the index.html file in a web browser to view detailed coverage metrics.
 
    Then you can add the user by following command:
    ```ruby
-   User.create(email: "netid@tamu.edu",name: "FirstLast", uin: "123006789")
+   User.create(email: "netid@tamu.edu",name: "First Last", uin: "123006789")
    ```
 
 
