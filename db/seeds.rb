@@ -27,11 +27,18 @@ Student.destroy_all
 FormResponse.destroy_all
 User.destroy_all
 
-# # Create a user ("required for form creation")
+# Create a user ("required for form creation")
 user = User.create!(
-  email: "sahithi@tamu.edu",
-  uin: "123456789",
-  name: "Professor Test"
+  email: "snritchey@tamu.edu",
+  uin: "912008537",
+  name: "Niki Ritchey"
+)
+
+# me, too!
+User.create!(
+  email: "pcr@tamu.edu",
+  uin: "113001368",
+  name: "Philip Ritchey"
 )
 
 # Create a form
